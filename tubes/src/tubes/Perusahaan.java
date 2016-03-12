@@ -1,16 +1,19 @@
 package tubes;
 
+import java.util.Date;
+
 public class Perusahaan extends Orang{
-    	private Lowongan [] lowongan;
+    	private Lowongan [] daftarLowongan;
 	private int thnBerdiri;
 	private String jenisUsaha;
 	private String namaBank;
 	private String password;
 	private int nLowongan=0;
 	
-	public void createLowongan (){
-		
-	}
+	public void createLowongan(String nmLowongan, Date deadline){
+            daftarLowongan[nLowongan] = new Lowongan(nmLowongan, deadline);
+            nLowongan++;
+         };
 	
 	public Perusahaan (String nama, String alamat, String noTelp, String email, String website){
 		super(nama, alamat, noTelp, email, website);
@@ -50,7 +53,7 @@ public class Perusahaan extends Orang{
 	
 	public void viewLowongan(){
 		int i=0;
-		for (lowongan lw: Lowongan.getALL()){
+		for (daftarLowongan lw: Lowongan.getALL()){
 			String Lowongan[]={
 				lw.super(getNama()),
 				lw.getJnsUsaha(),
