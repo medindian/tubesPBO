@@ -1,5 +1,6 @@
 package tubes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Perusahaan extends Orang{
@@ -19,7 +20,7 @@ public class Perusahaan extends Orang{
 		super(nama, alamat, noTelp, email, website);
 	}
 	
-	public void setThnBerdiri (String thn){
+	public void setThnBerdiri (int thn){
 		this.thnBerdiri = thn;
 	}
 	
@@ -52,26 +53,19 @@ public class Perusahaan extends Orang{
 	}
 	
 	public void viewLowongan(){
-		int i=0;
-		for (daftarLowongan lw: Lowongan.getALL()){
-			String Lowongan[]={
-				lw.super(getNama()),
-				lw.getJnsUsaha(),
-				lw.getThnBerdiri(),
-			};
-			l[i]=Lowongan;
-			i++;
-			}
-		}
-	}
+            SimpleDateFormat ft = new SimpleDateFormat("dd MMM yy");
+            System.out.println("Daftar Lowongan Pekerjaan : ");
+            for (int i = 0; i < nLowongan; i++){
+                System.out.println(i+1+". "+daftarLowongan[i].getNamaPkrj());
+                System.out.println("   Deadline : "+ft.format(daftarLowongan[i].getDeadline()));
+            }
+        }
 	
 	public void hapusLowongan (int id){
-		if (id>=1)&&(id<=10) {
-			Lowongan.remove(Lowongan.merge (l));
-		}
-	}
+            daftarLowongan[id-1] = null;
+        }
 	
-	public void terimaPelamar (int idLowongan, int idPelamar){
+/*	public void terimaPelamar (int idLowongan, int idPelamar){
 		if (idLowongan<>0){
 			return;
 		}
@@ -80,8 +74,8 @@ public class Perusahaan extends Orang{
 		}
 		else
 	}
+*/
+//	public void cekPassword (String password){}
 
-	public void cekPassword (String password){
-		
-	}
+
 }

@@ -7,7 +7,7 @@ public class Pelamar extends Orang{
     private String tempat;
     private Date tglLahir;
     private String password;
-    private boolean statusDiterima=false;
+//    private boolean statusDiterima=false;
     
     public Pelamar(String nama,String alamat,String noTelp,String email,String website){
         super(nama,alamat,noTelp,email,website);
@@ -41,7 +41,7 @@ public class Pelamar extends Orang{
     
     public void createBerkas(){
         if (noPelamar<20){
-           BerkasLamaran = new Berkas();
+           berkas = new BerkasLamaran();
         }
     }
 }
