@@ -8,26 +8,37 @@ public class AplikasiKonsol {
     int maxPerusahaan = 3;
     int maxPelamar = 20;
     
-    public void addPerusahaan(String nama, String alamat, String noTelp, String email, String website){
-    if (nPrsh < maxPerusahaan){
-        int i = nPrsh;
-        perusahaan[i] = new Perusahaan(nama, alamat, noTelp, email, website);
-        nPrsh++;
+    public void addPerusahaan(String nama, String alamat, String noTelp, String email, String website
+//            , String jnsUsaha, String bank, String pass, int thnBerdiri
+        ){
+        if (nPrsh < maxPerusahaan){
+            int i = nPrsh;
+            perusahaan[i] = new Perusahaan(nama, alamat, noTelp, email, website);
+/*            perusahaan[i].setJnsUsaha(jnsUsaha);
+            perusahaan[i].setThnBerdiri(thnBerdiri);
+            perusahaan[i].setBank(bank);
+            perusahaan[i].setPassword(pass);
+*/            nPrsh++;
 //        System.out.println(nPrsh);
-    } else
-        System.out.println("Daftar perusahaan sudah penuh");
+        } else
+            System.out.println("Daftar perusahaan sudah penuh");
     }
     
-    public void addPelamar(String nama, String alamat, String noTelp, String email, String website){
+    public void addPelamar(String nama, String alamat, String noTelp, String email, String website
+//            , String pass, String tempat, String tglLahir
+            ){
     if (nPelamar < maxPelamar){
         int i = nPelamar;
         pelamar[i] = new Pelamar(nama, alamat, noTelp, email, website);
-        nPelamar++;
+/*        pelamar[i].setPassword(pass);
+        pelamar[i].setTempat(tempat);
+        pelamar[i].setTglLahir(tglLahir);
+*/        nPelamar++;
     } else
         System.out.println("Daftar pelamar sudah penuh");        
     }
     
-    //search    
+    //search Perusahaan  
     public int findPerusahaan(String namaPerusahaan){
         int ind = -1;
         for(int i = 0; i < perusahaan.length; i++){
@@ -60,16 +71,39 @@ public class AplikasiKonsol {
         }
     }
     
-/*    public boolean findPelamar(String nama){  
-        boolean ketemu = false;
+    //search Pelamar
+    public int findPelamar(String nama){
+        int ind = -1;
         for(int i = 0; i < pelamar.length; i++){
-            if (pelamar[i].getNama() == nama){
+            if (pelamar[i].getNama().equals(nama)){
+                ind = i;
+            }
+        }
+        return ind;
+    }
+    
+    public boolean foundPelamar(String nama){
+        boolean ketemu = false;
+        for (Pelamar pelamar1 : pelamar) {
+            if (pelamar1.getNama().equals(nama)) {
                 ketemu = true;
             }
         }
         return ketemu;
     }
-*/    
+    
+    public void cariPelamar(String nama){
+        boolean ketemu = foundPelamar(nama);
+        System.out.println(ketemu);
+        if (ketemu == true){
+            int idx = findPelamar(nama); 
+            perusahaan[idx].printBio();            
+        }
+        if(ketemu == false){
+            System.out.println("Akun pelamar yang anda cari tidak terdaftar");
+        }
+    }
+    
     //delete
     //dimulai dari id 0
     public void delPerusahaan(int i){
