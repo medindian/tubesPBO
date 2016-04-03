@@ -2,19 +2,11 @@ package tubes;
 import java.util.Date;
 
 public class BerkasLamaran{
-    private Date tglDibuat;
-    private String CV;
-    private String SLK;
-    private String tempat;
-    private Date tglLahir;
-    private String nama;
-    private String alamat;
-    private String noTelp;
-    private String email;
-    private String website;
+    private String tglDibuat,CV, SLK,tempat, nama, alamat, noTelp, email,website;
+    private String tglLahir; //format DD MMM YYYY
     
     //setter
-    public void setTglDibuat(Date tgl){
+    public void setTglDibuat(String tgl){
         this.tglDibuat = tgl; }
    
     public void setCV(String CV){
@@ -26,7 +18,7 @@ public class BerkasLamaran{
     public void setTempat(String tempat){
         this.tempat = tempat; }
     
-    public void setTglLahir(Date tglLahir){
+    public void setTglLahir(String tglLahir){
         this.tglLahir = tglLahir; }
     
     public void setNama(String nama){
@@ -45,7 +37,7 @@ public class BerkasLamaran{
         this.website = website; }
 
     //getter
-    public Date getTglDibuat(){
+    public String getTglDibuat(){
         return tglDibuat; }
    
     public String getCV(){
@@ -57,7 +49,7 @@ public class BerkasLamaran{
     public String getTempat(){
         return tempat; }
     
-    public Date getTglLahir(){
+    public String getTglLahir(){
         return tglLahir; }
     
     public String getNama(){

@@ -10,12 +10,14 @@ public class Perusahaan extends Orang{
     private String jenisUsaha;
     private String namaBank;
     private String password;
+    public boolean isi = false;
     public int nLowongan=0;
     public int max = 10;
 	
     public Perusahaan (String nama, String alamat, String noTelp, String email, String website){
         super(nama, alamat, noTelp, email, website);
         daftarLowongan = new Lowongan[max];
+        isi = true;
     }
         
     public void createLowongan(String nmLowongan, Date deadline){
@@ -54,13 +56,16 @@ public class Perusahaan extends Orang{
         return password ;   }
         
     public void printBio(){
-        System.out.println("Biodata Perusahaan");
-        System.out.println("Nama          :"+super.getNama());
-        System.out.println("Alamat        :"+super.getAlamat());
-        System.out.println("No. Telp      :"+super.getNoTelp());
-        System.out.println("Bank          :"+getBank());
-        System.out.println("Jenis Usaha   :"+getJnsUsaha());
-        System.out.println("Password      :"+getPassword());
+        if (isi == false)
+            System.out.println("Maaf, data kosong");
+        else {
+            System.out.println("Biodata Perusahaan");
+            System.out.println("Nama          :"+super.getNama());
+/*            System.out.println("Alamat        :"+super.getAlamat());
+            System.out.println("No. Telp      :"+super.getNoTelp());
+            System.out.println("Bank          :"+getBank());
+            System.out.println("Jenis Usaha   :"+getJnsUsaha());
+*/        }
     }
 	
     public void viewLowongan(){
@@ -73,7 +78,7 @@ public class Perusahaan extends Orang{
     }
 
     //id mulai dari 1
-    public void hapusLowongan(int id){
+    public void removeLowongan(int id){
       if (id <= 0 || id > nLowongan){
           System.out.println("Lowongan tidak dapat dihapus karena lowongan"+
                   " yang anda cari tidak tersedia");
@@ -92,6 +97,16 @@ public class Perusahaan extends Orang{
                 daftarLowongan[id-1] = null;
             nLowongan--;
         }
+    }
+    
+    //index dimulai dari 0
+    public Lowongan getLowonganByIndex(int index){
+        return daftarLowongan[index];
+    }
+    
+    //id dimulai dari 1
+    public Lowongan getLowonganByIdLowongan(int idLowongan){
+        return daftarLowongan[idLowongan-1];
     }
     
 //   public void terimaPelamar(int idLowongan, int idPelamar){}

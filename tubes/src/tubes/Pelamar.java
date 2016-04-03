@@ -1,15 +1,16 @@
 package tubes;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pelamar extends Orang{
     private BerkasLamaran berkas;
-    public int noPelamar=0;
     private String tempat;
-    private Date tglLahir;
+    private String tglLahir; //DD MMM YYYY
     private String password;
     public boolean statBerkas = false;
+    public int noPelamar=0;
 //    private boolean statusDiterima=false;
     
     public Pelamar(String nama,String alamat,String noTelp,String email,String website){
@@ -21,7 +22,8 @@ public class Pelamar extends Orang{
     public void setTempat(String tempat){
         this.tempat = tempat;     }
     
-    public void setTglLahir(Date tglLahir){
+    //String tglLahir
+    public void setTglLahir(String tglLahir){
         this.tglLahir = tglLahir;     }
     
     public String getPassword(){
@@ -30,21 +32,27 @@ public class Pelamar extends Orang{
     public String getTempat(){
         return tempat;  }
     
-    public Date getTglLahir(){
+    public String getTglLahir(){
         return tglLahir;    }
     
     public BerkasLamaran getBerkas(){
         return berkas;  }
     
-    //public getNoPel(){}
+    //tglBuat: DD MMM YY
+    public void printBiodata(){
+        System.out.println("Nama                    :"+getNama());
+        System.out.println("Tempat, tanggal lahir   : "+getTempat()
+                            +", "+getTglLahir());
+        System.out.println("Alamat                  : "+getAlamat());
+        System.out.println("Nomor Telepon           : "+getNoTelp());
+        System.out.println("Email                   : "+getEmail());
+        System.out.println("Website                 : "+getWebsite());
+    }
     
-    public void createBerkas() throws ParseException{
+    public void createBerkas(String isiCV, String isiSLK) throws ParseException{
         berkas = new BerkasLamaran();
-        //sementara
-        berkas.setCV("Heloo World, my name is ");
-        berkas.setSLK("Saya ingin melamar menjadi superman");
-        
-        //fix
+        berkas.setCV(isiCV);
+        berkas.setSLK(isiSLK);
         berkas.setNama(getNama());
         berkas.setAlamat(getAlamat());        
         berkas.setNoTelp(getNoTelp());
@@ -52,11 +60,11 @@ public class Pelamar extends Orang{
         berkas.setWebsite(getWebsite());
         SimpleDateFormat ft = new SimpleDateFormat("dd MMM yy");
         
-        //sementara
-        Date tgl = ft.parse("25 Apr 16");
-        
-        //fix
-        berkas.setTglDibuat(tgl);
+        //untuk tgl dibuatnya berkas
+        Date tgl = new Date();
+        DateFormat fmt = new SimpleDateFormat("DD MM YY");
+        String tglDibuat = fmt.format(tgl);
+        berkas.setTglDibuat(tglDibuat);
         statBerkas = true;
     }
 }
