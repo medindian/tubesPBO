@@ -78,4 +78,17 @@ public class BerkasLamaran{
         System.out.println("    CV       : "+getCV());
         System.out.println("    SLK      : "+getSLK());
     }
+    
+    public String toString(){
+        System.out.println("Isi Berkas Lamaran : ");
+        return ("    Nama     : "+getNama()+
+                "\n    Alamat   : "+getAlamat()+
+                "\n    tglLahir : "+getTglLahir()+
+                "\n    noTelp   : "+getNoTelp()+
+                "\n    Email    : "+getEmail()+
+                "\n    Webite   : "+getWebsite()+
+                "\n    CV       : "+getCV()+
+                "\n    SLK      : "+getSLK());
+    }
+    
 }

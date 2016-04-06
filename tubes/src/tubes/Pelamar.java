@@ -40,6 +40,7 @@ public class Pelamar extends Orang{
     
     //tglBuat: DD MMM YY
     public void printBiodata(){
+        System.out.println("Biodata :   ");
         System.out.println("Nama                    :"+getNama());
         System.out.println("Tempat, tanggal lahir   : "+getTempat()
                             +", "+getTglLahir());
@@ -47,6 +48,16 @@ public class Pelamar extends Orang{
         System.out.println("Nomor Telepon           : "+getNoTelp());
         System.out.println("Email                   : "+getEmail());
         System.out.println("Website                 : "+getWebsite());
+    }
+    
+    public String toString(){
+        System.out.println("Biodata :   ");
+        return ("Nama                    :"+getNama()+
+                "Tempat, tanggal lahir   : "+getTempat()+", "+getTglLahir()+
+                "Alamat                  : "+getAlamat()+
+                "Nomor Telepon           : "+getNoTelp()+
+                "Email                   : "+getEmail()+
+                "Website                 : "+getWebsite());
     }
     
     public void createBerkas(String isiCV, String isiSLK) throws ParseException{
