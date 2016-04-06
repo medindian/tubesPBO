@@ -44,7 +44,6 @@ public abstract class Orang{
 	
     public String getWebsite (){
         return website; }
-
-
+    
 }
 

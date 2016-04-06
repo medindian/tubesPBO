@@ -79,6 +79,7 @@ public class BerkasLamaran{
         System.out.println("    SLK      : "+getSLK());
     }
     
+    @Override
     public String toString(){
         System.out.println("Isi Berkas Lamaran : ");
         return ("    Nama     : "+getNama()+

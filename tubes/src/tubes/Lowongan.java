@@ -12,6 +12,11 @@ public class Lowongan {
     public int nBTerima = 0;
     public int max = 10;
     
+    @Override
+    public String toString(){
+        return ("hai");
+    }
+    
     public Lowongan(String nPk, Date dl){
         this.namaPekerjaan = nPk;
         this.deadline = dl;
@@ -34,8 +39,7 @@ public class Lowongan {
         int i = nBMasuk;
         if (nBMasuk < max+1){
             berkasMasuk[i] = b;     }
-        nBMasuk++;
-    }
+        nBMasuk++;    }
 
     //index dimulai dari 0
     public BerkasLamaran getBerkasMasukByIndex(int index){
@@ -46,13 +50,11 @@ public class Lowongan {
         if (berkasMasuk[i] != null)
             ketemu = true;
         return ketemu; */
-        return berkasMasuk[index];
-    }
+        return berkasMasuk[index];    }
     
     //idBerkas dimulai dari 1
     public BerkasLamaran getBerkasMasukByIdBerkas(int idBerkas){
-        return berkasMasuk[idBerkas-1];
-    }
+        return berkasMasuk[idBerkas-1];    }
     
 /*    public void terimaBerkas(BerkasLamaran b){
         int i = nBTerima;
@@ -66,8 +68,7 @@ public class Lowongan {
         }
         else{
             System.out.println("Berkas tidak ada");
-            System.out.println("");     }
-    }
+            System.out.println("");     }   }
 */    
     public void viewBerkasMasuk(){
         System.out.println("Berkas Lamaran yang Masuk :");
@@ -75,8 +76,7 @@ public class Lowongan {
             int ar = i+1;
             System.out.println("Berkas Lamaran ke-"+ar);
             berkasMasuk[i].viewBerkasLamaran();
-            System.out.println("");     } 
-    }
+            System.out.println("");     }    }
 
     //menampilkan berkas2 yg ada pada berkasDiterima
     public void viewBerkasTerima(){
@@ -86,8 +86,7 @@ public class Lowongan {
 //            System.out.println(j);
             System.out.println("Berkas Lamaran ke-"+tr);
             berkasDiterima[j].viewBerkasLamaran();
-            System.out.println("");     }
-    }
+            System.out.println("");     }    }
 
     //id ditulis dimulai dari 1
     //untuk menghapus berkas yang ada pada berkasMasuk bila berkas tersebut
@@ -105,21 +104,18 @@ public class Lowongan {
 //                    System.out.println("diisi array : "+a);
                     berkasMasuk[i] = berkasMasuk[a];    }
                 berkasMasuk[nBMasuk] = null;  }
-            nBMasuk--;    }
-    }
+            nBMasuk--;    }    }
     
     public void BerkasMasukToBerkasDiterima(){
         int i = 0;
         while(i <= nBMasuk){
             berkasDiterima[i] = berkasMasuk[i];
             i++;
-        }
-    }
+        }    }
     
     //index dimuali dari 0
     public BerkasLamaran getBerkasDiterimaByIndex(int index){
-        return berkasDiterima[index];
-    }
+        return berkasDiterima[index];    }
     
     //id dimulai dari angka 1
     //berfungsi menghapus berkas yg ada di berkasDiterima sekaligua menghapus

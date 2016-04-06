@@ -12,6 +12,11 @@ public class AplikasiKonsol {
     int maxPerusahaan = 3;
     int maxPelamar = 20;
     
+    //test
+    public String helloWoorld(){
+        return ("hello world");
+    }
+        
     //search Pelamar
     public int findPelamar(String nama){
         int ind = -1;

@@ -50,6 +50,7 @@ public class Pelamar extends Orang{
         System.out.println("Website                 : "+getWebsite());
     }
     
+    @Override
     public String toString(){
         System.out.println("Biodata :   ");
         return ("Nama                    :"+getNama()+

@@ -91,6 +91,10 @@ public class Perusahaan extends Orang{
         }
     }
 
+    public String helloWOrld(){
+        return ("hello world");
+    }
+    
     //id mulai dari 1
     public void removeLowongan(int id){
       if (id <= 0 || id > nLowongan){

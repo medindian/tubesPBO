@@ -1,9 +1,10 @@
 package tubes;
 
 public class Driver {
-    public static void main(String[] args) {
     AplikasiKonsol apKonsol = new AplikasiKonsol();
-    apKonsol.addPerusahaan("huehue", "hahahaha", "092211", "ufufu@abc.com", "tidakAda.com");
+    
+    //testing
+/*    apKonsol.addPerusahaan("huehue", "hahahaha", "092211", "ufufu@abc.com", "tidakAda.com");
     apKonsol.addPerusahaan("nainai", "lalala", "yohohoho", "03891321", "huhuhuuu");
     apKonsol.addPerusahaan("ushishishi", "ehehe", "---", "123", "huhuhuuu");
 //    apKonsol.addPerusahaan("ijfiwea", "ihansd", "02133", "laiea", "kekeke");
@@ -20,8 +21,12 @@ public class Driver {
         else
             apKonsol.perusahaan[i].printBio();
     }
-
+    
+    public String yay(){
+        return ("hello world");
+    }
 
     //apKonsol.callMainManu();
-    }
+*/
+    
 }
