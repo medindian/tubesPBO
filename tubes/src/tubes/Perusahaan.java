@@ -30,6 +30,20 @@ public class Perusahaan extends Orang{
             System.out.println("");
         }
     }
+    
+    public Lowongan[] getDaftarLowongan(){
+        return daftarLowongan;
+    }
+        
+    //id dimulai dari 1
+    public Lowongan getLowonganByIdLowongan(int idLowongan){
+        return daftarLowongan[idLowongan-1];
+    }
+    
+    //dimulai dari 0
+    public Lowongan getLowonganByIdx(int idx){
+        return daftarLowongan[idx];
+    }
 	
     public void setThnBerdiri (int thn){
 	this.thnBerdiri = thn;    }
@@ -99,16 +113,7 @@ public class Perusahaan extends Orang{
         }
     }
     
-    //index dimulai dari 0
-    public Lowongan getLowonganByIndex(int index){
-        return daftarLowongan[index];
-    }
-    
-    //id dimulai dari 1
-    public Lowongan getLowonganByIdLowongan(int idLowongan){
-        return daftarLowongan[idLowongan-1];
-    }
-    
+
 //   public void terimaPelamar(int idLowongan, int idPelamar){}
 //   public void cekPassword (String password){}
 
