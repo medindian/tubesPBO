@@ -45,5 +45,7 @@ public abstract class Orang{
     public String getWebsite (){
         return website; }
     
+    @Override
+    abstract public String toString();
 }
 

@@ -32,18 +32,15 @@ public class Perusahaan extends Orang{
     }
     
     public Lowongan[] getDaftarLowongan(){
-        return daftarLowongan;
-    }
+        return daftarLowongan;    }
         
     //id dimulai dari 1
     public Lowongan getLowonganByIdLowongan(int idLowongan){
-        return daftarLowongan[idLowongan-1];
-    }
+        return daftarLowongan[idLowongan-1];    }
     
     //dimulai dari 0
     public Lowongan getLowonganByIdx(int idx){
-        return daftarLowongan[idx];
-    }
+        return daftarLowongan[idx];    }
 	
     public void setThnBerdiri (int thn){
 	this.thnBerdiri = thn;    }
@@ -68,54 +65,37 @@ public class Perusahaan extends Orang{
 	
     public String getPassword(){
         return password ;   }
-        
-    public void printBio(){
-        if (isi == false)
-            System.out.println("Maaf, data kosong");
-        else {
-            System.out.println("Biodata Perusahaan");
-            System.out.println("Nama          :"+super.getNama());
-/*            System.out.println("Alamat        :"+super.getAlamat());
-            System.out.println("No. Telp      :"+super.getNoTelp());
-            System.out.println("Bank          :"+getBank());
-            System.out.println("Jenis Usaha   :"+getJnsUsaha());
-*/        }
-    }
 	
+    public String toString(){
+        System.out.println("Biodata Perusahaan");
+        return ("Nama          :"+super.getNama()+
+                "\nAlamat        :"+super.getAlamat()+
+                "\nNo. Telp      :"+super.getNoTelp()+
+                "\nBank          :"+getBank()+
+                "\nJenis Usaha   :"+getJnsUsaha());    }
+    
     public void viewLowongan(){
         SimpleDateFormat ft = new SimpleDateFormat("dd MMM yy");
         System.out.println("Daftar Lowongan Pekerjaan : ");
         for (int i = 0; i < nLowongan; i++){
             System.out.println(i+1+". "+daftarLowongan[i].getNamaPkrj());
-            System.out.println("   Deadline : "+ft.format(daftarLowongan[i].getDeadline()));
-        }
-    }
-
-    public String helloWOrld(){
-        return ("hello world");
-    }
+            System.out.println("   Deadline : "+
+                    ft.format(daftarLowongan[i].getDeadline()));        }    }
     
     //id mulai dari 1
     public void removeLowongan(int id){
       if (id <= 0 || id > nLowongan){
           System.out.println("Lowongan tidak dapat dihapus karena lowongan"+
-                  " yang anda cari tidak tersedia");
-      }
-      else{
-            if(id > 0 && id < nLowongan){
+                  " yang anda cari tidak tersedia");      }
+      else{     if(id > 0 && id < nLowongan){
                 for (int i = id-1; i < nLowongan-1; i++){
                     //System.out.println("i = "+ i);
                     int a = i+1;
                     //System.out.println("isi dari array i = "+ a);
-                    daftarLowongan[i] = daftarLowongan[a];
-                }
-                daftarLowongan[nLowongan-1] = null;
-            }
-            else
-                daftarLowongan[id-1] = null;
-            nLowongan--;
-        }
-    }
+                    daftarLowongan[i] = daftarLowongan[a];    }
+                daftarLowongan[nLowongan-1] = null;    }
+            else    daftarLowongan[id-1] = null;
+            nLowongan--;    }    }
     
 
 //   public void terimaPelamar(int idLowongan, int idPelamar){}

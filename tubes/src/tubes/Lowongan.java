@@ -8,14 +8,9 @@ public class Lowongan {
     private Date deadline;
     private BerkasLamaran[] berkasMasuk;
     private BerkasLamaran[] berkasDiterima;
-    public int nBMasuk = 0;
-    public int nBTerima = 0;
-    public int max = 10;
-    
-    @Override
-    public String toString(){
-        return ("hai");
-    }
+    private int nBMasuk = 0;
+    private int nBTerima = 0;
+    private int max = 10;
     
     public Lowongan(String nPk, Date dl){
         this.namaPekerjaan = nPk;
@@ -56,26 +51,27 @@ public class Lowongan {
     public BerkasLamaran getBerkasMasukByIdBerkas(int idBerkas){
         return berkasMasuk[idBerkas-1];    }
     
-/*    public void terimaBerkas(BerkasLamaran b){
+    public void addBerkasDiterima(BerkasLamaran b){
         int i = nBTerima;
-        boolean cari = cariBerkas(b);
-        if (cari == true){
+//        boolean cari = cariBerkas(b);
+//        if (cari == true){
             if (nBTerima <= max){
                 berkasDiterima[i] = b;
                 nBTerima++;
 //                System.out.println("i : "+i);
-            }
+//            }
         }
-        else{
-            System.out.println("Berkas tidak ada");
-            System.out.println("");     }   }
-*/    
+//        else{
+//            System.out.println("Berkas tidak ada");
+//            System.out.println("");     }   
+    }
+    
     public void viewBerkasMasuk(){
         System.out.println("Berkas Lamaran yang Masuk :");
         for (int i=0; i < nBMasuk; i++){
             int ar = i+1;
             System.out.println("Berkas Lamaran ke-"+ar);
-            berkasMasuk[i].viewBerkasLamaran();
+            berkasMasuk[i].toString();
             System.out.println("");     }    }
 
     //menampilkan berkas2 yg ada pada berkasDiterima
@@ -85,7 +81,7 @@ public class Lowongan {
             int tr = j+1;
 //            System.out.println(j);
             System.out.println("Berkas Lamaran ke-"+tr);
-            berkasDiterima[j].viewBerkasLamaran();
+            berkasDiterima[j].toString();
             System.out.println("");     }    }
 
     //id ditulis dimulai dari 1
@@ -95,8 +91,7 @@ public class Lowongan {
         if (id > nBMasuk)
             System.out.println("Berkas Lamaran tidak ada");
         else {
-            if (id == nBMasuk){
-                berkasMasuk[id-1] = null;   }
+            if (id == nBMasuk)    berkasMasuk[id-1] = null;
             else {
                 for (int i = id-1; i < nBMasuk; i++){
                     int a = i+1;

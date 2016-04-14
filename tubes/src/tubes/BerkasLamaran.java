@@ -67,7 +67,7 @@ public class BerkasLamaran{
     public String getWebsite(){
         return website;     }
     
-    public void viewBerkasLamaran(){
+/*    public void viewBerkasLamaran(){
         System.out.println("Isi Berkas Lamaran : ");
         System.out.println("    Nama     : "+getNama());
         System.out.println("    Alamat   : "+getAlamat());
@@ -78,8 +78,8 @@ public class BerkasLamaran{
         System.out.println("    CV       : "+getCV());
         System.out.println("    SLK      : "+getSLK());
     }
+*/    
     
-    @Override
     public String toString(){
         System.out.println("Isi Berkas Lamaran : ");
         return ("    Nama     : "+getNama()+

@@ -37,8 +37,7 @@ public class Pelamar extends Orang{
     
     public BerkasLamaran getBerkas(){
         return berkas;  }
-    
-    //tglBuat: DD MMM YY
+/* 
     public void printBiodata(){
         System.out.println("Biodata :   ");
         System.out.println("Nama                    :"+getNama());
@@ -47,10 +46,10 @@ public class Pelamar extends Orang{
         System.out.println("Alamat                  : "+getAlamat());
         System.out.println("Nomor Telepon           : "+getNoTelp());
         System.out.println("Email                   : "+getEmail());
-        System.out.println("Website                 : "+getWebsite());
-    }
+        System.out.println("Website                 : "+getWebsite());  }
+*/    
     
-    @Override
+    //tglBuat: DD MMM YY
     public String toString(){
         System.out.println("Biodata :   ");
         return ("Nama                    :"+getNama()+
@@ -58,10 +57,11 @@ public class Pelamar extends Orang{
                 "Alamat                  : "+getAlamat()+
                 "Nomor Telepon           : "+getNoTelp()+
                 "Email                   : "+getEmail()+
-                "Website                 : "+getWebsite());
+                "Website                 : "+getWebsite()+
+                "Isi Berkas              : "+berkas.toString());
     }
     
-    public void createBerkas(String isiCV, String isiSLK) throws ParseException{
+    public void createBerkas(String isiCV, String isiSLK){
         berkas = new BerkasLamaran();
         berkas.setCV(isiCV);
         berkas.setSLK(isiSLK);
