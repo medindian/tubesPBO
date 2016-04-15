@@ -28,13 +28,13 @@ public class formLogin1 extends javax.swing.JPanel {
     private void initComponents() {
 
         namaPelamar = new javax.swing.JTextField();
-        passPelamar = new javax.swing.JTextField();
         okPel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         forget2 = new javax.swing.JLabel();
         backPelamar1 = new javax.swing.JButton();
+        passPelamar = new javax.swing.JPasswordField();
 
         okPel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         okPel.setText("Log In");
@@ -76,9 +76,9 @@ public class formLogin1 extends javax.swing.JPanel {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passPelamar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(namaPelamar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(namaPelamar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(passPelamar))
                         .addGap(104, 104, 104))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(backPelamar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,6 +117,6 @@ public class formLogin1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField namaPelamar;
     private javax.swing.JButton okPel;
-    private javax.swing.JTextField passPelamar;
+    private javax.swing.JPasswordField passPelamar;
     // End of variables declaration//GEN-END:variables
 }

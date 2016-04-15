@@ -1,10 +1,10 @@
 package viewApp;
-public class hakPerusahaan1 extends javax.swing.JPanel {
+public class hakPerusahaan extends javax.swing.JPanel {
 
     /**
      * Creates new form login_pelamar
      */
-    public hakPerusahaan1() {
+    public hakPerusahaan() {
         initComponents();
     }
 

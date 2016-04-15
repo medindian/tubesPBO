@@ -40,9 +40,9 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="passPelamar" min="-2" pref="181" max="-2" attributes="0"/>
-                          <Component id="namaPelamar" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="namaPelamar" pref="181" max="32767" attributes="0"/>
+                          <Component id="passPelamar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
@@ -84,8 +84,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="namaPelamar">
-    </Component>
-    <Component class="javax.swing.JTextField" name="passPelamar">
     </Component>
     <Component class="javax.swing.JButton" name="okPel">
       <Properties>
@@ -131,6 +129,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kembali"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="passPelamar">
     </Component>
   </SubComponents>
 </Form>

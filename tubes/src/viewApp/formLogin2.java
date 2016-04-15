@@ -28,13 +28,13 @@ public class formLogin2 extends javax.swing.JPanel {
     private void initComponents() {
 
         namaPerusahaan = new javax.swing.JTextField();
-        passPerusahaan = new javax.swing.JTextField();
         okPerusahaan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         forget2 = new javax.swing.JLabel();
         backPerusahaan1 = new javax.swing.JButton();
+        passPerusahaan = new javax.swing.JPasswordField();
 
         okPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         okPerusahaan.setText("Log In");
@@ -63,12 +63,12 @@ public class formLogin2 extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namaPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(namaPerusahaan, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(passPerusahaan))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(196, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,6 +117,6 @@ public class formLogin2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField namaPerusahaan;
     private javax.swing.JButton okPerusahaan;
-    private javax.swing.JTextField passPerusahaan;
+    private javax.swing.JPasswordField passPerusahaan;
     // End of variables declaration//GEN-END:variables
 }
