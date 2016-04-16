@@ -28,21 +28,26 @@ public class perusahaanTerdaftar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        hakPerusahaan = new javax.swing.JButton();
+        backToPerusahaan = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        outputPerTerdaf = new javax.swing.JTextArea();
+        outputPerusahaanTerdaftar = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Perusahaan yang Terdaftar pada Aplikasi : ");
 
-        hakPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        hakPerusahaan.setText("Kembali");
+        backToPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backToPerusahaan.setText("Kembali");
+        backToPerusahaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToPerusahaanActionPerformed(evt);
+            }
+        });
 
-        outputPerTerdaf.setColumns(20);
-        outputPerTerdaf.setRows(5);
-        jScrollPane1.setViewportView(outputPerTerdaf);
+        outputPerusahaanTerdaftar.setColumns(20);
+        outputPerusahaanTerdaftar.setRows(5);
+        jScrollPane1.setViewportView(outputPerusahaanTerdaftar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,15 +56,13 @@ public class perusahaanTerdaftar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(hakPerusahaan))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(127, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backToPerusahaan)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,14 +70,18 @@ public class perusahaanTerdaftar extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addComponent(hakPerusahaan)
-                .addGap(68, 68, 68))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addGap(75, 75, 75)
+                .addComponent(backToPerusahaan)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backToPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToPerusahaanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backToPerusahaanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,9 +120,9 @@ public class perusahaanTerdaftar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton hakPerusahaan;
+    private javax.swing.JButton backToPerusahaan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea outputPerTerdaf;
+    private javax.swing.JTextArea outputPerusahaanTerdaftar;
     // End of variables declaration//GEN-END:variables
 }

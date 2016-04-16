@@ -27,92 +27,165 @@ public class LupaPassPerusahaan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        psBaru = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        namagantipassperusahaan = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        thberdirigantipassperusahaan = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        backToPelamar = new javax.swing.JButton();
+        psLama = new javax.swing.JPasswordField();
+        thnPer = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        btnCheck = new javax.swing.JButton();
+        backToPerusahaan = new javax.swing.JButton();
+        namaPer = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        statPerusahaan = new javax.swing.JTextField();
+        psPerBaru = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setText("GANTI PASSWORD");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Ganti Password");
 
-        jLabel2.setText("Nama");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Password Lama      :");
 
-        jLabel3.setText("Tahun Berdiri");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Password Baru       :");
 
-        thberdirigantipassperusahaan.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("OK");
+
+        backToPelamar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backToPelamar.setText("Kembali");
+        backToPelamar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                thberdirigantipassperusahaanActionPerformed(evt);
+                backToPelamarActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Email");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setText("Ganti Password");
 
-        jButton1.setText("OKAY");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setText("Nama                   :");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setText("Tahun Berdiri         :");
+
+        btnCheck.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnCheck.setText("OK");
+
+        backToPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backToPerusahaan.setText("Kembali");
+        backToPerusahaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToPerusahaanActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setText("Password Baru       :");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Proses  :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel1)
-                .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(namagantipassperusahaan)
-                    .addComponent(thberdirigantipassperusahaan, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addGap(29, 29, 29))
+                .addGap(200, 200, 200)
+                .addComponent(jLabel7)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backToPerusahaan)
+                .addGap(31, 31, 31))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(159, 159, 159))
+                .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(237, 237, 237))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(18, 18, 18)
+                            .addComponent(namaPer))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addGap(18, 18, 18)
+                            .addComponent(psPerBaru))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addGap(18, 18, 18)
+                            .addComponent(thnPer, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(statPerusahaan)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(46, 46, 46)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel7)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namagantipassperusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel8)
+                    .addComponent(namaPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(thberdirigantipassperusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9)
+                    .addComponent(thnPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(28, 28, 28))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(psPerBaru)
+                        .addGap(2, 2, 2))
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addComponent(btnCheck)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(statPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(backToPerusahaan)
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void thberdirigantipassperusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thberdirigantipassperusahaanActionPerformed
+    private void backToPelamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToPelamarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_thberdirigantipassperusahaanActionPerformed
+    }//GEN-LAST:event_backToPelamarActionPerformed
+
+    private void backToPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToPerusahaanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backToPerusahaanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToPelamar;
+    private javax.swing.JButton backToPerusahaan;
+    private javax.swing.JButton btnCheck;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField namagantipassperusahaan;
-    private javax.swing.JTextField thberdirigantipassperusahaan;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField namaPer;
+    private javax.swing.JPasswordField psBaru;
+    private javax.swing.JPasswordField psLama;
+    private javax.swing.JPasswordField psPerBaru;
+    private javax.swing.JTextField statPerusahaan;
+    private javax.swing.JPasswordField thnPer;
     // End of variables declaration//GEN-END:variables
 }

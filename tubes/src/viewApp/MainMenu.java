@@ -34,6 +34,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         hakPelamar = new javax.swing.JButton();
         hakPerusahaan = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -56,6 +57,9 @@ public class MainMenu extends javax.swing.JFrame {
         hakPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         hakPerusahaan.setText("Perusahaan");
 
+        exit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        exit.setText("Exit");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +74,8 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(hakPelamar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(hakPerusahaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(hakPerusahaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(198, 198, 198))
         );
         layout.setVerticalGroup(
@@ -84,7 +89,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(hakPelamar)
                 .addGap(18, 18, 18)
                 .addComponent(hakPerusahaan)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(exit)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,6 +133,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton exit;
     private javax.swing.JButton hakPelamar;
     private javax.swing.JButton hakPerusahaan;
     private javax.swing.JLabel jLabel1;

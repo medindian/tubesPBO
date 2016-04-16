@@ -24,6 +24,7 @@ public class MenuPerusahaan extends javax.swing.JPanel {
         pelamar = new javax.swing.JButton();
         settingPel = new javax.swing.JButton();
         back1 = new javax.swing.JButton();
+        nmPelamar = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel1.setText("Selamat Datang, ");
@@ -58,18 +59,21 @@ public class MenuPerusahaan extends javax.swing.JPanel {
                             .addComponent(pelamar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(back1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(settingPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lowongan, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(165, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(196, 196, 196))
+                            .addComponent(lowongan, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nmPelamar, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nmPelamar))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(39, 39, 39)
@@ -91,6 +95,7 @@ public class MenuPerusahaan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton lowongan;
+    private javax.swing.JTextField nmPelamar;
     private javax.swing.JButton pelamar;
     private javax.swing.JButton settingPel;
     // End of variables declaration//GEN-END:variables
