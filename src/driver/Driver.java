@@ -6,6 +6,6 @@ public class Driver {
         
     AplikasiKonsol apKonsol = new AplikasiKonsol();
     
-
+//  new controller(apKonsol);
     }   
 }
