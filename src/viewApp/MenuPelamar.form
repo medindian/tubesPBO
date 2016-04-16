@@ -147,15 +147,15 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="back1" alignment="1" min="-2" pref="245" max="-2" attributes="0"/>
-                          <Component id="settingPel" alignment="1" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="btnLogout" alignment="1" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="btnSetting" alignment="1" min="-2" pref="245" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lowongan" min="-2" pref="245" max="-2" attributes="0"/>
-                          <Component id="berkas" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="btnLowongan" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="btnBerkas" min="-2" pref="245" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -185,15 +185,13 @@
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nmPelamar" min="-2" pref="239" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -203,18 +201,15 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="nmPelamar" pref="32" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="berkas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBerkas" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -226,16 +221,16 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="lowongan" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLowongan" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="settingPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSetting" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="back1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jButton6" min="-2" max="-2" attributes="0"/>
@@ -272,7 +267,7 @@
         <Property name="text" type="java.lang.String" value="Pilih menu :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="berkas">
+    <Component class="javax.swing.JButton" name="btnBerkas">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -280,10 +275,10 @@
         <Property name="text" type="java.lang.String" value="Berkas"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="berkasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBerkasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="lowongan">
+    <Component class="javax.swing.JButton" name="btnLowongan">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -291,7 +286,7 @@
         <Property name="text" type="java.lang.String" value="Lowongan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="settingPel">
+    <Component class="javax.swing.JButton" name="btnSetting">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -299,7 +294,7 @@
         <Property name="text" type="java.lang.String" value="Setting"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="back1">
+    <Component class="javax.swing.JButton" name="btnLogout">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -341,8 +336,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ubah password"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nmPelamar">
     </Component>
   </SubComponents>
 </Form>

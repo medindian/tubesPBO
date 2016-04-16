@@ -25,10 +25,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="login2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="signin2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="back1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="viewdaftar2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLogin2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnDaftar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnBack2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnViewDaftarPerusahaan" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -52,13 +52,13 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Component id="login2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnLogin2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="signin2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnDaftar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="viewdaftar2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnViewDaftarPerusahaan" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="back1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnBack2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="76" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -81,7 +81,7 @@
         <Property name="text" type="java.lang.String" value="Pilih menu :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="login2">
+    <Component class="javax.swing.JButton" name="btnLogin2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -89,7 +89,7 @@
         <Property name="text" type="java.lang.String" value="Log In"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="signin2">
+    <Component class="javax.swing.JButton" name="btnDaftar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -97,7 +97,7 @@
         <Property name="text" type="java.lang.String" value="Daftar Baru"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="viewdaftar2">
+    <Component class="javax.swing.JButton" name="btnViewDaftarPerusahaan">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -105,7 +105,7 @@
         <Property name="text" type="java.lang.String" value="List Perusahaan Terdaftar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="back1">
+    <Component class="javax.swing.JButton" name="btnBack2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>

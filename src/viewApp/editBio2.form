@@ -341,14 +341,14 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="back3" min="-2" pref="89" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
-              <Component id="simpanBioBaru" min="-2" pref="107" max="-2" attributes="0"/>
+              <Component id="btnSimpan" min="-2" pref="107" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -396,9 +396,9 @@
                   <Component id="bankPerBaru" alignment="3" pref="27" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" pref="13" max="32767" attributes="0"/>
-              <Component id="simpanBioBaru" min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="btnSimpan" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-              <Component id="back3" min="-2" max="-2" attributes="0"/>
+              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -442,7 +442,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="namaPerBaru">
     </Component>
-    <Component class="javax.swing.JButton" name="simpanBioBaru">
+    <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
@@ -458,7 +458,7 @@
         <Property name="text" type="java.lang.String" value="Nama                         :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="back3">
+    <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kembali"/>
       </Properties>
