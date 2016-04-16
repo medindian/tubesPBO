@@ -1,4 +1,4 @@
-package tubes;
+package model;
 
 import java.text.ParseException;
 import java.util.Date;

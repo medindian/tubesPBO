@@ -1,4 +1,4 @@
-package tubes;
+package model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package tubes;
+package model;
 
 public abstract class Orang{
     
