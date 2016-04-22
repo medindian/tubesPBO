@@ -1,8 +1,7 @@
 package viewApp;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class editBio1 extends javax.swing.JPanel {
+public class editBio1 extends javax.swing.JPanel implements View{
 
     public editBio1() {
         initComponents();
@@ -175,11 +174,11 @@ public class editBio1 extends javax.swing.JPanel {
         btnSimpan.addActionListener(e);
     }
 
-    public JButton getBtnBack() {
+    public Object getBtnBack() {
         return btnBack;
     }
 
-    public JButton getBtnSimpan() {
+    public Object getBtnSimpan() {
         return btnSimpan;
     }
     

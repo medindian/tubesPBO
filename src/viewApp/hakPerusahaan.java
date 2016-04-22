@@ -1,9 +1,8 @@
 package viewApp;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class hakPerusahaan extends javax.swing.JPanel {
+public class hakPerusahaan extends javax.swing.JFrame implements View{
 
     public hakPerusahaan() {
         initComponents();
@@ -96,19 +95,19 @@ public class hakPerusahaan extends javax.swing.JPanel {
         btnViewDaftarPerusahaan.addActionListener(e);
     }
 
-    public JButton getBtnBack2() {
+    public Object getBtnBack2() {
         return btnBack2;
     }
 
-    public JButton getBtnDaftar() {
+    public Object getBtnDaftar() {
         return btnDaftar;
     }
 
-    public JButton getBtnLogin2() {
+    public Object getBtnLogin2() {
         return btnLogin2;
     }
 
-    public JButton getBtnViewDaftarPerusahaan() {
+    public Object getBtnViewDaftarPerusahaan() {
         return btnViewDaftarPerusahaan;
     }
 

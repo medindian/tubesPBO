@@ -1,9 +1,8 @@
 package viewApp;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class LupaPassPelamar extends javax.swing.JPanel {
+public class LupaPassPelamar extends javax.swing.JPanel implements View{
 
     public LupaPassPelamar() {
         initComponents();
@@ -150,11 +149,11 @@ public class LupaPassPelamar extends javax.swing.JPanel {
         btnCheck.addActionListener(e);
     }
 
-    public JButton getBtnBack2() {
+    public Object getBtnBack2() {
         return btnBack2;
     }
 
-    public JButton getBtnCheck() {
+    public Object getBtnCheck() {
         return btnCheck;
     }
     

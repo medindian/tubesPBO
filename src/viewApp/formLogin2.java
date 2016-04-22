@@ -1,9 +1,8 @@
 package viewApp;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class formLogin2 extends javax.swing.JPanel {
+public class formLogin2 extends javax.swing.JPanel implements View{
 
     public formLogin2() {
         initComponents();
@@ -110,11 +109,11 @@ public class formLogin2 extends javax.swing.JPanel {
         btnLogin2.addActionListener(e);
     }
 
-    public JButton getBtnBack() {
+    public Object getBtnBack() {
         return btnBack;
     }
 
-    public JButton getBtnLogin() {
+    public Object getBtnLogin() {
         return btnLogin2;
     }
 

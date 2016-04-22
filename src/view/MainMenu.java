@@ -1,9 +1,8 @@
-package viewApp;
+package view;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class MainMenu extends javax.swing.JFrame {
+public class MainMenu extends javax.swing.JFrame implements View {
 
     public MainMenu() {
         initComponents();
@@ -18,9 +17,9 @@ public class MainMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        hakPelamar = new javax.swing.JButton();
-        hakPerusahaan = new javax.swing.JButton();
-        exit = new javax.swing.JButton();
+        btnPelamar = new javax.swing.JButton();
+        btnPerusahaan = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -36,15 +35,15 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Pilih Akses sebagai :");
 
-        hakPelamar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        hakPelamar.setText("Pelamar");
-        hakPelamar.setToolTipText("Pelamar");
+        btnPelamar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnPelamar.setText("Pelamar");
+        btnPelamar.setToolTipText("Pelamar");
 
-        hakPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        hakPerusahaan.setText("Perusahaan");
+        btnPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnPerusahaan.setText("Perusahaan");
 
-        exit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        exit.setText("Exit");
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setText("Exit");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,9 +58,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(hakPelamar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(hakPerusahaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnPelamar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPerusahaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(198, 198, 198))
         );
         layout.setVerticalGroup(
@@ -72,11 +71,11 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(39, 39, 39)
-                .addComponent(hakPelamar)
+                .addComponent(btnPelamar)
                 .addGap(18, 18, 18)
-                .addComponent(hakPerusahaan)
+                .addComponent(btnPerusahaan)
                 .addGap(18, 18, 18)
-                .addComponent(exit)
+                .addComponent(btnExit)
                 .addContainerGap(105, Short.MAX_VALUE))
         );
 
@@ -84,9 +83,9 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton exit;
-    private javax.swing.JButton hakPelamar;
-    private javax.swing.JButton hakPerusahaan;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnPelamar;
+    private javax.swing.JButton btnPerusahaan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -95,23 +94,19 @@ public class MainMenu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void addListener(ActionListener e) {
-        exit.addActionListener(e);
-        hakPelamar.addActionListener(e);
-        hakPerusahaan.addActionListener(e);
+        btnExit.addActionListener(e);
+        btnPelamar.addActionListener(e);
+        btnPerusahaan.addActionListener(e);
     }
     
-    public JButton getExit(){
-        return exit;
-    }
+    public Object getBtnExit(){
+        return btnExit;    }
 
-    public JButton getHakPelamar() {
-        return hakPelamar;
-    }
+    public Object getBtnPelamar() {
+        return btnPelamar;    }
 
-    public JButton getHakPerusahaan() {
-        return hakPerusahaan;
-    }
-    
+    public Object getBtnPerusahaan() {
+        return btnPerusahaan;    }
     
 
 }

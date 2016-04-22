@@ -1,9 +1,8 @@
 package viewApp;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class hakPelamar extends javax.swing.JPanel {
+public class hakPelamar extends javax.swing.JFrame implements View{
 
     public hakPelamar() {
         initComponents();
@@ -97,19 +96,19 @@ public class hakPelamar extends javax.swing.JPanel {
         btnViewPelamar.addActionListener(e);
     }
 
-    public JButton getBtnBack2() {
+    public Object getBtnBack2() {
         return btnBack2;
     }
 
-    public JButton getBtnDaftar() {
+    public Object getBtnDaftar() {
         return btnDaftar;
     }
 
-    public JButton getBtnLogin1() {
+    public Object getBtnLogin1() {
         return btnLogin1;
     }
 
-    public JButton getBtnViewPelamar() {
+    public Object getBtnViewPelamar() {
         return btnViewPelamar;
     }
 

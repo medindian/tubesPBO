@@ -1,9 +1,8 @@
 package viewApp;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class viewPelamarTerdaftar extends javax.swing.JPanel {
+public class viewPelamarTerdaftar extends javax.swing.JPanel implements View{
 
     public viewPelamarTerdaftar() {
         initComponents();
@@ -65,7 +64,7 @@ public class viewPelamarTerdaftar extends javax.swing.JPanel {
         btnBack2.addActionListener(e);
     }
     
-    public JButton getBack2(){
+    public Object getBack2(){
         return btnBack2;
     }
     

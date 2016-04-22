@@ -2,7 +2,7 @@ package viewApp;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-public class daftarBaru2 extends javax.swing.JPanel {
+public class daftarBaru2 extends javax.swing.JPanel implements View{
 
     public daftarBaru2() {
         initComponents();
@@ -225,11 +225,11 @@ public class daftarBaru2 extends javax.swing.JPanel {
         btnSignin.addActionListener(e);
     }
 
-    public JButton getBtnBack() {
+    public Object getBtnBack() {
         return btnBack;
     }
 
-    public JButton getBtnSignin() {
+    public Object getBtnSignin() {
         return btnSignin;
     }
     

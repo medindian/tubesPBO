@@ -1,9 +1,8 @@
 package viewApp;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
-public class GantiPasswordPerusahaan extends javax.swing.JPanel {
+public class GantiPasswordPerusahaan extends javax.swing.JPanel implements View{
 
     public GantiPasswordPerusahaan() {
         initComponents();
@@ -112,11 +111,11 @@ public class GantiPasswordPerusahaan extends javax.swing.JPanel {
         btnVerivikasi.addActionListener(e);
     }
 
-    public JButton getBtnBack2() {
+    public Object getBtnBack2() {
         return btnBack2;
     }
 
-    public JButton getBtnVerivikasi() {
+    public Object getBtnVerivikasi() {
         return btnVerivikasi;
     }
     
