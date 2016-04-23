@@ -14,7 +14,7 @@ public class pelamar extends javax.swing.JFrame implements View{
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnLogin1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         btnDaftar = new javax.swing.JButton();
         btnViewPelamar = new javax.swing.JButton();
         btnBack2 = new javax.swing.JButton();
@@ -27,8 +27,8 @@ public class pelamar extends javax.swing.JFrame implements View{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel2.setText("Pilih menu :");
 
-        btnLogin1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        btnLogin1.setText("Log In");
+        btnLogin.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnLogin.setText("Log In");
 
         btnDaftar.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnDaftar.setText("Daftar Baru");
@@ -48,7 +48,7 @@ public class pelamar extends javax.swing.JFrame implements View{
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDaftar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBack2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnViewPelamar, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
@@ -68,7 +68,7 @@ public class pelamar extends javax.swing.JFrame implements View{
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(39, 39, 39)
-                .addComponent(btnLogin1)
+                .addComponent(btnLogin)
                 .addGap(18, 18, 18)
                 .addComponent(btnDaftar)
                 .addGap(18, 18, 18)
@@ -80,11 +80,11 @@ public class pelamar extends javax.swing.JFrame implements View{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnDaftar;
-    private javax.swing.JButton btnLogin1;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnViewPelamar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -94,7 +94,7 @@ public class pelamar extends javax.swing.JFrame implements View{
     public void addListener(ActionListener e) {
         btnBack2.addActionListener(e);
         btnDaftar.addActionListener(e);
-        btnLogin1.addActionListener(e);
+        btnLogin.addActionListener(e);
         btnViewPelamar.addActionListener(e);
     }
 
@@ -104,11 +104,10 @@ public class pelamar extends javax.swing.JFrame implements View{
     public Object getBtnDaftar() {
         return btnDaftar;    }
 
-    public Object getBtnLogin1() {
-        return btnLogin1;    }
+    public Object getBtnLogin() {
+        return btnLogin;    }
 
     public Object getBtnViewPelamar() {
         return btnViewPelamar;    }
-    
     
 }

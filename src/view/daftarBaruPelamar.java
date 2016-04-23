@@ -61,12 +61,22 @@ public class daftarBaruPelamar extends javax.swing.JFrame implements View{
 
         btnSignin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSignin.setText("Sign In");
+        btnSignin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSigninActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Tempat, Tanggal Lahir :");
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBack.setText("Kembali");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel6.setText("No. Telepon                :");
@@ -161,6 +171,20 @@ public class daftarBaruPelamar extends javax.swing.JFrame implements View{
     private void addPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addPelActionPerformed
+
+    private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
+        // TODO add your handling code here:
+        MenuPelamar m = new MenuPelamar();
+        m.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSigninActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        pelamar p = new pelamar();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addPel;

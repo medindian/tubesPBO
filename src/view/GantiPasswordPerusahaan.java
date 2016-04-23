@@ -97,6 +97,9 @@ public class GantiPasswordPerusahaan extends javax.swing.JFrame implements View 
 
     private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
         // TODO add your handling code here:
+        perusahaan p = new perusahaan();
+        p.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnBack2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.event.ActionListener;
+import model.Pelamar;
 
 public class LupaPassPelamar extends javax.swing.JFrame implements View{
 
@@ -47,6 +48,11 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
 
         btnCheck.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCheck.setText("OK");
+        btnCheck.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCheckMouseClicked(evt);
+            }
+        });
 
         btnBack2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnBack2.setText("Kembali");
@@ -130,8 +136,19 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
+       pelamar l = new pelamar();
+       l.setVisible(true);
+       dispose();
     }//GEN-LAST:event_btnBack2ActionPerformed
+
+    private void btnCheckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheckMouseClicked
+        // TODO add your handling code here:
+        MenuPelamar p = new MenuPelamar();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCheckMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnCheck;

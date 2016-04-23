@@ -30,9 +30,19 @@ public class loginPelamar extends javax.swing.JFrame implements View{
         forget2.setText("Lupa Password?");
 
         btnBack.setText("Kembali");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnLogin2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLogin2.setText("Log In");
+        btnLogin2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Nama                :");
@@ -96,6 +106,20 @@ public class loginPelamar extends javax.swing.JFrame implements View{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin2ActionPerformed
+        // TODO add your handling code here:
+        MenuPelamar m = new MenuPelamar();
+        m.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLogin2ActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        pelamar p = new pelamar();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
