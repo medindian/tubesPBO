@@ -27,7 +27,7 @@ public class viewBerkasMasuk extends javax.swing.JFrame implements View{
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        btnBack5 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,8 +58,8 @@ public class viewBerkasMasuk extends javax.swing.JFrame implements View{
 
         jLabel2.setText("Daftar nama pelamar pada berkas masuk :");
 
-        btnBack5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnBack5.setText("Kembali");
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBack.setText("Kembali");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +96,7 @@ public class viewBerkasMasuk extends javax.swing.JFrame implements View{
                         .addComponent(jLabel4)
                         .addGap(200, 200, 200))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -126,7 +126,7 @@ public class viewBerkasMasuk extends javax.swing.JFrame implements View{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(btnBack5)
+                .addComponent(btnBack)
                 .addContainerGap())
         );
 
@@ -136,7 +136,7 @@ public class viewBerkasMasuk extends javax.swing.JFrame implements View{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxLowongan;
     private javax.swing.JComboBox<String> boxNomorPelamar;
-    private javax.swing.JButton btnBack5;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnHapusBerkas;
     private javax.swing.JButton btnTerimaBerkas;
     private javax.swing.JButton btnViewIsiBerkas;
@@ -155,6 +155,7 @@ public class viewBerkasMasuk extends javax.swing.JFrame implements View{
         btnHapusBerkas.addActionListener(e);
         btnTerimaBerkas.addActionListener(e);
         btnViewIsiBerkas.addActionListener(e);
+        btnBack.addActionListener(e);
     }
 
     public Object getBtnHapusBerkas() {
@@ -166,8 +167,8 @@ public class viewBerkasMasuk extends javax.swing.JFrame implements View{
     public Object getBtnViewIsiBerkas() {
         return btnViewIsiBerkas;    }
 
-    public Object getBtnBack5() {
-        return btnBack5;
+    public Object getBtnBack() {
+        return btnBack;
     }
     
 }

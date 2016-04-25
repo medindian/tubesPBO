@@ -27,7 +27,7 @@ public class viewBerkasDiterima extends javax.swing.JFrame implements View{
         boxIsiBerkasPelamar = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnBack4 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         btnBack3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBack3.setText("Kembali");
@@ -59,8 +59,8 @@ public class viewBerkasDiterima extends javax.swing.JFrame implements View{
 
         jLabel3.setText("Lowongan :");
 
-        btnBack4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnBack4.setText("Kembali");
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBack.setText("Kembali");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +96,7 @@ public class viewBerkasDiterima extends javax.swing.JFrame implements View{
                 .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -125,7 +125,7 @@ public class viewBerkasDiterima extends javax.swing.JFrame implements View{
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnBack4)
+                .addComponent(btnBack)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -137,8 +137,8 @@ public class viewBerkasDiterima extends javax.swing.JFrame implements View{
     private javax.swing.JTextArea boxDaftarNamaPelamar;
     private javax.swing.JTextArea boxIsiBerkasPelamar;
     private javax.swing.JComboBox<String> boxLowongan;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBack3;
-    private javax.swing.JButton btnBack4;
     private javax.swing.JButton btnHapusBerkas;
     private javax.swing.JButton btnLihatIsiBerkas;
     private javax.swing.JLabel jLabel1;
@@ -149,10 +149,13 @@ public class viewBerkasDiterima extends javax.swing.JFrame implements View{
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
+    //harusnya ga ada btnBack3
+    //tapi ga tau cara ngilanginnya -_-"
     @Override
     public void addListener(ActionListener e) {
         btnHapusBerkas.addActionListener(e);
         btnLihatIsiBerkas.addActionListener(e);
+        btnBack.addActionListener(e);
     }
 
     public Object getBtnHapusBerkas() {
@@ -161,8 +164,7 @@ public class viewBerkasDiterima extends javax.swing.JFrame implements View{
     public Object getBtnLihatIsiBerkas() {
         return btnLihatIsiBerkas;    }
 
-    public Object getBtnBack4() {
-        return btnBack4;
-    }
+    public Object getBtnBack() {
+        return btnBack; }
     
 }

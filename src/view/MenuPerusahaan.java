@@ -33,7 +33,7 @@ public class MenuPerusahaan extends javax.swing.JFrame implements View{
         btnUbahPassword.setText("Ubah Password");
 
         btnAturBio.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnAturBio.setText("Atur Biodata");
+        btnAturBio.setText("Ubah Biodata");
 
         btnLogout.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnLogout.setText("Log Out");

@@ -179,12 +179,10 @@ public class daftarBaruPelamar extends javax.swing.JFrame implements View{
     }
 
     public Object getBtnBack() {
-        return btnBack;
-    }
+        return btnBack; }
 
     public Object getBtnSignin() {
-        return btnSignin;
-    }
+        return btnSignin;   }
 
     public String getEmailPel(){
         return txtEmailPel.getText();
