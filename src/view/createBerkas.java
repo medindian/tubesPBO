@@ -122,6 +122,14 @@ public class createBerkas extends javax.swing.JFrame implements View{
     private javax.swing.JTextArea txtSLK;
     // End of variables declaration//GEN-END:variables
 
+    public String getIsiCV(){
+        return txtCV.getText();
+    }
+    
+    public String getIsiSLK(){
+        return txtSLK.getText();
+    }
+    
     @Override
     public void addListener(ActionListener e) {
         btnBack3.addActionListener(e);

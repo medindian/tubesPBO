@@ -1,9 +1,8 @@
 package view;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 public class GantiPasswordPelamar extends javax.swing.JFrame implements View{
-
+    
     public GantiPasswordPelamar() {
         initComponents();
     }
@@ -15,10 +14,10 @@ public class GantiPasswordPelamar extends javax.swing.JFrame implements View{
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnVerivikasi = new javax.swing.JButton();
-        btnBack2 = new javax.swing.JButton();
-        psLama = new javax.swing.JPasswordField();
-        psBaru = new javax.swing.JPasswordField();
+        btnOK = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        txtPassOld = new javax.swing.JPasswordField();
+        txtPassNew = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -31,21 +30,11 @@ public class GantiPasswordPelamar extends javax.swing.JFrame implements View{
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Password Baru       :");
 
-        btnVerivikasi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnVerivikasi.setText("OK");
-        btnVerivikasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerivikasiActionPerformed(evt);
-            }
-        });
+        btnOK.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnOK.setText("OK");
 
-        btnBack2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnBack2.setText("Kembali");
-        btnBack2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack2ActionPerformed(evt);
-            }
-        });
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBack.setText("Kembali");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,11 +48,11 @@ public class GantiPasswordPelamar extends javax.swing.JFrame implements View{
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(psLama))
+                                .addComponent(txtPassOld))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(psBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtPassNew, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(200, 200, 200)
                         .addComponent(jLabel1)))
@@ -72,10 +61,10 @@ public class GantiPasswordPelamar extends javax.swing.JFrame implements View{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack2)
+                        .addComponent(btnBack)
                         .addGap(22, 22, 22))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnVerivikasi, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(232, 232, 232))))
         );
         layout.setVerticalGroup(
@@ -85,57 +74,57 @@ public class GantiPasswordPelamar extends javax.swing.JFrame implements View{
                 .addComponent(jLabel1)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(psLama, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassOld, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(psBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassNew, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(27, 27, 27)
-                .addComponent(btnVerivikasi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(btnBack2)
+                .addComponent(btnBack)
                 .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        // TODO add your handling code here:
-        MenuPelamar p = new MenuPelamar();
-        p.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnBack2ActionPerformed
-
-    private void btnVerivikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerivikasiActionPerformed
-        // TODO add your handling code here:
-        MenuPelamar p = new MenuPelamar();
-        p.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnVerivikasiActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack2;
-    private javax.swing.JButton btnVerivikasi;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField psBaru;
-    private javax.swing.JPasswordField psLama;
+    private javax.swing.JPasswordField txtPassNew;
+    private javax.swing.JPasswordField txtPassOld;
     // End of variables declaration//GEN-END:variables
 
-    public void addListener(ActionListener e){
-        btnBack2.addActionListener(e);
-        btnVerivikasi.addActionListener(e);
+/*    public void checkPassword(char[] pass){
+        if(pass.length > 10){
+            System.out.println("Error");
+        }
     }
-
+*/    
+    public char[] getPassOld(){
+        return txtPassOld.getPassword();
+    }
+    
+    public char[] getPassNew(){
+        return txtPassNew.getPassword();
+    }
+    
+    public void addListener(ActionListener e){
+        btnBack.addActionListener(e);
+        btnOK.addActionListener(e);
+    }
+    
     public Object getBtnBack2() {
-        return btnBack2;
+        return btnBack;
     }
 
     public Object getBtnVerivikasi() {
-        return btnVerivikasi;
+        return btnOK;
     }
 
     

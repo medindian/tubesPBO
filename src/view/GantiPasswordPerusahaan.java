@@ -13,8 +13,8 @@ public class GantiPasswordPerusahaan extends javax.swing.JFrame implements View 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        psLama = new javax.swing.JPasswordField();
-        psBaru = new javax.swing.JPasswordField();
+        txtPassLama = new javax.swing.JPasswordField();
+        txtPassBaru = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -37,11 +37,6 @@ public class GantiPasswordPerusahaan extends javax.swing.JFrame implements View 
 
         btnBack2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnBack2.setText("Kembali");
-        btnBack2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,11 +54,11 @@ public class GantiPasswordPerusahaan extends javax.swing.JFrame implements View 
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(psLama))
+                                .addComponent(txtPassLama))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(psBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtPassBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(235, 235, 235)
                         .addComponent(btnVerivikasi, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -79,11 +74,11 @@ public class GantiPasswordPerusahaan extends javax.swing.JFrame implements View 
                 .addComponent(jLabel1)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(psLama, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassLama, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(psBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(28, 28, 28)
                 .addComponent(btnVerivikasi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,21 +90,14 @@ public class GantiPasswordPerusahaan extends javax.swing.JFrame implements View 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        // TODO add your handling code here:
-        perusahaan p = new perusahaan();
-        p.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnBack2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnVerivikasi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField psBaru;
-    private javax.swing.JPasswordField psLama;
+    private javax.swing.JPasswordField txtPassBaru;
+    private javax.swing.JPasswordField txtPassLama;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -118,6 +106,14 @@ public class GantiPasswordPerusahaan extends javax.swing.JFrame implements View 
         btnVerivikasi.addActionListener(e);
     }
 
+    public char[] getPassLama(){
+        return txtPassLama.getPassword();
+    }
+    
+    public char[] getPassBaru(){
+        return txtPassBaru.getPassword();
+    }
+    
     public Object getBtnBack2() {
         return btnBack2;
     }

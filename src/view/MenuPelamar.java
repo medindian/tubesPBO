@@ -17,7 +17,6 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
         txtStatus = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnCari = new javax.swing.JButton();
-        btnLihatLowongan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnUbahBio = new javax.swing.JButton();
@@ -34,30 +33,12 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
 
         btnStatus.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnStatus.setText("Refresh");
-        btnStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStatusActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Status Diterima  :");
 
         btnCari.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCari.setText("Cari Lowongan");
-        btnCari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariActionPerformed(evt);
-            }
-        });
-
-        btnLihatLowongan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnLihatLowongan.setText("Lihat Seluruh Lowongan");
-        btnLihatLowongan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLihatLowonganActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -68,7 +49,6 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(btnLihatLowongan)
                     .addComponent(btnCari)
                     .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
@@ -78,9 +58,7 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnLihatLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(2, 2, 2)
                 .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,27 +75,12 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
 
         btnUbahBio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnUbahBio.setText("Ubah Biodata");
-        btnUbahBio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUbahBioActionPerformed(evt);
-            }
-        });
 
         btnUbahPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnUbahPass.setText("Ubah password");
-        btnUbahPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUbahPassActionPerformed(evt);
-            }
-        });
 
         btnLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLogout.setText("Log Out");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -150,19 +113,9 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
 
         btnViewBerkas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnViewBerkas.setText("View Berkas");
-        btnViewBerkas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewBerkasActionPerformed(evt);
-            }
-        });
 
         btnCreateBerkas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCreateBerkas.setText("Buat Berkas");
-        btnCreateBerkas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateBerkasActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -227,66 +180,9 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCreateBerkasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBerkasActionPerformed
-        // TODO add your handling code here:
-        createBerkas cb = new createBerkas(); 
-        cb.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnCreateBerkasActionPerformed
-
-    private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
-        // TODO add your handling code here:
-        MenuPelamar p = new MenuPelamar();
-        p.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnStatusActionPerformed
-
-    private void btnViewBerkasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBerkasActionPerformed
-        // TODO add your handling code here:
-        viewBerkas v = new viewBerkas();
-        v.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnViewBerkasActionPerformed
-
-    private void btnUbahBioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahBioActionPerformed
-        // TODO add your handling code here:
-        editBioPelamar eb = new editBioPelamar();
-        eb.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnUbahBioActionPerformed
-
-    private void btnUbahPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahPassActionPerformed
-        // TODO add your handling code here:
-        GantiPasswordPelamar gp = new GantiPasswordPelamar();
-        gp.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnUbahPassActionPerformed
-
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        pelamar l  = new pelamar();
-        l.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        // TODO add your handling code here:
-        cariLowongan c = new cariLowongan();
-        c.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnCariActionPerformed
-
-    private void btnLihatLowonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatLowonganActionPerformed
-        // TODO add your handling code here:
-        viewLowongan v = new viewLowongan();
-        v.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnLihatLowonganActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnCreateBerkas;
-    private javax.swing.JButton btnLihatLowongan;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnStatus;
     private javax.swing.JButton btnUbahBio;
@@ -305,7 +201,7 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
     public void addListener(ActionListener e) {
         btnCari.addActionListener(e);
         btnCreateBerkas.addActionListener(e);
-        btnLihatLowongan.addActionListener(e);
+//        btnLihatLowongan.addActionListener(e);
         btnLogout.addActionListener(e);
         btnStatus.addActionListener(e);
         btnUbahBio.addActionListener(e);
@@ -319,8 +215,8 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
     public Object getBtnCreateBerkas() {
         return btnCreateBerkas;    }
 
-    public Object getBtnLihatLowongan() {
-        return btnLihatLowongan;    }
+//    public Object getBtnLihatLowongan() {
+//        return btnLihatLowongan;    }
 
     public Object getBtnLogout() {
         return btnLogout;    }

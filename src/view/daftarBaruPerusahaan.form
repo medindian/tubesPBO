@@ -35,8 +35,8 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="namaPel" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                  <Component id="addPel" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="txtNamaPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="txtAddPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -56,12 +56,12 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tahunPer" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="boxThnPer" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                              <Component id="emailPel" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="txtEmailPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                  <Component id="webPel" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                                  <Component id="telpPel" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <Component id="txtWebPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <Component id="txtTelpPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -72,12 +72,12 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel9" min="-2" pref="179" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="passPel" min="-2" pref="299" max="-2" attributes="0"/>
+                                              <Component id="txtPassPer" min="-2" pref="299" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel10" min="-2" pref="178" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="bankPer" min="-2" pref="133" max="-2" attributes="0"/>
+                                              <Component id="boxBankPer" min="-2" pref="133" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -111,13 +111,13 @@
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="namaPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNamaPer" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAddPer" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -129,27 +129,27 @@
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="telpPel" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTelpPer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="webPel" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtWebPer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="emailPel" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmailPer" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tahunPer" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="boxThnPer" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bankPer" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="boxBankPer" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="passPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassPer" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnSignin" min="-2" pref="38" max="-2" attributes="0"/>
@@ -169,7 +169,7 @@
         <Property name="text" type="java.lang.String" value="Daftar Baru (Perusahaan)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="namaPel">
+    <Component class="javax.swing.JTextField" name="txtNamaPer">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -227,7 +227,7 @@
         <Property name="text" type="java.lang.String" value="Password                    :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="bankPer">
+    <Component class="javax.swing.JComboBox" name="boxBankPer">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -242,16 +242,19 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="addPel">
+    <Component class="javax.swing.JTextField" name="txtAddPer">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPelActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddPerActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="telpPel">
+    <Component class="javax.swing.JTextField" name="txtTelpPer">
     </Component>
-    <Component class="javax.swing.JTextField" name="webPel">
+    <Component class="javax.swing.JTextField" name="txtWebPer">
     </Component>
-    <Component class="javax.swing.JTextField" name="emailPel">
+    <Component class="javax.swing.JTextField" name="txtEmailPer">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailPerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSignin">
       <Properties>
@@ -266,9 +269,9 @@
         <Property name="text" type="java.lang.String" value="Kembali"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passPel">
+    <Component class="javax.swing.JPasswordField" name="txtPassPer">
     </Component>
-    <Component class="javax.swing.JComboBox" name="tahunPer">
+    <Component class="javax.swing.JComboBox" name="boxThnPer">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">

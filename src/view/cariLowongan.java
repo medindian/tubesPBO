@@ -13,18 +13,18 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtNamaiLowongan = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        boxPerusahaan = new javax.swing.JComboBox<>();
         btnCariPerusahaan = new javax.swing.JButton();
         btnCariNama = new javax.swing.JButton();
         btnCariAll = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        scrollPilihLowongan = new javax.swing.JComboBox<>();
+        boxPilihLowongan = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         btnSetuju = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -46,7 +46,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxPerusahaan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCariPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         btnCariPerusahaan.setText("Cari by Perusahaan");
@@ -65,7 +65,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Daftar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        scrollPilihLowongan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxPilihLowongan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel5.setText("Pilih no.urut lowongan :");
@@ -83,7 +83,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
                     .addComponent(btnSetuju)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(scrollPilihLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boxPilihLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
@@ -91,7 +91,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(scrollPilihLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxPilihLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSetuju)
@@ -119,8 +119,8 @@ public class cariLowongan extends javax.swing.JFrame implements View{
                                 .addComponent(jLabel2))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField2)
-                                .addComponent(jComboBox1, 0, 167, Short.MAX_VALUE)))
+                                .addComponent(txtNamaiLowongan)
+                                .addComponent(boxPerusahaan, 0, 167, Short.MAX_VALUE)))
                         .addComponent(btnCariPerusahaan, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(btnCariNama)
@@ -148,10 +148,10 @@ public class cariLowongan extends javax.swing.JFrame implements View{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boxPerusahaan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNamaiLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(28, 28, 28)
                 .addComponent(btnCariPerusahaan)
@@ -174,12 +174,13 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxPerusahaan;
+    private javax.swing.JComboBox<String> boxPilihLowongan;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCariAll;
     private javax.swing.JButton btnCariNama;
     private javax.swing.JButton btnCariPerusahaan;
     private javax.swing.JButton btnSetuju;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -188,10 +189,17 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JComboBox<String> scrollPilihLowongan;
+    private javax.swing.JTextField txtNamaiLowongan;
     // End of variables declaration//GEN-END:variables
 
+    public int getPerusahaan() {
+        return boxPerusahaan.getSelectedIndex() + 1;
+    }
+    
+    public int getLowonganPilihan(){
+        return boxPilihLowongan.getSelectedIndex()+1;
+    }
+    
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);

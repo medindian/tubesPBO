@@ -34,8 +34,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="namaPerBaru" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                              <Component id="addPerBaru" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="txtNamaPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="txtAddPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -52,12 +52,12 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tahunPerBaru" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="boxThn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="emailPerBaru" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="txtEmailPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="webPerBaru" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="telpPerBaru" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                      <Component id="txtWebPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                      <Component id="txtTelpPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -66,7 +66,7 @@
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Component id="jLabel18" min="-2" pref="178" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="bankPerBaru" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="boxBank" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
@@ -93,13 +93,13 @@
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="namaPerBaru" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNamaPer" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addPerBaru" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAddPer" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -111,22 +111,22 @@
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="telpPerBaru" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTelpPer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="webPerBaru" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtWebPer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="emailPerBaru" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmailPer" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tahunPerBaru" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="boxThn" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bankPerBaru" alignment="3" pref="27" max="32767" attributes="0"/>
+                  <Component id="boxBank" alignment="3" pref="27" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" pref="13" max="32767" attributes="0"/>
               <Component id="btnSimpan" min="-2" pref="38" max="-2" attributes="0"/>
@@ -175,12 +175,12 @@
         <Property name="text" type="java.lang.String" value="No. Telepon                :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="addPerBaru">
+    <Component class="javax.swing.JTextField" name="txtAddPer">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPerBaruActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddPerActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="tahunPerBaru">
+    <Component class="javax.swing.JComboBox" name="boxThn">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -196,7 +196,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="telpPerBaru">
+    <Component class="javax.swing.JTextField" name="txtTelpPer">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
@@ -206,7 +206,7 @@
         <Property name="text" type="java.lang.String" value="Website                      :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="webPerBaru">
+    <Component class="javax.swing.JTextField" name="txtWebPer">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel18">
       <Properties>
@@ -224,7 +224,7 @@
         <Property name="text" type="java.lang.String" value="Ubah Biodata (Perusahaan)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="bankPerBaru">
+    <Component class="javax.swing.JComboBox" name="boxBank">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -239,9 +239,9 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="emailPerBaru">
+    <Component class="javax.swing.JTextField" name="txtEmailPer">
     </Component>
-    <Component class="javax.swing.JTextField" name="namaPerBaru">
+    <Component class="javax.swing.JTextField" name="txtNamaPer">
     </Component>
     <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>
