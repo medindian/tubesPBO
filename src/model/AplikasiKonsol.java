@@ -92,22 +92,28 @@ public class AplikasiKonsol {
     
     //pelamar
     //login
-    public void loginPelamar(String nama, String pass){
+    public boolean loginPelamar(String nama, char[] pass){
+        boolean berhasil = false;
         if(foundPelamar(nama) == true){
             int ar = findPelamar(nama);
             if(daftarPelamar[ar].getPassword() == pass)
-                System.out.println("Proses login berhasil");    
-            else
-                System.out.println("Password anda salah");  }
-        else
-            System.out.println("Username anda salah / belum terdaftar");    
+                berhasil = true;    
+        //    else System.out.println("Password anda salah");  }
+        //    else System.out.println("Username anda salah / belum terdaftar");    
+        }
+        return berhasil;
     }
     
     //lupaPassword
-    public void lupaPassPelamar(String nama, String email, String passBaru){
+    public boolean lupaPassPelamar(String nama, String email, char[] passBaru){
+        boolean berhasil = false;
         int ar = findPelamar(nama);
-        if(daftarPelamar[ar].getEmail() == email)
-            daftarPelamar[ar].setPassword(passBaru);    }
+        if(daftarPelamar[ar].getEmail() == email){
+            daftarPelamar[ar].setPassword(passBaru);
+            berhasil = true;
+        }
+        return berhasil;
+    }
         //setelah login
 
     //berkas
@@ -188,13 +194,33 @@ public class AplikasiKonsol {
                         System.out.println("Lowongan yang anda cari tidak tersedia");   }   }
                 
     //daftarkanDiri
+    public void daftar(String namaPelamar, String namaPerusahaan, int idLowongan){
+        int np = findPelamar(namaPelamar);
+        int pr = findPerusahaan(namaPerusahaan);
+        if (daftarPerusahaan[pr].getLowonganByIdLowongan(idLowongan) != null){
+            daftarPerusahaan[pr].getLowonganByIdLowongan(idLowongan).addBerkasMasuk(daftarPelamar[np].getBerkas());
+        }
+    }
     //lihat status penerimaan
+    public boolean statusDiterima(String namaPelamar, String namaPerusahaan, int idLowongan){
+        int np = findPelamar(namaPelamar);
+        int pr = findPerusahaan(namaPerusahaan);
+        if (daftarPerusahaan[pr].getLowonganByIdLowongan(idLowongan) != null){
+            for (int i= 0; i < daftarPerusahaan[pr].getLowonganByIdLowongan(idLowongan).getBerkasDiterima().length; i++){
+                if (daftarPerusahaan[pr].getLowonganByIdLowongan(idLowongan).getBerkasDiterimaByIndex(i) == daftarPelamar[np].getBerkas()){
+                    daftarPelamar[np].setStatus();
+                }
+            }
+        }
+        return daftarPelamar[np].getStatus();
+    }
     
     //setting hapus akun
     public void hapusAkunPel(String nama){
             //melakukan hapus akun pelamar berdasarkan nama/ nomor urutnya pada array
             //lakukan sorting
-            
+            int np = findPelamar(nama);
+            daftarPelamar[np] = null;
             }
             //keluar ato logout
     
@@ -231,7 +257,7 @@ public class AplikasiKonsol {
     
     //perusahaan
     //login
-    public void loginPerusahaan(String nama, String pass){
+    public void loginPerusahaan(String nama, char[] pass){
         if(foundPerusahaan(nama) == true){
             int ar = findPerusahaan(nama);
             if(daftarPerusahaan[ar].getPassword() == pass){
@@ -245,14 +271,18 @@ public class AplikasiKonsol {
     }
 
     //lupaPassword
-    public void lupaPassPrsh(String nama, String email, String passBaru){
+    public boolean lupaPassPrsh(String nama, int thn, char[] passBaru){
+        boolean berhasil = false;
         int ar = findPelamar(nama);
-        if(daftarPerusahaan[ar].getEmail() == email)
+        if(daftarPerusahaan[ar].getThnBerdiri() == thn){
             daftarPerusahaan[ar].setPassword(passBaru);
-        if(daftarPerusahaan[ar].getPassword() == passBaru)
-            System.out.println("Password berhasil diubah");
-        else
-            System.out.println("Password gagal diubah, harap coba lagi");
+            berhasil = true;
+        }
+        return berhasil;
+//        if(daftarPerusahaan[ar].getPassword() == passBaru)
+//            System.out.println("Password berhasil diubah");
+//        else
+//            System.out.println("Password gagal diubah, harap coba lagi");
     }
     
     //setelah login
@@ -340,11 +370,5 @@ public class AplikasiKonsol {
                     else    System.out.println(nomor+". Kosong");   }   }   }
         //kembali
     //kembali
-    
-    //buat 1 menu untuk setiap 1 method
-    //  tidak disarankan menggunakan proses i/o pada method menu
-    //  menggunakan parameter & return value
-    
-    
     
 }

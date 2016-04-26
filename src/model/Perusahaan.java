@@ -9,7 +9,7 @@ public class Perusahaan extends Orang{
     private int thnBerdiri;
     private String jenisUsaha;
     private String namaBank;
-    private String password;
+    private char[] password;
     public boolean isi = false;
     public int nLowongan=0;
     public int max = 10;
@@ -51,7 +51,7 @@ public class Perusahaan extends Orang{
     public void setBank (String bank){
 	this.namaBank = bank;	}
 	
-    public void setPassword (String pass){
+    public void setPassword (char[] pass){
 	this.password = pass;     }
 	
     public int getThnBerdiri(){
@@ -63,7 +63,7 @@ public class Perusahaan extends Orang{
     public String getBank(){
         return namaBank;    }
 	
-    public String getPassword(){
+    public char[] getPassword(){
         return password ;   }
 	
     public String toString(){

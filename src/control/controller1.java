@@ -97,18 +97,24 @@ public class controller1 implements ActionListener{
         else if (view instanceof loginPelamar){
             loginPelamar f = (loginPelamar) view;
             if (source.equals(f.getBtnLogin2())){
-                MenuPelamar mp = new MenuPelamar();
-                mp.setVisible(true);
-                mp.addListener(this);
-                f.dispose();
-                view = (View) mp;  
+                String nama = f.getNama();
+                char[] pass = f.getPass();
+                boolean berhasil = model.loginPelamar(nama, pass);
+                if (berhasil == true){
+                    MenuPelamar mp = new MenuPelamar();
+                    mp.setVisible(true);
+                    mp.addListener(this);
+                    f.dispose();
+                    view = (View) mp;   }  
             } else if (source.equals(f.getBtnBack())){
-                pelamar pl = new pelamar();
-                pl.setVisible(true);
-                pl.addListener(this);
-                f.dispose();
-                view = (View) pl;  
-            } else if (source.equals(f.getBtnForgetPass())){
+                    pelamar pl = new pelamar();
+                    pl.setVisible(true);
+                    pl.addListener(this);
+                    f.dispose();
+                    view = (View) pl;   
+            }
+                //keluar kotak notifikasi gagal
+            else if (source.equals(f.getBtnForgetPass())){
                 LupaPassPelamar s = new LupaPassPelamar();
                 s.setVisible(true);
                 s.addListener(this);
@@ -348,13 +354,18 @@ public class controller1 implements ActionListener{
                 view = p;                
             } else if (source.equals(s.getBtnCheck())){
                 //cek password
-                //bila ada, ganti pass lama dgn pass baru
-                //kembali ke menu pelamar
-                pelamar p = new pelamar();
-                p.setVisible(true);
-                p.addListener(this);
-                s.dispose();
-                view = p;
+                String nama = s.getNamaDicari();
+                String email = s.getTxtEmailDicari();
+                char[] passBaru = s.getTxtPassBaru();
+                boolean berhasil = model.lupaPassPelamar(nama, email, passBaru);
+                if (berhasil == true){
+                    pelamar p = new pelamar();
+                    p.setVisible(true);
+                    p.addListener(this);
+                    s.dispose();
+                    view = p;                    
+                }
+                //else muncul notif gagal
             }
         }
         //gui LupaPassPerusahaan
@@ -367,14 +378,17 @@ public class controller1 implements ActionListener{
                 h.dispose();
                 view = p;
             } else if (source.equals(h.getBtnCheck())){
-                //cek password
-                //bila ada, ganti pass lama dgn pass baru
-                //kembali ke menu pelamar
-                perusahaan p = new perusahaan();
-                p.setVisible(true);
-                p.addListener(this);
-                h.dispose();
-                view = p;
+                String nama = h.getPerusahaanDicari();
+                int thn = h.getTahunDicari();
+                char[] passBaru = h.getPassBaru();
+                boolean hasil = model.lupaPassPrsh(nama, thn, passBaru);
+                if (hasil == true){
+                    perusahaan p = new perusahaan();
+                    p.setVisible(true);
+                    p.addListener(this);
+                    h.dispose();
+                    view = p;
+                } //else keluar notif gagal & minta input ulang
             }
         }
         //gui cariLowongan

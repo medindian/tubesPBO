@@ -8,15 +8,15 @@ public class Pelamar extends Orang{
     private BerkasLamaran berkas;
     private String gender;
     private String tglLahir; //DD MMM YYYY
-    private String password;
+    private char[] password;
     public boolean statBerkas = false;
     public int noPelamar=0;
-//    private boolean statusDiterima=false;
+    private boolean statusDiterima = false;
     
     public Pelamar(String nama,String alamat,String noTelp,String email,String website){
         super(nama,alamat,noTelp,email,website);    }
     
-    public void setPassword(String password){
+    public void setPassword(char[] password){
         this.password = password;     }
     
     public void setGender(String gender){
@@ -26,7 +26,10 @@ public class Pelamar extends Orang{
     public void setTglLahir(String tglLahir){
         this.tglLahir = tglLahir;     }
     
-    public String getPassword(){
+    public void setStatus(){
+        this.statusDiterima = true;    }
+    
+    public char[] getPassword(){
         return password;    }
     
     public String getGender(){
@@ -37,6 +40,10 @@ public class Pelamar extends Orang{
     
     public BerkasLamaran getBerkas(){
         return berkas;  }
+    
+    public boolean getStatus(){
+        return statusDiterima;      }
+    
 /* 
     public void printBiodata(){
         System.out.println("Biodata :   ");

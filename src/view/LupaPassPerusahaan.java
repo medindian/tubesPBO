@@ -147,8 +147,10 @@ public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
         return txtPerusahaanDicari.getText();
     }
     
-    public String getTahunDicari(){
-        return txtTahunDicari.getText();
+    public int getTahunDicari(){
+        String thn = txtTahunDicari.getText();
+        int cariThn = Integer.parseInt(thn);
+        return cariThn;
     }
     
     public char[] getPassBaru(){

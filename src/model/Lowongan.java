@@ -30,6 +30,14 @@ public class Lowongan {
     public Date getDeadline(){
         return deadline;    }
     
+    public BerkasLamaran[] getBerkasMasuk(){
+        return berkasMasuk;
+    }
+    
+    public BerkasLamaran[] getBerkasDiterima(){
+        return berkasDiterima;
+    }
+    
     public void addBerkasMasuk(BerkasLamaran b){
         int i = nBMasuk;
         if (nBMasuk < max+1){
