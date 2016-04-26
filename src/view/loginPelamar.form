@@ -106,6 +106,9 @@
     <Component class="javax.swing.JPasswordField" name="txtPassPel">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNamaPel">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNamaPelKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin2">
       <Properties>
