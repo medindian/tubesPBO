@@ -34,6 +34,7 @@ public class controller1 implements ActionListener{
 
     private AplikasiKonsol model;
     private View view;
+    public String test = "hello world";
     
     public controller1(AplikasiKonsol ap) {
         this.model = ap;
