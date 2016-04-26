@@ -101,7 +101,6 @@
                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtAddPer" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -178,9 +177,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAddPer">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddPerActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="boxThn">
       <Properties>
@@ -244,6 +240,9 @@
     <Component class="javax.swing.JTextField" name="txtEmailPer">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNamaPer">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNamaPerKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>

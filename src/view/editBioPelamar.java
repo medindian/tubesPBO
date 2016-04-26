@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class editBioPelamar extends javax.swing.JFrame implements View{
 
@@ -34,17 +36,17 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
         btnSimpan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSimpan.setText("Simpan");
 
-        txtAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Tempat, Tanggal Lahir :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Ubah Biodata (Pelamar)");
+
+        txtNama.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNamaKeyTyped(evt);
+            }
+        });
 
         jFormattedTextField1.setText("00/00/00");
 
@@ -152,9 +154,15 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddActionPerformed
+    private void txtNamaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddActionPerformed
+        char c = evt.getKeyChar();
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNamaKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSimpan;

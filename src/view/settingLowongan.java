@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class settingLowongan extends javax.swing.JFrame implements View{
 
@@ -45,6 +47,12 @@ public class settingLowongan extends javax.swing.JFrame implements View{
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel4.setText("Deadline              :");
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         btnSaveLowongan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSaveLowongan.setText("Simpan");
@@ -189,6 +197,15 @@ public class settingLowongan extends javax.swing.JFrame implements View{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar(); 
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

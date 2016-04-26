@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class editBioPerusahaan extends javax.swing.JFrame implements View{
 
@@ -46,12 +48,6 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel16.setText("No. Telepon                :");
 
-        txtAddPer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddPerActionPerformed(evt);
-            }
-        });
-
         boxThn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         boxThn.setToolTipText("0000");
 
@@ -65,6 +61,12 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
         jLabel4.setText("Ubah Biodata (Perusahaan)");
 
         boxBank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtNamaPer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNamaPerKeyTyped(evt);
+            }
+        });
 
         btnSimpan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSimpan.setText("Simpan");
@@ -134,7 +136,6 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtAddPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -167,9 +168,15 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAddPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddPerActionPerformed
+    private void txtNamaPerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaPerKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddPerActionPerformed
+        char c = evt.getKeyChar(); 
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNamaPerKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxBank;
     private javax.swing.JComboBox<String> boxThn;
