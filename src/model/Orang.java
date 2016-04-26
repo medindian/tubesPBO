@@ -1,20 +1,25 @@
 package model;
 
 public abstract class Orang{
-    
+
+    private String idAkun;
     private String nama;
     private String alamat;
     private String noTelp;
     private String email;
     private String website;
 	
-    public Orang (String nama, String alamat, String noTelp, String email, String website){
+    public Orang (String idAkun, String nama, String alamat, String noTelp, String email, String website){
+        this.idAkun = idAkun;
         this.nama = nama;
         this.alamat = alamat;
         this.noTelp = noTelp;
         this.email = email;
         this.website = website;     }
 	
+    public void setIdAkun(String idAkun){
+        this.idAkun = idAkun;   }
+    
     public void setNama(String nama){
         this.nama = nama;   }
 	
@@ -27,9 +32,12 @@ public abstract class Orang{
     public void setEmail(String email){
         this.email = email;     }
 	
-    public void setWeb(String website){
+    public void setWebsite(String website){
         this.website = website;     }
-	
+
+    public String getIdAkun() {
+        return idAkun;    }
+
     public String getNama(){
         return nama;    }
 	

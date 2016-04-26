@@ -15,7 +15,7 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
     private void initComponents() {
 
         txtPassPer = new javax.swing.JPasswordField();
-        txtNamaPer = new javax.swing.JTextField();
+        txtIdAkun = new javax.swing.JTextField();
         btnLogin2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -25,9 +25,9 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtNamaPer.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtIdAkun.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNamaPerKeyTyped(evt);
+                txtIdAkunKeyTyped(evt);
             }
         });
 
@@ -35,7 +35,7 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         btnLogin2.setText("Log In");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel1.setText("Nama Perusahaan  :");
+        jLabel1.setText("Id Perusahaan       :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("Password               :");
@@ -53,16 +53,6 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNamaPer, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                    .addComponent(txtPassPer))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(196, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,22 +67,32 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
                             .addComponent(btnLogin2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                             .addComponent(btnForgetPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(209, 209, 209))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtIdAkun, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addComponent(txtPassPer))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtNamaPer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addComponent(txtPassPer, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2))
-                .addGap(33, 33, 33)
+                .addGap(45, 45, 45)
                 .addComponent(btnLogin2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnForgetPass)
@@ -104,14 +104,14 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNamaPerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaPerKeyTyped
+    private void txtIdAkunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
            JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
             evt.consume();
         }
-    }//GEN-LAST:event_txtNamaPerKeyTyped
+    }//GEN-LAST:event_txtIdAkunKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -120,17 +120,15 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtNamaPer;
+    private javax.swing.JTextField txtIdAkun;
     private javax.swing.JPasswordField txtPassPer;
     // End of variables declaration//GEN-END:variables
 
-    public String getNamaPer(){
-        return txtNamaPer.getText();
-    }
+    public String getIdAkun(){
+        return txtIdAkun.getText(); }
     
     public char[] getPassPer(){
-        return txtPassPer.getPassword();
-    }
+        return txtPassPer.getPassword();    }
     
     @Override
     public void addListener(ActionListener e) {

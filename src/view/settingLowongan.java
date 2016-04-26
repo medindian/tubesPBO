@@ -2,6 +2,8 @@ package view;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class settingLowongan extends javax.swing.JFrame implements View{
@@ -254,6 +256,14 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         btnSaveLowongan.addActionListener(e);
     }
 
+/*    public Date getDeadline(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+        String dateInString = boxDay.getSelectedItem() + " " + boxMonth.getSelectedItem() +
+                " " + boxYear.getSelectedItem();
+        Date dd = sdf.parse(dateInString);
+        return dd;
+    }
+*/    
     public Object getBtnBack() {
         return btnBack;    }
 

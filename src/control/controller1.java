@@ -30,11 +30,13 @@ import view.editBioPerusahaan;
 import view.settingLowongan;
 import view.viewBerkasDiterima;
 import view.viewBerkasMasuk;
+//import database.DatabaseConnection;
 
 public class controller1 implements ActionListener{
 
     private AplikasiKonsol model;
     private View view;
+    
     
     public controller1(AplikasiKonsol ap) {
         this.model = ap;
@@ -104,15 +106,9 @@ public class controller1 implements ActionListener{
                     f.dispose();
                     view = (View) pl;  
             } else if (source.equals(f.getBtnLogin2())){
-                String nama = f.getNama();
-                char[] pass = f.getPass();
-                boolean berhasil = model.loginPelamar(nama, pass);
-                if (berhasil == true){
-                    MenuPelamar mp = new MenuPelamar();
-                    mp.setVisible(true);
-                    mp.addListener(this);
-                    f.dispose();
-                    view = (View) mp;   }
+//                String idAkun = f.getIdAkun();
+//                char[] pass = f.getPass();
+//                boolean berhasil = model.loginPelamar(idAkun, pass);
             } else if (source.equals(f.getBtnForgetPass())){
                 LupaPassPelamar s = new LupaPassPelamar();
                 s.setVisible(true);
@@ -129,24 +125,24 @@ public class controller1 implements ActionListener{
                 p.addListener(this);
                 h.dispose();
                 view = (View) p;
-            } else if (source.equals(h.getBtnSignin())){
-                String nama = h.getNamaPel();
-                String alamat = h.getAddPel();
-                String tlp = h.getTelpPel();
-                String email = h.getEmailPel();
-                String web = h.getWebPel();
-                char[] pass = h.getPassPel();
-                model.addPelamar(nama, alamat, tlp, email, web);
-                int ar = model.findPelamar(nama);
-                model.getPelamar(ar).setPassword(pass);
-                boolean berhasil = model.loginPelamar(nama, pass);
-                if (berhasil == true){
-                    MenuPelamar m = new MenuPelamar();
-                    m.setVisible(true);
-                    m.addListener(this);
-                    h.dispose();
-                    view = (View) m;    }
-            }
+            } 
+//            else if (source.equals(h.getBtnSignin())){
+//                String id = h.getIdAkun();
+//                String nama = h.getNamaPel();
+//                String alamat = h.getAddPel();
+//                String tlp = h.getTelpPel();
+//                String email = h.getEmailPel();
+//                String web = h.getWebPel();
+//                String tgl = h.getTglLahir();
+//                char[] pass = h.getPassPel();
+//                int a = model.addPelamar(id, nama, alamat, tlp, email, web, tgl, pass);
+//                if (a != 0){
+//                    JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+//                            JOptionPane.WARNING_MESSAGE); 
+//                  }
+//            }
         }
         //gui viewPelamarTerdaftar
         else if(view instanceof viewPelamarTerdaftar){
@@ -365,7 +361,7 @@ public class controller1 implements ActionListener{
                 view = p;                
             } else if (source.equals(s.getBtnCheck())){
                 //cek password
-                String nama = s.getNamaDicari();
+                String nama = s.getIdAkunDicari();
                 String email = s.getTxtEmailDicari();
                 char[] passBaru = s.getTxtPassBaru();
                 boolean berhasil = model.lupaPassPelamar(nama, email, passBaru);

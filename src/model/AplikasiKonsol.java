@@ -1,9 +1,15 @@
 package model;
 
-import java.text.ParseException;
+//import java.text.ParseException;
 import java.util.Date;
+import database.DatabaseConnection;
+import static database.DatabaseConnection.connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Pelamar;
 
-public class AplikasiKonsol {
+public class AplikasiKonsol extends DatabaseConnection{
     
     private Perusahaan[] daftarPerusahaan = new Perusahaan[3];
     private Pelamar[] daftarPelamar = new Pelamar[20];
@@ -13,6 +19,28 @@ public class AplikasiKonsol {
     private int maxPerusahaan = 3;
     private int maxPelamar = 20;
     
+/*    public Pelamar[] getAll(){
+        String sql = "Select * from Pelamar";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                System.out.println(rs.getString(1));
+                rs.getString(1);
+                rs.getString(2);
+                rs.getString(3);
+                rs.getString(4);
+                rs.getString(5);
+                rs.getString(6);
+                rs.getString(7);
+                rs.getString(8);
+            }
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return daftarPelamar;
+    }
+*/    
     public Pelamar getPelamar(int id){
         return daftarPelamar[id];
     }
@@ -22,31 +50,31 @@ public class AplikasiKonsol {
     }
     
     //search Pelamar
-    public int findPelamar(String nama){
+    public int findPelamar(String idAkun){
         int ind = -1;
         for(int i = 0; i < daftarPelamar.length; i++){
-            if (daftarPelamar[i].getNama().equals(nama)){
+            if (daftarPelamar[i].getIdAkun().equals(idAkun)){
                 ind = i;    }    }
         return ind;    }
     
-    public boolean foundPelamar(String nama){
+    public boolean foundPelamar(String idAkun){
         boolean ketemu = false;
         for (Pelamar pelamar1 : daftarPelamar) {
-            if (pelamar1.getNama().equals(nama)) {
+            if (pelamar1.getIdAkun().equals(idAkun)) {
                 ketemu = true;    }    }
         return ketemu;    }
     
-    public int findPerusahaan(String namaPerusahaan){
+    public int findPerusahaan(String idAkun){
         int ind = -1;
         for(int i = 0; i < daftarPerusahaan.length; i++){
-            if (daftarPerusahaan[i].getNama().equals(namaPerusahaan)){
+            if (daftarPerusahaan[i].getIdAkun().equals(idAkun)){
                 ind = i;    }   }
         return ind; }
     
-    public boolean foundPerusahaan(String nama){
+    public boolean foundPerusahaan(String idAkun){
         boolean ketemu = false;
         for (Perusahaan perusahaan1 : daftarPerusahaan) {
-            if (perusahaan1.getNama().equals(nama)) {
+            if (perusahaan1.getIdAkun().equals(idAkun)) {
                 ketemu = true;  }   }
         return ketemu;  }
     
@@ -113,9 +141,9 @@ public class AplikasiKonsol {
     }
     
     //lupaPassword
-    public boolean lupaPassPelamar(String nama, String email, char[] passBaru){
+    public boolean lupaPassPelamar(String idAkun, String email, char[] passBaru){
         boolean berhasil = false;
-        int ar = findPelamar(nama);
+        int ar = findPelamar(idAkun);
         if(daftarPelamar[ar].getEmail() == email){
             daftarPelamar[ar].setPassword(passBaru);
             berhasil = true;
@@ -126,8 +154,8 @@ public class AplikasiKonsol {
 
     //berkas
     //buatBerkas
-    public void buatBerkas(String nama, String cv, String slk){
-        int ar = findPelamar(nama);
+    public void buatBerkas(String idAkun, String cv, String slk){
+        int ar = findPelamar(idAkun);
         daftarPelamar[ar].createBerkas(cv, slk);
         if(daftarPelamar[ar].getBerkas().getCV() != null && daftarPelamar[ar].getBerkas().getSLK() != null){
             System.out.println("Berkas CV dan Surat Lamaran Kerja Berhasil disimpan");} }
@@ -233,18 +261,40 @@ public class AplikasiKonsol {
             //keluar ato logout
     
     //daftarBaru
-    public void addPelamar(String nama, String alamat, String noTelp, String email, String website
-//            , String pass, String tempat, String tglLahir
+    public int addPelamar(
+            String id, String nama, String alamat, String noTelp, String email,
+            String website, String tglLahir, char[] pass
             ){
+        int hasil = 0;
         if (nPelamar < maxPelamar){
-            int i = nPelamar;
-            daftarPelamar[i] = new Pelamar(nama, alamat, noTelp, email, website);
-    /*      pelamar[i].setTempat(tempat);
-            pelamar[i].setTglLahir(tglLahir);
-            pelamar[i].setPassword(pass);
-    */      nPelamar++;
-        } else
-            System.out.println("Daftar pelamar sudah penuh");        }
+            Pelamar p = new Pelamar(id, nama, alamat, noTelp, email, website, tglLahir, pass);
+            String sql = "INSERT INTO pelamar values(?,?,?,?,?,?,?,?)";
+            int result = 0;
+            try {
+                PreparedStatement ps = connection.prepareStatement(sql);
+                ps.setString(1, p.getIdAkun());
+                ps.setString(2, p.getNama());
+                ps.setString(3, p.getAlamat());
+                ps.setString(4, p.getNoTelp());
+                ps.setString(5, p.getTglLahir());
+                ps.setString(6, p.getEmail());
+                ps.setString(7, p.getWebsite());
+                String psw = new String(p.getPassword());
+                ps.setString(8, psw);
+                hasil = ps.executeUpdate();
+                return hasil;
+            } catch (SQLException e){
+                System.out.println(e.getMessage()); }
+        }
+        return hasil;
+//        if (nPelamar < maxPelamar){
+//            int i = nPelamar;    
+//            daftarPelamar[i] = new Pelamar(id, nama, alamat, noTelp, email, website, tglLahir, pass);
+//            nPelamar++;
+//            hasil = 1;
+//        }
+//        return hasil;
+    }
         //enter
 
     //daftar pelamar
@@ -348,12 +398,12 @@ public class AplikasiKonsol {
     //kembali ato logout
     
     //daftar baru
-    public void addPerusahaan(String nama, String alamat, String noTelp, String email, String website
+    public void addPerusahaan(String id, String nama, String alamat, String noTelp, String email, String website
 //            , String jnsUsaha, String bank, String pass, int thnBerdiri
         ){
         if (nPrsh < maxPerusahaan){
             int i = nPrsh;
-            daftarPerusahaan[i] = new Perusahaan(nama, alamat, noTelp, email, website);
+            daftarPerusahaan[i] = new Perusahaan(id, nama, alamat, noTelp, email, website);
 /*            perusahaan[i].setJnsUsaha(jnsUsaha);
             perusahaan[i].setThnBerdiri(thnBerdiri);
             perusahaan[i].setBank(bank);

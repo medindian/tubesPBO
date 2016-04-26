@@ -23,7 +23,7 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
         jLabel9 = new javax.swing.JLabel();
         btnCheck = new javax.swing.JButton();
         btnBack2 = new javax.swing.JButton();
-        txtNamaDicari = new javax.swing.JTextField();
+        txtIdAkun = new javax.swing.JTextField();
         txtEmailDicari = new javax.swing.JTextField();
         txtPassBaru = new javax.swing.JPasswordField();
 
@@ -42,10 +42,10 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
         jLabel7.setText("Lupa Password");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Nama                  :");
+        jLabel8.setText("id Akun               :");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("e-mail                  :");
+        jLabel9.setText("e-mail                 :");
 
         btnCheck.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCheck.setText("OK");
@@ -53,9 +53,9 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
         btnBack2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnBack2.setText("Kembali");
 
-        txtNamaDicari.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtIdAkun.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNamaDicariKeyTyped(evt);
+                txtIdAkunKeyTyped(evt);
             }
         });
 
@@ -78,7 +78,7 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNamaDicari)
+                                    .addComponent(txtIdAkun)
                                     .addComponent(txtEmailDicari)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -112,7 +112,7 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtNamaDicari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
@@ -135,14 +135,14 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNamaDicariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaDicariKeyTyped
+    private void txtIdAkunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
            JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
             evt.consume();
         }
-    }//GEN-LAST:event_txtNamaDicariKeyTyped
+    }//GEN-LAST:event_txtIdAkunKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
@@ -155,12 +155,12 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtBerhasilORnot;
     private javax.swing.JTextField txtEmailDicari;
-    private javax.swing.JTextField txtNamaDicari;
+    private javax.swing.JTextField txtIdAkun;
     private javax.swing.JPasswordField txtPassBaru;
     // End of variables declaration//GEN-END:variables
 
-    public String getNamaDicari(){
-        return txtNamaDicari.getText();
+    public String getIdAkunDicari(){
+        return txtIdAkun.getText();
     }
 
     public String getTxtEmailDicari() {

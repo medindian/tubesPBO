@@ -7,15 +7,14 @@ public class Perusahaan extends Orang{
     
     private Lowongan[] daftarLowongan;
     private int thnBerdiri;
-    private String jenisUsaha;
     private String namaBank;
     private char[] password;
     public boolean isi = false;
     public int nLowongan=0;
     public int max = 10;
 	
-    public Perusahaan (String nama, String alamat, String noTelp, String email, String website){
-        super(nama, alamat, noTelp, email, website);
+    public Perusahaan (String id, String nama, String alamat, String noTelp, String email, String website){
+        super(id, nama, alamat, noTelp, email, website);
         daftarLowongan = new Lowongan[max];
         isi = true; }
         
@@ -42,9 +41,6 @@ public class Perusahaan extends Orang{
     public void setThnBerdiri (int thn){
 	this.thnBerdiri = thn;    }
 	
-    public void setJnsUsaha (String jenisUsaha){
-        this.jenisUsaha = jenisUsaha;     }
-	
     public void setBank (String bank){
 	this.namaBank = bank;	}
 	
@@ -54,9 +50,6 @@ public class Perusahaan extends Orang{
     public int getThnBerdiri(){
 	return thnBerdiri;      }
 	
-    public String getJnsUsaha(){
-        return jenisUsaha;  }
-	
     public String getBank(){
         return namaBank;    }
 	
@@ -65,11 +58,11 @@ public class Perusahaan extends Orang{
 	
     public String toString(){
         System.out.println("Biodata Perusahaan");
-        return ("Nama          :"+super.getNama()+
+        return "Nama          :"+super.getNama()+
                 "\nAlamat        :"+super.getAlamat()+
                 "\nNo. Telp      :"+super.getNoTelp()+
-                "\nBank          :"+getBank()+
-                "\nJenis Usaha   :"+getJnsUsaha());    }
+                "\nBank          :"+ namaBank ;   
+        }
     
     public void viewLowongan(){
         SimpleDateFormat ft = new SimpleDateFormat("dd MMM yy");
