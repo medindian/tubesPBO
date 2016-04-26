@@ -56,14 +56,14 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="boxThnPer" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtEmailPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                                   <Component id="txtWebPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                                   <Component id="txtTelpPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Component id="boxYear" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -138,8 +138,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="boxThnPer" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="boxYear" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -153,7 +153,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnSignin" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -229,12 +229,14 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="boxBankPer">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Bank ABC"/>
+            <StringItem index="1" value="Bank Sukasuka"/>
+            <StringItem index="2" value="Bank Berlian"/>
           </StringArray>
         </Property>
       </Properties>
@@ -243,18 +245,12 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAddPer">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddPerActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelpPer">
     </Component>
     <Component class="javax.swing.JTextField" name="txtWebPer">
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmailPer">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailPerActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSignin">
       <Properties>
@@ -271,22 +267,6 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtPassPer">
     </Component>
-    <Component class="javax.swing.JComboBox" name="boxThnPer">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="0000"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -294,6 +274,77 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Bank yang digunakan   :"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="boxYear">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="57">
+            <StringItem index="0" value="1960"/>
+            <StringItem index="1" value="1961"/>
+            <StringItem index="2" value="1962"/>
+            <StringItem index="3" value="1963"/>
+            <StringItem index="4" value="1964"/>
+            <StringItem index="5" value="1965"/>
+            <StringItem index="6" value="1966"/>
+            <StringItem index="7" value="1967"/>
+            <StringItem index="8" value="1968"/>
+            <StringItem index="9" value="1969"/>
+            <StringItem index="10" value="1970"/>
+            <StringItem index="11" value="1971"/>
+            <StringItem index="12" value="1972"/>
+            <StringItem index="13" value="1973"/>
+            <StringItem index="14" value="1974"/>
+            <StringItem index="15" value="1975"/>
+            <StringItem index="16" value="1976"/>
+            <StringItem index="17" value="1977"/>
+            <StringItem index="18" value="1978"/>
+            <StringItem index="19" value="1979"/>
+            <StringItem index="20" value="1980"/>
+            <StringItem index="21" value="1981"/>
+            <StringItem index="22" value="1982"/>
+            <StringItem index="23" value="1983"/>
+            <StringItem index="24" value="1984"/>
+            <StringItem index="25" value="1985"/>
+            <StringItem index="26" value="1986"/>
+            <StringItem index="27" value="1987"/>
+            <StringItem index="28" value="1988"/>
+            <StringItem index="29" value="1989"/>
+            <StringItem index="30" value="1990"/>
+            <StringItem index="31" value="1991"/>
+            <StringItem index="32" value="1992"/>
+            <StringItem index="33" value="1993"/>
+            <StringItem index="34" value="1994"/>
+            <StringItem index="35" value="1995"/>
+            <StringItem index="36" value="1996"/>
+            <StringItem index="37" value="1997"/>
+            <StringItem index="38" value="1998"/>
+            <StringItem index="39" value="1999"/>
+            <StringItem index="40" value="2000"/>
+            <StringItem index="41" value="2001"/>
+            <StringItem index="42" value="2002"/>
+            <StringItem index="43" value="2003"/>
+            <StringItem index="44" value="2004"/>
+            <StringItem index="45" value="2005"/>
+            <StringItem index="46" value="2006"/>
+            <StringItem index="47" value="2007"/>
+            <StringItem index="48" value="2008"/>
+            <StringItem index="49" value="2009"/>
+            <StringItem index="50" value="2010"/>
+            <StringItem index="51" value="2011"/>
+            <StringItem index="52" value="2012"/>
+            <StringItem index="53" value="2013"/>
+            <StringItem index="54" value="2014"/>
+            <StringItem index="55" value="2015"/>
+            <StringItem index="56" value="2016"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Pelamar extends Orang{
     private BerkasLamaran berkas;
-    private String gender;
+//    private String gender;
     private String tglLahir; //DD MMM YYYY
     private char[] password;
     public boolean statBerkas = false;
@@ -19,8 +19,7 @@ public class Pelamar extends Orang{
     public void setPassword(char[] password){
         this.password = password;     }
     
-    public void setGender(String gender){
-        this.gender = gender;     }
+//    public void setGender(String gender){   this.gender = gender;     }
     
     //String tglLahir
     public void setTglLahir(String tglLahir){
@@ -32,8 +31,7 @@ public class Pelamar extends Orang{
     public char[] getPassword(){
         return password;    }
     
-    public String getGender(){
-        return gender;  }
+//    public String getGender(){  return gender;  }
     
     public String getTglLahir(){
         return tglLahir;    }
@@ -60,7 +58,7 @@ public class Pelamar extends Orang{
     public String toString(){
         System.out.println("Biodata :   ");
         return ("Nama                    :"+getNama()+
-                "Jenis Kelamin           :"+getGender()+
+//                "Jenis Kelamin           :"+getGender()+
                 "Tanggal lahir           : "+getTglLahir()+
                 "Alamat                  : "+getAlamat()+
                 "Nomor Telepon           : "+getNoTelp()+

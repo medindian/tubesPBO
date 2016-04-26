@@ -29,8 +29,8 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
         btnSignin = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         txtPassPer = new javax.swing.JPasswordField();
-        boxThnPer = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        boxYear = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,30 +58,19 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Password                    :");
 
-        boxBankPer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtAddPer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddPerActionPerformed(evt);
-            }
-        });
-
-        txtEmailPer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailPerActionPerformed(evt);
-            }
-        });
+        boxBankPer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        boxBankPer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bank ABC", "Bank Sukasuka", "Bank Berlian" }));
 
         btnSignin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSignin.setText("Sign In");
 
         btnBack.setText("Kembali");
 
-        boxThnPer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        boxThnPer.setToolTipText("0000");
-
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel10.setText("Bank yang digunakan   :");
+
+        boxYear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        boxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,12 +103,12 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
                                                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(boxThnPer, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(txtEmailPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txtWebPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtTelpPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                    .addComponent(txtTelpPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(boxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(3, 3, 3)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,8 +162,8 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
                         .addComponent(txtEmailPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boxThnPer, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(boxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -185,7 +174,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
                     .addComponent(txtPassPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSignin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -193,17 +182,9 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAddPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddPerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddPerActionPerformed
-
-    private void txtEmailPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailPerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailPerActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxBankPer;
-    private javax.swing.JComboBox<String> boxThnPer;
+    private javax.swing.JComboBox<String> boxYear;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSignin;
     private javax.swing.JLabel jLabel1;

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import view.GantiPasswordPelamar;
 import view.MainMenu;
 import view.MenuPelamar;
@@ -96,7 +97,13 @@ public class controller1 implements ActionListener{
         //gui loginPelamar
         else if (view instanceof loginPelamar){
             loginPelamar f = (loginPelamar) view;
-            if (source.equals(f.getBtnLogin2())){
+            if (source.equals(f.getBtnBack())){
+                    pelamar pl = new pelamar();
+                    pl.setVisible(true);
+                    pl.addListener(this);
+                    f.dispose();
+                    view = (View) pl;  
+            } else if (source.equals(f.getBtnLogin2())){
                 String nama = f.getNama();
                 char[] pass = f.getPass();
                 boolean berhasil = model.loginPelamar(nama, pass);
@@ -105,16 +112,8 @@ public class controller1 implements ActionListener{
                     mp.setVisible(true);
                     mp.addListener(this);
                     f.dispose();
-                    view = (View) mp;   }  
-            } else if (source.equals(f.getBtnBack())){
-                    pelamar pl = new pelamar();
-                    pl.setVisible(true);
-                    pl.addListener(this);
-                    f.dispose();
-                    view = (View) pl;  
-            }
-                //keluar kotak notifikasi gagal
-            else if (source.equals(f.getBtnForgetPass())){
+                    view = (View) mp;   }
+            } else if (source.equals(f.getBtnForgetPass())){
                 LupaPassPelamar s = new LupaPassPelamar();
                 s.setVisible(true);
                 s.addListener(this);
@@ -131,11 +130,23 @@ public class controller1 implements ActionListener{
                 h.dispose();
                 view = (View) p;
             } else if (source.equals(h.getBtnSignin())){
-                MenuPelamar m = new MenuPelamar();
-                m.setVisible(true);
-                m.addListener(this);
-                h.dispose();
-                view = (View) m;       }
+                String nama = h.getNamaPel();
+                String alamat = h.getAddPel();
+                String tlp = h.getTelpPel();
+                String email = h.getEmailPel();
+                String web = h.getWebPel();
+                char[] pass = h.getPassPel();
+                model.addPelamar(nama, alamat, tlp, email, web);
+                int ar = model.findPelamar(nama);
+                model.getPelamar(ar).setPassword(pass);
+                boolean berhasil = model.loginPelamar(nama, pass);
+                if (berhasil == true){
+                    MenuPelamar m = new MenuPelamar();
+                    m.setVisible(true);
+                    m.addListener(this);
+                    h.dispose();
+                    view = (View) m;    }
+            }
         }
         //gui viewPelamarTerdaftar
         else if(view instanceof viewPelamarTerdaftar){

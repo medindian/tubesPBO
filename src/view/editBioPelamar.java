@@ -21,15 +21,16 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
         txtTelp = new javax.swing.JTextField();
         txtNama = new javax.swing.JTextField();
         txtWeb = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         txtEmail = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtTmp = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        boxDay = new javax.swing.JComboBox<>();
+        boxMonth = new javax.swing.JComboBox<>();
+        boxYear = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,7 +38,7 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
         btnSimpan.setText("Simpan");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel4.setText("Tempat, Tanggal Lahir :");
+        jLabel4.setText("Tanggal Lahir              :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Ubah Biodata (Pelamar)");
@@ -47,8 +48,6 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
                 txtNamaKeyTyped(evt);
             }
         });
-
-        jFormattedTextField1.setText("00/00/00");
 
         btnBack.setText("Kembali");
 
@@ -66,6 +65,15 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel8.setText("E-mail                        :");
+
+        boxDay.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        boxDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        boxMonth.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        boxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember", " " }));
+
+        boxYear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        boxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,12 +114,14 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtTmp, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(boxDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,9 +139,11 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
                     .addComponent(txtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(boxDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -164,9 +176,11 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
     }//GEN-LAST:event_txtNamaKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxDay;
+    private javax.swing.JComboBox<String> boxMonth;
+    private javax.swing.JComboBox<String> boxYear;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSimpan;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -178,7 +192,6 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtTelp;
-    private javax.swing.JTextField txtTmp;
     private javax.swing.JTextField txtWeb;
     // End of variables declaration//GEN-END:variables
 
@@ -187,25 +200,24 @@ public class editBioPelamar extends javax.swing.JFrame implements View{
     }
     
     public String getEmailPel(){
-        return txtEmail.getText();
-    }
+        return txtEmail.getText();  }
     
     public String getNamaPel(){
-        return txtNama.getText();
-    }
+        return txtNama.getText();   }
     
     public String getTelpPel(){
-        return txtTelp.getText();   
-    }
-    
-    public String getTmpPel(){    
-        return txtTmp.getText();
-    }
+        return txtTelp.getText();   }
     
     public String getWebPel(){
-        return txtWeb.getText();
-    }
+        return txtWeb.getText();    }
 
+    public String getTglLahir(){
+        int day = (boxDay.getSelectedIndex() + 1);
+        int month = (boxMonth.getSelectedIndex() + 1);
+        int year = (boxYear.getSelectedIndex() + 1);
+        return day + " " + month + " " + year;
+    }
+        
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);

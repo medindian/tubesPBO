@@ -13,6 +13,14 @@ public class AplikasiKonsol {
     private int maxPerusahaan = 3;
     private int maxPelamar = 20;
     
+    public Pelamar getPelamar(int id){
+        return daftarPelamar[id];
+    }
+    
+    public Perusahaan getPerusahaan(int id){
+        return daftarPerusahaan[id];
+    }
+    
     //search Pelamar
     public int findPelamar(String nama){
         int ind = -1;

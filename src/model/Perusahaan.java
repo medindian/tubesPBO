@@ -17,18 +17,15 @@ public class Perusahaan extends Orang{
     public Perusahaan (String nama, String alamat, String noTelp, String email, String website){
         super(nama, alamat, noTelp, email, website);
         daftarLowongan = new Lowongan[max];
-        isi = true;
-    }
+        isi = true; }
         
     public void createLowongan(String nmLowongan, Date deadline){
         if (nLowongan != max){
             daftarLowongan[nLowongan] = new Lowongan(nmLowongan, deadline);
-            nLowongan++;
-        }
+            nLowongan++;    }
         else{
             System.out.println("Daftar Lowongan sudah penuh");
-            System.out.println("");
-        }
+            System.out.println(""); }
     }
     
     public Lowongan[] getDaftarLowongan(){
