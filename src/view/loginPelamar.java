@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class loginPelamar extends javax.swing.JFrame implements View{
 
@@ -28,6 +30,12 @@ public class loginPelamar extends javax.swing.JFrame implements View{
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         btnBack.setText("Kembali");
+
+        txtNamaPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNamaPelKeyTyped(evt);
+            }
+        });
 
         btnLogin2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLogin2.setText("Log In");
@@ -95,6 +103,16 @@ public class loginPelamar extends javax.swing.JFrame implements View{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNamaPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaPelKeyTyped
+        char c = evt.getKeyChar() ; 
+        //mengecek angka pake Character.isDigit()
+        //mengecek huruf pake Character.isLetter()
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNamaPelKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
