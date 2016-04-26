@@ -1,7 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class loginPerusahaan extends javax.swing.JFrame implements View {
 
@@ -23,6 +24,12 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         btnForgetPass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtNamaPer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNamaPerKeyTyped(evt);
+            }
+        });
 
         btnLogin2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLogin2.setText("Log In");
@@ -96,6 +103,15 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNamaPerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaPerKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNamaPerKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

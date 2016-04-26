@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
 
@@ -21,9 +23,9 @@ public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
         txtBerhasilORnot = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtTahunDicari = new javax.swing.JTextField();
         txtPassBaru = new javax.swing.JPasswordField();
         txtPerusahaanDicari = new javax.swing.JTextField();
+        boxThn = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +52,14 @@ public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel7.setText("Lupa Password");
+
+        txtPerusahaanDicari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPerusahaanDicariKeyTyped(evt);
+            }
+        });
+
+        boxThn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,13 +91,17 @@ public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
                                         .addComponent(jLabel8)
                                         .addComponent(jLabel10)
                                         .addComponent(jLabel9))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtPerusahaanDicari, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtTahunDicari, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(5, 5, 5)
+                                            .addComponent(txtPassBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(1, 1, 1)
-                                            .addComponent(txtPassBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtPerusahaanDicari)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(boxThn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(0, 0, Short.MAX_VALUE)))))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(238, 238, 238)
                         .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -105,14 +119,14 @@ public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(boxThn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtPerusahaanDicari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTahunDicari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(44, 44, 44)
                         .addComponent(txtPassBaru, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(btnCheck)
@@ -128,7 +142,17 @@ public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtPerusahaanDicariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPerusahaanDicariKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar(); 
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPerusahaanDicariKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxThn;
     private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnCheck;
     private javax.swing.JLabel jLabel1;
@@ -140,17 +164,10 @@ public class LupaPassPerusahaan extends javax.swing.JFrame implements View{
     private javax.swing.JTextField txtBerhasilORnot;
     private javax.swing.JPasswordField txtPassBaru;
     private javax.swing.JTextField txtPerusahaanDicari;
-    private javax.swing.JTextField txtTahunDicari;
     // End of variables declaration//GEN-END:variables
 
     public String getPerusahaanDicari(){
         return txtPerusahaanDicari.getText();
-    }
-    
-    public int getTahunDicari(){
-        String thn = txtTahunDicari.getText();
-        int cariThn = Integer.parseInt(thn);
-        return cariThn;
     }
     
     public char[] getPassBaru(){

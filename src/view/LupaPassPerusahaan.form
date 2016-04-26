@@ -55,13 +55,20 @@
                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="txtPerusahaanDicari" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtTahunDicari" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                           <Component id="txtPassBaru" min="-2" pref="245" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtPerusahaanDicari" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="boxThn" min="-2" pref="86" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -89,15 +96,16 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="boxThn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="txtPerusahaanDicari" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtTahunDicari" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="txtPassBaru" pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -181,11 +189,27 @@
         <Property name="text" type="java.lang.String" value="Lupa Password"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTahunDicari">
-    </Component>
     <Component class="javax.swing.JPasswordField" name="txtPassBaru">
     </Component>
     <Component class="javax.swing.JTextField" name="txtPerusahaanDicari">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPerusahaanDicariKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="boxThn">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

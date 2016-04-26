@@ -105,7 +105,7 @@ public class loginPelamar extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNamaPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaPelKeyTyped
-        char c = evt.getKeyChar() ; 
+        char c = evt.getKeyChar(); 
         //mengecek angka pake Character.isDigit()
         //mengecek huruf pake Character.isLetter()
         if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {

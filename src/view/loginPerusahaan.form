@@ -90,6 +90,9 @@
     <Component class="javax.swing.JPasswordField" name="txtPassPer">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNamaPer">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNamaPerKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin2">
       <Properties>

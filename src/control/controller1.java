@@ -111,7 +111,7 @@ public class controller1 implements ActionListener{
                     pl.setVisible(true);
                     pl.addListener(this);
                     f.dispose();
-                    view = (View) pl;   
+                    view = (View) pl;  
             }
                 //keluar kotak notifikasi gagal
             else if (source.equals(f.getBtnForgetPass())){
@@ -377,19 +377,19 @@ public class controller1 implements ActionListener{
                 p.addListener(this);
                 h.dispose();
                 view = p;
-            } else if (source.equals(h.getBtnCheck())){
-                String nama = h.getPerusahaanDicari();
-                int thn = h.getTahunDicari();
-                char[] passBaru = h.getPassBaru();
-                boolean hasil = model.lupaPassPrsh(nama, thn, passBaru);
-                if (hasil == true){
-                    perusahaan p = new perusahaan();
-                    p.setVisible(true);
-                    p.addListener(this);
-                    h.dispose();
-                    view = p;
-                } //else keluar notif gagal & minta input ulang
-            }
+            } //else if (source.equals(h.getBtnCheck())){
+//                String nama = h.getPerusahaanDicari();
+//                int thn = h.getTahunDicari();
+//                char[] passBaru = h.getPassBaru();
+//                boolean hasil = model.lupaPassPrsh(nama, thn, passBaru);
+//                if (hasil == true){
+//                    perusahaan p = new perusahaan();
+//                    p.setVisible(true);
+//                    p.addListener(this);
+//                    h.dispose();
+//                    view = p;
+//                } //else keluar notif gagal & minta input ulang
+//            }
         }
         //gui cariLowongan
         else if (view instanceof cariLowongan){

@@ -1,7 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
-//import model.Pelamar;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class LupaPassPelamar extends javax.swing.JFrame implements View{
 
@@ -51,6 +52,12 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
 
         btnBack2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnBack2.setText("Kembali");
+
+        txtNamaDicari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNamaDicariKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +134,15 @@ public class LupaPassPelamar extends javax.swing.JFrame implements View{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNamaDicariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaDicariKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNamaDicariKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
