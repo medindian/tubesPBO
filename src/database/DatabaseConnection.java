@@ -11,7 +11,7 @@ import model.Pelamar;
 import model.Perusahaan;
 
 public class DatabaseConnection {
-/*
+
     private String url = "jdbc:oracle:thin:@localhost:1521:XE";
     private String user = "kel5";
     private String pass = "kel5";
@@ -59,7 +59,7 @@ public class DatabaseConnection {
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 p = new Perusahaan(rs.getString(1), rs.getString(2), rs.getString(3),
-                rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                rs.getString(4), rs.getString(5), rs.getString(6), 0,
                 rs.getString(8), rs.getString(9).toCharArray());
             }
         } catch (SQLException ex) {
@@ -216,6 +216,5 @@ public class DatabaseConnection {
         }
         return listId.toArray(new String[0]);
     }
-    
-*/    
+        
 }
