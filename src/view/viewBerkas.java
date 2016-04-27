@@ -13,16 +13,16 @@ public class viewBerkas extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtOutput = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnBack3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtOutput.setColumns(20);
+        txtOutput.setRows(5);
+        jScrollPane2.setViewportView(txtOutput);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel2.setText("View Berkas");
@@ -75,9 +75,13 @@ public class viewBerkas extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea txtOutput;
     // End of variables declaration//GEN-END:variables
 
+    public void setTxtOutput(String output){
+        txtOutput.setText(output);
+    }
+    
     @Override
     public void addListener(ActionListener e) {
         btnBack3.addActionListener(e);

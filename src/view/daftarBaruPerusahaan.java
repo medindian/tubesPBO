@@ -21,7 +21,6 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        boxBankPer = new javax.swing.JComboBox<>();
         txtAddPer = new javax.swing.JTextField();
         txtTelpPer = new javax.swing.JTextField();
         txtWebPer = new javax.swing.JTextField();
@@ -33,6 +32,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
         boxYear = new javax.swing.JComboBox<>();
         txtIdAkun = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        txtBank = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,9 +59,6 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Password                    :");
-
-        boxBankPer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        boxBankPer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bank ABC", "Bank Sukasuka", "Bank Berlian" }));
 
         btnSignin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSignin.setText("Sign In");
@@ -129,7 +126,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(boxBankPer, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(txtBank, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -179,14 +176,14 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(boxBankPer, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                    .addComponent(txtBank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtPassPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSignin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -195,7 +192,6 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxBankPer;
     private javax.swing.JComboBox<String> boxYear;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSignin;
@@ -210,6 +206,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtAddPer;
+    private javax.swing.JPasswordField txtBank;
     private javax.swing.JTextField txtEmailPer;
     private javax.swing.JTextField txtIdAkun;
     private javax.swing.JTextField txtNamaPer;
@@ -220,6 +217,10 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
 
     public String getIdAkun(){
         return txtIdAkun.getText();
+    }
+    
+    public String getBank(){
+        return txtBank.getText();
     }
     
     public String getAddressPer(){

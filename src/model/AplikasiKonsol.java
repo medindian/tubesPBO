@@ -2,67 +2,54 @@ package model;
 
 //import java.text.ParseException;
 import java.util.Date;
-import database.DatabaseConnection;
-import static database.DatabaseConnection.connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+//import database.DatabaseConnection;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Pelamar;
 
-public class AplikasiKonsol extends DatabaseConnection{
+public class AplikasiKonsol{
     
-    private Perusahaan[] daftarPerusahaan = new Perusahaan[3];
-    private Pelamar[] daftarPelamar = new Pelamar[20];
+    private Pelamar[] daftarPelamar;
+    private Perusahaan[] daftarPerusahaan;
+//    private DatabaseConnection con;
     int nPrsh = 0;
     int nPelamar = 0;
-    //private int nDiterima = 0;
     private int maxPerusahaan = 3;
     private int maxPelamar = 20;
     
-/*    public Pelamar[] getAll(){
-        String sql = "Select * from Pelamar";
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                System.out.println(rs.getString(1));
-                rs.getString(1);
-                rs.getString(2);
-                rs.getString(3);
-                rs.getString(4);
-                rs.getString(5);
-                rs.getString(6);
-                rs.getString(7);
-                rs.getString(8);
-            }
-        } catch (SQLException e){
-            System.out.println(e.getMessage());
+    public AplikasiKonsol(){
+        this.daftarPelamar = new Pelamar[3];
+        this.daftarPerusahaan = new Perusahaan[20];
+//        this.con = new DatabaseConnection();
+//        con.connect();
+    }
+    
+    public Perusahaan getPerusahaan(String id){
+//        return con.getPerusahaan(id);    
+        int j = findPerusahaan(id);
+        return daftarPerusahaan[j];
+    }
+    
+    public Perusahaan getPrById(int k){
+        return daftarPerusahaan[k];
+    }
+    
+    public int addPerusahaan(String id, String nama, String alamat, String noTelp, String web,
+            String email, int thn, String bank, char[] pass){
+        int hasil = 0;
+        if (nPrsh < maxPerusahaan){
+            int i = nPrsh;
+            Perusahaan p = new Perusahaan(id, nama, alamat, noTelp, web, email, thn,
+                    bank, pass);
+            daftarPerusahaan[i] = p;
+//            con.savePerusahaan(p);
+            nPrsh++;
+            hasil = 1;
         }
-        return daftarPelamar;
+        return hasil;
     }
-*/    
-    public Pelamar getPelamar(int id){
-        return daftarPelamar[id];
-    }
-    
-    public Perusahaan getPerusahaan(int id){
-        return daftarPerusahaan[id];
-    }
-    
-    //search Pelamar
-    public int findPelamar(String idAkun){
-        int ind = -1;
-        for(int i = 0; i < daftarPelamar.length; i++){
-            if (daftarPelamar[i].getIdAkun().equals(idAkun)){
-                ind = i;    }    }
-        return ind;    }
-    
-    public boolean foundPelamar(String idAkun){
-        boolean ketemu = false;
-        for (Pelamar pelamar1 : daftarPelamar) {
-            if (pelamar1.getIdAkun().equals(idAkun)) {
-                ketemu = true;    }    }
-        return ketemu;    }
     
     public int findPerusahaan(String idAkun){
         int ind = -1;
@@ -78,6 +65,142 @@ public class AplikasiKonsol extends DatabaseConnection{
                 ketemu = true;  }   }
         return ketemu;  }
     
+    public Perusahaan loginPerusahaan(String id, char[] pass){
+        if (foundPerusahaan(id) == true){
+            int i = findPerusahaan(id);
+            if (daftarPerusahaan[i].getPassword()== pass){
+                return daftarPerusahaan[i];}
+        }
+        return null;
+    }
+    
+    public Pelamar loginPelamar(String id, char[] pass){
+        if (foundPelamar(id) == true){
+            int i = findPelamar(id);
+            if (daftarPelamar[i].getPassword()== pass){
+                return daftarPelamar[i]; }
+        }
+        return null;
+    }
+    
+    public void deletePerusahaan(String id){
+        boolean find = foundPerusahaan(id);
+        if (find == true){
+            int i = findPerusahaan(id);
+            int arAkhir = nPrsh-1;
+//            System.out.println(nPrsh);
+//            System.out.println(arAkhir);
+            if (i == arAkhir) // array 0, 1, 2
+                daftarPerusahaan[i] = null;
+            else{
+                for(int j = i; j < arAkhir; j++){
+                    int a = j+1;
+                    daftarPerusahaan[j] = daftarPerusahaan[a];
+                    daftarPerusahaan[arAkhir] = null;    }
+            nPrsh--;    }
+        }
+    }
+        
+    public void hapusAkunPer(String id){
+        deletePerusahaan(id);
+//        con.deletePerusahaan(getPerusahaan(id));    
+    }
+    
+    public void gantiBioPerusahaan(Perusahaan p, String nama, String alamat, String noTelp, String web,
+            String email, int thn, String bank){
+        p.setNama(nama);
+        p.setAlamat(alamat);
+        p.setEmail(email);
+        p.setNoTelp(noTelp);
+        p.setWebsite(web);
+        p.setThnBerdiri(thn);
+        p.setBank(bank);
+    }
+    
+    public void gantiBioPelamar(Pelamar p, String nama, String alamat, String noTelp, String email,
+        String website){
+        p.setNama(nama);
+        p.setAlamat(alamat);
+        p.setEmail(email);
+        p.setNoTelp(noTelp);
+        p.setWebsite(website);
+    }
+    
+    public String daftarPerusahaan(){
+//        con.getListIDPerusahaan();
+        String list = "";
+        for (int i=0; i < nPrsh; i++){
+            int a = i+1;
+            list = (a+". "+daftarPerusahaan[i].getIdAkun());
+        }
+        return list;
+    }
+    
+    public int findPelamar(String idAkun){
+        int ind = -1;
+        for(int i = 0; i < daftarPelamar.length; i++){
+            if (daftarPelamar[i].getIdAkun().equals(idAkun)){
+                ind = i;    }    }
+        return ind;    }
+    
+    public boolean foundPelamar(String idAkun){
+        boolean ketemu = false;
+        for (Pelamar pelamar1 : daftarPelamar) {
+            if (pelamar1.getIdAkun().equals(idAkun)) {
+                ketemu = true;    }    }
+        return ketemu;    }
+    
+    public Pelamar getPelamar(String id){
+//        return con.getPelamar(id);
+        int i = findPelamar(id);
+        return daftarPelamar[i];
+    }
+    
+    public int addPelamar(String id, String nama, String alamat, String noTelp, String email,
+        String website, String tglLahir, char[] pass    ){
+        int hasil = 0;
+        if (nPelamar < maxPelamar){
+            int i = nPelamar;
+            Pelamar p = new Pelamar(id, nama, alamat, noTelp, email, website, tglLahir, pass);
+            daftarPelamar[i] = p;
+//            con.savePelamar(p);
+            nPelamar++;
+            hasil = 1;
+        }
+        return hasil;
+    }
+    
+    public void deletePelamar(String id){
+        boolean find = foundPelamar(id);
+        if (find == true){
+            int i = findPelamar(id);
+            int arAkhir = nPrsh-1;
+//            System.out.println(nPrsh);
+//            System.out.println(arAkhir);
+            if (i == arAkhir) // array 0, 1, 2
+                daftarPelamar[i] = null;
+            else{
+                for(int j = i; j < arAkhir; j++){
+                    int a = j+1;
+                    daftarPelamar[j] = daftarPelamar[a];    }
+                    daftarPelamar[arAkhir] = null;    }
+            nPrsh--;    }
+    }
+    
+    public void hapusAkunPel(String id){
+        deletePelamar(id);
+//        con.deletePelamar(getPelamar(id));  
+    }
+    
+    public String daftarPelamar(){
+        //con.getListIDPelamar();
+        String list = "";
+        for(int i=0; i< nPelamar; i++){
+            int a = i+1;
+            list = (a+". "+ daftarPelamar[i].getIdAkun()+"\n"); }
+        return list;
+    }
+    
     public void cariPelamar(String nama){
         boolean ketemu = foundPelamar(nama);
         System.out.println(ketemu);
@@ -85,60 +208,21 @@ public class AplikasiKonsol extends DatabaseConnection{
             int idx = findPelamar(nama); 
             daftarPerusahaan[idx].toString();    }
         if(ketemu == false){
-            System.out.println("Akun pelamar yang anda cari tidak terdaftar");    }    }
+            System.out.println("Akun pelamar yang anda cari tidak terdaftar");    
+        }    }
     
-    //delete
-    //dimulai dari id 0
-    public void delPerusahaan(int i){
-//            perusahaan[i] = null;
-        int arAkhir = nPrsh-1;
-//        System.out.println(nPrsh);
-//        System.out.println(arAkhir);
-        if (i == arAkhir) // array 0, 1, 2
-            daftarPerusahaan[i] = null;
-        else{
-            for(int j = i; j < arAkhir; j++){
-                int a = j+1;
-                daftarPerusahaan[j] = daftarPerusahaan[a];
-                System.out.println("index : "+j);
-                System.out.println("isi   : "+a);    }
-            daftarPerusahaan[arAkhir] = null;    }
-        nPrsh--;    }
-    
-    public void deletePerusahaan(String nama){
-        boolean find = foundPerusahaan(nama);
-        if (find == true){
-            int i = findPerusahaan(nama);
-//            System.out.println("data ada pada array ke-"+idx);
-//            delPerusahaan(idx);
-            int arAkhir = nPrsh-1;
-            System.out.println(nPrsh);
-            System.out.println(arAkhir);
-            if (i == arAkhir) // array 0, 1, 2
-                daftarPerusahaan[i] = null;
-            else{
-                for(int j = i; j < arAkhir; j++){
-                    int a = j+1;
-                    daftarPerusahaan[j] = daftarPerusahaan[a];
-                    System.out.println("index : "+j);
-                    System.out.println("isi   : "+a);    }
-                daftarPerusahaan[arAkhir] = null;    }
-            nPrsh--;    }
-        else      System.out.println("Perusahaan tidak ada");    }
-    
-    //pelamar
-    //login
-    public boolean loginPelamar(String nama, char[] pass){
-        boolean berhasil = false;
-        if(foundPelamar(nama) == true){
-            int ar = findPelamar(nama);
-            if(daftarPelamar[ar].getPassword() == pass)
-                berhasil = true;    
-        //    else System.out.println("Password anda salah");  }
-        //    else System.out.println("Username anda salah / belum terdaftar");    
-        }
-        return berhasil;
-    }
+//    public boolean loginPelamar(String id, char[] pass){
+//        boolean berhasil = false;
+//        int i = 0;
+//        
+//        Pelamar p = getPelamar(id);
+//        if(foundPelamar(id) == true){
+//            int ar = findPelamar(id);
+//            if(daftarPelamar[ar].getPassword() == pass)
+//                berhasil = true;
+//        }
+//        return berhasil;
+//    }
     
     //lupaPassword
     public boolean lupaPassPelamar(String idAkun, String email, char[] passBaru){
@@ -167,72 +251,83 @@ public class AplikasiKonsol extends DatabaseConnection{
     
     //lowongan
     //cariPerusahaan
-    public void cariPerusahaan(String namaPerusahaan){
-        boolean ketemu = foundPerusahaan(namaPerusahaan);
-//        System.out.println(ketemu);
-        if (ketemu == true){
-            int idx = findPerusahaan(namaPerusahaan); 
-            daftarPerusahaan[idx].toString(); }
-        if(ketemu == false){
-            System.out.println("Perusahaan yang anda cari tidak terdaftar"); }   }
+    public String jobByPerusahaan(int idP){
+        Perusahaan p = daftarPerusahaan[idP];
+        for (int i = 0; i< p.nLowongan; i++){
+            String hasil = "Lowongan : " + p.getLowonganByIdx(i).getNamaPkrj() + "\n"
+                    + "Deadline : " + p.getLowonganByIdx(i).getDeadline().toString();
+            return hasil;
+        }
+//        boolean ketemu = foundPerusahaan(namaPerusahaan);
+////        System.out.println(ketemu);
+//        if (ketemu == true){
+//            int idx = findPerusahaan(namaPerusahaan); 
+//             return daftarPerusahaan[idx].toString(); }
+//        if(ketemu == false){
+//            System.out.println("Perusahaan yang anda cari tidak terdaftar"); }   
+        return null;
+    }
                 
     //cariLowongan
     //byAll
-    public void cariPekerjaan(String namaPerusahaan, String namaLowongan){
-        boolean ketemu = false; //untuk lowongan
-        boolean find = false; //untuk perusahaan
-        for (int i = 0; i < daftarPerusahaan.length; i++) {
-            if(daftarPerusahaan[i].getNama() == namaPerusahaan){
-                find = true;
-                for (int j=0; j < daftarPerusahaan[i].getDaftarLowongan().length; j++) {
-                    if (daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj() == namaLowongan) {
-                        System.out.println("Nama Pekerjaan : "+
-                            daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj());
-                        System.out.println("Deadline : "
-                             +daftarPerusahaan[i].getLowonganByIdx(j).getDeadline());
-                    ketemu = true;  }   }   }   }
-                    if(find == false && ketemu == false)
-                        System.out.println("Perusahaan "+namaPerusahaan+" tidak terdartar "
-                            + "pada aplikasi");
-                    if(ketemu == false)
-                        System.out.println("Maaf, pekerjaan "+namaLowongan+"tidak tersedia "
-                            + "pada perusahaan "+namaPerusahaan);   }
+    public String cariPekerjaan(int idP, int lowong){
+        Lowongan l = daftarPerusahaan[idP].getLowonganByIdx(lowong);
+        String find = "Nama lowongan : " + l.getNamaPkrj() + " \n" +
+                " Deadline : " + l.getDeadline().toString();
+        return find;
+//        for (int i = 0; i < daftarPerusahaan.length; i++) {
+//            if(daftarPerusahaan[i].getNama() == namaPerusahaan){
+//                find = true;
+//                for (int j=0; j < daftarPerusahaan[i].getDaftarLowongan().length; j++) {
+//                    if (daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj() == namaLowongan) {
+//                        System.out.println("Nama Pekerjaan : "+
+//                            daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj());
+//                        System.out.println("Deadline : "
+//                             +daftarPerusahaan[i].getLowonganByIdx(j).getDeadline());
+//                    ketemu = true;  }   }   }   }
+//                    if(find == false && ketemu == false)
+//                        System.out.println("Perusahaan "+namaPerusahaan+" tidak terdartar "
+//                            + "pada aplikasi");
+//                    if(ketemu == false)
+//                        System.out.println("Maaf, pekerjaan "+namaLowongan+"tidak tersedia "
+//                            + "pada perusahaan "+namaPerusahaan);   
+    }
                     
     //byPerusahaan
-    public void cariPekerjaanByPerusahaan(String namaPerusahaan){
-        boolean ketemu = false; //untuk lowongan
-        boolean find = false; //untuk perusahaan
-        for (int i = 0; i < daftarPerusahaan.length; i++) {
-            if(daftarPerusahaan[i].getNama() == namaPerusahaan){
-                find = true;
-                for (int j=0; j < daftarPerusahaan[i].getDaftarLowongan().length; j++) {
-                    System.out.println("Nama Pekerjaan : "+
-                        daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj());
-                    System.out.println("Deadline : "
-                        +daftarPerusahaan[i].getLowonganByIdx(j).getDeadline());
-                    ketemu = true;  }   }   }   
-                if(find == false && ketemu == false){
-                    System.out.println("Perusahaan "+namaPerusahaan+" tidak terdartar "
-                        + "pada aplikasi"); }   }
-                    
-    //byLowongan
-    public void cariPekerjaanByLowongan(String namaLowongan){
-        boolean ketemu = false; //untuk lowongan
-        for (int i = 0; i < daftarPerusahaan.length; i++) {
-            for (int j=0; j < daftarPerusahaan[i].getDaftarLowongan().length; j++) {
-                if (daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj() == namaLowongan) {
-                    System.out.println("Nama Pekerjaan : "+
-                        daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj());
-                    System.out.println("Deadline : "
-                        +daftarPerusahaan[i].getLowonganByIdx(j).getDeadline());
-                        ketemu = true;  }   }   }
-                    if(ketemu == false){
-                        System.out.println("Lowongan yang anda cari tidak tersedia");   }   }
+//    public void cariPekerjaanByPerusahaan(String namaPerusahaan){
+//        boolean ketemu = false; //untuk lowongan
+//        boolean find = false; //untuk perusahaan
+//        for (int i = 0; i < daftarPerusahaan.length; i++) {
+//            if(daftarPerusahaan[i].getNama() == namaPerusahaan){
+//                find = true;
+//                for (int j=0; j < daftarPerusahaan[i].getDaftarLowongan().length; j++) {
+//                    System.out.println("Nama Pekerjaan : "+
+//                        daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj());
+//                    System.out.println("Deadline : "
+//                        +daftarPerusahaan[i].getLowonganByIdx(j).getDeadline());
+//                    ketemu = true;  }   }   }   
+//                if(find == false && ketemu == false){
+//                    System.out.println("Perusahaan "+namaPerusahaan+" tidak terdartar "
+//                        + "pada aplikasi"); }   }
+//                    
+//    //byLowongan
+//    public void cariPekerjaanByLowongan(String namaLowongan){
+//        boolean ketemu = false; //untuk lowongan
+//        for (int i = 0; i < daftarPerusahaan.length; i++) {
+//            for (int j=0; j < daftarPerusahaan[i].getDaftarLowongan().length; j++) {
+//                if (daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj() == namaLowongan) {
+//                    System.out.println("Nama Pekerjaan : "+
+//                        daftarPerusahaan[i].getLowonganByIdx(j).getNamaPkrj());
+//                    System.out.println("Deadline : "
+//                        +daftarPerusahaan[i].getLowonganByIdx(j).getDeadline());
+//                        ketemu = true;  }   }   }
+//                    if(ketemu == false){
+//                        System.out.println("Lowongan yang anda cari tidak tersedia");   }   }
                 
     //daftarkanDiri
-    public void daftar(String namaPelamar, String namaPerusahaan, int idLowongan){
-        int np = findPelamar(namaPelamar);
-        int pr = findPerusahaan(namaPerusahaan);
+    public void daftar(Pelamar p, Perusahaan ph, int idLowongan){
+        int np = findPelamar(p.getNama());
+        int pr = findPerusahaan(ph.getNama());
         if (daftarPerusahaan[pr].getLowonganByIdLowongan(idLowongan) != null){
             daftarPerusahaan[pr].getLowonganByIdLowongan(idLowongan).addBerkasMasuk(daftarPelamar[np].getBerkas());
         }
@@ -251,96 +346,33 @@ public class AplikasiKonsol extends DatabaseConnection{
         return daftarPelamar[np].getStatus();
     }
     
-    //setting hapus akun
-    public void hapusAkunPel(String nama){
-            //melakukan hapus akun pelamar berdasarkan nama/ nomor urutnya pada array
-            //lakukan sorting
-            int np = findPelamar(nama);
-            daftarPelamar[np] = null;
-            }
-            //keluar ato logout
-    
-    //daftarBaru
-    public int addPelamar(
-            String id, String nama, String alamat, String noTelp, String email,
-            String website, String tglLahir, char[] pass
-            ){
-        int hasil = 0;
-        if (nPelamar < maxPelamar){
-            Pelamar p = new Pelamar(id, nama, alamat, noTelp, email, website, tglLahir, pass);
-            String sql = "INSERT INTO pelamar values(?,?,?,?,?,?,?,?)";
-            int result = 0;
-            try {
-                PreparedStatement ps = connection.prepareStatement(sql);
-                ps.setString(1, p.getIdAkun());
-                ps.setString(2, p.getNama());
-                ps.setString(3, p.getAlamat());
-                ps.setString(4, p.getNoTelp());
-                ps.setString(5, p.getTglLahir());
-                ps.setString(6, p.getEmail());
-                ps.setString(7, p.getWebsite());
-                String psw = new String(p.getPassword());
-                ps.setString(8, psw);
-                hasil = ps.executeUpdate();
-                return hasil;
-            } catch (SQLException e){
-                System.out.println(e.getMessage()); }
+    public void hapusLowongan(Perusahaan p, int id){
+        if (p.getLowonganByIdx(id) != null){
+            p.getLowonganByIdx(id).setNamaPkrj("");
+            p.getLowonganByIdx(id).setDeadline(null);
         }
-        return hasil;
-//        if (nPelamar < maxPelamar){
-//            int i = nPelamar;    
-//            daftarPelamar[i] = new Pelamar(id, nama, alamat, noTelp, email, website, tglLahir, pass);
-//            nPelamar++;
-//            hasil = 1;
-//        }
-//        return hasil;
     }
-        //enter
-
-    //daftar pelamar
-        public void daftarPelamar(){
-            System.out.println("No      Nama              Email");
-            if(daftarPelamar[0] == null)
-                System.out.println("Daftar masih kosong");
-            else{
-                for(int i=0; i < daftarPelamar.length; i++){
-                    int nomor = i+1;
-                    System.out.println(nomor+". "+daftarPelamar[i].getNama()+"    "+
-                            daftarPelamar[i].getEmail());
-                }
-            }
-        }
-        //kembali
-    //kembali
     
-    //perusahaan
+//perusahaan
     //login
-    public void loginPerusahaan(String nama, char[] pass){
-        if(foundPerusahaan(nama) == true){
-            int ar = findPerusahaan(nama);
-            if(daftarPerusahaan[ar].getPassword() == pass){
-                System.out.println("Proses login berhasil");
-            }
-            else
-                System.out.println("Password anda salah");
-        }
-        else
-            System.out.println("Username Perusahaan salah / belum terdaftar");
-    }
+//    public boolean loginPerusahaan(String id, char[] pass){
+//        boolean berhasil = false;
+//        Perusahaan p = getPerusahaan(id);
+//        if(foundPerusahaan(id) == true){
+//            int ar = findPerusahaan(id);
+//            if(daftarPerusahaan[ar].getPassword() == pass)
+//                berhasil = true;
+//        }
+//        return berhasil;
+//    }
 
     //lupaPassword
-    public boolean lupaPassPrsh(String nama, int thn, char[] passBaru){
-        boolean berhasil = false;
+    public void lupaPassPrsh(String nama, int thn, char[] passBaru){
         int ar = findPelamar(nama);
         if(daftarPerusahaan[ar].getThnBerdiri() == thn){
             daftarPerusahaan[ar].setPassword(passBaru);
-            berhasil = true;
+//            con.updatePassPer(daftarPerusahaan[ar]);
         }
-        return berhasil;
-//        if(daftarPerusahaan[ar].getPassword() == passBaru)
-//            System.out.println("Password berhasil diubah");
-//        else
-//            System.out.println("Password gagal diubah, harap coba lagi");
     }
     
     //setelah login
@@ -363,10 +395,10 @@ public class AplikasiKonsol extends DatabaseConnection{
                             daftarPerusahaan[ar].getLowonganByIdx(i).getDeadline());    }   }   }   }   }
                 
             //tambahLowongan
-    public void addLowongan(String nama, String nmLowongan, Date deadline){
-        if(foundPerusahaan(nama) == true){
-            int ar = findPerusahaan(nama);
-            daftarPerusahaan[ar].createLowongan(nmLowongan, deadline);    }   }
+//    public void addLowongan(String nama, String nmLowongan, Date deadline){
+//        if(foundPerusahaan(nama) == true){
+//            int ar = findPerusahaan(nama);
+//            daftarPerusahaan[ar].createLowongan(nmLowongan, deadline);    }   }
             
             //hapusLowongan berdasar nomor urut lowongan tsb
     public void hapusLowongan(String nama, int id){
@@ -389,6 +421,19 @@ public class AplikasiKonsol extends DatabaseConnection{
         //daftarPelamar[id];
     }
     
+    public void gantiPasswordPelamar(String idAkun, char[] lama, char[] baru){
+        int i = findPelamar(idAkun);
+        if (daftarPelamar[i].getPassword() == lama){
+            daftarPelamar[i].setPassword(baru);
+        }
+    }
+    
+    public void gantiPasswordPerusahaan(String idAkun, char[] lama, char[] baru){
+        int i = findPerusahaan(idAkun);
+        if (daftarPerusahaan[i].getPassword() == lama){
+            daftarPerusahaan[i].setPassword(baru);
+        }
+    }
     //tolak(?)
     //lihat berkas pelamar
     
@@ -396,24 +441,6 @@ public class AplikasiKonsol extends DatabaseConnection{
     //password
     //deletePerusahaan
     //kembali ato logout
-    
-    //daftar baru
-    public void addPerusahaan(String id, String nama, String alamat, String noTelp, String email, String website
-//            , String jnsUsaha, String bank, String pass, int thnBerdiri
-        ){
-        if (nPrsh < maxPerusahaan){
-            int i = nPrsh;
-            daftarPerusahaan[i] = new Perusahaan(id, nama, alamat, noTelp, email, website);
-/*            perusahaan[i].setJnsUsaha(jnsUsaha);
-            perusahaan[i].setThnBerdiri(thnBerdiri);
-            perusahaan[i].setBank(bank);
-            perusahaan[i].setPassword(pass);
-*/            nPrsh++;
-//        System.out.println(nPrsh);
-        } else
-            System.out.println("Daftar perusahaan sudah penuh");
-    }
-        //enter
     
     //lihatPerusahaan terdaftar
     public void viewDaftarPerusahaan(){

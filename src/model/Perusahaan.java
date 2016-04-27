@@ -13,8 +13,12 @@ public class Perusahaan extends Orang{
     public int nLowongan=0;
     public int max = 10;
 	
-    public Perusahaan (String id, String nama, String alamat, String noTelp, String email, String website){
+    public Perusahaan (String id, String nama, String alamat, String noTelp, String email, String website,
+            int thnBerdiri, String namaBank, char[] pass){
         super(id, nama, alamat, noTelp, email, website);
+        this.thnBerdiri = thnBerdiri;
+        this.namaBank = namaBank;
+        this.password = pass;
         daftarLowongan = new Lowongan[max];
         isi = true; }
         
@@ -38,7 +42,7 @@ public class Perusahaan extends Orang{
     public Lowongan getLowonganByIdx(int idx){
         return daftarLowongan[idx];    }
 	
-    public void setThnBerdiri (int thn){
+    public void setThnBerdiri(int thn){
 	this.thnBerdiri = thn;    }
 	
     public void setBank (String bank){

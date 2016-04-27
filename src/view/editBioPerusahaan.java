@@ -3,6 +3,7 @@ package view;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class editBioPerusahaan extends javax.swing.JFrame implements View{
 
@@ -20,17 +21,17 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
         jLabel13 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtAddPer = new javax.swing.JTextField();
-        boxThn = new javax.swing.JComboBox<>();
         txtTelpPer = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtWebPer = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        boxBank = new javax.swing.JComboBox<>();
         txtEmailPer = new javax.swing.JTextField();
         txtNamaPer = new javax.swing.JTextField();
         btnSimpan = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        txtThn = new javax.swing.JTextField();
+        txtbank = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,9 +49,6 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel16.setText("No. Telepon                :");
 
-        boxThn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        boxThn.setToolTipText("0000");
-
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel17.setText("Website                      :");
 
@@ -59,8 +57,6 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Ubah Biodata (Perusahaan)");
-
-        boxBank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtNamaPer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -101,17 +97,16 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
                                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(boxThn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmailPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtWebPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtTelpPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtEmailPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtWebPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTelpPer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtThn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(3, 3, 3)
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(boxBank, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtbank, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(119, 119, 119)
                             .addComponent(jLabel4))
@@ -152,13 +147,13 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
                         .addComponent(txtEmailPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boxThn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(txtThn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(boxBank, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtbank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 23, Short.MAX_VALUE)
                 .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(btnBack)
@@ -170,16 +165,14 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
 
     private void txtNamaPerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaPerKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar(); 
+        char c = evt.getKeyChar();
         if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
-           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+            JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
             evt.consume();
         }
     }//GEN-LAST:event_txtNamaPerKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxBank;
-    private javax.swing.JComboBox<String> boxThn;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JLabel jLabel11;
@@ -194,7 +187,9 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
     private javax.swing.JTextField txtEmailPer;
     private javax.swing.JTextField txtNamaPer;
     private javax.swing.JTextField txtTelpPer;
+    private javax.swing.JTextField txtThn;
     private javax.swing.JTextField txtWebPer;
+    private javax.swing.JTextField txtbank;
     // End of variables declaration//GEN-END:variables
 
     public String getAddressPer(){
@@ -216,6 +211,15 @@ public class editBioPerusahaan extends javax.swing.JFrame implements View{
     public String getWebPer(){
         return txtWebPer.getText();
     }
+
+//    public int getTxtThn() {
+//        return txtThn.getText();    }
+
+    public String getTxtbank() {
+        return txtbank.getText();
+    }
+    
+    
     
     @Override
     public void addListener(ActionListener e) {

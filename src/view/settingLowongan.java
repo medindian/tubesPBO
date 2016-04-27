@@ -32,7 +32,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         statTambahHapus = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        boxIdxLowong = new javax.swing.JComboBox<>();
         btnOK = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
@@ -125,8 +125,8 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Pilih no. urut lowongan:");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        boxIdxLowong.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        boxIdxLowong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         btnOK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnOK.setText("OK");
@@ -141,7 +141,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(boxIdxLowong, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(btnOK)))
@@ -153,7 +153,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boxIdxLowong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnOK)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -229,12 +229,12 @@ public class settingLowongan extends javax.swing.JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDay;
+    private javax.swing.JComboBox<String> boxIdxLowong;
     private javax.swing.JComboBox<String> boxMonth;
     private javax.swing.JComboBox<String> boxYear;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnOK;
     private javax.swing.JButton btnSaveLowongan;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -264,6 +264,13 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         return dd;
     }
 */    
+    public int getIdxLowongan(){
+        return boxIdxLowong.getSelectedIndex()+1;   }
+    
+    public Date getDeadline(){
+        return new Date();
+    }
+    
     public Object getBtnBack() {
         return btnBack;    }
 

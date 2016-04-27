@@ -52,21 +52,19 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="boxThn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="txtEmailPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="txtWebPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="txtTelpPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                  </Group>
+                              <Component id="txtEmailPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="txtWebPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="txtTelpPer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="txtThn" min="-2" pref="300" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Component id="jLabel18" min="-2" pref="178" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="boxBank" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="txtbank" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
@@ -121,15 +119,15 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="boxThn" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtThn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="boxBank" alignment="3" pref="27" max="32767" attributes="0"/>
+                  <Component id="txtbank" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" pref="23" max="32767" attributes="0"/>
               <Component id="btnSimpan" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
@@ -178,22 +176,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtAddPer">
     </Component>
-    <Component class="javax.swing.JComboBox" name="boxThn">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="0000"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtTelpPer">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
@@ -222,21 +204,6 @@
         <Property name="text" type="java.lang.String" value="Ubah Biodata (Perusahaan)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="boxBank">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtEmailPer">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNamaPer">
@@ -259,6 +226,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nama                         :"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtThn">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtbank">
     </Component>
   </SubComponents>
 </Form>
