@@ -208,7 +208,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(21, 21, 21))
         );
@@ -245,17 +245,17 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         btnSaveLowongan.addActionListener(e);
     }
 
-    public int getDay(){
-        return boxDay.getSelectedIndex()+1;
-    }
-    
-    public int getMonth(){
-        return boxMonth.getSelectedIndex()+1;
-    }
-    
-    public int getYear(){
-        return boxYear.getSelectedIndex()+90;
-    }
+//    public int getDay(){
+//        return boxDay.getSelectedIndex()+1;
+//    }
+//    
+//    public int getMonth(){
+//        return boxMonth.getSelectedIndex()+1;
+//    }
+//    
+//    public int getYear(){
+//        return boxYear.getSelectedIndex()+90;
+//    }
     
     public Date getDeadline(){
         Date dd = new Date();
