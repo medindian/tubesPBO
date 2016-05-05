@@ -193,7 +193,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,18 +275,18 @@ public class settingLowongan extends javax.swing.JFrame implements View{
     
     
     
-    public void setListLowongan(ArrayList<Lowongan> list){
-        String[] judul = {"Nomor","Nama Lowongan","Deadline"};
-        String[][] isi = new String[list.size()][3];
-        for (int i = 0; i < list.size(); i++){
-            isi[i][0] = String.valueOf(i);
-            isi[i][1] = list.get(i).getNamaPkrj();
-            isi[i][2] = String.valueOf(list.get(i).getDeadline());
-        }
-        DefaultTableModel tableModel = new DefaultTableModel(isi,judul);
-        tableLowongan.setModel(tableModel);
-        tableLowongan.getColumnModel().getColumn(0).setPreferredWidth(20);
-    }
+//    public void setListLowongan(ArrayList<Lowongan> list){
+//        String[] judul = {"Nomor","Nama Lowongan","Deadline"};
+//        String[][] isi = new String[list.size()][3];
+//        for (int i = 0; i < list.size(); i++){
+//            isi[i][0] = String.valueOf(i);
+//            isi[i][1] = list.get(i).getNamaPkrj();
+//            isi[i][2] = String.valueOf(list.get(i).getDeadline());
+//        }
+//        DefaultTableModel tableModel = new DefaultTableModel(isi,judul);
+//        tableLowongan.setModel(tableModel);
+//        tableLowongan.getColumnModel().getColumn(0).setPreferredWidth(20);
+//    }
     
     public String getLowonganBaru(){
         return txtLowonganBaru.getText();    }
