@@ -257,8 +257,15 @@ public class settingLowongan extends javax.swing.JFrame implements View{
     public int getYear(){
         return boxYear.getSelectedIndex();
     }
-//        dd.setMonth(boxMonth.getSelectedIndex());
-//        dd.setYear(boxYear.getSelectedIndex());
+    
+    public Date getDeadline(){
+        Date dd = new Date();
+        dd.setDate(boxDay.getSelectedIndex());
+        dd.setMonth(boxMonth.getSelectedIndex());
+        dd.setYear(boxYear.getSelectedIndex());
+        return dd;
+    }
+    
 //        System.out.println("SelectedIndex");
 //        System.out.println(boxDay.getSelectedIndex());
 //        System.out.println(boxMonth.getSelectedIndex());
@@ -272,8 +279,6 @@ public class settingLowongan extends javax.swing.JFrame implements View{
 //        Date ddline = sdf.parse(dateInString);
 //        return dd;
 //    }
-    
-    
     
 //    public void setListLowongan(ArrayList<Lowongan> list){
 //        String[] judul = {"Nomor","Nama Lowongan","Deadline"};

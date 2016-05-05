@@ -22,22 +22,26 @@ class controllerSettingLowongan implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("perusahaan : " + p2.getNama() + " " + p2.getIdAkun());
+//        System.out.println("perusahaan : " + p2.getNama() + " " + p2.getIdAkun());
         Object source = e.getSource();
         
         if (source.equals(view.getBtnBack())){
-            System.out.println("button kembali ke menu perusahaan");
+//            System.out.println("button kembali ke menu perusahaan");
             new controllerMenuPerusahaan(model, p2);
             view.dispose();
             
         } else if (source.equals(view.getBtnSaveLowongan())) {
             int id = view.getIdLowongan();
+            System.out.println("id : "+id);
             String nama = view.getLowonganBaru();
+            System.out.println("nama : "+nama);
+            
             int day = view.getDay();
             int month = view.getMonth();
             int year = view.getYear();
             System.out.println(day +" "+month+" "+year);
-//            Date dd = view.getDeadline();
+            
+            Date dd = view.getDeadline();
 //            System.out.println(dd.toString());;
             int hasil = model.addLowongan(p2, id, nama, null);
             if (hasil == 1){
