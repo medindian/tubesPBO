@@ -33,9 +33,9 @@ public class daftarBaruPelamar extends javax.swing.JFrame implements View {
         jLabel4 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        boxDay = new javax.swing.JComboBox<String>();
-        boxMonth = new javax.swing.JComboBox<String>();
-        boxYear = new javax.swing.JComboBox<String>();
+        boxDay = new javax.swing.JComboBox<>();
+        boxMonth = new javax.swing.JComboBox<>();
+        boxYear = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtIdAkun = new javax.swing.JTextField();
 
@@ -77,13 +77,13 @@ public class daftarBaruPelamar extends javax.swing.JFrame implements View {
         jLabel6.setText("No. Telepon                :");
 
         boxDay.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        boxDay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        boxDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         boxMonth.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        boxMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember", " " }));
+        boxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember", " " }));
 
         boxYear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        boxYear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000" }));
+        boxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000" }));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel5.setText("Id Akun                      :");

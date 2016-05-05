@@ -159,11 +159,6 @@ public class controller1 implements ActionListener{
                 } else {
                     JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
                             JOptionPane.WARNING_MESSAGE);   }
-                MenuPelamar mp = new MenuPelamar();
-                mp.setVisible(true);
-                mp.addListener(this);
-                h.dispose();
-                view = mp;
             }
         }
         //gui viewPelamarTerdaftar
@@ -442,7 +437,8 @@ public class controller1 implements ActionListener{
                 //bila salah satu kotak kosong, munculkan notif harus diisi semua
                 //bila lowongan ada, maka munculkan pada output
                 //bila tidak ada, munculkan notif 'lowongan tidak ada'
-            } else if (source.equals(c.getBtnCariNama())){
+            }
+            else if (source.equals(c.getBtnCariNama())){
                 JOptionPane.showMessageDialog(null, "Error", "Fail",
                             JOptionPane.WARNING_MESSAGE);
 //                int low = c.getLowonganPilihan();
@@ -458,7 +454,8 @@ public class controller1 implements ActionListener{
                 int id = 0;
                 String hasil = model.jobByPerusahaan(arP);
                 c.setTxtOutput(hasil);
-//                JOptionPane.showMessageDialog(null, "Error", "Fail", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error", "Fail",
+                            JOptionPane.WARNING_MESSAGE);
                 //mengambil teks nama perusahaan yg ada pada gui
                 //bila salah satu kotak nama lowongan kosong, munculkan 
                     //notif kotak nama lowongan harus diisi
