@@ -246,23 +246,22 @@ public class settingLowongan extends javax.swing.JFrame implements View{
     }
 
     public int getDay(){
-//        Date dd = null;
-        return boxDay.getSelectedIndex();
+        return boxDay.getSelectedIndex()+1;
     }
     
     public int getMonth(){
-        return boxMonth.getSelectedIndex();
+        return boxMonth.getSelectedIndex()+1;
     }
     
     public int getYear(){
-        return boxYear.getSelectedIndex();
+        return boxYear.getSelectedIndex()+90;
     }
     
     public Date getDeadline(){
         Date dd = new Date();
-        dd.setDate(boxDay.getSelectedIndex());
-        dd.setMonth(boxMonth.getSelectedIndex());
-        dd.setYear(boxYear.getSelectedIndex());
+        dd.setDate(boxDay.getSelectedIndex()+1);
+        dd.setMonth(boxMonth.getSelectedIndex()+1);
+        dd.setYear(boxYear.getSelectedIndex()+90);
         return dd;
     }
     

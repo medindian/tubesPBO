@@ -42,13 +42,13 @@ class controllerSettingLowongan implements ActionListener{
             System.out.println(day +" "+month+" "+year);
             
             Date dd = view.getDeadline();
-//            System.out.println(dd.toString());;
-            int hasil = model.addLowongan(p2, id, nama, null);
-            if (hasil == 1){
-                JOptionPane.showMessageDialog(null, "data lowongan baru berhasil disimpan");
-            } else {
-                JOptionPane.showMessageDialog(null, "data lowongan baru gagal disimpan");
-            }
+            System.out.println(dd.toString());
+//            int hasil = model.addLowongan(p2, id, nama, null);
+//            if (hasil == 1){
+//                JOptionPane.showMessageDialog(null, "data lowongan baru berhasil disimpan");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "data lowongan baru gagal disimpan");
+//            }
 
         } else if (source.equals(view.getBtnOK())){
             System.out.println("yohohoh");
