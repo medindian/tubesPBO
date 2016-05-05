@@ -31,12 +31,15 @@ class controllerSettingLowongan implements ActionListener{
             view.dispose();
             
         } else if (source.equals(view.getBtnSaveLowongan())) {
-//            System.out.println("button simpan");
             int id = view.getIdLowongan();
             String nama = view.getLowonganBaru();
-            Date dd = view.getDeadline();
-            System.out.println(dd.toString());;
-            int hasil = model.addLowongan(p2, id, nama, dd);
+            int day = view.getDay();
+            int month = view.getMonth();
+            int year = view.getYear();
+            System.out.println(day +" "+month+" "+year);
+//            Date dd = view.getDeadline();
+//            System.out.println(dd.toString());;
+            int hasil = model.addLowongan(p2, id, nama, null);
             if (hasil == 1){
                 JOptionPane.showMessageDialog(null, "data lowongan baru berhasil disimpan");
             } else {

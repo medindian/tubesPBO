@@ -65,7 +65,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         boxDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         boxMonth.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        boxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember", " " }));
+        boxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", " " }));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel5.setText("Id lowongan         :");
@@ -245,11 +245,20 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         btnSaveLowongan.addActionListener(e);
     }
 
-    public Date getDeadline(){
-        Date dd = null;
-        dd.setDate(boxDay.getSelectedIndex());
-        dd.setMonth(boxMonth.getSelectedIndex());
-        dd.setYear(boxYear.getSelectedIndex());        
+    public int getDay(){
+//        Date dd = null;
+        return boxDay.getSelectedIndex();
+    }
+    
+    public int getMonth(){
+        return boxMonth.getSelectedIndex();
+    }
+    
+    public int getYear(){
+        return boxYear.getSelectedIndex();
+    }
+//        dd.setMonth(boxMonth.getSelectedIndex());
+//        dd.setYear(boxYear.getSelectedIndex());
 //        System.out.println("SelectedIndex");
 //        System.out.println(boxDay.getSelectedIndex());
 //        System.out.println(boxMonth.getSelectedIndex());
@@ -261,8 +270,8 @@ public class settingLowongan extends javax.swing.JFrame implements View{
 //        System.out.println(boxYear.getSelectedItem());
 //        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
 //        Date ddline = sdf.parse(dateInString);
-        return dd;
-    }
+//        return dd;
+//    }
     
     
     
