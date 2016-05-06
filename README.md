@@ -1,5 +1,2 @@
-# tubesPBO
-untuk tubes mata kuliah PBO mengenai Sistem Informasi Data Lowongan Pekerjaan
-
-//testing
-Hello :pizza: :)
+Aplikasi Sistem Informasi Data Lowongan Pekerjaan
+(masih terdapat banyak bug yang tidak sempat diselesaikan)
