@@ -128,6 +128,7 @@ public class controller implements ActionListener {//implements ActionListener{
                 String id = h.getIdAkunPel();
                 String nama = h.getNamaPel();
                 String pass = String.valueOf(h.getPassPel());
+                p1 = new Pelamar(id, nama, pass);
                 int a = model.addPelamar(id, nama, pass);
                 if (a != 0)
                     JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
