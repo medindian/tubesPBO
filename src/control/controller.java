@@ -48,6 +48,7 @@ public class controller implements ActionListener {//implements ActionListener{
         view = menu;
     }
     
+    @Override
     public void actionPerformed(ActionEvent e){
         Object source = e.getSource();
         //gui MainMenu
@@ -68,9 +69,7 @@ public class controller implements ActionListener {//implements ActionListener{
                 p.addListener(this);
                 menu.dispose();
                 view = (View) p; }
-            }
-//                        } 
-//            }
+        }
         //gui loginPelamar
         else if (view instanceof loginPelamar){
             loginPelamar lp = (loginPelamar) view;
@@ -88,7 +87,7 @@ public class controller implements ActionListener {//implements ActionListener{
                 } else if(pass.equals("")){
                     JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
                 }
-//                p1 = model.loginPelamar(idAkun, pass);
+                p1 = model.loginPelamar(idAkun, pass);
 //                if (p1 == null){
 //                    JOptionPane.showMessageDialog((Component) view, "login gagal");
 //                } 
@@ -107,7 +106,7 @@ public class controller implements ActionListener {//implements ActionListener{
                 s.addListener(this);
                 lp.dispose();
                 view = (View) s;
-//            } else if (source.equals(lp.getBtnBaruPelamar())) {
+            } else if (source.equals(lp.getBtnAkunBaruPel())) {
                 daftarBaruPelamar c = new daftarBaruPelamar();
                 c.setVisible(true);
                 c.addListener(this);
@@ -130,16 +129,11 @@ public class controller implements ActionListener {//implements ActionListener{
                 String nama = h.getNamaPel();
                 String pass = String.valueOf(h.getPassPel());
                 int a = model.addPelamar(id, nama, pass);
-                if (a != 0){
+                if (a != 0)
                     JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
-                } else {
+                else
                     JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
-                            JOptionPane.WARNING_MESSAGE);   }
-                MenuPelamar mp = new MenuPelamar();
-                mp.setVisible(true);
-                mp.addListener(this);
-                h.dispose();
-                view = mp;
+                            JOptionPane.WARNING_MESSAGE);
             }
         }
         //gui MenuPelamar
@@ -201,15 +195,14 @@ public class controller implements ActionListener {//implements ActionListener{
             } else if (source.equals(lr.getBtnLogin())) {
                 String idAkun = lr.getIdAkun();
                 String pass = String.valueOf(lr.getPassPer());
-                if (idAkun.equals("")){
+                if (idAkun.equals(""))
                     JOptionPane.showMessageDialog((Component) view, "idAkun tidak boleh kosong");
-                }
-//              else if(pass.equals("")){
-//                    JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
+                else if(pass.equals(""))
+                    JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
                 p2 = model.loginPerusahaan(idAkun, pass);
                 if (p2 == null){
                     JOptionPane.showMessageDialog((Component) view, "login gagal");
-                } 
+                }
 //                else {
 //                    JOptionPane.showMessageDialog((Component) view, "login berhasil");
 //                    MenuPerusahaan mp = new MenuPerusahaan();
@@ -231,16 +224,15 @@ public class controller implements ActionListener {//implements ActionListener{
                 dp.dispose();
                 view = (View) p;
             } else if (source.equals(dp.getBtnSave())){
-                String id = dp.getIdAkunPrsh();
-                String nama = dp.getNamaPrsh();
-                String pass = String.valueOf(dp.getPassPrsh());
+                String id = dp.getIdAkun();
+                String nama = dp.getNamaPer();
+                String pass = String.valueOf(dp.getPassPer());
                 int a = model.addPerusahaan(id, nama, pass);
-                if (a == 1){
+                if (a == 1)
                     JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
-                }
-//                else {
-//                    JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
-//                            JOptionPane.WARNING_MESSAGE);   }
+                else {
+                    JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+                            JOptionPane.WARNING_MESSAGE);   }
             }
         }
         //gui MenuPerusahaan
@@ -319,13 +311,16 @@ public class controller implements ActionListener {//implements ActionListener{
                 s.dispose();
                 view = p;           
             } else if (source.equals(s.getBtnCheck())){
-                //cek password
                 String idAkun = s.getIdAkunDicari();
                 String nama = s.getNamaDicari();
                 String passBaru = String.valueOf(s.getPassBaru());
-                model.lupaPassPelamar(idAkun, nama, passBaru);                
+                boolean berhasil = model.lupaPassPelamar(idAkun, nama, passBaru);
+                if (berhasil == true)
+                    JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
+                else {
+                    JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+                            JOptionPane.WARNING_MESSAGE);   }
                 }
-                //else muncul notif gagal
         }
         //gui LupaPassPerusahaan
         else if (view instanceof LupaPassPerusahaan){
@@ -337,10 +332,15 @@ public class controller implements ActionListener {//implements ActionListener{
                 h.dispose();
                 view = p;
             } else if (source.equals(h.getBtnCheck())){
-                String idPrsh = h.getIdPrshDicari();
-                String nama = h.getPrshDicari();
-                String passbaru = String.valueOf(h.getPassBaru());
-//                model.lupaPassPrsh(nama, thn, passBaru);
+                String idPrsh = h.getIdAkun();
+                String nama = h.getNamaDicari();
+                String passBaru = String.valueOf(h.getPassBaru());
+                boolean hasil = model.lupaPassPerusahaan(idPrsh, nama, passBaru);
+                if (hasil == true)
+                    JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
+                else {
+                    JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+                            JOptionPane.WARNING_MESSAGE);   }
             }
         }
         //gui cariLowongan
@@ -361,10 +361,7 @@ public class controller implements ActionListener {//implements ActionListener{
                 //bila salah satu kotak kosong, munculkan notif harus diisi semua
                 //bila lowongan ada, maka munculkan pada output
                 //bila tidak ada, munculkan notif 'lowongan tidak ada'
-            } else if (source.equals(c.getBtnCariNama())){
-                JOptionPane.showMessageDialog(null, "Error", "Fail",
-                            JOptionPane.WARNING_MESSAGE);
-            }
+//            }
 //            else if (source.equals(c.getBtnCariAll())){
 //                int arP = c.getPerusahaan();
 //                int low = c.getLowonganPilihan();
@@ -436,15 +433,17 @@ public class controller implements ActionListener {//implements ActionListener{
         //gui createBerkas
         else if (view instanceof createBerkas){
             createBerkas t = (createBerkas) view;
-            if (source.equals(t.getBtnBack3())){
+            if (source.equals(t.getBtnBack())){
                 MenuPelamar r = new MenuPelamar();
                 r.setVisible(true);
                 r.addListener(this);
                 t.dispose();
                 view = r;
             } else if (source.equals(t.getBtnSaveBrk())){
+                String idAkun = p1.getIdAkun();
                 String cv = t.getIsiCV();
                 String slk = t.getIsiSLK();
+                model.buatBerkas(idAkun, cv, slk);
 //                model.getPelamar(p1.getNama()).createBerkas(cv, slk);
                 //mengambil isi kotak cv & slk
                 //bila salah satu atau keduanya kosong, muncul notifikasi 'kotak tidak boleh kosong'

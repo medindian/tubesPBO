@@ -38,33 +38,32 @@
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
+                      <Component id="btnCheck" min="-2" pref="83" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Component id="txtPassBaru" min="-2" pref="245" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtIdAkun" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="boxThn" min="-2" pref="86" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="160" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtIdAkun" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNamaDicari" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
-                      <Component id="btnCheck" min="-2" pref="83" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="75" max="32767" attributes="0"/>
@@ -84,16 +83,19 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel8" max="32767" attributes="0"/>
-                  <Component id="txtIdAkun" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="txtIdAkun" min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtNamaDicari" min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="boxThn" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtPassBaru" pref="27" max="32767" attributes="0"/>
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
@@ -114,14 +116,6 @@
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Id Akun               :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Tahun Berdiri        :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCheck">
@@ -166,81 +160,17 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtPassBaru">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtIdAkun">
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIdAkunKeyTyped"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="boxThn">
+    <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="14" style="0"/>
+          <Font name="Tahoma" size="18" style="0"/>
         </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="57">
-            <StringItem index="0" value="1960"/>
-            <StringItem index="1" value="1961"/>
-            <StringItem index="2" value="1962"/>
-            <StringItem index="3" value="1963"/>
-            <StringItem index="4" value="1964"/>
-            <StringItem index="5" value="1965"/>
-            <StringItem index="6" value="1966"/>
-            <StringItem index="7" value="1967"/>
-            <StringItem index="8" value="1968"/>
-            <StringItem index="9" value="1969"/>
-            <StringItem index="10" value="1970"/>
-            <StringItem index="11" value="1971"/>
-            <StringItem index="12" value="1972"/>
-            <StringItem index="13" value="1973"/>
-            <StringItem index="14" value="1974"/>
-            <StringItem index="15" value="1975"/>
-            <StringItem index="16" value="1976"/>
-            <StringItem index="17" value="1977"/>
-            <StringItem index="18" value="1978"/>
-            <StringItem index="19" value="1979"/>
-            <StringItem index="20" value="1980"/>
-            <StringItem index="21" value="1981"/>
-            <StringItem index="22" value="1982"/>
-            <StringItem index="23" value="1983"/>
-            <StringItem index="24" value="1984"/>
-            <StringItem index="25" value="1985"/>
-            <StringItem index="26" value="1986"/>
-            <StringItem index="27" value="1987"/>
-            <StringItem index="28" value="1988"/>
-            <StringItem index="29" value="1989"/>
-            <StringItem index="30" value="1990"/>
-            <StringItem index="31" value="1991"/>
-            <StringItem index="32" value="1992"/>
-            <StringItem index="33" value="1993"/>
-            <StringItem index="34" value="1994"/>
-            <StringItem index="35" value="1995"/>
-            <StringItem index="36" value="1996"/>
-            <StringItem index="37" value="1997"/>
-            <StringItem index="38" value="1998"/>
-            <StringItem index="39" value="1999"/>
-            <StringItem index="40" value="2000"/>
-            <StringItem index="41" value="2001"/>
-            <StringItem index="42" value="2002"/>
-            <StringItem index="43" value="2003"/>
-            <StringItem index="44" value="2004"/>
-            <StringItem index="45" value="2005"/>
-            <StringItem index="46" value="2006"/>
-            <StringItem index="47" value="2007"/>
-            <StringItem index="48" value="2008"/>
-            <StringItem index="49" value="2009"/>
-            <StringItem index="50" value="2010"/>
-            <StringItem index="51" value="2011"/>
-            <StringItem index="52" value="2012"/>
-            <StringItem index="53" value="2013"/>
-            <StringItem index="54" value="2014"/>
-            <StringItem index="55" value="2015"/>
-            <StringItem index="56" value="2016"/>
-          </StringArray>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Nama                  :"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdAkun">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNamaDicari">
     </Component>
   </SubComponents>
 </Form>

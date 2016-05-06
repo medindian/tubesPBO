@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
 
 public class loginPelamar extends javax.swing.JFrame implements View{
 
@@ -133,6 +132,7 @@ public class loginPelamar extends javax.swing.JFrame implements View{
         btnBack.addActionListener(e);
         btnLoginPel.addActionListener(e);
         btnForgetPel.addActionListener(e);
+        btnAkunBaruPel.addActionListener(e);
     }
 
     public Object getBtnBack() {
@@ -143,4 +143,9 @@ public class loginPelamar extends javax.swing.JFrame implements View{
     
     public Object getBtnForgetPass(){
         return btnForgetPel;   }
+
+    public Object getBtnAkunBaruPel() {
+        return btnAkunBaruPel;
+    }
+    
 }

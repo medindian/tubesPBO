@@ -1,6 +1,6 @@
 package model;
 
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,8 +13,8 @@ public class Perusahaan extends Owner{
         super(id, nama, pass);
     }
         
-    public void createLowongan(String nmLowongan, Date deadline, int max1, int max2){
-        daftarLowongan.add(new Lowongan(nmLowongan, deadline, max1, max2));
+    public void createLowongan(String nmLowongan, Date deadline){
+        daftarLowongan.add(new Lowongan(nmLowongan, deadline));
         nLowongan = daftarLowongan.size();
     }
     

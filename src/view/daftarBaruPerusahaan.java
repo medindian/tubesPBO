@@ -117,7 +117,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
     public String getIdAkun(){
         return txtIdAkunPer.getText();
     }
-    
+
     public String getNamaPer(){
         return txtNamaPer.getText();
     }
@@ -135,8 +135,9 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
     public Object getBtnBack() {
         return btnBack;    }
 
-    public Object getBtnSignin() {
+    public Object getBtnSave() {
         return btnSave;    }
+    
     
     
 }

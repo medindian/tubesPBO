@@ -26,11 +26,7 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtIdAkunPer.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIdAkunPerKeyTyped(evt);
-            }
-        });
+        txtIdAkunPer.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btnLoginPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLoginPer.setText("Log In");
@@ -113,15 +109,6 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdAkunPerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunPerKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
-           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtIdAkunPerKeyTyped
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAkunBaruPer;
     private javax.swing.JButton btnBack;
@@ -145,6 +132,7 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         btnBack.addActionListener(e);
         btnLoginPer.addActionListener(e);
         btnForgetPer.addActionListener(e);
+        btnAkunBaruPer.addActionListener(e);
     }
 
     public Object getBtnBack() {
