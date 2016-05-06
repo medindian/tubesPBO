@@ -15,24 +15,25 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
     private void initComponents() {
 
         txtPassPer = new javax.swing.JPasswordField();
-        txtIdAkun = new javax.swing.JTextField();
-        btnLogin2 = new javax.swing.JButton();
+        txtIdAkunPer = new javax.swing.JTextField();
+        btnLoginPer = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        btnForgetPass = new javax.swing.JButton();
+        btnForgetPer = new javax.swing.JButton();
+        btnAkunBaruPer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtIdAkun.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtIdAkunPer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIdAkunKeyTyped(evt);
+                txtIdAkunPerKeyTyped(evt);
             }
         });
 
-        btnLogin2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnLogin2.setText("Log In");
+        btnLoginPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnLoginPer.setText("Log In");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Id Perusahaan       :");
@@ -46,37 +47,43 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         btnBack.setText("Kembali");
 
-        btnForgetPass.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnForgetPass.setText("Lupa Password?");
+        btnForgetPer.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnForgetPer.setText("Lupa Password?");
+
+        btnAkunBaruPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAkunBaruPer.setText("Buat Akun Baru");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(190, 190, 190))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnLogin2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(btnForgetPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(209, 209, 209))))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtIdAkun, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                    .addComponent(txtPassPer))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAkunBaruPer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnForgetPer, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoginPer, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIdAkunPer, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addComponent(txtPassPer))))
+                .addGap(0, 68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,16 +94,18 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtIdAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdAkunPer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addComponent(txtPassPer, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2))
-                .addGap(45, 45, 45)
-                .addComponent(btnLogin2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnForgetPass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAkunBaruPer)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLoginPer)
+                        .addComponent(btnForgetPer, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -104,28 +113,29 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdAkunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunKeyTyped
+    private void txtIdAkunPerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunPerKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
            JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
             evt.consume();
         }
-    }//GEN-LAST:event_txtIdAkunKeyTyped
+    }//GEN-LAST:event_txtIdAkunPerKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAkunBaruPer;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnForgetPass;
-    private javax.swing.JButton btnLogin2;
+    private javax.swing.JButton btnForgetPer;
+    private javax.swing.JButton btnLoginPer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtIdAkun;
+    private javax.swing.JTextField txtIdAkunPer;
     private javax.swing.JPasswordField txtPassPer;
     // End of variables declaration//GEN-END:variables
 
     public String getIdAkun(){
-        return txtIdAkun.getText(); }
+        return txtIdAkunPer.getText(); }
     
     public char[] getPassPer(){
         return txtPassPer.getPassword();    }
@@ -133,16 +143,20 @@ public class loginPerusahaan extends javax.swing.JFrame implements View {
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);
-        btnLogin2.addActionListener(e);
+        btnLoginPer.addActionListener(e);
+        btnForgetPer.addActionListener(e);
     }
 
     public Object getBtnBack() {
         return btnBack;    }
 
-    public Object getBtnLogin2() {
-        return btnLogin2;    }
+    public Object getBtnLogin() {
+        return btnLoginPer;    }
     
     public Object getBtnForgetPass(){
-        return btnForgetPass;   }
+        return btnForgetPer;   }
     
+    public Object getBtnAkunBaru(){
+        return btnAkunBaruPer;
+    }
 }

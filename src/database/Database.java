@@ -6,22 +6,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import model.Pelamar;
 import model.Perusahaan;
 
-public class DatabaseConnection {
-/*
-    private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-    private String user = "kel5";
-    private String pass = "kel5";
-    private Statement st;
-    private Connection con;
+public class Database {
+
+    String url = "jdbc:mysql://localhost:3306/lowongankerja";
+    String user = "root";
+    String pass = "";
+    Statement st;
+    Connection con;
 
     public void connect() {
         try {
             con = DriverManager.getConnection(url, user, pass);
             st = con.createStatement();
+            System.out.println("Berhasil");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -29,23 +29,16 @@ public class DatabaseConnection {
 
     public void savePerusahaan(Perusahaan p){
         try {
-            String query = "INSERT INTO `Perusahaan`(`idperusahaan`, `namap`, `alamatp`, `telpp`,"
-                    + "`webp`, `emailp`, `thn`, `bank`, 'passp') VALUES ("
+            String query = "INSERT INTO `Perusahaan`(`idperusahaan`, `namap`, 'passp') VALUES ("
                     + "'" + p.getIdAkun() + "',"
                     + "'" + p.getNama() + "',"
-                    + "'" + p.getAlamat() + "',"
-                    + "'" + p.getNoTelp() + "',"
-                    + "'" + p.getWebsite() + "',"
-                    + "'" + p.getEmail() + "',"
-                    + "'" + p.getThnBerdiri() + "',"
-                    + "'" + p.getBank() + "',"
-                    + "'" + Arrays.toString(p.getPassword()) + "')";
+                    + "'" + String.valueOf(p.getPassword()) + "')";
             st.execute(query, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = st.getGeneratedKeys();
 //            int generatedId = -1;
 //            if (rs.next()) {
 //                generatedId = rs.getInt(1);
-//            }
+//            } 
 //            p.setId(generatedId);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -58,9 +51,7 @@ public class DatabaseConnection {
             String query = "SELECT * FROM `Perusahaan` WHERE `idperusahaan` = " + idPerusahaan;
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                p = new Perusahaan(rs.getString(1), rs.getString(2), rs.getString(3),
-                rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
-                rs.getString(8), rs.getString(9).toCharArray());
+                p = new Perusahaan(rs.getString(1), rs.getString(2), rs.getString(3));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -71,13 +62,7 @@ public class DatabaseConnection {
     public void updatePerusahaan(Perusahaan p) {
         try {
             String query = "update Perusahaan set namap ='"
-                    + p.getNama() + "', alamatp= '"
-                    + p.getAlamat() + "', telpp= '"
-                    + p.getNoTelp() + "', webp= '"
-                    + p.getWebsite() + "', emailp= '"
-                    + p.getEmail() + "', thn= '"
-                    + p.getThnBerdiri() + "', bank= '"
-                    + p.getBank() +
+                    + p.getNama() +
                     "' where idPerusahaan = "
                     + p.getIdAkun() + "' AND passp = "
                     + String.valueOf(p.getPassword());
@@ -136,16 +121,10 @@ public class DatabaseConnection {
     
     public void savePelamar(Pelamar p){
         try {
-            String query = "INSERT INTO `Pelamar`(`idpelamar`, `nama`, `alamat`, `telp`,"
-                    + "`tgllahir`, `email`, `web`, `pass`,) VALUES ("
+            String query = "INSERT INTO `Pelamar`(`idpelamar`, `nama`, `pass`,) VALUES ("
                     + "'" + p.getIdAkun() + "',"
                     + "'" + p.getNama() + "',"
-                    + "'" + p.getAlamat() + "',"
-                    + "'" + p.getNoTelp() + "',"
-                    + "'" + p.getTglLahir() + "',"
-                    + "'" + p.getEmail() + "',"
-                    + "'" + p.getWebsite() + "',"
-                    + "'" + Arrays.toString(p.getPassword()) + "')";
+                    + "'" + String.valueOf(p.getPassword()) + "')";
             st.execute(query, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = st.getGeneratedKeys();
 //            int generatedId = -1;
@@ -164,9 +143,7 @@ public class DatabaseConnection {
             String query = "SELECT * FROM `Pelamar` WHERE `idpelamar` = " + idPelamar;
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                p = new Pelamar(rs.getString(1), rs.getString(2), rs.getString(3),
-                rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
-                rs.getString(8).toCharArray());
+                p = new Pelamar(rs.getString(1), rs.getString(2), rs.getString(3));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -177,12 +154,7 @@ public class DatabaseConnection {
     public void updatePelamar(Pelamar p) {
         try {
             String query = "update pelamar set nama ='"
-                    + p.getNama() + "', alamat= '"
-                    + p.getAlamat() + "', telp= '"
-                    + p.getNoTelp() + "', tgl= '"
-                    + p.getTglLahir() + "', email= '"
-                    + p.getEmail() + "', web= '"
-                    + p.getWebsite() +
+                    + p.getNama() + 
                     "' where idPelamar = "
                     + p.getIdAkun() + "' AND pass = "
                     + String.valueOf(p.getPassword());
@@ -216,6 +188,5 @@ public class DatabaseConnection {
         }
         return listId.toArray(new String[0]);
     }
-    
-*/    
+
 }

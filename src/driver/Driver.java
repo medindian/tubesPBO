@@ -1,12 +1,12 @@
 package driver;
 
 import control.controller1;
-import model.AplikasiKonsol;
+import model.aplikasi;
 
 public class Driver {
     public static void main(String[] args) {
         
-        AplikasiKonsol ap = new AplikasiKonsol();
+        aplikasi ap = new aplikasi();
         new controller1(ap);
         
     }   

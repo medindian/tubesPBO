@@ -1,42 +1,14 @@
 package model;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class Pelamar extends Orang{
+public class Pelamar extends Owner{
     private BerkasLamaran berkas;
-//    private String gender;
-    private String tglLahir; //DD MMM YYYY
-    private char[] password;
-    public boolean statBerkas = false;
-    public int noPelamar=0;
+    private boolean statBerkas = false;
     private boolean statusDiterima = false;
     
-    public Pelamar(String id, String nama,String alamat,String noTelp,String email,String website
-    , String tglLahir, char[] pass){
-        super(id, nama,alamat,noTelp,email,website);
-        this.tglLahir = tglLahir;
-        this.password = pass;
+    public Pelamar(String id, String nama, String pass){
+        super(id, nama, pass);
+        berkas = new BerkasLamaran();
     }
-
-    public void setPassword(char[] password){
-        this.password = password;     }
-    
-    //String tglLahir
-    public void setTglLahir(String tglLahir){
-        this.tglLahir = tglLahir;     }
-    
-    public void setStatus(){
-        this.statusDiterima = true;    }
-    
-    public char[] getPassword(){
-        return password;    }
-    
-//    public String getGender(){  return gender;  }
-    
-    public String getTglLahir(){
-        return tglLahir;    }
     
     public BerkasLamaran getBerkas(){
         return berkas;  }
@@ -44,46 +16,14 @@ public class Pelamar extends Orang{
     public boolean getStatus(){
         return statusDiterima;      }
     
-/* 
-    public void printBiodata(){
-        System.out.println("Biodata :   ");
-        System.out.println("Nama                    :"+getNama());
-        System.out.println("Tempat, tanggal lahir   : "+getTempat()
-                            +", "+getTglLahir());
-        System.out.println("Alamat                  : "+getAlamat());
-        System.out.println("Nomor Telepon           : "+getNoTelp());
-        System.out.println("Email                   : "+getEmail());
-        System.out.println("Website                 : "+getWebsite());  }
-*/    
-    
-    //tglBuat: DD MMM YY
     public String toString(){
-        System.out.println("Biodata :   ");
-        return ("Nama                    :"+getNama()+
-                "Tanggal lahir           : "+getTglLahir()+
-                "Alamat                  : "+getAlamat()+
-                "Nomor Telepon           : "+getNoTelp()+
-                "Email                   : "+getEmail()+
-                "Website                 : "+getWebsite()+
-                "Isi Berkas              : "+berkas.toString());
+        return ("Nama                    :"+getNama());
     }
     
     public void createBerkas(String isiCV, String isiSLK){
         berkas = new BerkasLamaran();
         berkas.setCV(isiCV);
         berkas.setSLK(isiSLK);
-        berkas.setNama(getNama());
-        berkas.setAlamat(getAlamat());        
-        berkas.setNoTelp(getNoTelp());
-        berkas.setEmail(getEmail());
-        berkas.setWebsite(getWebsite());
-        SimpleDateFormat ft = new SimpleDateFormat("dd MMM yy");
-        
-        //untuk tgl dibuatnya berkas
-        Date tgl = new Date();
-        DateFormat fmt = new SimpleDateFormat("DD MM YY");
-        String tglDibuat = fmt.format(tgl);
-        berkas.setTglDibuat(tglDibuat);
         statBerkas = true;
     }
 }

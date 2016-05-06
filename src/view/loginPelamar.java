@@ -17,11 +17,12 @@ public class loginPelamar extends javax.swing.JFrame implements View{
         jLabel3 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         txtPassPel = new javax.swing.JPasswordField();
-        txtIdAkun = new javax.swing.JTextField();
-        btnLogin2 = new javax.swing.JButton();
+        txtIdAkunPel = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnForgetPass = new javax.swing.JButton();
+        btnLoginPel = new javax.swing.JButton();
+        btnForgetPel = new javax.swing.JButton();
+        btnAkunBaruPel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -31,17 +32,20 @@ public class loginPelamar extends javax.swing.JFrame implements View{
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         btnBack.setText("Kembali");
 
-        btnLogin2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnLogin2.setText("Log In");
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Id Akun              :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("Password           :");
 
-        btnForgetPass.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnForgetPass.setText("Lupa Password?");
+        btnLoginPel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnLoginPel.setText("Log In");
+
+        btnForgetPel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnForgetPel.setText("Lupa Password?");
+
+        btnAkunBaruPel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAkunBaruPel.setText("Buat Akun Baru");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,13 +69,15 @@ public class loginPelamar extends javax.swing.JFrame implements View{
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdAkun, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(txtIdAkunPel, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(txtPassPel)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnForgetPass)
-                            .addComponent(btnLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(56, 56, 56)
+                        .addComponent(btnAkunBaruPel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnForgetPel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLoginPel, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,16 +89,18 @@ public class loginPelamar extends javax.swing.JFrame implements View{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtIdAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdAkunPel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addComponent(txtPassPel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(btnLogin2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnForgetPass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAkunBaruPel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLoginPel)
+                        .addComponent(btnForgetPel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -101,18 +109,19 @@ public class loginPelamar extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAkunBaruPel;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnForgetPass;
-    private javax.swing.JButton btnLogin2;
+    private javax.swing.JButton btnForgetPel;
+    private javax.swing.JButton btnLoginPel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtIdAkun;
+    private javax.swing.JTextField txtIdAkunPel;
     private javax.swing.JPasswordField txtPassPel;
     // End of variables declaration//GEN-END:variables
 
     public String getIdAkun(){
-        return txtIdAkun.getText();
+        return txtIdAkunPel.getText();
     }
     
     public char[] getPass(){
@@ -122,15 +131,16 @@ public class loginPelamar extends javax.swing.JFrame implements View{
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);
-        btnLogin2.addActionListener(e);
+        btnLoginPel.addActionListener(e);
+        btnForgetPel.addActionListener(e);
     }
 
     public Object getBtnBack() {
         return btnBack;    }
 
-    public Object getBtnLogin2() {
-        return btnLogin2;    }
+    public Object getBtnLogin() {
+        return btnLoginPel;    }
     
     public Object getBtnForgetPass(){
-        return btnForgetPass;   }
+        return btnForgetPel;   }
 }

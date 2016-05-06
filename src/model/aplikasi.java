@@ -1,6 +1,7 @@
 package model;
 
 //import java.text.ParseException;
+import database.Database;
 import java.util.Date;
 //import database.DatabaseConnection;
 //import java.sql.PreparedStatement;
@@ -9,46 +10,64 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Pelamar;
 
-public class AplikasiKonsol{
+public class aplikasi{
     
-    private Pelamar[] daftarPelamar;
-    private Perusahaan[] daftarPerusahaan;
-//    private DatabaseConnection con;
+    private ArrayList<Pelamar> daftarPelamar;
+    private ArrayList<Perusahaan> daftarPerusahaan;
+    private Database db;
     int nPrsh = 0;
     int nPelamar = 0;
-    private int maxPerusahaan = 3;
-    private int maxPelamar = 20;
     
-    public AplikasiKonsol(){
-        this.daftarPelamar = new Pelamar[3];
-        this.daftarPerusahaan = new Perusahaan[20];
-//        this.con = new DatabaseConnection();
-//        con.connect();
+    public aplikasi(){
+        db = new Database();
+        db.connect();
+        nPelamar = daftarPelamar.size();
+        nPrsh = daftarPerusahaan.size();
     }
     
-    public Perusahaan getPerusahaan(String id){
-//        return con.getPerusahaan(id);    
-        int j = findPerusahaan(id);
-        return daftarPerusahaan[j];
-    }
-    
-    public Perusahaan getPrById(int k){
-        return daftarPerusahaan[k];
-    }
-    
-    public int addPerusahaan(String id, String nama, String alamat, String noTelp, String web,
-            String email, int thn, String bank, char[] pass){
-        int hasil = 0;
-        if (nPrsh < maxPerusahaan){
-            int i = nPrsh;
-            Perusahaan p = new Perusahaan(id, nama, alamat, noTelp, web, email, thn,
-                    bank, pass);
-            daftarPerusahaan[i] = p;
-//            con.savePerusahaan(p);
-            nPrsh++;
-            hasil = 1;
+    public boolean cekAngka(String name){
+        boolean hasil = true;
+        String[] angka = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        for (String a : angka){
+            if (name.contains(a))
+                hasil = false;
         }
         return hasil;
+    }
+    
+    public boolean cektanda(String name){
+        boolean hasil = true;
+        String[] tanda = {"/", "[", "]", "{", "}", "+", "&", "#", "*", "!"};
+        for (String t : tanda){
+            if (name.contains(t))
+                hasil = false;
+        }
+        return hasil;
+    }
+    
+//    public Perusahaan getPerusahaan(String id){
+//        return daftarPerusahaan.equals(id);
+//    }
+       
+    public int addPerusahaan(String id, String nama, String pass){
+        if (nPrsh < 100){
+//            if (getPerusahaan(id) == null) {
+                if (!(cariUsername(username))) {
+                    if (cekNama(nama)){
+                        daftarPerusahaan.add(new Perusahaan(id, nama, nama, pass));
+                        db.savePenyedia(id, nama, nama, pass);
+                        nPerusahaan=daftarPerusahaan.size();
+                        System.out.println("Data berhasil disimpan");
+                    } else {
+                        System.out.println("Nama tidak valid");
+                    }
+                } else {
+                    System.out.println("Username sudah digunakan");
+                }
+            } else {
+                System.out.println("ID sudah digunakan");
+            }
+        }
     }
     
     public int findPerusahaan(String idAkun){
@@ -106,24 +125,12 @@ public class AplikasiKonsol{
 //        con.deletePerusahaan(getPerusahaan(id));    
     }
     
-    public void gantiBioPerusahaan(Perusahaan p, String nama, String alamat, String noTelp, String web,
-            String email, int thn, String bank){
+    public void gantiBioPerusahaan(Perusahaan p, String nama){
         p.setNama(nama);
-        p.setAlamat(alamat);
-        p.setEmail(email);
-        p.setNoTelp(noTelp);
-        p.setWebsite(web);
-        p.setThnBerdiri(thn);
-        p.setBank(bank);
     }
     
-    public void gantiBioPelamar(Pelamar p, String nama, String alamat, String noTelp, String email,
-        String website){
+    public void gantiBioPelamar(Pelamar p, String nama){
         p.setNama(nama);
-        p.setAlamat(alamat);
-        p.setEmail(email);
-        p.setNoTelp(noTelp);
-        p.setWebsite(website);
     }
     
     public String daftarPerusahaan(){
