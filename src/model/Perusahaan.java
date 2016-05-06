@@ -16,19 +16,20 @@ public class Perusahaan extends Owner{
         super(id, nama, pass);
     }
         
-    public void createLowongan(String nmLowongan, Date deadline){
-        daftarLowongan.add(new Lowongan(nmLowongan, deadline));
+    public void createLowongan(String nmLowongan, Date deadline, int max1, int max2){
+        daftarLowongan.add(new Lowongan(nmLowongan, deadline, max1, max2));
         nLowongan = daftarLowongan.size();
     }
     
     public ArrayList<Lowongan> getDaftarLowongan() {
         return daftarLowongan;
     }
-            
+    
     public Lowongan getLowongan(int n) {
         return daftarLowongan.get(n);
     }
     
+    @Override
     public String toString(){
         return ("Nama          :"+super.getNama());        }
     
@@ -41,7 +42,7 @@ public class Perusahaan extends Owner{
     
     public int cariLowongan(String namaLowongan) {
         for(Lowongan l : daftarLowongan){
-            if (l.getNamaPkrj() == namaLowongan)
+            if (l.getNamaPkrj().equals(namaLowongan))
                 return daftarLowongan.indexOf(l);
         }
         return 0;
@@ -57,7 +58,6 @@ public class Perusahaan extends Owner{
             nLowongan = daftarLowongan.size();
         }
     }
-    
 
 //   public void terimaPelamar(int idLowongan, int idPelamar){}
 //   public void cekPassword (String password){}

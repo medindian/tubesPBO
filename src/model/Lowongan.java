@@ -1,22 +1,24 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Lowongan {
     
     private String namaPekerjaan;
     private Date deadline;
-    private BerkasLamaran[] berkasMasuk;
-    private BerkasLamaran[] berkasDiterima;
+    private ArrayList<BerkasLamaran> berkasMasuk;
+    private ArrayList<BerkasLamaran> berkasDiterima;
+    private int max1=0, max2=0;
     private int nBMasuk = 0;
     private int nBTerima = 0;
-    private int max = 10;
     
-    public Lowongan(String nPk, Date dl){
+    public Lowongan(String nPk, Date dl, int max1, int max2){
         this.namaPekerjaan = nPk;
         this.deadline = dl;
-        berkasMasuk = new BerkasLamaran[max];
-        berkasDiterima = new BerkasLamaran[max];    }
+        this.max1 = max1;
+        this.max2 = max2;
+    }
 
     public void setNamaPkrj(String nPk){
         this.namaPekerjaan = nPk;   }
@@ -30,128 +32,97 @@ public class Lowongan {
     public Date getDeadline(){
         return deadline;    }
     
-    public BerkasLamaran[] getBerkasMasuk(){
+    public ArrayList<BerkasLamaran> getBerkasMasuk(){
         return berkasMasuk;
     }
     
-    public BerkasLamaran[] getBerkasDiterima(){
+    public ArrayList<BerkasLamaran> getBerkasDiterima(){
         return berkasDiterima;
     }
     
-    public void addBerkasMasuk(BerkasLamaran b){
-        int i = nBMasuk;
-        if (nBMasuk < max+1){
-            berkasMasuk[i] = b;     }
-        nBMasuk++;    }
-
-    //index dimulai dari 0
-    public BerkasLamaran getBerkasMasukByIndex(int index){
-        /*int i=0;
-        boolean ketemu = false;
-        while (berkasMasuk[i] != b)
-            i++;
-        if (berkasMasuk[i] != null)
-            ketemu = true;
-        return ketemu; */
-        return berkasMasuk[index];    }
-    
-    //idBerkas dimulai dari 1
-    public BerkasLamaran getBerkasMasukByIdBerkas(int idBerkas){
-        return berkasMasuk[idBerkas-1];    }
-    
-    public void addBerkasDiterima(BerkasLamaran b){
-        int i = nBTerima;
-//        boolean cari = cariBerkas(b);
-//        if (cari == true){
-            if (nBTerima <= max){
-                berkasDiterima[i] = b;
-                nBTerima++;
-//                System.out.println("i : "+i);
-//            }
+    public int cariBerkasMasuk(String idAkun){
+        for(int i = 0; i < max1; i++){
+            if(berkasMasuk.get(i).getIdAkun().equals(idAkun)){
+                return i;
+            }
         }
-//        else{
-//            System.out.println("Berkas tidak ada");
-//            System.out.println("");     }   
+        return -1;
+    }
+    
+    public int cariBerkasDiterima(String idAkun){
+        for(int i = 0; i < max1; i++){
+            if(berkasDiterima.get(i).getIdAkun().equals(idAkun)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public BerkasLamaran getBerkasMasuk(int index){
+        return berkasMasuk.get(index);
+    }
+    
+    public BerkasLamaran getBerkasDiterima(int index){
+        return berkasDiterima.get(index);
+    }
+    
+    public void addBerkasMasuk(BerkasLamaran b){
+        int ada = cariBerkasMasuk(b.getIdAkun());
+        if (ada == -1){
+            System.out.println("Berkas tidak ada");
+        } else {
+            berkasMasuk.add(b);
+            nBMasuk = berkasMasuk.size();
+            max1 = max1 - nBMasuk;
+        }
+    }
+        
+    public void addBerkasDiterima(BerkasLamaran b){
+        int ada = cariBerkasMasuk(b.getIdAkun());
+        if (ada != -1){
+            berkasDiterima.add(b);
+            nBTerima = berkasDiterima.size();
+            max2 = max2 - nBTerima;
+        } else
+            System.out.println("Berkas tidak ditemukan");
     }
     
     public void viewBerkasMasuk(){
-        System.out.println("Berkas Lamaran yang Masuk :");
-        for (int i=0; i < nBMasuk; i++){
-            int ar = i+1;
-            System.out.println("Berkas Lamaran ke-"+ar);
-            berkasMasuk[i].toString();
-            System.out.println("");     }    }
-
-    //menampilkan berkas2 yg ada pada berkasDiterima
-    public void viewBerkasTerima(){
-        System.out.println("Berkas Lamaran yang Diterima :");
-        for (int j = 0; j < nBTerima; j++){
-            int tr = j+1;
-//            System.out.println(j);
-            System.out.println("Berkas Lamaran ke-"+tr);
-            berkasDiterima[j].toString();
-            System.out.println("");     }    }
-
-    //id ditulis dimulai dari 1
-    //untuk menghapus berkas yang ada pada berkasMasuk bila berkas tersebut
-    // ditolak untuk diterima aka disimpan pada berkasDiterima
-    public void removeBerkas(int id){
-        if (id > nBMasuk)
-            System.out.println("Berkas Lamaran tidak ada");
-        else {
-            if (id == nBMasuk)    berkasMasuk[id-1] = null;
-            else {
-                for (int i = id-1; i < nBMasuk; i++){
-                    int a = i+1;
-//                    System.out.println("array : "+i);
-//                    System.out.println("diisi array : "+a);
-                    berkasMasuk[i] = berkasMasuk[a];    }
-                berkasMasuk[nBMasuk] = null;  }
-            nBMasuk--;    }    }
-    
-    public void BerkasMasukToBerkasDiterima(){
-        int i = 0;
-        while(i <= nBMasuk){
-            berkasDiterima[i] = berkasMasuk[i];
-            i++;
-        }    }
-    
-    //index dimuali dari 0
-    public BerkasLamaran getBerkasDiterimaByIndex(int index){
-        return berkasDiterima[index];    }
-    
-    //id dimulai dari angka 1
-    //berfungsi menghapus berkas yg ada di berkasDiterima sekaligua menghapus
-    // berkas yg sama yg ada pada berkasMasuk
-/*    public void hapusBerkasDiterima(int id){
-        int i = id-1;
-        boolean cari = cariBerkas(berkasDiterima[i]);
-        if (cari == true){
-            BerkasLamaran temp = berkasDiterima[i];
-            if ( id == nBTerima){
-                berkasDiterima[i] = null;   }
-            else{
-//                System.out.println("nBrkTerima sebelumnya : "+ nBrkTerima);
-//                System.out.println("Proses : ");
-                for (int j = i; j < nBTerima; j++){
-                    int k = j+1;
-//                    System.out.println("Array : "+ j);
-//                    System.out.println("Diisi oleh array : "+k);
-                    berkasDiterima[j] = berkasDiterima[k];    }
-                }
-            nBTerima--;
-//            System.out.println("nBrkTerima setelahnya: "+ nBrkTerima);
-            //cari data yg sama yg ada pada BerkasMasuk
-            int a = 0;
-            while (berkasMasuk[a] != temp)
-                a++;
-            System.out.println("Posisi array a yg nilanya sama dgn array yg "
-                    + "dihapus : "+a);
-            tolakBerkas(a+1);
-            viewBerkasMasuk();
-            nBMasuk--;    }
-        else
-            System.out.println("Perintah tidak dapat dilakukan \n");
+        for (int i = 0; i < nBMasuk; i++) {
+            berkasMasuk.get(i).viewBerkas();
+            System.out.println("");
+        }
     }
-*/    
+
+    public void viewBerkasTerima(){
+        for (int i = 0; i < nBTerima; i++) {
+            berkasDiterima.get(i).viewBerkas();
+            System.out.println("");
+        }
+    }
+
+    public void removeBerkasMasuk(String idAkun){
+        int ada = cariBerkasMasuk(idAkun);
+        if (ada == -1){
+            System.out.println("Berkas tidak ada");
+        } else {
+            BerkasLamaran bl = getBerkasMasuk(ada);
+            berkasMasuk.remove(bl);
+            nBMasuk = berkasMasuk.size();
+            max1 = max1 - nBMasuk;
+        }
+    }
+    
+    public void removeBerkasDiterima(String idAkun){
+        int ada = cariBerkasMasuk(idAkun);
+        if (ada == -1){
+            System.out.println("Berkas tidak ada");
+        } else {
+            BerkasLamaran bl = getBerkasDiterima(ada);
+            berkasDiterima.remove(bl);
+            nBTerima = berkasDiterima.size();
+            max2 = max2 - nBTerima;
+        }
+    }
+    
 }
