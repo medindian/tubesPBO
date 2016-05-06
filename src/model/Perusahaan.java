@@ -7,10 +7,7 @@ import java.util.Date;
 public class Perusahaan extends Owner{
     
     private ArrayList<Lowongan> daftarLowongan;
-
-//    public boolean isi = false;
     private int nLowongan=0;
-    private int max = 10;
 	
     public Perusahaan (String id, String nama, String pass){
         super(id, nama, pass);
@@ -59,8 +56,14 @@ public class Perusahaan extends Owner{
         }
     }
 
-//   public void terimaPelamar(int idLowongan, int idPelamar){}
-//   public void cekPassword (String password){}
-
+   public void terimaPelamar(String namaLowongan, String idPelamar){
+        int ada = cariLowongan(namaLowongan);
+        if (ada == -1){
+           System.out.println("Lowongan yang anda cari tidak ada");
+        } 
+//        else {   
+//           daftarLowongan.get(ada).addBerkasDiterima(b);
+//       }
+   }
 
 }

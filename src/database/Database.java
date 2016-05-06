@@ -27,12 +27,12 @@ public class Database {
         }
     }
 
-    public void savePerusahaan(Perusahaan p){
+    public void savePerusahaan(String idAkun, String nama, String pass){
         try {
             String query = "INSERT INTO `Perusahaan`(`idperusahaan`, `namap`, 'passp') VALUES ("
-                    + "'" + p.getIdAkun() + "',"
-                    + "'" + p.getNama() + "',"
-                    + "'" + String.valueOf(p.getPassword()) + "')";
+                    + "'" + idAkun + "',"
+                    + "'" + nama + "',"
+                    + "'" + pass + "')";
             st.execute(query, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = st.getGeneratedKeys();
 //            int generatedId = -1;
@@ -45,6 +45,24 @@ public class Database {
         }
     }
 
+    public void savePelamar(String idAkun, String nama, String pass){
+        try {
+            String query = "INSERT INTO `Pelamar`(`idpelamar`, `nama`, `pass`,) VALUES ("
+                    + "'" + idAkun + "',"
+                    + "'" + nama + "',"
+                    + "'" + pass + "')";
+            st.execute(query, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = st.getGeneratedKeys();
+//            int generatedId = -1;
+//            if (rs.next()) {
+//                generatedId = rs.getInt(1);
+//            }
+//            p.setId(generatedId);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     public Perusahaan getPerusahaan(String idPerusahaan){
         Perusahaan p = null;
         try {
@@ -59,46 +77,72 @@ public class Database {
         return p;
     }
     
-    public void updatePerusahaan(Perusahaan p) {
+    public Pelamar getPelamar(String idPelamar){
+        Pelamar p = null;
         try {
-            String query = "update Perusahaan set namap ='"
-                    + p.getNama() +
-                    "' where idPerusahaan = "
-                    + p.getIdAkun() + "' AND passp = "
-                    + String.valueOf(p.getPassword());
+            String query = "SELECT * FROM `Pelamar` WHERE `idperusahaan` = " + idPelamar;
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                p = new Pelamar(rs.getString(1), rs.getString(2), rs.getString(3));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return p;
+    }
+    
+    public void updatePerusahaan(String id, String nama, String pass) {
+        String query = "update Perusahaan set namap ='" + nama
+                    + ", passp ='" + pass + "' where idPerusahaan = " + id;
+        try {
             st.executeUpdate(query);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
-    public void updatePassPer(Perusahaan p){
-        try{
-            String query = "update Perusahaan set passp = "
-                    + String.valueOf(p.getPassword()) + "' where idPerusahaan = "
-                    + p.getIdAkun();
-            st.executeUpdate(query);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    public void updatePassPelamar(Pelamar p){
-        try{
-            String query = "update Pelamar set pass = "
-                    + String.valueOf(p.getPassword()) + "' where idPelamar = "
-                    + p.getIdAkun();
+    public void updatePelamar(String id, String nama, String pass) {
+        String query = "update Pelamar set nama ='" + nama
+                    + ", pass ='" + pass + "' where idPelamar = " + id;
+        try {
             st.executeUpdate(query);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
-    public void deletePerusahaan(Perusahaan p){
+    public void updatePassPerusahaan(String id, String pass){
+        String query = "update Perusahaan set pass = " + pass + "' where idPerusahaan = "
+                    + id;
+        try{
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void updatePassPelamar(String id, String pass){
+        String query = "update Pelamar set pass = " + pass + "' where idPelamar = "
+                    + id;
+        try{
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void deletePerusahaan(String idAkun){
+        String query = "delete from Perusahaan where idPerusahaan= " + idAkun;
         try {
-            String query = "delete from Perusahaan where idPerusahaan= "
-                    + p.getIdAkun() + "' AND pass = "
-                    + String.valueOf(p.getPassword());
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void deletePelamar(String idAkun){
+        String query = "delete from Pelamar where idPelamar= " + idAkun;
+        try {
             st.executeUpdate(query);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -119,23 +163,7 @@ public class Database {
         return listId.toArray(new String[0]);
     }
     
-    public void savePelamar(Pelamar p){
-        try {
-            String query = "INSERT INTO `Pelamar`(`idpelamar`, `nama`, `pass`,) VALUES ("
-                    + "'" + p.getIdAkun() + "',"
-                    + "'" + p.getNama() + "',"
-                    + "'" + String.valueOf(p.getPassword()) + "')";
-            st.execute(query, Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = st.getGeneratedKeys();
-//            int generatedId = -1;
-//            if (rs.next()) {
-//                generatedId = rs.getInt(1);
-//            }
-//            p.setId(generatedId);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
+    
 
     public Pelamar getPelamar(String idPelamar){
         Pelamar p = null;

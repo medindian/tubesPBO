@@ -17,7 +17,7 @@ public class Pelamar extends Owner{
         return statusDiterima;      }
     
     public String toString(){
-        return ("Nama                    :"+getNama());
+        return (" Nama  :"+getNama() + "(" + getIdAkun() + ")");
     }
     
     public void createBerkas(String isiCV, String isiSLK){

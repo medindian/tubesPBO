@@ -25,6 +25,26 @@ public class aplikasi{
         nPrsh = daftarPerusahaan.size();
     }
     
+    public Pelamar getPelamar(String idAkun){
+        for (int i = 0; i < nPelamar; i++) {
+                Pelamar p = (Pelamar) daftarPelamar.get(i);
+                if (p.getIdAkun().equals(idAkun)) {
+                    return p;
+                }
+            }
+        return null;
+    }
+    
+    public Perusahaan getPerusahaan(String idAkun){
+        for (int i = 0; i < nPrsh; i++) {
+                Perusahaan p = (Perusahaan) daftarPerusahaan.get(i);
+                if (p.getIdAkun().equals(idAkun)) {
+                    return p;
+                }
+            }
+        return null;
+    }
+    
     public boolean cekAngka(String name){
         boolean hasil = true;
         String[] angka = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -35,7 +55,7 @@ public class aplikasi{
         return hasil;
     }
     
-    public boolean cektanda(String name){
+    public boolean cekTanda(String name){
         boolean hasil = true;
         String[] tanda = {"/", "[", "]", "{", "}", "+", "&", "#", "*", "!"};
         for (String t : tanda){
@@ -44,45 +64,64 @@ public class aplikasi{
         }
         return hasil;
     }
-    
-//    public Perusahaan getPerusahaan(String id){
-//        return daftarPerusahaan.equals(id);
-//    }
-       
-    public int addPerusahaan(String id, String nama, String pass){
-        if (nPrsh < 100){
-//            if (getPerusahaan(id) == null) {
-                if (!(cariUsername(username))) {
-                    if (cekNama(nama)){
-                        daftarPerusahaan.add(new Perusahaan(id, nama, nama, pass));
-                        db.savePenyedia(id, nama, nama, pass);
-                        nPerusahaan=daftarPerusahaan.size();
-                        System.out.println("Data berhasil disimpan");
+
+    public void addPelamar(String idAkun, String nama, String pass){
+        if (nPelamar < 100){
+            if (getPelamar(idAkun) == null) {
+                for(int i = 0; i < nPelamar; i++){
+                    if (daftarPelamar.get(i).getIdAkun().equals(nama)){
+                        System.out.println("Nama sudah dipakai");
                     } else {
-                        System.out.println("Nama tidak valid");
+                        if (cekAngka(nama) == false && cekTanda(nama) == false){
+                            Pelamar p = new Pelamar(idAkun, nama, pass);
+                            daftarPelamar.add(p);
+                            db.savePelamar(p);
+                            nPelamar = daftarPelamar.size();
+                            System.out.println("Data berhasil disimpan");
+                        } else {
+                            System.out.println("Nama hanya boleh HURUF saja");
+                        }
                     }
-                } else {
-                    System.out.println("Username sudah digunakan");
                 }
             } else {
-                System.out.println("ID sudah digunakan");
+                System.out.println("Sudah ada yang menggunakan id akun");
             }
         }
     }
     
-    public int findPerusahaan(String idAkun){
-        int ind = -1;
-        for(int i = 0; i < daftarPerusahaan.length; i++){
-            if (daftarPerusahaan[i].getIdAkun().equals(idAkun)){
-                ind = i;    }   }
-        return ind; }
+    public void addPerusahaan(String idAkun, String nama, String pass){
+        if (nPrsh < 100){
+            if (getPerusahaan(idAkun) == null) {
+                for(int i = 0; i < nPrsh; i++){
+                    if (daftarPerusahaan.get(i).getIdAkun().equals(nama)){
+                        System.out.println("Nama sudah dipakai");
+                    } else {
+                        if (cekAngka(nama) == false && cekTanda(nama) == false){
+                            Perusahaan p = new Perusahaan(idAkun, nama, pass);
+                            daftarPerusahaan.add(p);
+                            db.savePerusahaan(p);
+                            nPrsh=daftarPerusahaan.size();
+                            System.out.println("Data berhasil disimpan");
+                        } else {
+                            System.out.println("Nama hanya boleh HURUF saja");
+                        }
+                    }
+                }
+            } else {
+                System.out.println("Sudah ada yang menggunakan id akun");
+            }
+        }
+    }
     
-    public boolean foundPerusahaan(String idAkun){
-        boolean ketemu = false;
-        for (Perusahaan perusahaan1 : daftarPerusahaan) {
-            if (perusahaan1.getIdAkun().equals(idAkun)) {
-                ketemu = true;  }   }
-        return ketemu;  }
+    public void ubahPerusahaan(String idAkun, String nama, String pass){
+        Perusahaan p = getPerusahaan(idAkun);
+        if (!cekAngka(nama) && !cekTanda(nama)){
+            p.setIdAkun(idAkun);
+            p.setNama(nama);
+            p.setPassword(pass);
+        } else 
+            System.out.println("Nama hanya boleh diisi HURUF saja");
+    }
     
     public Perusahaan loginPerusahaan(String id, char[] pass){
         if (foundPerusahaan(id) == true){
@@ -101,38 +140,7 @@ public class aplikasi{
         }
         return null;
     }
-    
-    public void deletePerusahaan(String id){
-        boolean find = foundPerusahaan(id);
-        if (find == true){
-            int i = findPerusahaan(id);
-            int arAkhir = nPrsh-1;
-//            System.out.println(nPrsh);
-//            System.out.println(arAkhir);
-            if (i == arAkhir) // array 0, 1, 2
-                daftarPerusahaan[i] = null;
-            else{
-                for(int j = i; j < arAkhir; j++){
-                    int a = j+1;
-                    daftarPerusahaan[j] = daftarPerusahaan[a];
-                    daftarPerusahaan[arAkhir] = null;    }
-            nPrsh--;    }
-        }
-    }
         
-    public void hapusAkunPer(String id){
-        deletePerusahaan(id);
-//        con.deletePerusahaan(getPerusahaan(id));    
-    }
-    
-    public void gantiBioPerusahaan(Perusahaan p, String nama){
-        p.setNama(nama);
-    }
-    
-    public void gantiBioPelamar(Pelamar p, String nama){
-        p.setNama(nama);
-    }
-    
     public String daftarPerusahaan(){
 //        con.getListIDPerusahaan();
         String list = "";
