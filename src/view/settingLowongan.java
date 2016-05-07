@@ -3,8 +3,11 @@ package view;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Lowongan;
 
 public class settingLowongan extends javax.swing.JFrame implements View{
 
@@ -21,20 +24,18 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtLowonganBaru = new javax.swing.JTextField();
         btnSaveLowongan = new javax.swing.JButton();
         boxYear = new javax.swing.JComboBox<>();
         boxDay = new javax.swing.JComboBox<>();
         boxMonth = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        statTambahHapus = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        boxIdxLowong = new javax.swing.JComboBox<>();
         btnOK = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        txtLowonganDihapus = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableLowongan = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,9 +53,9 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel4.setText("Deadline              :");
 
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtLowonganBaru.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField2KeyTyped(evt);
+                txtLowonganBaruKeyTyped(evt);
             }
         });
 
@@ -80,7 +81,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2))
+                        .addComponent(txtLowonganBaru))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -101,7 +102,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLowonganBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -116,17 +117,10 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("View Daftar Lowongan  :");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hapus Lowongan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Pilih no. urut lowongan:");
-
-        boxIdxLowong.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        boxIdxLowong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jLabel2.setText("Pilih nama lowongan:");
 
         btnOK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnOK.setText("OK");
@@ -140,12 +134,13 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boxIdxLowong, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLowonganDihapus))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(btnOK)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnOK)
+                        .addGap(0, 104, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,14 +148,24 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(boxIdxLowong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLowonganDihapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnOK)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Status Proses :");
+        tableLowongan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ));
+        jScrollPane2.setViewportView(tableLowongan);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,67 +174,54 @@ public class settingLowongan extends javax.swing.JFrame implements View{
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel1)
-                        .addGap(105, 105, 105))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(statTambahHapus)
-                        .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(185, 185, 185))
+                        .addGap(254, 254, 254)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(23, 23, 23)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addGap(5, 5, 5)
-                        .addComponent(statTambahHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack)
-                        .addContainerGap())))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+    private void txtLowonganBaruKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLowonganBaruKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar(); 
-        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
-           JOptionPane.showMessageDialog(null,"Inputtan harus berupa HURUF saja!");
+        if(!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa Angka saja!");
             evt.consume();
         }
-    }//GEN-LAST:event_jTextField2KeyTyped
+    }//GEN-LAST:event_txtLowonganBaruKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDay;
-    private javax.swing.JComboBox<String> boxIdxLowong;
     private javax.swing.JComboBox<String> boxMonth;
     private javax.swing.JComboBox<String> boxYear;
     private javax.swing.JButton btnBack;
@@ -239,14 +231,13 @@ public class settingLowongan extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField statTambahHapus;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tableLowongan;
+    private javax.swing.JTextField txtLowonganBaru;
+    private javax.swing.JTextField txtLowonganDihapus;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -256,24 +247,38 @@ public class settingLowongan extends javax.swing.JFrame implements View{
         btnSaveLowongan.addActionListener(e);
     }
 
-/*    public Date getDeadline(){
+    public Date getDeadline(){
+        Date dd = null;
+        dd.setDate(boxDay.getSelectedIndex()+1);
+        dd.setMonth(boxMonth.getSelectedIndex()+1);
+        dd.setYear(boxYear.getSelectedIndex()+1);
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
-        String dateInString = boxDay.getSelectedItem() + " " + boxMonth.getSelectedItem() +
-                " " + boxYear.getSelectedItem();
-        Date dd = sdf.parse(dateInString);
+//        Date dd = sdf.parse(dateInString);
         return dd;
     }
-*/    
-    public int getIdxLowongan(){
-        return boxIdxLowong.getSelectedIndex()+1;   }
     
-    public Date getDeadline(){
-        return new Date();
+    public void setListLowongan(ArrayList<Lowongan> list){
+        String[] judul = {"Nomor","Nama Lowongan","Deadline"};
+        String[][] isi = new String[list.size()][3];
+        for (int i = 0; i < list.size(); i++){
+            isi[i][0] = String.valueOf(i);
+            isi[i][1] = list.get(i).getNamaPkrj();
+            isi[i][2] = String.valueOf(list.get(i).getDeadline());
+        }
+        DefaultTableModel tableModel = new DefaultTableModel(isi,judul);
+        tableLowongan.setModel(tableModel);
+        tableLowongan.getColumnModel().getColumn(0).setPreferredWidth(20);
     }
+    
+    public String getNamaBaru(){
+        return txtLowonganBaru.getText();    }
+    
+    public String getHapus(){
+        return txtLowonganDihapus.getText();    }
     
     public Object getBtnBack() {
         return btnBack;    }
-
+                
     public Object getBtnOK() {
         return btnOK;    }
 

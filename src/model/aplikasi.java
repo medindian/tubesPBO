@@ -104,17 +104,11 @@ public class aplikasi{
             if (cariOwner(idAkun) == false) {
                 if (cariNama(nama) == false){
                     if (cekAngka(nama) == false && cekTanda(nama) == false){
-                        Perusahaan p = new Perusahaan(idAkun, nama, pass);
-                        daftarOwner.add(p);
-                        boolean a = cariOwner(idAkun);
-                        if (a == false) System.out.println("Ga ada cuy");
-                        else System.out.println("ada cuy");
-                        
-                        int ar = cariOwner2(idAkun);
-                        System.out.println("ar : " + ar);
-//                        int a = db.savePerusahaan(h.getIdAkun(), h.getNama(), h.getPassword());
+                        Perusahaan q = new Perusahaan(idAkun, nama, pass);
+                        daftarOwner.add(q);
+                        int a = db.savePerusahaan(q.getIdAkun(), q.getNama(), q.getPassword());
                         nOwner = daftarOwner.size();
-                        System.out.println("nPrsh : "+ nOwner);
+                        System.out.println("Data berhasil disimpan");
                         hasil =  1;
                     } else
                         System.out.println("Nama hanya boleh HURUF saja");
@@ -126,39 +120,80 @@ public class aplikasi{
         return hasil;
     }
     
-    public void addLowongan(Perusahaan p, String nama, Date deadline){
+    public int addLowongan(Perusahaan p, String nama, Date deadline){
         if (p.cariLowongan(nama) == -1){
             p.createLowongan(nama, deadline);
             db.saveLowongan(p.getIdAkun(), nama, deadline);
+            return 1;
         } else System.out.println("Lowongan sudah tersedia");
+        return -1;
     }
     
-    public void ubahPerusahaan(Perusahaan p, String id, String nama, String pass){
+    public int deleteLowongan(Perusahaan p, String nama){
+        if (p.cariLowongan(nama) == 1){
+            p.removeLowongan(nama);
+            db.deleteLowongan(p, nama);
+            return 1;
+        } else System.out.println("Lowongan tidak ada");
+        return -1;
+    }
+    
+//    public void listLowongan1(Perusahaan p){
+//        ArrayList<Lowongan> list = db.getListLowongan(p);
+//        for(int i=0; i < list.size(); i++){
+//            int ar = i+1;
+//            System.out.println(ar+". "+(list.get(i)).getNamaPkrj());
+//            System.out.println(ar+". "+(list.get(i)).getDeadline());
+//        }
+//    }
+//    
+//    public void listLowongan2(Perusahaan p){
+//        ArrayList<Lowongan> list = db.getListLowongan(p);
+//        for(int i=0; i < list.size(); i++){
+//            int ar = i+1;
+//            System.out.println(ar+". "+(list.get(i)).getNamaPkrj());
+//            System.out.println(ar+". "+(list.get(i)).getDeadline());
+//        }
+//    }
+    
+    public int ubahPerusahaan(Perusahaan p, String nama, String pass){
         if (!cekAngka(nama) && !cekTanda(nama)){
-            p.setIdAkun(id);
             p.setNama(nama);
             p.setPassword(pass);
+            db.updatePerusahaan(p.getIdAkun(), nama, pass);
+            return 1;
         } else 
             System.out.println("Nama hanya boleh diisi HURUF saja");
+        return -1;
     }
     
-    public void ubahPassPerusahaan(Perusahaan p, String pass){
-            p.setPassword(pass);
-    }
-    
-    public void ubahPelamar(Pelamar p, String idAkun, String nama, String pass){
-        if (!cekAngka(nama) && !cekTanda(nama)){
-            p.setIdAkun(idAkun);
-            p.setNama(nama);
-            p.setPassword(pass);
-        } else 
-            System.out.println("Nama hanya boleh diisi HURUF saja");
-    }
-    
-    public void ubahPassPelamar(Pelamar p, String passLama, String passBaru){
-        if (p.getPassword() == passLama){
+    public int ubahPassPerusahaan(Perusahaan p, String passLama, String passBaru){
+        if ((p.getPassword()).equals(passLama)){
             p.setPassword(passBaru);
+            db.updatePassPelamar(p.getIdAkun(), passBaru);
+            return 1;
         }
+        return -1;
+    }
+    
+    public int ubahPelamar(Pelamar p, String nama, String pass){
+        if (!cekAngka(nama) && !cekTanda(nama)){
+            p.setNama(nama);
+            p.setPassword(pass);
+            db.updatePelamar(p.getIdAkun(), nama, pass);
+            return 1;
+        } else
+            System.out.println("Nama hanya boleh diisi HURUF saja");
+        return -1;
+    }
+    
+    public int ubahPassPelamar(Pelamar p, String passLama, String passBaru){
+        if ((p.getPassword()).equals(passLama)){
+            p.setPassword(passBaru);
+            db.updatePassPerusahaan(p.getIdAkun(), passBaru);
+            return 1;
+        }
+        return -1;
     }
     
     public Owner login(String idAkun, String pass){

@@ -53,6 +53,31 @@ public class Database {
             System.out.println(ex.getNextException());
         }
     }
+    
+    public ArrayList<Owner> readDataOwner(){
+        ArrayList<Owner> daftarOwner = new ArrayList();
+        String state = "SELECT idPerusahaan, nama, password FROM `perusahaan`";
+        ResultSet rs = getData(state);
+        try {
+            while (rs.next()) {
+                Perusahaan pp = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
+                daftarOwner.add(pp);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        state = "SELECT idPelamar, namaPelamar, passPelamar FROM `pelamar`";
+        rs = getData(state);
+        try {
+            while (rs.next()) {
+                Pelamar p = new Pelamar(rs.getString("idPelamar"), rs.getString("namaPelamar"), rs.getString("passPelamar"));
+                daftarOwner.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return daftarOwner;
+    }
 
     public int savePelamar(String idAkun, String nama, String pass){
         String state = "INSERT INTO `pelamar`(`idPelamar`, `namaPelamar`, `passPelamar`) VALUES ("
@@ -68,17 +93,17 @@ public class Database {
         }
     }
     
-    public void savePerusahaan(String id, String name, String password){
+    public int savePerusahaan(String id, String name, String password){
         String state = "INSERT INTO `perusahaan`(`idPerusahaan`, `nama`, 'password') VALUES ("
             + "'" + id + "',"
             + "'" + name + "',"
             + "'" + password + "')";
         try {
             query(state);
-//            return 1;
+            return 1;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-//            return -1;
+            return -1;
         }
     }
     
@@ -121,31 +146,6 @@ public class Database {
         return daftar;
     }
     
-    public ArrayList<Owner> readDataOwner(){
-        ArrayList<Owner> daftarOwner = new ArrayList();
-        String state = "SELECT idPerusahaan, nama, password FROM `perusahaan`";
-        ResultSet rs = getData(state);
-        try {
-            while (rs.next()) {
-                Perusahaan p = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
-                daftarOwner.add(p);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        state = "SELECT idPelamar, namaPelamar, passPelamar FROM `pelamar`";
-        rs = getData(state);
-        try {
-            while (rs.next()) {
-                Pelamar p = new Pelamar(rs.getString("idPelamar"), rs.getString("namaPelamar"), rs.getString("passPelamar"));
-                daftarOwner.add(p);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return daftarOwner;
-    }
-        
     public ArrayList<Lowongan> readDataLowongan(){
         ArrayList<Lowongan> daftarLowong = new ArrayList();
         String state = "SELECT idPerusahaan, namaPkj, deadline FROM `lowongan`";
@@ -234,6 +234,16 @@ public class Database {
         }
     }
     
+    public void deleteLowongan(Perusahaan p, String nama){
+        String state = "delete from berkaslamaran where idPelamar= " + p.getIdAkun() 
+                + "and namaPkj = "+nama;
+        try {
+            query(state);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     public String[] getListIDPerusahaan() {
         ArrayList<String> listId = new ArrayList<>();
         try {
@@ -262,18 +272,19 @@ public class Database {
         return listId.toArray(new String[0]);
     }
     
-    public String[] getListLowongan() {
-        ArrayList<String> listLowong = new ArrayList<>();
+    public ArrayList getListLowongan(Perusahaan p) {
+        ArrayList<Lowongan> listLowong = new ArrayList<>();
         try {
-            String state = "SELECT namaPkj FROM `lowongan`";
+            String state = "SELECT namaPkj, deadline FROM `lowongan` where idPerusahaan = "+p.getIdAkun();
             ResultSet rs = getData(state);
             while (rs.next()) {
-                listLowong.add(rs.getString("namaPkj"));
+                Lowongan w = new Lowongan(rs.getString("namaPkj"), rs.getDate("deadline"));
+                listLowong.add(w);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return listLowong.toArray(new String[0]);
+        return listLowong;
     }
-
+    
 }
