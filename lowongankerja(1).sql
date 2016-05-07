@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2016 at 06:33 PM
+-- Generation Time: May 07, 2016 at 11:03 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -67,6 +67,15 @@ CREATE TABLE `pelamar` (
   `namaPelamar` varchar(100) NOT NULL,
   `passPelamar` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='menyimpan data pelmaar';
+
+--
+-- Dumping data for table `pelamar`
+--
+
+INSERT INTO `pelamar` (`idPelamar`, `namaPelamar`, `passPelamar`) VALUES
+('1234', 'medin', '1234'),
+('678', 'dumb', '1234'),
+('dummy', 'gummy', '1234');
 
 -- --------------------------------------------------------
 
