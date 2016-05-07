@@ -1,13 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
-import model.aplikasi;
 
 public class daftarBaruPelamar extends javax.swing.JFrame implements View {
-
-//    aplikasi model;
     
     public daftarBaruPelamar() {
         initComponents();

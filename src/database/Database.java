@@ -20,17 +20,17 @@ public class Database {
     private Connection con;
     private ResultSet rs = null;
 
-    public int connect() {
-        int hasil = 0;
+    public void connect() {
+//        int hasil = 0;
         try {
             con = DriverManager.getConnection(url, user, pass);
             st = con.createStatement();
-            hasil = 1;
+//            hasil = 1;
 //            System.out.println("Berhasil");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return hasil;
+//        return hasil;
     }
 
     public ResultSet getData(String SQLString) {
@@ -51,20 +51,6 @@ public class Database {
             System.out.println(ex.getNextException());
         }
     }
-    
-    public int savePerusahaan(String idAkun, String nama, String pass){
-        String state = "INSERT INTO `perusahaan`(`idPerusahaan`, `nama`, 'password') VALUES ("
-            + "'" + idAkun + "',"
-            + "'" + nama + "',"
-            + "'" + pass + "')";
-        try {
-            query(state);
-            return 1;
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            return -1;
-        }
-    }
 
     public int savePelamar(String idAkun, String nama, String pass){
         String state = "INSERT INTO `pelamar`(`idPelamar`, `namaPelamar`, `passPelamar`) VALUES ("
@@ -77,6 +63,20 @@ public class Database {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             return -1;
+        }
+    }
+    
+    public void savePerusahaan(String id, String name, String password){
+        String state = "INSERT INTO `perusahaan`(`idPerusahaan`, `nama`, 'password') VALUES ("
+            + "'" + id + "',"
+            + "'" + name + "',"
+            + "'" + password + "')";
+        try {
+            query(state);
+//            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+//            return -1;
         }
     }
     
@@ -106,23 +106,22 @@ public class Database {
         
     public ArrayList<Perusahaan> readDataPerusahaan(){
         ArrayList<Perusahaan> daftarP = new ArrayList();
+        String state = "SELECT idPerusahaan, nama, password FROM `perusahaan`";
+        ResultSet rs = getData(state);
         try {
-            String state = "SELECT idPerusahaan, nama, password FROM `Perusahaan`";
-            ResultSet rs = getData(state);
             while (rs.next()) {
                 Perusahaan p = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
                 daftarP.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-//            Logger.getLogger(Aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
         return daftarP;
     }
     
     public ArrayList<Pelamar> readDataPelamar(){
         ArrayList<Pelamar> daftarPel = new ArrayList();
-        String state = "SELECT idPelamar, namaPelamar, passPelamar FROM `Pelamar`";
+        String state = "SELECT idPelamar, namaPelamar, passPelamar FROM `pelamar`";
         ResultSet rs = getData(state);
         try {
             while (rs.next()) {

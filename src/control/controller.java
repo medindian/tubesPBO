@@ -28,12 +28,11 @@ import view.viewBerkasMasuk;
 import view.GantiPasswordPerusahaan;
 
 import view.View;
-//import model.AplikasiKonsol;
 import model.Pelamar;
 import model.Perusahaan;
 import model.aplikasi;
 
-public class controller implements ActionListener {//implements ActionListener{
+public class controller implements ActionListener {
 
     private aplikasi model;
     private View view;
@@ -113,6 +112,30 @@ public class controller implements ActionListener {//implements ActionListener{
                 view = (View) c;
             }
         }
+        //gui daftarBaruPerusahaan
+        else if (view instanceof daftarBaruPerusahaan){
+            daftarBaruPerusahaan dp = (daftarBaruPerusahaan) view;
+            if (source.equals(dp.getBtnBack())){
+                loginPerusahaan p = new loginPerusahaan();
+                p.setVisible(true);
+                p.addListener(this);
+                dp.dispose();
+                view = (View) p;
+            }
+            else if (source.equals(dp.getBtnSave2())){
+                String id = dp.getIdAkun();
+                String namaP = dp.getNamaPer();
+                String passP = String.valueOf(dp.getPassPer());
+                if(p2 == null){
+                    p2 = new Perusahaan(id, namaP, passP);
+                    int b = model.addPerusahaan(id, namaP, passP);
+                    System.out.println("b : "+ b);
+                    if (b == 1)  JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
+                    else JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+                                JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
         //gui daftarBaruPelamar
         else if(view instanceof daftarBaruPelamar){
             daftarBaruPelamar h = (daftarBaruPelamar) view;
@@ -181,34 +204,7 @@ public class controller implements ActionListener {//implements ActionListener{
                 pass = "";
             }
         }
-        //gui daftarBaruPerusahaan
-        else if (view instanceof daftarBaruPerusahaan){
-            daftarBaruPerusahaan dp = (daftarBaruPerusahaan) view;
-            if (source.equals(dp.getBtnBack())){
-                loginPerusahaan p = new loginPerusahaan();
-                p.setVisible(true);
-                p.addListener(this);
-                dp.dispose();
-                view = (View) p;
-            }
-            else if (source.equals(dp.getBtnSave2())){
-                String idAkun = dp.getIdAkun();
-                String namaP = dp.getNamaPer();
-                String passP = String.valueOf(dp.getPassPer());
-//                if(p2 == null){
-                    p2 = new Perusahaan(idAkun, namaP, passP);
-//                    model.listPerusahaan().add(p2);
-                    System.out.println(model.nPrsh());;
-//                    int b = model.getDB().savePerusahaan(p2.getIdAkun(), p2.getNama(), p2.getPassword());
-                    int b = model.addPerusahaan(p2.getIdAkun(), p2.getNama(), p2.getPassword());
-                    if (b == 1)
-                        JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
-                    else
-                        JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
-                                JOptionPane.WARNING_MESSAGE);
-//                }
-            }
-        }
+        
         //gui MenuPelamar
         else if (view instanceof MenuPelamar){
             MenuPelamar j = (MenuPelamar) view;

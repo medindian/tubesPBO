@@ -114,18 +114,6 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
     private javax.swing.JPasswordField txtPassPer;
     // End of variables declaration//GEN-END:variables
 
-    public String getIdAkun(){
-        return txtIdAkunPer.getText();
-    }
-
-    public String getNamaPer(){
-        return txtNamaPer.getText();
-    }
-    
-    public char[] getPassPer(){
-        return txtPassPer.getPassword();
-    }
-
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);
@@ -138,6 +126,13 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
     public Object getBtnSave2() {
         return btnSave2;    }
     
+    public String getIdAkun(){
+        return txtIdAkunPer.getText();  }
+
+    public String getNamaPer(){
+        return txtNamaPer.getText();    }
     
+    public char[] getPassPer(){
+        return txtPassPer.getPassword();    }
     
 }
