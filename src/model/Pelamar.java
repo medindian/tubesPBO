@@ -7,7 +7,6 @@ public class Pelamar extends Owner{
     
     public Pelamar(String id, String nama, String pass){
         super(id, nama, pass);
-        berkas = new BerkasLamaran();
     }
     
     public BerkasLamaran getBerkas(){
@@ -21,7 +20,7 @@ public class Pelamar extends Owner{
     }
     
     public void createBerkas(String isiCV, String isiSLK){
-        berkas = new BerkasLamaran();
+        berkas = new BerkasLamaran(getIdAkun(), isiCV, isiSLK);
         berkas.setCV(isiCV);
         berkas.setSLK(isiSLK);
         statBerkas = true;

@@ -4,6 +4,12 @@ import java.util.Date;
 public class BerkasLamaran{
     private String idAkun, CV, SLK;
     
+    public BerkasLamaran(String idAkun, String cv, String slk){
+        this.idAkun = idAkun;
+        this.CV = cv;
+        this.SLK = slk;
+    }
+    
     public void setIdAkun(String idAkun){
         this.idAkun = idAkun;   }
     

@@ -11,6 +11,7 @@ public class Perusahaan extends Owner{
 	
     public Perusahaan (String id, String nama, String pass){
         super(id, nama, pass);
+        daftarLowongan = null;
     }
         
     public void createLowongan(String nmLowongan, Date deadline){
@@ -42,7 +43,7 @@ public class Perusahaan extends Owner{
             if (l.getNamaPkrj().equals(namaLowongan))
                 return daftarLowongan.indexOf(l);
         }
-        return 0;
+        return -1;
     }
     
     //id mulai dari 1

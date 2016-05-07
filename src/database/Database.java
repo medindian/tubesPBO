@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import model.BerkasLamaran;
 import model.Lowongan;
+import model.Owner;
 import model.Pelamar;
 import model.Perusahaan;
 
@@ -103,52 +105,75 @@ public class Database {
             System.out.println(ex.getMessage());
         }
     }
-        
-    public ArrayList<Perusahaan> readDataPerusahaan(){
-        ArrayList<Perusahaan> daftarP = new ArrayList();
+    
+    public ArrayList<Lowongan> listLowongan(String company){
+        ArrayList<Lowongan> daftar = new ArrayList();
+        String state = "SELECT namaPkj, deadline FROM `lowongan` WHERE idPerusahaan = "+company;
+        ResultSet rs = getData(state);
+        try {
+            while (rs.next()) {
+                Lowongan w = new Lowongan(rs.getString("namaPkj"), rs.getDate("deadline"));
+                daftar.add(w);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return daftar;
+    }
+    
+    public ArrayList<Owner> readDataOwner(){
+        ArrayList<Owner> daftarOwner = new ArrayList();
         String state = "SELECT idPerusahaan, nama, password FROM `perusahaan`";
         ResultSet rs = getData(state);
         try {
             while (rs.next()) {
                 Perusahaan p = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
-                daftarP.add(p);
+                daftarOwner.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return daftarP;
-    }
-    
-    public ArrayList<Pelamar> readDataPelamar(){
-        ArrayList<Pelamar> daftarPel = new ArrayList();
-        String state = "SELECT idPelamar, namaPelamar, passPelamar FROM `pelamar`";
-        ResultSet rs = getData(state);
+        state = "SELECT idPelamar, namaPelamar, passPelamar FROM `pelamar`";
+        rs = getData(state);
         try {
             while (rs.next()) {
                 Pelamar p = new Pelamar(rs.getString("idPelamar"), rs.getString("namaPelamar"), rs.getString("passPelamar"));
-                daftarPel.add(p);
+                daftarOwner.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return daftarPel;
+        return daftarOwner;
     }
-    
-    public ArrayList<Lowongan> getDataLowongan(){
+        
+    public ArrayList<Lowongan> readDataLowongan(){
         ArrayList<Lowongan> daftarLowong = new ArrayList();
+        String state = "SELECT idPerusahaan, namaPkj, deadline FROM `lowongan`";
+        ResultSet rs = getData(state);
         try {
-            String query = "SELECT idPerusahaan, namaPkj, deadline FROM `lowongan`";
-            ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-//                Lowongan w = new Lowongan(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
                 Lowongan w = new Lowongan(rs.getString("namaPkj"), rs.getDate("deadline"));
                 daftarLowong.add(w);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-//            Logger.getLogger(Aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
         return daftarLowong;
+    }
+    
+    public ArrayList<BerkasLamaran> readDataBerkasLamaran(){
+        ArrayList<BerkasLamaran> daftarBerkas = new ArrayList();
+        String state = "SELECT idPelamar, fileCV, fileSLK FROM `berkaslamaran`";
+        ResultSet rs = getData(state);
+        try {
+            while (rs.next()) {
+                BerkasLamaran b = new BerkasLamaran(rs.getString("idPelamar"), rs.getString("fileCV"), rs.getString("fileSLK"));
+                daftarBerkas.add(b);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return daftarBerkas;
     }
     
     public void updatePerusahaan(String id, String nama, String pass) {

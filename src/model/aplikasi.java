@@ -3,55 +3,37 @@ package model;
 //import java.text.ParseException;
 import database.Database;
 import java.util.Date;
-//import database.DatabaseConnection;
 //import java.sql.PreparedStatement;
 //import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Pelamar;
 
 public class aplikasi{
 //    public static void main(String[] args){
 
-    public ArrayList<Pelamar> daftarPelamar;
-    public ArrayList<Perusahaan> daftarPerusahaan;
-    public Database db;
-    public int nPrsh = 0;
-    public int nPelamar = 0;
+    private ArrayList<Owner> daftarOwner;
+    private ArrayList<Lowongan> daftarLowongan;
+    private Database db;
+    private int nOwner = 0;
+    private int nLowongan= 0;
     
     public aplikasi(){
         db = new Database();
         db.connect();
-        daftarPelamar = db.readDataPelamar();
-        daftarPerusahaan = db.readDataPerusahaan();
-        this.nPelamar = daftarPelamar.size();
-        this.nPrsh = daftarPerusahaan.size();
+        daftarOwner = db.readDataOwner();
+        daftarLowongan = db.readDataLowongan();
+        this.nOwner = daftarOwner.size();
+        this.nLowongan = daftarLowongan.size();
     }
-    
-    public int nPelamar(){
-        return nPelamar = daftarPelamar.size();
-    }
-    
-    public int nPrsh(){
-        return nPrsh = daftarPerusahaan.size();
-    }
-    
-    public Database getDB(){
-        return db;
-    }
-    
-    public ArrayList<Pelamar> listPelamar(){
-        return daftarPelamar;
-    }
-    
-    public ArrayList<Perusahaan> listPerusahaan(){
-        return daftarPerusahaan;
+        
+    public ArrayList<Owner> listOwner(){
+        return daftarOwner;
     }
     
     //untuk memeriksa idAkun Pelamar sudah dipakai atau belum
-    public boolean getPelamar(String idAkun){
-        for (int i = 0; i < nPelamar; i++) {
-            Pelamar p = (Pelamar) daftarPelamar.get(i);
+    public boolean cariOwner(String idAkun){
+        for (int i = 0; i < nOwner; i++) {
+            Owner p = (Owner) daftarOwner.get(i);
             if (p.getIdAkun().equals(idAkun)) {
                 return true;    }
             }
@@ -59,35 +41,13 @@ public class aplikasi{
     }
     
     //untuk mendapat array dari idAkun Pelamar
-    public int getPelamar2(String idAkun){
-        for (int i = 0; i < nPelamar; i++) {
-            Pelamar p = (Pelamar) daftarPelamar.get(i);
+    public int cariOwner2(String idAkun){
+        for (int i = 0; i < nOwner; i++) {
+            Owner p = (Owner) daftarOwner.get(i);
             if (p.getIdAkun().equals(idAkun))
                 return i;
             }
         return -1;
-    }
-    
-    //untuk memeriksa idAkun perusahaan sudah terpakai atau belum
-    public boolean getPerusahaan(String idAkun){
-        for (int i = 0; i < nPrsh; i++) {
-            Perusahaan p = daftarPerusahaan.get(i);
-            if (p.getIdAkun().equals(idAkun)) {
-                return true;    }
-            }
-        return false;
-    }
-    
-    //untuk mengambil array idAkun perusahaan
-    public int getPerusahaan2(String idAkun){
-        int hasil = -1;
-        for (int i = 0; i < nPrsh; i++){
-            Perusahaan p = daftarPerusahaan.get(i);
-            System.out.println("i : " + i);
-            if (p.getIdAkun() == idAkun)
-                hasil = i;   
-        }
-        return hasil;
     }
     
     public boolean cekAngka(String name){
@@ -109,31 +69,23 @@ public class aplikasi{
     }
     
     public boolean cariNama(String nama){
-        for(int i = 0; i < nPelamar; i++){
-            if (daftarPelamar.get(i).getNama().equals(nama))
+        for(int i = 0; i < nOwner; i++){
+            if (daftarOwner.get(i).getNama().equals(nama))
                 return true;
         }
         return false;
     }
     
-    public boolean cariNama2(String nama){
-        for(int i = 0; i < nPrsh; i++){
-            if (daftarPerusahaan.get(i).getNama().equals(nama))
-                return true;
-        }
-        return false;
-    }
-
     public int addPelamar(String idAkun, String nama, String pass){
         int hasil = -1;
-        if (nPelamar < 100){
-            if (getPelamar(idAkun) == false){
+        if (nOwner < 100){
+            if (cariOwner(idAkun) == false){
                 if(cariNama(nama) == false){
                     if (cekAngka(nama) == false && cekTanda(nama) == false){
                         Pelamar p = new Pelamar(idAkun, nama, pass);
-                        daftarPelamar.add(p);
+                        daftarOwner.add(p);
                         db.savePelamar(p.getIdAkun(), p.getNama(), p.getPassword());
-                        nPelamar = daftarPelamar.size();
+                        nOwner = daftarOwner.size();
                         System.out.println("Data berhasil disimpan");
                         hasil = 1;
                     }
@@ -148,17 +100,21 @@ public class aplikasi{
     
     public int addPerusahaan(String idAkun, String nama, String pass){
         int hasil = -1;
-        if (nPrsh < 100){
-            if (getPerusahaan(idAkun) == false) {
-                if (cariNama2(nama) == false){
+        if (nOwner < 100){           
+            if (cariOwner(idAkun) == false) {
+                if (cariNama(nama) == false){
                     if (cekAngka(nama) == false && cekTanda(nama) == false){
-                        Perusahaan h = new Perusahaan(idAkun, nama, pass);
-//                        System.out.println(h.getIdAkun() + " " + h.getNama() + " " + h.getPassword());                        
-                        daftarPerusahaan.add(h);
-                        int ar = getPerusahaan2(h.getIdAkun());
-                        System.out.println("ar : "+ ar);
+                        Perusahaan p = new Perusahaan(idAkun, nama, pass);
+                        daftarOwner.add(p);
+                        boolean a = cariOwner(idAkun);
+                        if (a == false) System.out.println("Ga ada cuy");
+                        else System.out.println("ada cuy");
+                        
+                        int ar = cariOwner2(idAkun);
+                        System.out.println("ar : " + ar);
 //                        int a = db.savePerusahaan(h.getIdAkun(), h.getNama(), h.getPassword());
-//                        nPrsh = daftarPerusahaan.size();
+                        nOwner = daftarOwner.size();
+                        System.out.println("nPrsh : "+ nOwner);
                         hasil =  1;
                     } else
                         System.out.println("Nama hanya boleh HURUF saja");
@@ -170,22 +126,27 @@ public class aplikasi{
         return hasil;
     }
     
-    public void addLowongan(String idAkun, String nama, Date deadline){
-        int ar = getPerusahaan2(idAkun);
-        Perusahaan p = daftarPerusahaan.get(ar);
-        if (p != null){
-            for(int i = 0; i < p.getDaftarLowongan().size(); i++){
-                if (!(p.getDaftarLowongan().get(i).getNamaPkrj().equals(nama))){
-                    p.createLowongan(nama, deadline);
-                    db.saveLowongan(idAkun, nama, deadline);
-                } else System.out.println("Lowongan sudah tersedia");
-            }
-        }
+    public void addLowongan(Perusahaan p, String nama, Date deadline){
+        if (p.cariLowongan(nama) == -1){
+            p.createLowongan(nama, deadline);
+            db.saveLowongan(p.getIdAkun(), nama, deadline);
+        } else System.out.println("Lowongan sudah tersedia");
     }
     
-    public void ubahPerusahaan(String idAkun, String nama, String pass){
-        int ar = getPerusahaan2(idAkun);
-        Perusahaan p = daftarPerusahaan.get(ar);
+    public void ubahPerusahaan(Perusahaan p, String id, String nama, String pass){
+        if (!cekAngka(nama) && !cekTanda(nama)){
+            p.setIdAkun(id);
+            p.setNama(nama);
+            p.setPassword(pass);
+        } else 
+            System.out.println("Nama hanya boleh diisi HURUF saja");
+    }
+    
+    public void ubahPassPerusahaan(Perusahaan p, String pass){
+            p.setPassword(pass);
+    }
+    
+    public void ubahPelamar(Pelamar p, String idAkun, String nama, String pass){
         if (!cekAngka(nama) && !cekTanda(nama)){
             p.setIdAkun(idAkun);
             p.setNama(nama);
@@ -194,72 +155,29 @@ public class aplikasi{
             System.out.println("Nama hanya boleh diisi HURUF saja");
     }
     
-    public void ubahPelamar(String idAkun, String nama, String pass){
-        int ar = getPelamar2(idAkun);
-        Pelamar p = daftarPelamar.get(ar);
-        if (!cekAngka(nama) && !cekTanda(nama)){
-            p.setIdAkun(idAkun);
-            p.setNama(nama);
-            p.setPassword(pass);
-        } else 
-            System.out.println("Nama hanya boleh diisi HURUF saja");
-    }
-    
-    public Perusahaan loginPerusahaan(String id, String pass){
-//        boolean log = false;
-        int i = 0;
-        while (i < nPrsh) {
-            if (daftarPerusahaan.get(i).getIdAkun().equals(id)) {
-                if (daftarPerusahaan.get(i).getPassword().equals(pass)) {
-                    return daftarPerusahaan.get(i); }
-            }
-            i++;
+    public void ubahPassPelamar(Pelamar p, String passLama, String passBaru){
+        if (p.getPassword() == passLama){
+            p.setPassword(passBaru);
         }
-        return null;
     }
     
-    public Pelamar loginPelamar(String id, String pass){
-        int i = 0;
-        while (i < nPelamar) {
-            if (daftarPelamar.get(i).getIdAkun().equals(id)) {
-                if (daftarPelamar.get(i).getPassword().equals(pass)) {
-                    return daftarPelamar.get(i);
+    public Owner login(String idAkun, String pass){
+        boolean access = false;
+        for (int i = 0; i < nOwner; i++) {
+            if ((daftarOwner.get(i).getIdAkun()).equals(idAkun)) {
+                if ((daftarOwner.get(i).getPassword()).equals(pass)) {
+                    return daftarOwner.get(i);
                 }
             }
-            i++;
         }
         return null;
     }
-    
-    public void deletePerusahaan(String id){
-        for (int i = 0; i < nPrsh; i++) {
-            Perusahaan p = (Perusahaan) daftarPerusahaan.get(i);
-            if (p.getIdAkun().equals(id)){
-                daftarPerusahaan.remove(i);
-                db.deletePerusahaan(id);
-                nPrsh = daftarPerusahaan.size();
-                break;
-            }
-        }
-    }
-    
-    public void deletePelamar(String id){
-        for (int i = 0; i < nPelamar; i++) {
-            Pelamar p = (Pelamar) daftarPelamar.get(i);
-            if (p.getIdAkun().equals(id)){
-                daftarPelamar.remove(i);
-                db.deletePelamar(id);
-                nPelamar = daftarPelamar.size();
-                break;
-            }
-        }
-    }
-    
+        
     //lupaPassword
     public boolean lupaPassPelamar(String idAkun, String nama, String passBaru){
         boolean berhasil = false;
-        int ar = getPelamar2(idAkun);
-        Pelamar p = daftarPelamar.get(ar);
+        int ar = cariOwner2(idAkun);
+        Owner p = daftarOwner.get(ar);
         if(p != null){
             if (p.getNama().equals(nama)){
                 p.setPassword(passBaru);
@@ -272,8 +190,8 @@ public class aplikasi{
     
     public boolean lupaPassPerusahaan(String idAkun, String nama, String passBaru){
         boolean berhasil = false;
-        int ar = getPerusahaan2(idAkun);
-        Perusahaan p = daftarPerusahaan.get(ar);
+        int ar = cariOwner2(idAkun);
+        Owner p = daftarOwner.get(ar);
         if(p != null){
             if (p.getNama().equals(nama)){
                 p.setPassword(passBaru);
@@ -286,40 +204,37 @@ public class aplikasi{
     
     //berkas
     //buatBerkas
-    public void buatBerkas(String idAkun, String cv, String slk){
-        int ar = getPelamar2(idAkun);
-        Pelamar p = daftarPelamar.get(ar);
+    public void buatBerkas(Pelamar p, String cv, String slk){
         p.createBerkas(cv, slk);
-        db.saveBerkas(idAkun, cv, slk);
+        db.saveBerkas(p.getIdAkun(), cv, slk);
     }
     //viewBerkas
-    public void viewBerkas(String idAkun){
-        int ar = getPelamar2(idAkun);
-        Pelamar p = daftarPelamar.get(ar);
+    public void viewBerkas(Pelamar p){
         p.getBerkas().viewBerkas();
     }
     
     //lowongan
-    public String jobByPerusahaan(String nama){
-        for(int i=0; i< nPrsh; i++){
-            Perusahaan p = daftarPerusahaan.get(i);
-            if(p.getNama().equals(nama)){
-                return p.getDaftarLowongan().toString();
-            }
-        }
+    public String cariPekerjaan(String company){
+        boolean ada = cariOwner(company);
+        int ar = cariOwner2(company);
+        if (ada == true && daftarOwner.get(ar) instanceof Perusahaan){
+            String nmP = daftarOwner.get(ar).getNama();
+        } else 
+            System.out.println("Perusaaan yang anda cari tidak ada");
         return null;
     }
 
-    public String cariPekerjaan(String nama, String lowong){
-        for(int i=0; i< nPrsh; i++){
-            Perusahaan p = daftarPerusahaan.get(i);
-            if(p.getNama().equals(nama)){
-                for(int j = 0; j < p.getDaftarLowongan().size(); j++){
-                    if(p.getLowongan(j).getNamaPkrj().equals(lowong)){
-                        return p.getLowongan(j).viewLowongan();
-                    }
-                }
-            }
+    public String cariPekerjaan2(String company, String lowong){
+        boolean ada = cariOwner(company);
+        int ar = cariOwner2(company);
+        if (ada == true && daftarOwner.get(ar) instanceof Perusahaan){
+//            if(p.getNama().equals(nama)){
+//                for(int j = 0; j < p.getDaftarLowongan().size(); j++){
+//                    if(p.getLowongan(j).getNamaPkrj().equals(lowong)){
+//                        return p.getLowongan(j).viewLowongan();
+//                    }
+//                }
+//            }
         }
         return null;
     }
