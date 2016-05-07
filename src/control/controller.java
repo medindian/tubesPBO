@@ -138,7 +138,6 @@ public class controller implements ActionListener {//implements ActionListener{
                 }
             }
         }
-        
         //gui MenuPelamar
         else if (view instanceof MenuPelamar){
             MenuPelamar j = (MenuPelamar) view;
