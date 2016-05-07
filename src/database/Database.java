@@ -20,71 +20,97 @@ public class Database {
     private Connection con;
     private ResultSet rs = null;
 
-    public void connect() {
+    public int connect() {
+        int hasil = 0;
         try {
             con = DriverManager.getConnection(url, user, pass);
             st = con.createStatement();
+            hasil = 1;
 //            System.out.println("Berhasil");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return hasil;
     }
 
-    public void savePerusahaan(String idAkun, String nama, String pass){
-        String query = "INSERT INTO `Perusahaan`(`idPerusahaan`, `nama`, 'pass') VALUES ("
-                    + "'" + idAkun + "',"
-                    + "'" + nama + "',"
-                    + "'" + pass + "')";
+    public ResultSet getData(String SQLString) {
         try {
-            st.execute(query, Statement.RETURN_GENERATED_KEYS);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            st = con.createStatement();
+            rs = st.executeQuery(SQLString);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return rs;
+    }
+    
+    public void query(String SQLString) throws SQLException {
+        try {
+            st = con.createStatement();
+            st.executeUpdate(SQLString);
+        } catch (SQLException c) {
+            c.printStackTrace();
         }
     }
-
-    public void savePelamar(String idAkun, String nama, String pass){
-        String query = "INSERT INTO `Pelamar`(`idPelamar`, `namaPelamar`, `passPelamar`,) VALUES ("
+    
+    public int savePerusahaan(String idAkun, String nama, String pass){
+        String state = "INSERT INTO `perusahaan`(`idPerusahaan`, `nama`, 'password') VALUES ("
             + "'" + idAkun + "',"
             + "'" + nama + "',"
             + "'" + pass + "')";
         try {
-            st.execute(query, Statement.RETURN_GENERATED_KEYS);
+            query(state);
+            return 1;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return -1;
+        }
+    }
+
+    public int savePelamar(String idAkun, String nama, String pass){
+        String state = "INSERT INTO `pelamar`(`idPelamar`, `namaPelamar`, `passPelamar`) VALUES ("
+            + "'" + idAkun + "',"
+            + "'" + nama + "',"
+            + "'" + pass + "')";
+        try {
+            query(state);
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return -1;
         }
     }
     
     public void saveLowongan(String idAkun, String namaPekerjaan, Date deadline){
-        String query = "INSERT INTO `lowongan` VALUES "
+        String state = "INSERT INTO `lowongan` (`namaPkj`, `deadline`, `idPerusahaan`) VALUES ("
             + "'" + namaPekerjaan + "',"
             + "'" + deadline + "',"
-            + "'" + idAkun;
+            + "'" + idAkun + "')";
         try {
-            st.execute(query, Statement.RETURN_GENERATED_KEYS);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
     public void saveBerkas(String idAkun, String cv, String slk){
-        String query = "INSERT INTO `berkaslamaran VALUES "
+        String state = "INSERT INTO `berkaslamaran` (`fileCV`, `fileSLK`, `idPelamar`) VALUES ("
             + "'" + cv + "',"
             + "'" + slk + "',"
-            + "'" + idAkun;
+            + "'" + idAkun + "')";
         try {
-            st.execute(query, Statement.RETURN_GENERATED_KEYS);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
         
-    public ArrayList<Perusahaan> getDataPerusahaan(String idPerusahaan){
+    public ArrayList<Perusahaan> readDataPerusahaan(){
         ArrayList<Perusahaan> daftarPrs = new ArrayList();
         try {
-            String query = "SELECT * FROM `Perusahaan`";
-            rs = st.executeQuery(query);
+            String query = "SELECT idPerusahaan, nama, password FROM `Perusahaan`";
+            ResultSet rs = getData(query);
             while (rs.next()) {
-                Perusahaan p = new Perusahaan(rs.getString(1), rs.getString(2), rs.getString(3));
+                Perusahaan p = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
                 daftarPrs.add(p);
             }
         } catch (SQLException ex) {
@@ -94,13 +120,13 @@ public class Database {
         return daftarPrs;
     }
     
-    public ArrayList<Pelamar> getDataPelamar(){
+    public ArrayList<Pelamar> readDataPelamar(){
         ArrayList<Pelamar> daftarPel = new ArrayList();
+        String state = "SELECT idPelamar, namaPelamar, passPelamar FROM `Pelamar`";
+        ResultSet rs = getData(state);
         try {
-            String query = "SELECT * FROM `Pelamar`";
-            rs = st.executeQuery(query);
             while (rs.next()) {
-                Pelamar p = new Pelamar(rs.getString(1), rs.getString(2), rs.getString(3));
+                Pelamar p = new Pelamar(rs.getString("idPelamar"), rs.getString("namaPelamar"), rs.getString("passPelamar"));
                 daftarPel.add(p);
             }
         } catch (SQLException ex) {
@@ -113,11 +139,11 @@ public class Database {
     public ArrayList<Lowongan> getDataLowongan(){
         ArrayList<Lowongan> daftarLowong = new ArrayList();
         try {
-            String query = "SELECT * FROM `lowongan`";
-            rs = st.executeQuery(query);
+            String query = "SELECT idPerusahaan, namaPkj, deadline FROM `lowongan`";
+            ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
 //                Lowongan w = new Lowongan(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
-                Lowongan w = new Lowongan(rs.getString(1), rs.getDate(2));
+                Lowongan w = new Lowongan(rs.getString("namaPkj"), rs.getDate("deadline"));
                 daftarLowong.add(w);
             }
         } catch (SQLException ex) {
@@ -128,58 +154,58 @@ public class Database {
     }
     
     public void updatePerusahaan(String id, String nama, String pass) {
-        String query = "update Perusahaan set nama ='" + nama
+        String state = "update Perusahaan set nama ='" + nama
                     + ", pass ='" + pass + "' where idPerusahaan = " + id;
         try {
-            st.executeUpdate(query);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
     public void updatePelamar(String id, String nama, String pass) {
-        String query = "update Pelamar set namaPelamar ='" + nama
+        String state = "update Pelamar set namaPelamar ='" + nama
                     + ", passPelamar ='" + pass + "' where idPelamar = " + id;
         try {
-            st.executeUpdate(query);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
     public void updatePassPerusahaan(String id, String pass){
-        String query = "update Perusahaan set pass = " + pass + "' where idPerusahaan = "
+        String state = "update Perusahaan set pass = " + pass + "' where idPerusahaan = "
                     + id;
         try{
-            st.executeUpdate(query);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
     public void updatePassPelamar(String id, String pass){
-        String query = "update Pelamar set passPelamar = " + pass + "' where idPelamar = "
+        String state = "update Pelamar set passPelamar = " + pass + "' where idPelamar = "
                     + id;
         try{
-            st.executeUpdate(query);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
     public void deletePerusahaan(String idAkun){
-        String query = "delete from Perusahaan where idPerusahaan= " + idAkun;
+        String state = "delete from Perusahaan where idPerusahaan= " + idAkun;
         try {
-            st.executeUpdate(query);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
     public void deletePelamar(String idAkun){
-        String query = "delete from Pelamar where idPelamar= " + idAkun;
+        String state = "delete from Pelamar where idPelamar= " + idAkun;
         try {
-            st.executeUpdate(query);
+            query(state);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -188,8 +214,8 @@ public class Database {
     public String[] getListIDPerusahaan() {
         ArrayList<String> listId = new ArrayList<>();
         try {
-            String query = "SELECT idPerusahaan, nama FROM `Perusahaan`";
-            rs = st.executeQuery(query);
+            String state = "SELECT idPerusahaan, nama FROM `Perusahaan`";
+            query(state);
             while (rs.next()) {
                 listId.add(rs.getString(1));
             }
@@ -202,8 +228,8 @@ public class Database {
     public String[] getListIDPelamar() {
         ArrayList<String> listId = new ArrayList<>();
         try {
-            String query = "SELECT idPelamar, namaPelamar FROM `pelamar`";
-            rs = st.executeQuery(query);
+            String state = "SELECT idPelamar, namaPelamar FROM `pelamar`";
+            ResultSet rs = getData(state);
             while (rs.next()) {
                 listId.add(rs.getString(1));
             }
@@ -216,10 +242,10 @@ public class Database {
     public String[] getListLowongan() {
         ArrayList<String> listLowong = new ArrayList<>();
         try {
-            String query = "SELECT namaPkj FROM `lowongan`";
-            rs = st.executeQuery(query);
+            String state = "SELECT namaPkj FROM `lowongan`";
+            ResultSet rs = getData(state);
             while (rs.next()) {
-                listLowong.add(rs.getString(1));
+                listLowong.add(rs.getString("namaPkj"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

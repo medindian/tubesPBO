@@ -16,7 +16,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
         txtNamaPer = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btnSave = new javax.swing.JButton();
+        btnSave2 = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         txtPassPer = new javax.swing.JPasswordField();
         txtIdAkunPer = new javax.swing.JTextField();
@@ -33,8 +33,8 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Password                :");
 
-        btnSave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnSave.setText("Simpan");
+        btnSave2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSave2.setText("Simpan");
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBack.setText("Kembali");
@@ -68,7 +68,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
                         .addComponent(jLabel3)
                         .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(226, 226, 226))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -93,7 +93,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
                     .addComponent(jLabel9)
                     .addComponent(txtPassPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
@@ -104,7 +104,7 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSave2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -129,14 +129,14 @@ public class daftarBaruPerusahaan extends javax.swing.JFrame implements View{
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);
-        btnSave.addActionListener(e);
+        btnSave2.addActionListener(e);
     }
 
     public Object getBtnBack() {
         return btnBack;    }
 
-    public Object getBtnSave() {
-        return btnSave;    }
+    public Object getBtnSave2() {
+        return btnSave2;    }
     
     
     

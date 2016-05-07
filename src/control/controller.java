@@ -37,8 +37,8 @@ public class controller implements ActionListener {//implements ActionListener{
 
     private aplikasi model;
     private View view;
-    private Pelamar p1;
-    private Perusahaan p2;
+    private Pelamar p1 = null;
+    private Perusahaan p2 = null;
     
     public controller(aplikasi app) {
         this.model = app;
@@ -88,16 +88,15 @@ public class controller implements ActionListener {//implements ActionListener{
                     JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
                 }
                 p1 = model.loginPelamar(idAkun, pass);
-//                if (p1 == null){
-//                    JOptionPane.showMessageDialog((Component) view, "login gagal");
-//                } 
-//              else {
-//                    JOptionPane.showMessageDialog((Component) view, "login berhasil");
-//                    MenuPelamar mp = new MenuPelamar();
-//                    mp.setVisible(true);
-//                    mp.addListener(this);
-//                    view = (View) mp;
-//                }
+                if (p1 == null)
+                    JOptionPane.showMessageDialog((Component) view, "login gagal");
+                else {
+                    JOptionPane.showMessageDialog((Component) view, "login berhasil");
+                    MenuPelamar mp = new MenuPelamar();
+                    mp.setVisible(true);
+                    mp.addListener(this);
+                    view = (View) mp;
+                }
                 idAkun = "";
                 pass = "";
             } else if (source.equals(lp.getBtnForgetPass())){
@@ -123,20 +122,23 @@ public class controller implements ActionListener {//implements ActionListener{
                 p.addListener(this);
                 h.dispose();
                 view = (View) p;
-            } 
+            }
             else if (source.equals(h.getBtnSavePel())){
                 String id = h.getIdAkunPel();
                 String nama = h.getNamaPel();
                 String pass = String.valueOf(h.getPassPel());
-                p1 = new Pelamar(id, nama, pass);
-                int a = model.addPelamar(id, nama, pass);
-                if (a != 0)
-                    JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
-                else
-                    JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
-                            JOptionPane.WARNING_MESSAGE);
+                if(p1 == null){
+                    p1 = new Pelamar(id, nama, pass);
+                    int a = model.addPelamar(p1.getIdAkun(), p1.getNama(), p1.getPassword());
+                    if (a == 1)
+                        JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
+                    else
+                        JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+                                JOptionPane.WARNING_MESSAGE);
+                }
             }
         }
+        
         //gui MenuPelamar
         else if (view instanceof MenuPelamar){
             MenuPelamar j = (MenuPelamar) view;
@@ -224,16 +226,20 @@ public class controller implements ActionListener {//implements ActionListener{
                 p.addListener(this);
                 dp.dispose();
                 view = (View) p;
-            } else if (source.equals(dp.getBtnSave())){
-                String id = dp.getIdAkun();
-                String nama = dp.getNamaPer();
-                String pass = String.valueOf(dp.getPassPer());
-                int a = model.addPerusahaan(id, nama, pass);
-                if (a == 1)
-                    JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
-                else {
-                    JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
-                            JOptionPane.WARNING_MESSAGE);   }
+            }
+            else if (source.equals(dp.getBtnSave2())){
+                String idAkun = dp.getIdAkun();
+                String namaP = dp.getNamaPer();
+                String passP = String.valueOf(dp.getPassPer());
+                if(p2 == null){
+                    p2 = new Perusahaan(idAkun, namaP, passP);
+                    int b = model.addPerusahaan(p2.getIdAkun(), p2.getNama(), p2.getPassword());
+                    if (b == 1)
+                        JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
+                    else
+                        JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+                                JOptionPane.WARNING_MESSAGE);
+                }
             }
         }
         //gui MenuPerusahaan
@@ -344,6 +350,7 @@ public class controller implements ActionListener {//implements ActionListener{
                             JOptionPane.WARNING_MESSAGE);   }
             }
         }
+        /*
         //gui cariLowongan
         else if (view instanceof cariLowongan){
             cariLowongan c = (cariLowongan) view;
@@ -541,6 +548,7 @@ public class controller implements ActionListener {//implements ActionListener{
             }
         }
     }
-//        }
-//    }
+        }
+*/    
+    }
 }

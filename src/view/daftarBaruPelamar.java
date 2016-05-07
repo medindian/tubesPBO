@@ -7,7 +7,7 @@ import model.aplikasi;
 
 public class daftarBaruPelamar extends javax.swing.JFrame implements View {
 
-    aplikasi model;
+//    aplikasi model;
     
     public daftarBaruPelamar() {
         initComponents();
@@ -127,15 +127,15 @@ public class daftarBaruPelamar extends javax.swing.JFrame implements View {
         btnSavePel.addActionListener(e);
     }
     
-    public String getIdAkunPel(){
-        return txtIdAkunPel.getText(); }
-    
     public Object getBtnBack() {
         return btnBack; }
 
     public Object getBtnSavePel() {
         return btnSavePel;   }
-
+    
+    public String getIdAkunPel(){
+        return txtIdAkunPel.getText(); }
+    
     public String getNamaPel(){
         return txtNamaPel.getText();    }
     
