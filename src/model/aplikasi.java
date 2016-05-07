@@ -138,24 +138,6 @@ public class aplikasi{
         return -1;
     }
     
-//    public void listLowongan1(Perusahaan p){
-//        ArrayList<Lowongan> list = db.getListLowongan(p);
-//        for(int i=0; i < list.size(); i++){
-//            int ar = i+1;
-//            System.out.println(ar+". "+(list.get(i)).getNamaPkrj());
-//            System.out.println(ar+". "+(list.get(i)).getDeadline());
-//        }
-//    }
-//    
-//    public void listLowongan2(Perusahaan p){
-//        ArrayList<Lowongan> list = db.getListLowongan(p);
-//        for(int i=0; i < list.size(); i++){
-//            int ar = i+1;
-//            System.out.println(ar+". "+(list.get(i)).getNamaPkrj());
-//            System.out.println(ar+". "+(list.get(i)).getDeadline());
-//        }
-//    }
-    
     public int ubahPerusahaan(Perusahaan p, String nama, String pass){
         if (!cekAngka(nama) && !cekTanda(nama)){
             p.setNama(nama);

@@ -214,8 +214,8 @@ public class settingLowongan extends javax.swing.JFrame implements View{
     private void txtLowonganBaruKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLowonganBaruKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar(); 
-        if(!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)) {
-           JOptionPane.showMessageDialog(null,"Inputtan harus berupa Angka saja!");
+        if(!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || (c==KeyEvent.VK_SPACE) ||c==KeyEvent.VK_DELETE) ) {
+           JOptionPane.showMessageDialog(null,"Inputtan harus berupa huruf saja!");
             evt.consume();
         }
     }//GEN-LAST:event_txtLowonganBaruKeyTyped
