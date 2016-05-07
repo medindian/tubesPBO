@@ -13,11 +13,11 @@ import model.Pelamar;
 public class aplikasi{
 //    public static void main(String[] args){
 
-        private ArrayList<Pelamar> daftarPelamar;
-        private ArrayList<Perusahaan> daftarPerusahaan;
-        private Database db;
-        private int nPrsh = 0;
-        private int nPelamar = 0;
+    private ArrayList<Pelamar> daftarPelamar;
+    private ArrayList<Perusahaan> daftarPerusahaan;
+    private Database db;
+    private int nPrsh = 0;
+    private int nPelamar = 0;
     
     public aplikasi(){
         db = new Database();
@@ -30,6 +30,18 @@ public class aplikasi{
 //            System.out.println("berhasil");
         this.nPelamar = daftarPelamar.size();
         this.nPrsh = daftarPerusahaan.size();
+    }
+    
+    public int nPelamar(){
+        return nPelamar = daftarPelamar.size();
+    }
+    
+    public int nPrsh(){
+        return nPrsh = daftarPerusahaan.size();
+    }
+    
+    public Database getDB(){
+        return db;
     }
     
     public ArrayList<Pelamar> listPelamar(){
@@ -55,11 +67,9 @@ public class aplikasi{
     //untuk mendapat array dari idAkun Pelamar
     public int getPelamar2(String idAkun){
         for (int i = 0; i < nPelamar; i++) {
-//        for (int i = 0; i < daftarPelamar.size(); i++) {
                 Pelamar p = (Pelamar) daftarPelamar.get(i);
-                if (p.getIdAkun().equals(idAkun)) {
+                if (p.getIdAkun().equals(idAkun))
                     return i;
-                }
             }
         return -1;
     }
@@ -77,11 +87,10 @@ public class aplikasi{
     
     //untuk mengambil array idAkun perusahaan
     public int getPerusahaan2(String idAkun){
-        for (int i = 0; i < nPrsh; i++) {
+        for (int i = 0; i < nPrsh; i++){
                 Perusahaan p = (Perusahaan) daftarPerusahaan.get(i);
-                if (p.getIdAkun().equals(idAkun)) {
+                if (p.getIdAkun().equals(idAkun))
                     return i;
-                }
             }
         return -1;
     }
@@ -145,25 +154,20 @@ public class aplikasi{
     public int addPerusahaan(String idAkun, String nama, String pass){
         int hasil = -1;
         if (nPrsh < 100){
-            System.out.println("nPrsh : " + nPrsh);
+            System.out.println("true");
             if (getPerusahaan(idAkun) == false) {
-//                System.out.println("hasil dari getPerusahaan(idAkun) //false: " + getPerusahaan(idAkun));
+                System.out.println("true");
                 if (cariNama2(nama) == false){
-//                    System.out.println("hasil dari cariNama2(nama) //false: " + cariNama2(nama));
+                    System.out.println("true");
                     if (cekAngka(nama) == false && cekTanda(nama) == false){
-//                        System.out.println("hasil dari cekAngka(nama) //false : " + cekAngka(nama));
-//                        System.out.println("hasil dari cekTanda(nama) //false : " + cekTanda(nama));
+                        System.out.println("true");
                         Perusahaan h = new Perusahaan(idAkun, nama, pass);
-//                        System.out.println("obj2 id : " + p.getIdAkun());
-//                        System.out.println("obj2 nama : " + p.getNama());
-//                        System.out.println("obj2 pass : " + p.getPassword());
+                        System.out.println(h.getIdAkun() + " " + h.getNama() + " " + h.getPassword());
                         daftarPerusahaan.add(h);
-//                        int ar = getPelamar2(p.getIdAkun());
-//                        System.out.println("Array ke" + ar);                        
-                        db.savePerusahaan(h.getIdAkun(), h.getNama(), h.getPassword());
+                        int ar = getPerusahaan2(h.getIdAkun());
+                        System.out.println("ar : "+ ar);
+                        int a = db.savePerusahaan(h.getIdAkun(), h.getNama(), h.getPassword());
                         nPrsh = daftarPerusahaan.size();
-//                        System.out.println("jumlah pelamar saat ini : " + nPrsh);
-                        System.out.println("Data berhasil disimpan");
                         hasil =  1;
                     } else
                         System.out.println("Nama hanya boleh HURUF saja");

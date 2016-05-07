@@ -138,41 +138,6 @@ public class controller implements ActionListener {//implements ActionListener{
                 }
             }
         }
-        //gui MenuPelamar
-        else if (view instanceof MenuPelamar){
-            MenuPelamar j = (MenuPelamar) view;
-            if (source.equals(j.getBtnCari())){
-                cariLowongan c = new cariLowongan();
-                c.setVisible(true);
-                c.addListener(this);
-                j.dispose();
-                view = (View) c;   }
-            else if (source.equals(j.getBtnCreateBerkas())){
-                createBerkas cb = new createBerkas();
-                cb.setVisible(true);
-                cb.addListener(this);
-                j.dispose();
-                view = (View)cb;  }
-            else if (source.equals(j.getBtnLogout())){
-                loginPelamar p = new loginPelamar();
-                p.setVisible(true);
-                p.addListener(this);
-                j.dispose();
-                view = (View)p;
-            } else if (source.equals(j.getBtnUbahPass())){
-                GantiPasswordPelamar g = new GantiPasswordPelamar();
-                g.setVisible(true);
-                g.addListener(this);
-                j.dispose();
-                view = (View)g;
-            } else if (source.equals(j.getBtnViewBerkas())){
-                viewBerkas k = new viewBerkas();
-                k.setVisible(true);
-                k.addListener(this);
-                j.dispose();
-                view = (View) k;
-            } //else if (source.equals(u.getBtnStatus()))
-        }
         //gui loginPerusahaan
         else if(view instanceof loginPerusahaan) {
             loginPerusahaan lr = (loginPerusahaan) view;
@@ -230,16 +195,54 @@ public class controller implements ActionListener {//implements ActionListener{
                 String idAkun = dp.getIdAkun();
                 String namaP = dp.getNamaPer();
                 String passP = String.valueOf(dp.getPassPer());
-                if(p2 == null){
+//                if(p2 == null){
                     p2 = new Perusahaan(idAkun, namaP, passP);
+//                    model.listPerusahaan().add(p2);
+                    System.out.println(model.nPrsh());;
+//                    int b = model.getDB().savePerusahaan(p2.getIdAkun(), p2.getNama(), p2.getPassword());
                     int b = model.addPerusahaan(p2.getIdAkun(), p2.getNama(), p2.getPassword());
                     if (b == 1)
                         JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
                     else
                         JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
                                 JOptionPane.WARNING_MESSAGE);
-                }
+//                }
             }
+        }
+        //gui MenuPelamar
+        else if (view instanceof MenuPelamar){
+            MenuPelamar j = (MenuPelamar) view;
+            if (source.equals(j.getBtnCari())){
+                cariLowongan c = new cariLowongan();
+                c.setVisible(true);
+                c.addListener(this);
+                j.dispose();
+                view = (View) c;   }
+            else if (source.equals(j.getBtnCreateBerkas())){
+                createBerkas cb = new createBerkas();
+                cb.setVisible(true);
+                cb.addListener(this);
+                j.dispose();
+                view = (View)cb;  }
+            else if (source.equals(j.getBtnLogout())){
+                loginPelamar p = new loginPelamar();
+                p.setVisible(true);
+                p.addListener(this);
+                j.dispose();
+                view = (View)p;
+            } else if (source.equals(j.getBtnUbahPass())){
+                GantiPasswordPelamar g = new GantiPasswordPelamar();
+                g.setVisible(true);
+                g.addListener(this);
+                j.dispose();
+                view = (View)g;
+            } else if (source.equals(j.getBtnViewBerkas())){
+                viewBerkas k = new viewBerkas();
+                k.setVisible(true);
+                k.addListener(this);
+                j.dispose();
+                view = (View) k;
+            } //else if (source.equals(u.getBtnStatus()))
         }
         //gui MenuPerusahaan
         else if (view instanceof MenuPerusahaan){

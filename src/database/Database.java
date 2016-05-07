@@ -47,8 +47,8 @@ public class Database {
         try {
             st = con.createStatement();
             st.executeUpdate(SQLString);
-        } catch (SQLException c) {
-            c.printStackTrace();
+        } catch (SQLException ex) {
+            System.out.println(ex.getNextException());
         }
     }
     
@@ -105,19 +105,19 @@ public class Database {
     }
         
     public ArrayList<Perusahaan> readDataPerusahaan(){
-        ArrayList<Perusahaan> daftarPrs = new ArrayList();
+        ArrayList<Perusahaan> daftarP = new ArrayList();
         try {
-            String query = "SELECT idPerusahaan, nama, password FROM `Perusahaan`";
-            ResultSet rs = getData(query);
+            String state = "SELECT idPerusahaan, nama, password FROM `Perusahaan`";
+            ResultSet rs = getData(state);
             while (rs.next()) {
                 Perusahaan p = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
-                daftarPrs.add(p);
+                daftarP.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
 //            Logger.getLogger(Aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return daftarPrs;
+        return daftarP;
     }
     
     public ArrayList<Pelamar> readDataPelamar(){
@@ -131,7 +131,6 @@ public class Database {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-//            Logger.getLogger(Aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
         return daftarPel;
     }
