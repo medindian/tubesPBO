@@ -13,7 +13,6 @@ public class MenuPerusahaan extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnUbahPassword = new javax.swing.JButton();
         btnAturBio = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -29,9 +28,6 @@ public class MenuPerusahaan extends javax.swing.JFrame implements View{
         jPanel1.setToolTipText("");
         jPanel1.setName(""); // NOI18N
 
-        btnUbahPassword.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnUbahPassword.setText("Ubah Password");
-
         btnAturBio.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnAturBio.setText("Ubah Biodata");
 
@@ -46,18 +42,15 @@ public class MenuPerusahaan extends javax.swing.JFrame implements View{
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogout)
-                    .addComponent(btnAturBio)
-                    .addComponent(btnUbahPassword))
-                .addContainerGap(60, Short.MAX_VALUE))
+                    .addComponent(btnAturBio))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnUbahPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAturBio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -149,7 +142,6 @@ public class MenuPerusahaan extends javax.swing.JFrame implements View{
     private javax.swing.JButton btnAturLowongan;
     private javax.swing.JButton btnAturPenerimaan;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnUbahPassword;
     private javax.swing.JButton btnViewBerkasMasuk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -163,7 +155,6 @@ public class MenuPerusahaan extends javax.swing.JFrame implements View{
         btnAturLowongan.addActionListener(e);
         btnAturPenerimaan.addActionListener(e);
         btnLogout.addActionListener(e);
-        btnUbahPassword.addActionListener(e);
         btnViewBerkasMasuk.addActionListener(e);
     }
 
@@ -179,8 +170,6 @@ public class MenuPerusahaan extends javax.swing.JFrame implements View{
     public Object getBtnLogout() {
         return btnLogout;    }
 
-    public Object getBtnUbahPassword() {
-        return btnUbahPassword;    }
 
     public Object getBtnViewBerkasMasuk() {
         return btnViewBerkasMasuk;    }

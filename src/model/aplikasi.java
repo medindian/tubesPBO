@@ -1,12 +1,10 @@
 package model;
 
-//import java.text.ParseException;
 import database.Database;
+import java.io.FileNotFoundException;
 import java.util.Date;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class aplikasi{
 //    public static void main(String[] args){
@@ -138,92 +136,133 @@ public class aplikasi{
         return -1;
     }
     
-    public int ubahPerusahaan(Perusahaan p, String nama, String pass){
-        if (!cekAngka(nama) && !cekTanda(nama)){
-            p.setNama(nama);
-            p.setPassword(pass);
-            db.updatePerusahaan(p.getIdAkun(), nama, pass);
-            return 1;
+    public int ubahPerusahaan(Perusahaan p, String nama, String passLama, String passBaru){
+        if ((p.getPassword()).equals(passLama)){
+//            System.out.println("true");
+            if (!cekAngka(nama) && !cekTanda(nama)){
+//                System.out.println("false, false");
+//                String id = p.getIdAkun();
+//                String pass = p.getPassword();
+//                p.setNama(nama);
+                p.setPassword(passBaru);
+//                System.out.println("pass Lama : "+pass);
+//                System.out.println("nama baru : "+p.getNama());
+//                System.out.println("pass baru : "+p.getPassword());
+                db.updatePerusahaan(p);
+                return 1;
         } else 
             System.out.println("Nama hanya boleh diisi HURUF saja");
-        return -1;
-    }
-    
-    public int ubahPassPerusahaan(Perusahaan p, String passLama, String passBaru){
-        if ((p.getPassword()).equals(passLama)){
-            p.setPassword(passBaru);
-            db.updatePassPelamar(p.getIdAkun(), passBaru);
-            return 1;
         }
         return -1;
     }
     
-    public int ubahPelamar(Pelamar p, String nama, String pass){
-        if (!cekAngka(nama) && !cekTanda(nama)){
-            p.setNama(nama);
-            p.setPassword(pass);
-            db.updatePelamar(p.getIdAkun(), nama, pass);
-            return 1;
+    public int ubahPelamar(Pelamar p, String nama, String passLama, String passBaru){
+        if ((p.getPassword()).equals(passLama)){
+            System.out.println("true");
+            if (!cekAngka(nama) && !cekTanda(nama)){
+                System.out.println("false, false");
+                String id = p.getIdAkun();
+                String pass = p.getPassword();
+                p.setNama(nama);
+                p.setPassword(passBaru);
+                System.out.println("pass Lama : "+pass);
+                System.out.println("nama baru : "+p.getNama());
+                System.out.println("pass baru : "+p.getPassword());
+                db.updatePelamar(p);
+    //            if (a == 1)
+                return 1;
         } else
             System.out.println("Nama hanya boleh diisi HURUF saja");
+        }
         return -1;
     }
     
-    public int ubahPassPelamar(Pelamar p, String passLama, String passBaru){
-        if ((p.getPassword()).equals(passLama)){
-            p.setPassword(passBaru);
-            db.updatePassPerusahaan(p.getIdAkun(), passBaru);
-            return 1;
+    public int checkLogin(String idAkun, String pass){
+        System.out.println("nOwner : "+ nOwner);
+        for (int i = 0; i < nOwner; i++) {
+            System.out.println("i : "+ i);
+            if ((daftarOwner.get(i).getIdAkun()).equals(idAkun)) {
+                if ((daftarOwner.get(i).getPassword()).equals(pass)) {
+                    return 1;   }
+                else {
+                    System.out.println("password salah");
+                    return 2;   }
+            }
         }
         return -1;
     }
     
     public Owner login(String idAkun, String pass){
-        boolean access = false;
+//        boolean access = false;
+        System.out.println("nOwner : "+ nOwner);
         for (int i = 0; i < nOwner; i++) {
+            System.out.println("i : "+ i);
             if ((daftarOwner.get(i).getIdAkun()).equals(idAkun)) {
                 if ((daftarOwner.get(i).getPassword()).equals(pass)) {
                     return daftarOwner.get(i);
                 }
-            }
+            } 
         }
         return null;
     }
         
     //lupaPassword
     public boolean lupaPassPelamar(String idAkun, String nama, String passBaru){
-        boolean berhasil = false;
         int ar = cariOwner2(idAkun);
         Owner p = daftarOwner.get(ar);
-        if(p != null){
-            if (p.getNama().equals(nama)){
+        if(p == null)
+            System.out.println("Akun tidak ada");
+        else {
+            if ((p.getNama()).equals(nama)){
                 p.setPassword(passBaru);
-                db.updatePassPelamar(idAkun, passBaru);
-                berhasil = true;
+                Pelamar m = (Pelamar) p;
+                System.out.println("pass dari owner : "+ p.getPassword());
+                System.out.println("pass dari obj pelamar : "+ m.getPassword());
+                int a = db.updatePassPelamar(m);
+                System.out.println("hasil proses : "+ a);
+                if (a == -1) {
+                    System.out.println("Data gagal disimpan");
+                    return false;
+                } else {
+                    System.out.println("Data berhasil disimpan");
+                    return true;
+                }
             }
         }
-        return berhasil;
+        return false;
     }
     
     public boolean lupaPassPerusahaan(String idAkun, String nama, String passBaru){
-        boolean berhasil = false;
         int ar = cariOwner2(idAkun);
         Owner p = daftarOwner.get(ar);
-        if(p != null){
-            if (p.getNama().equals(nama)){
+        if(p == null)
+            System.out.println("Akun tidak ada");
+        else {
+            if ((p.getNama()).equals(nama)){
                 p.setPassword(passBaru);
-                db.updatePassPerusahaan(idAkun, passBaru);
-                berhasil = true;
+                Perusahaan m = (Perusahaan) p;
+                System.out.println("pass dari owner : "+ p.getPassword());
+                System.out.println("pass dari obj pelamar : "+ m.getPassword());
+                int a = db.updatePassPerusahaan(m);
+                System.out.println("hasil proses : "+ a);
+                if (a == -1) {
+                    System.out.println("Data gagal disimpan");
+                    return false;
+                } else {
+                    System.out.println("Data berhasil disimpan");
+                    return true;
+                }
             }
         }
-        return berhasil;
+        return false;
     }
     
-    //berkas
-    //buatBerkas
-    public void buatBerkas(Pelamar p, String cv, String slk){
+    public int buatBerkas(Pelamar p, String cv, String slk) throws FileNotFoundException, SQLException{
         p.createBerkas(cv, slk);
-        db.saveBerkas(p.getIdAkun(), cv, slk);
+        int a = db.saveBerkas(p, cv, slk);
+        if (a == -1)
+            return 1;
+        return -1;
     }
     //viewBerkas
     public void viewBerkas(Pelamar p){

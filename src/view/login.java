@@ -1,14 +1,32 @@
 package view;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import database.Database;
+import model.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import javax.swing.*;
 
-public class loginPelamar extends javax.swing.JFrame implements View{
-
-    public loginPelamar() {
+public class login extends javax.swing.JFrame implements View{
+//    login lp = new login();
+//    Database con = null;
+//    ResultSet rs = null;
+//    PreparedStatement pst = null;
+//    
+    public login() {
         initComponents();
     }
+    
+    
+//    public void close(){
+//        WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+//        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+//    }
 
+////    private View view = login;
+//    private aplikasi model;
+//    private Pelamar p = null;
+//    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -23,13 +41,18 @@ public class loginPelamar extends javax.swing.JFrame implements View{
         btnForgetPel = new javax.swing.JButton();
         btnAkunBaruPel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Silahkan Log In");
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         btnBack.setText("Kembali");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Id Akun              :");
@@ -107,6 +130,10 @@ public class loginPelamar extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnBackActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAkunBaruPel;
     private javax.swing.JButton btnBack;
@@ -126,7 +153,7 @@ public class loginPelamar extends javax.swing.JFrame implements View{
     public char[] getPass(){
         return txtPassPel.getPassword();
     }
-    
+
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);
@@ -147,5 +174,6 @@ public class loginPelamar extends javax.swing.JFrame implements View{
     public Object getBtnAkunBaruPel() {
         return btnAkunBaruPel;
     }
+    
     
 }

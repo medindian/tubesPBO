@@ -1,38 +1,45 @@
 package database;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-import model.BerkasLamaran;
-import model.Lowongan;
-import model.Owner;
-import model.Pelamar;
-import model.Perusahaan;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.*;
 
 public class Database {
 
     private String url = "jdbc:mysql://localhost:3306/lowongankerja";
     private String user = "root";
     private String pass = "";
-    private Statement st;
-    private Connection con;
+    private Statement st = null;
+    private Connection con = null;
     private ResultSet rs = null;
+    
+//    public Database(){
+//        try {
+//            Class.forName("org.gjt.mm.mysql.Driver");
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
 
     public void connect() {
-//        int hasil = 0;
         try {
             con = DriverManager.getConnection(url, user, pass);
             st = con.createStatement();
-//            hasil = 1;
-//            System.out.println("Berhasil");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-//        return hasil;
     }
 
     public ResultSet getData(String SQLString) {
@@ -50,13 +57,13 @@ public class Database {
             st = con.createStatement();
             st.executeUpdate(SQLString);
         } catch (SQLException ex) {
-            System.out.println(ex.getNextException());
+            ex.printStackTrace();
         }
     }
-    
+
     public ArrayList<Owner> readDataOwner(){
         ArrayList<Owner> daftarOwner = new ArrayList();
-        String state = "SELECT idPerusahaan, nama, password FROM `perusahaan`";
+        String state = "SELECT idPerusahaan, nama, password FROM perusahaan";
         ResultSet rs = getData(state);
         try {
             while (rs.next()) {
@@ -64,9 +71,10 @@ public class Database {
                 daftarOwner.add(pp);
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+//            System.out.println(ex.getMessage());
+            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
-        state = "SELECT idPelamar, namaPelamar, passPelamar FROM `pelamar`";
+        state = "SELECT idPelamar, namaPelamar, passPelamar FROM pelamar";
         rs = getData(state);
         try {
             while (rs.next()) {
@@ -80,7 +88,7 @@ public class Database {
     }
 
     public int savePelamar(String idAkun, String nama, String pass){
-        String state = "INSERT INTO `pelamar`(`idPelamar`, `namaPelamar`, `passPelamar`) VALUES ("
+        String state = "INSERT INTO pelamar(`idPelamar`, `namaPelamar`, `passPelamar`) VALUES ("
             + "'" + idAkun + "',"
             + "'" + nama + "',"
             + "'" + pass + "')";
@@ -119,17 +127,54 @@ public class Database {
         }
     }
     
-    public void saveBerkas(String idAkun, String cv, String slk){
-        String state = "INSERT INTO `berkaslamaran` (`fileCV`, `fileSLK`, `idPelamar`) VALUES ("
+    public int saveBerkas(Pelamar p, String cv, String slk) throws FileNotFoundException, SQLException{
+        String state = "INSERT INTO `berkaslamaran` (`fileCV`, `idPelamar`) VALUES ("
             + "'" + cv + "',"
             + "'" + slk + "',"
-            + "'" + idAkun + "')";
+            + "'" + p.getIdAkun() + "')";
+        PreparedStatement ps = con.prepareStatement(state);
+        File f = new File("cv");
+        FileInputStream input = new FileInputStream(f);
         try {
-            query(state);
+//            PreparedStatement ps = con.prepareStatement(state);            
+            ps.setBinaryStream(1, input);
+            ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        state = "UPDATE `berkaslamaran`set flieSLK=? where idPelamar = " + p.getIdAkun();
+        ps = con.prepareStatement(state);
+        File f2 = new File("slk");
+        input = new FileInputStream(f2);
+        try{
+            ps.setBinaryStream(2, input);
+            ps.executeUpdate();
+            return 1;
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            return -1;
+        }
     }
+    
+//    public void readBerkas(Pelamar p) throws SQLException, FileNotFoundException{
+//        String state = "SELECT fileCV FROM `berkaslamaran` where idPelamar = " + p.getIdAkun();
+//        ResultSet rs = getData(state);
+//        File f = null; //= new File(rs.getBlob(2));
+//        FileInputStream input = null;
+//        FileOutputStream output = new FileOutputStream(f);
+//        try{
+//            if(rs.next()){
+//                input = rs.getBinaryStream("fileCV");
+//                byte[] buffer = new byte[1024];
+//                while (input.read(buffer) > 0){
+//                    output.write(buffer);
+//                }
+//                System.out.println("Saved to file : " + f.getAbsolutePatch());
+//            }
+//        } catch (SQLException ex){
+//            System.out.println(ex.getMessage());
+//        }
+//    }
     
     public ArrayList<Lowongan> listLowongan(String company){
         ArrayList<Lowongan> daftar = new ArrayList();
@@ -176,46 +221,52 @@ public class Database {
         return daftarBerkas;
     }
     
-    public void updatePerusahaan(String id, String nama, String pass) {
-        String state = "update Perusahaan set nama ='" + nama
-                    + ", pass ='" + pass + "' where idPerusahaan = " + id;
-        try {
-            query(state);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public void updatePelamar(String id, String nama, String pass) {
-        String state = "update Pelamar set namaPelamar ='" + nama
-                    + ", passPelamar ='" + pass + "' where idPelamar = " + id;
-        try {
-            query(state);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public void updatePassPerusahaan(String id, String pass){
-        String state = "update Perusahaan set pass = " + pass + "' where idPerusahaan = "
-                    + id;
+    public int updatePassPelamar(Pelamar p){
+        String state = "UPDATE pelamar SET pass ='" + p.getPassword() + "' where idPelamar = " + p.getIdAkun();
         try{
             query(state);
+            return 1;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return -1;
         }
     }
     
-    public void updatePassPelamar(String id, String pass){
-        String state = "update Pelamar set passPelamar = " + pass + "' where idPelamar = "
-                    + id;
+    public int updatePassPerusahaan(Perusahaan p){
+        String state = "UPDATE perusahaan SET pass ='" + p.getPassword() + "' where idPerusahaan = " + p.getIdAkun();
         try{
             query(state);
+            return 1;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return -1;
+        }
+    }
+      
+    public void updatePerusahaan(Perusahaan p) {
+        String state = "UPDATE Perusahaan SET nama ='" + p.getNama()
+                    + ", pass ='" + p.getPassword() + "' where idPerusahaan = " + p.getIdAkun();
+        try {
+            query(state);
+//            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+//            return -1;
         }
     }
     
+    public void updatePelamar(Pelamar p) {
+        String state = "update `pelamar` set `namaPelamar` = '" + p.getNama() + "', `passPelamar` = '" 
+                + p.getPassword()+ "' where `idPelamar` = " + p.getIdAkun();
+        try {
+            query(state);
+//            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+//            return -1;
+        }
+    }
+     
     public void deletePerusahaan(String idAkun){
         String state = "delete from Perusahaan where idPerusahaan= " + idAkun;
         try {

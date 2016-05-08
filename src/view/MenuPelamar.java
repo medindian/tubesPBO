@@ -20,11 +20,9 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnUbahBio = new javax.swing.JButton();
-        btnUbahPass = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnViewBerkas = new javax.swing.JButton();
         btnCreateBerkas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,10 +72,7 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
         jPanel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btnUbahBio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnUbahBio.setText("Ubah Biodata");
-
-        btnUbahPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnUbahPass.setText("Ubah password");
+        btnUbahBio.setText("Ubah Akun");
 
         btnLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLogout.setText("Log Out");
@@ -87,32 +82,26 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnUbahPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUbahBio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUbahBio, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(btnUbahBio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUbahPass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel2.setText("Pilih menu :");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Berkas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 16))); // NOI18N
-
-        btnViewBerkas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnViewBerkas.setText("View Berkas");
 
         btnCreateBerkas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCreateBerkas.setText("Buat Berkas");
@@ -122,20 +111,16 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnViewBerkas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreateBerkas))
+                .addGap(52, 52, 52)
+                .addComponent(btnCreateBerkas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(31, 31, 31)
                 .addComponent(btnCreateBerkas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnViewBerkas, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,8 +171,6 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnStatus;
     private javax.swing.JButton btnUbahBio;
-    private javax.swing.JButton btnUbahPass;
-    private javax.swing.JButton btnViewBerkas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -201,12 +184,9 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
     public void addListener(ActionListener e) {
         btnCari.addActionListener(e);
         btnCreateBerkas.addActionListener(e);
-//        btnLihatLowongan.addActionListener(e);
         btnLogout.addActionListener(e);
         btnStatus.addActionListener(e);
         btnUbahBio.addActionListener(e);
-        btnUbahPass.addActionListener(e);
-        btnViewBerkas.addActionListener(e);
     }
 
     public Object getBtnCari() {
@@ -214,9 +194,6 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
 
     public Object getBtnCreateBerkas() {
         return btnCreateBerkas;    }
-
-//    public Object getBtnLihatLowongan() {
-//        return btnLihatLowongan;    }
 
     public Object getBtnLogout() {
         return btnLogout;    }
@@ -227,10 +204,7 @@ public class MenuPelamar extends javax.swing.JFrame implements View{
     public Object getBtnUbahBio() {
         return btnUbahBio;    }
 
-    public Object getBtnUbahPass() {
-        return btnUbahPass;    }
-
-    public Object getBtnViewBerkas() {
-        return btnViewBerkas;    }
+//    public Object getBtnUbahPass() {
+//        return btnUbahPass;    }
 
 }

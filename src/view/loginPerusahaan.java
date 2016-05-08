@@ -3,6 +3,8 @@ package view;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class loginPerusahaan extends javax.swing.JFrame implements View {
 

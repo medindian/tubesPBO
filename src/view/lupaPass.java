@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-public class LupaPassPelamar extends javax.swing.JFrame implements View{
+public class lupaPass extends javax.swing.JFrame implements View{
 
-    public LupaPassPelamar() {
+    public lupaPass() {
         initComponents();
     }
 

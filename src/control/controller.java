@@ -1,78 +1,89 @@
 package control;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Date;
-//import java.awt.event.MouseAdapter;
-//import java.awt.event.MouseEvent;
-//import java.util.Date;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.sql.*;
+import java.util.*;
+import java.util.logging.*;
 import javax.swing.JOptionPane;
-import view.MainMenu;
-//urutan gui pelamar
-import view.loginPelamar;
-import view.LupaPassPelamar;
-import view.daftarBaruPelamar;
-import view.MenuPelamar;
-import view.viewBerkas;
-import view.cariLowongan;
-import view.createBerkas;
-import view.GantiPasswordPelamar;
-//urutan gui perusahaan
-import view.loginPerusahaan;
-import view.LupaPassPerusahaan;
-import view.daftarBaruPerusahaan;
-import view.MenuPerusahaan;
-import view.settingLowongan;
-import view.viewBerkasDiterima;
-import view.viewBerkasMasuk;
-import view.GantiPasswordPerusahaan;
-
-import view.View;
-import model.Pelamar;
-import model.Perusahaan;
-import model.aplikasi;
+import view.*;
+import model.*;
 
 public class controller implements ActionListener {
 
     private aplikasi model;
-    private View view;
+    private login view;
     private Pelamar p1 = null;
     private Perusahaan p2 = null;
     
     public controller(aplikasi app) {
         this.model = app;
-        MainMenu menu = new MainMenu();
-        menu.setVisible(true);
-        menu.addListener(this);
-        view = menu;
+        view = new login();
+        view.setVisible(true);
+        view.addListener(this);
+    }
+    
+    public Pelamar getPelamar(){
+        return p1;
+    }
+    
+    public Perusahaan getPerusahaan(){
+        return p2;
     }
     
     @Override
     public void actionPerformed(ActionEvent e){
         Object source = e.getSource();
-        //gui MainMenu
-        if (view instanceof MainMenu) {
-            MainMenu menu = (MainMenu) view;
-            if (source.equals(menu.getBtnExit())) {
+        //login
+        if (view instanceof login) {
+            login p = (login) view;
+            if (source.equals(p.getBtnBack())) {
                 System.exit(0);
-            }
-            else if (source.equals(menu.getBtnPelamar())){
-                loginPelamar p = new loginPelamar();
-                p.setVisible(true);
-                p.addListener(this);
-                menu.dispose();
-                view = (View) p; }
-            else if (source.equals(menu.getBtnPerusahaan())){
-                loginPerusahaan p = new loginPerusahaan();
-                p.setVisible(true);
-                p.addListener(this);
-                menu.dispose();
-                view = (View) p; }
+            } else if (source.equals(p.getBtnForgetPass())){
+                new controllerAkunBaru(model);
+                view.dispose();
+            } else if (source.equals(p.getBtnAkunBaruPel())) {
+                new controllerAkunBaru(model);
+                view.dispose();
+            } else if (source.equals(p.getBtnLogin())){
+                String idAkun = p.getIdAkun();
+                String pass = String.valueOf(p.getPass());
+                if (idAkun.equals(""))
+                    JOptionPane.showMessageDialog((Component) view, "idAkun tidak boleh kosong");
+                else if(pass.equals(""))
+                    JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
+                else {
+                    int check = model.checkLogin(idAkun, pass);
+                    if( check == 1){
+                        if(model.login(idAkun, pass) instanceof Pelamar)
+                            p1 = (model.Pelamar) model.login(idAkun, pass);
+                        else if (model.login(idAkun, pass) instanceof Perusahaan)
+                            p2 = (model.Perusahaan) model.login(idAkun, pass);
+                        
+                        if (p1 == null || p2 == null)
+                            JOptionPane.showMessageDialog((Component) view, "login gagal");
+                        else if (p1 != null) {
+                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
+                            new ControllerMenuPelamar(model, p1);
+                            p.dispose();    }
+                        else if (p2 != null) {
+                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
+                            new ControllerMenuPerusahaan(model, p2);
+                            p.dispose();    }
+                        
+                    } else if (check == 2)
+                        JOptionPane.showMessageDialog((Component) view, "password salah");
+                    else
+                        JOptionPane.showMessageDialog((Component) view, "akun tidak ada");
+                }
+                idAkun = "";
+                pass = "";
         }
-        //gui loginPelamar
-        else if (view instanceof loginPelamar){
-            loginPelamar lp = (loginPelamar) view;
+/*        
+        //gui login
+        else if (view instanceof login){
+            login lp = (login) view;
             if (source.equals(lp.getBtnBack())){
                     MainMenu m = new MainMenu();
                     m.setVisible(true);
@@ -87,20 +98,24 @@ public class controller implements ActionListener {
                 else if(pass.equals(""))
                     JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
                 else {
-                    if(model.login(idAkun, pass) instanceof Pelamar){
+                    int check = model.checkLogin(idAkun, pass);
+                    if( check == 1){
+                        if(model.login(idAkun, pass) instanceof Pelamar){
                         p1 = (model.Pelamar) model.login(idAkun, pass);
-                        if (p1 == null){
+                        if (p1 == null)
                             JOptionPane.showMessageDialog((Component) view, "login gagal");
-                        }
                         else {
                             JOptionPane.showMessageDialog((Component) view, "login berhasil");
                             MenuPelamar mp = new MenuPelamar();
                             mp.setVisible(true);
                             mp.addListener(this);
                             lp.dispose();
-                            view = (View) mp;
+                            view = (View) mp;   }
                         }
-                    }
+                    } else if (check == 2)
+                        JOptionPane.showMessageDialog((Component) view, "password salah");
+                    else
+                        JOptionPane.showMessageDialog((Component) view, "akun tidak ada");
                 }
                 idAkun = "";
                 pass = "";
@@ -111,14 +126,14 @@ public class controller implements ActionListener {
                 lp.dispose();
                 view = (View) s;
             } else if (source.equals(lp.getBtnAkunBaruPel())) {
-                daftarBaruPelamar c = new daftarBaruPelamar();
+                buatAkunBaru c = new buatAkunBaru();
                 c.setVisible(true);
                 c.addListener(this);
                 lp.dispose();
                 view = (View) c;
             }
         }
-                //gui loginPerusahaan
+        //gui loginPerusahaan
         else if(view instanceof loginPerusahaan) {
             loginPerusahaan lr = (loginPerusahaan) view;
             if (source.equals(lr.getBtnBack())) {
@@ -162,15 +177,13 @@ public class controller implements ActionListener {
                         }
                     }
                 }
-                idAkun = "";
-                pass = "";
             }
         }
-        //gui daftarBaruPelamar
-        else if(view instanceof daftarBaruPelamar){
-            daftarBaruPelamar h = (daftarBaruPelamar) view;
+        //gui buatAkunBaru
+        else if(view instanceof buatAkunBaru){
+            buatAkunBaru h = (buatAkunBaru) view;
             if (source.equals(h.getBtnBack())){
-                loginPelamar p = new loginPelamar();
+                login p = new login();
                 p.setVisible(true);
                 p.addListener(this);
                 h.dispose();
@@ -230,29 +243,31 @@ public class controller implements ActionListener {
                 j.dispose();
                 view = (View)cb;  }
             else if (source.equals(j.getBtnLogout())){
-                loginPelamar p = new loginPelamar();
+                login p = new login();
                 p.setVisible(true);
                 p.addListener(this);
                 j.dispose();
                 view = (View)p;
-            } else if (source.equals(j.getBtnUbahPass())){
-                GantiPasswordPelamar g = new GantiPasswordPelamar();
-                g.setVisible(true);
-                g.addListener(this);
+            } else if (source.equals(j.getBtnUbahBio())){
+                editBioPelamar ed = new editBioPelamar();
+                ed.setVisible(true);
+                ed.addListener(this);
                 j.dispose();
-                view = (View)g;
-            } else if (source.equals(j.getBtnViewBerkas())){
-                viewBerkas k = new viewBerkas();
-                k.setVisible(true);
-                k.addListener(this);
-                j.dispose();
-                view = (View) k;
-            } //else if (source.equals(u.getBtnStatus()))
+                view = (View) ed;
+            } else if (source.equals(j.getBtnStatus())){
+                
+            }
         }
         //gui MenuPerusahaan
         else if (view instanceof MenuPerusahaan){
             MenuPerusahaan mp = (MenuPerusahaan) view;
-            if (source.equals(mp.getBtnAturLowongan())){
+            if (source.equals(mp.getBtnLogout())){
+                loginPerusahaan a = new loginPerusahaan();
+                a.setVisible(true);
+                a.addListener(this);
+                mp.dispose();
+                view = (View) a;
+            } else if (source.equals(mp.getBtnAturLowongan())){
                 settingLowongan t = new settingLowongan();
                 t.setVisible(true);
                 t.addListener(this);
@@ -264,60 +279,54 @@ public class controller implements ActionListener {
                 v.addListener(this);
                 mp.dispose();
                 view = (View) v;
-            } else if (source.equals(mp.getBtnLogout())){
-                loginPerusahaan a = new loginPerusahaan();
-                a.setVisible(true);
-                a.addListener(this);
-                mp.dispose();
-                view = (View) a;
-            } else if (source.equals(mp.getBtnUbahPassword())){
-                GantiPasswordPerusahaan g = new GantiPasswordPerusahaan();
-                g.setVisible(true);
-                g.addListener(this);
-                mp.dispose();
-                view = (View) g;
             } else if (source.equals(mp.getBtnViewBerkasMasuk())){
                 viewBerkasMasuk w = new viewBerkasMasuk();
                 w.setVisible(true);
                 w.addListener(this);
                 mp.dispose();
-                view = (View) w;   }
+                view = (View) w;
+            } else if (source.equals(mp.getBtnAturBio())){
+                editBioPerusahaan eb = new editBioPerusahaan();
+                eb.setVisible(true);
+                eb.addListener(this);
+                mp.dispose();
+                view = (View) eb;
+            }
         }
-        //gui GantiPasswordPelamar
-        else if (view instanceof GantiPasswordPelamar){
-            GantiPasswordPelamar g = (GantiPasswordPelamar) view;
-            if (source.equals(g.getBtnBack2())){
+        //gui editBioPelamar
+        else if (view instanceof editBioPelamar){
+            editBioPelamar pr = (editBioPelamar) view;
+            if(source.equals(pr.getBtnBack())){
                 MenuPelamar r = new MenuPelamar();
                 r.setVisible(true);
                 r.addListener(this);
-                g.dispose();
+                pr.dispose();
                 view = (View) r;
-            } else if (source.equals(g.getBtnVerivikasi())){
-                //simpan password baru
-                String lama = String.valueOf(g.getPassOld());
-                String baru = String.valueOf(g.getPassNew());
-                int a = model.ubahPassPelamar(p1, lama, baru);
-                if (a == 1)  JOptionPane.showMessageDialog(null, "Password berhasil diganti");
-                    else JOptionPane.showMessageDialog(null, "Password gagal diganti", "Fail",
+            } else if (source.equals(pr.getBtnSimpan())){
+                String nama = pr.getNama();
+                String pLama = String.valueOf(pr.getPassOld());
+                String pBaru = String.valueOf(pr.getPassNew());
+                int a = model.ubahPelamar(p1, nama, pLama, pBaru);
+                if (a == 1)  JOptionPane.showMessageDialog(null, "Perubahan data berhasil disimpan");
+                else JOptionPane.showMessageDialog(null, "Perubahan data gagal disimpan", "Fail",
                                 JOptionPane.WARNING_MESSAGE);
             }
         }
-        //gui GantiPasswordPerusahaan
-        else if (view instanceof GantiPasswordPerusahaan){
-            GantiPasswordPerusahaan d = (GantiPasswordPerusahaan) view;
-            if (source.equals(d.getBtnBack2())){
+        //gui editBioPerusahaan
+        else if (view instanceof editBioPerusahaan){
+            editBioPerusahaan pr = (editBioPerusahaan) view;
+            if(source.equals(pr.getBtnBack())){
                 MenuPerusahaan r = new MenuPerusahaan();
                 r.setVisible(true);
                 r.addListener(this);
-                d.dispose();
+                pr.dispose();
                 view = (View) r;
-            } else if (source.equals(d.getBtnVerivikasi())){
-                //simpan password baru
-                String lama = String.valueOf(d.getPassLama());
-                String baru = String.valueOf(d.getPassBaru());
-                int b = model.ubahPassPerusahaan(p2, lama, baru);
-                if (b == 1)  JOptionPane.showMessageDialog(null, "Password berhasil diganti");
-                    else JOptionPane.showMessageDialog(null, "Password gagal diganti", "Fail",
+            } else if (source.equals(pr.getBtnSimpan())){
+                String nama = pr.getNamaPer();
+                String passBaru = String.valueOf(pr.getPass());
+                int a = model.ubahPerusahaan(p2, nama, passBaru);
+                if (a == 1)  JOptionPane.showMessageDialog(null, "Password berhasil diganti");
+                else JOptionPane.showMessageDialog(null, "Password gagal diganti", "Fail",
                                 JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -325,7 +334,7 @@ public class controller implements ActionListener {
         else if (view instanceof LupaPassPelamar){
             LupaPassPelamar s = (LupaPassPelamar) view;
             if (source.equals(s.getBtnBack2())){
-                loginPelamar p = new loginPelamar();
+                login p = new login();
                 p.setVisible(true);
                 p.addListener(this);
                 s.dispose();
@@ -369,9 +378,18 @@ public class controller implements ActionListener {
                 t.dispose();
                 view = r;
             } else if (source.equals(t.getBtnSaveBrk())){
-                String cv = t.getIsiCV();
-                String slk = t.getIsiSLK();
-                model.buatBerkas(p1, cv, slk);
+                String cv = t.getCV();
+                String slk = t.getSLK();
+                try {
+                    int a = model.buatBerkas(p1, cv, slk);
+                    if (a == 1) JOptionPane.showMessageDialog(null, "Data Berhasil Diinputkan");
+                    else JOptionPane.showMessageDialog(null, "Data Gagal Diinputkan", "Fail",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error", "Fail",JOptionPane.WARNING_MESSAGE);
+                } catch (FileNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null, "CV dan SLK tidak dapat ditemukan", "Fail",JOptionPane.WARNING_MESSAGE);
+                }
             }
         }
         /*
@@ -462,7 +480,7 @@ public class controller implements ActionListener {
 //                //bila sudah dan berhasil dilakukan, muncul notif 'anda berhasil terdaftar'
 //            }
         }
-        */
+        
         //gui settingLowongan
         else if (view instanceof settingLowongan){
             settingLowongan s = (settingLowongan) view;
@@ -486,19 +504,6 @@ public class controller implements ActionListener {
                 else JOptionPane.showMessageDialog(null, "Lowongan baru gagal disimpan", "Fail",
                             JOptionPane.WARNING_MESSAGE);
             }     
-        }
-        //gui viewBerkas
-        else if (view instanceof viewBerkas){
-            viewBerkas k = (viewBerkas) view;
-//            String output = model.getPelamar(p1.getIdAkun()).toString();
-//            k.setTxtOutput(output);
-            if (source.equals(k.getBtnBack3())){
-                MenuPelamar r = new MenuPelamar();
-                r.setVisible(true);
-                r.addListener(this);
-                k.dispose();
-                view = r;
-            }
         }
         //gui viewBerkasDiterima
         else if (view instanceof viewBerkasDiterima){
@@ -554,6 +559,6 @@ public class controller implements ActionListener {
                 //mengambil no urut lowongan
                 //mengambil no urut berkas
             }
-        }
+*/        }
     }
 }
