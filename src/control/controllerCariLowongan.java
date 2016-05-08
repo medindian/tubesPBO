@@ -25,13 +25,19 @@ class controllerCariLowongan implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnBack())){
-            new MenuPelamar();
+            new controllerMenuPelamar(model, p1);
             view.dispose();
+            
         } else if (source.equals(view.getBtnCariPerusahaan())){
-        
+            System.out.println("cari dari getPerusahaan()");
+            
         } else if (source.equals(view.getBtnCariAll())){
+            int nama = view.getLowonganPilihan();
+            System.out.println("cari dari getPerusahaan() + getLowonganPilihan()");
             
         } else if (source.equals(view.getBtnDaftar())){
+            System.out.println("ambil obj Pelamar/ p1.getIdAkun() ,"
+                    + " p1.getBerkas().getCV() , p1.getBerkas().getSLK()");
             
         }
         

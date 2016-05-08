@@ -189,9 +189,9 @@ public class aplikasi{
     }
     
     public int checkLogin(String idAkun, String pass){
-        System.out.println("nOwner : "+ nOwner);
+//        System.out.println("nOwner : "+ nOwner);
         for (int i = 0; i < nOwner; i++) {
-            System.out.println("i : "+ i);
+//            System.out.println("i : "+ i);
             if ((daftarOwner.get(i).getIdAkun()).equals(idAkun)) {
                 if ((daftarOwner.get(i).getPassword()).equals(pass)) {
                     return 1;   }

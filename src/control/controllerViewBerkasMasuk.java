@@ -22,7 +22,7 @@ class controllerViewBerkasMasuk implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnBack())){
-            new controller(model);
+            new controllerMenuPerusahaan(model, p2);
             view.dispose();
         } else if (source.equals(view.getBtnHapusBerkas())){
             //System.out.println("yohohohoho");

@@ -25,15 +25,16 @@ class controllerEditBio implements ActionListener {
         if (source.equals(view.getBtnBack())){
             if (po instanceof Pelamar){
                 Pelamar p1 = new Pelamar(po.getIdAkun(), po.getNama(), po.getPassword());
-                new ControllerMenuPelamar(model, p1);
+                new controllerMenuPelamar(model, p1);
                 this.po = null;
                 view.dispose();
             } else if (po instanceof Perusahaan){
                 Perusahaan p2 = new Perusahaan(po.getIdAkun(), po.getNama(), po.getPassword());
-                new ControllerMenuPerusahaan(model, p2);
+                new controllerMenuPerusahaan(model, p2);
                 this.po = null;
                 view.dispose();
             }
+            
         } else if (source.equals(view.getBtnSimpan())){
             String nama = view.getNama();
             String passLama = String.valueOf(view.getPassOld());

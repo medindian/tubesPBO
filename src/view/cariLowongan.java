@@ -13,14 +13,13 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        txtNamaiLowongan = new javax.swing.JTextField();
+        txtNamaLowongan = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtOutput = new javax.swing.JTextArea();
+        outputListLowongan = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
-        boxPerusahaan = new javax.swing.JComboBox<>();
-        btnCariPerusahaan = new javax.swing.JButton();
-        btnCariNama = new javax.swing.JButton();
-        btnCariAll = new javax.swing.JButton();
+        listPerusahaan = new javax.swing.JComboBox<>();
+        btnCariPrsh = new javax.swing.JButton();
+        btnCari = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -34,23 +33,20 @@ public class cariLowongan extends javax.swing.JFrame implements View{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Lowongan    :");
 
-        txtOutput.setColumns(20);
-        txtOutput.setRows(5);
-        jScrollPane1.setViewportView(txtOutput);
+        outputListLowongan.setColumns(20);
+        outputListLowongan.setRows(5);
+        jScrollPane1.setViewportView(outputListLowongan);
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBack.setText("Kembali");
 
-        boxPerusahaan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        listPerusahaan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
-        btnCariPerusahaan.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        btnCariPerusahaan.setText("Cari by Perusahaan");
+        btnCariPrsh.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnCariPrsh.setText("Cari by Perusahaan");
 
-        btnCariNama.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        btnCariNama.setText("Cari by Nama");
-
-        btnCariAll.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        btnCariAll.setText("Cari by All");
+        btnCari.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnCari.setText("Cari by All");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Hasil Pencarian  :");
@@ -101,76 +97,72 @@ public class cariLowongan extends javax.swing.JFrame implements View{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNamaiLowongan)
-                                .addComponent(boxPerusahaan, 0, 167, Short.MAX_VALUE)))
-                        .addComponent(btnCariPerusahaan, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(btnCariNama)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnCariAll))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBack))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCari)
+                            .addComponent(btnCariPrsh)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnBack)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtNamaLowongan)
+                                            .addComponent(listPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(boxPerusahaan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNamaiLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addComponent(btnCariPerusahaan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCariNama)
-                    .addComponent(btnCariAll))
-                .addGap(30, 30, 30)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBack)
-                .addContainerGap())
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(listPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNamaLowongan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCariPrsh)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnCari)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnBack)
+                        .addGap(16, 16, 16)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxPerusahaan;
     private javax.swing.JComboBox<String> boxPilihLowongan;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCariAll;
-    private javax.swing.JButton btnCariNama;
-    private javax.swing.JButton btnCariPerusahaan;
+    private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnCariPrsh;
     private javax.swing.JButton btnOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -179,16 +171,17 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtNamaiLowongan;
-    private javax.swing.JTextArea txtOutput;
+    private javax.swing.JComboBox<String> listPerusahaan;
+    private javax.swing.JTextArea outputListLowongan;
+    private javax.swing.JTextField txtNamaLowongan;
     // End of variables declaration//GEN-END:variables
 
     public void setTxtOutput(String hasil){
-        txtOutput.setText(hasil);
+        outputListLowongan.setText(hasil);
     }
     
     public int getPerusahaan() {
-        return boxPerusahaan.getSelectedIndex() + 1;
+        return listPerusahaan.getSelectedIndex() + 1;
     }
     
     public int getLowonganPilihan(){
@@ -198,9 +191,9 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);
-        btnCariAll.addActionListener(e);
-        btnCariNama.addActionListener(e);
-        btnCariPerusahaan.addActionListener(e);
+        btnCari.addActionListener(e);
+//        btnCariNama.addActionListener(e);
+        btnCariPrsh.addActionListener(e);
         btnOK.addActionListener(e);
     }
 
@@ -208,13 +201,10 @@ public class cariLowongan extends javax.swing.JFrame implements View{
         return btnBack;    }
 
     public Object getBtnCariAll() {
-        return btnCariAll;    }
-
-    public Object getBtnCariNama() {
-        return btnCariNama;    }
+        return btnCari;    }
 
     public Object getBtnCariPerusahaan() {
-        return btnCariPerusahaan;    }
+        return btnCariPrsh;    }
 
     public Object getBtnDaftar() {
         return btnOK;    }

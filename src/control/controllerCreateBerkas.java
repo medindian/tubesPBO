@@ -24,7 +24,7 @@ class controllerCreateBerkas implements ActionListener {
         Object source = e.getSource();
         System.out.println("Lol");
         if(source.equals(view.getBtnBack())){
-            new ControllerMenuPelamar(model, p1);
+            new controllerMenuPelamar(model, p1);
             view.dispose();
         } else if (source.equals(view.getBtnSaveBrk())){
             System.out.println("lol");

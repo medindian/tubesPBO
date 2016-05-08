@@ -40,12 +40,15 @@ public class controller implements ActionListener {
             login p = (login) view;
             if (source.equals(p.getBtnBack())) {
                 System.exit(0);
+                
             } else if (source.equals(p.getBtnForgetPass())){
                 new controllerLupaPass(model);
                 view.dispose();
+                
             } else if (source.equals(p.getBtnAkunBaruPel())) {
                 new controllerAkunBaru(model);
                 view.dispose();
+                
             } else if (source.equals(p.getBtnLogin())){
                 String idAkun = p.getIdAkun();
                 String pass = String.valueOf(p.getPass());
@@ -59,30 +62,41 @@ public class controller implements ActionListener {
                         Owner w = model.login(idAkun, pass);
                         System.out.println("idakun : " + w.getIdAkun());
                         System.out.println("nama akun : " + w.getNama());
-                        if(w instanceof Pelamar)
+                        
+                        if(w instanceof Pelamar){
                             p1 = (model.Pelamar) model.login(idAkun, pass);
-                        else if (w instanceof Perusahaan)
+                            if (p1 != null) {
+                                JOptionPane.showMessageDialog((Component) view, "login berhasil");
+                                new controllerMenuPelamar(model, p1);
+                                p.dispose();
+                            } else JOptionPane.showMessageDialog((Component) view, "login gagal");
+                        }
+                        else if (w instanceof Perusahaan){
                             p2 = (model.Perusahaan) model.login(idAkun, pass);
-                        
-                        if (p1 == null || p2 == null)
-                            JOptionPane.showMessageDialog((Component) view, "login gagal");
-                        else if (p1 != null) {
-                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
-                            new ControllerMenuPelamar(model, p1);
-                            p.dispose();    }
-                        else if (p2 != null) {
-                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
-                            new ControllerMenuPerusahaan(model, p2);
-                            p.dispose();    }
-                        
+                            if (p2 != null) {
+                                JOptionPane.showMessageDialog((Component) view, "login berhasil");
+                                new controllerMenuPerusahaan(model, p2);
+                                p.dispose();
+                            } else JOptionPane.showMessageDialog((Component) view, "login gagal");
+                        }
+//                        else if (p1 != null) {
+//                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
+//                            new controllerMenuPelamar(model, p1);
+//                            p.dispose();    }
+//                        else if (p2 != null) {
+//                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
+//                            new controllerMenuPerusahaan(model, p2);
+//                            p.dispose();    }
+//                        else 
+//                            JOptionPane.showMessageDialog((Component) view, "login gagal");
+
                     } else if (check == 2)
                         JOptionPane.showMessageDialog((Component) view, "password salah");
                     else
                         JOptionPane.showMessageDialog((Component) view, "akun tidak ada");
                 }
-                idAkun = "";
-                pass = "";
         }
+        
 /*        
         //gui login
         else if (view instanceof login){

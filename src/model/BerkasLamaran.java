@@ -26,7 +26,7 @@ public class BerkasLamaran{
         return CV; }
     
     public String getSLK(){
-        return SLK; }    
+        return SLK; }
     
     public void viewBerkas(){
         System.out.println("    id Akun    : "+getIdAkun());
