@@ -28,7 +28,7 @@ public class controllerAkunBaru implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        Object source = e.getSource();        
+        Object source = e.getSource();
         if(source.equals(view.getBtnBack())){
             new controller(model);
             view.dispose();
@@ -36,7 +36,6 @@ public class controllerAkunBaru implements ActionListener{
             String id = view.getIdAkunPel();
             String nama = view.getNamaPel();
             String pass = String.valueOf(view.getPassPel());
-
             if(p1 == null){
                 p1 = new Pelamar(id, nama, pass);
                 int a = model.addPelamar(p1.getIdAkun(), p1.getNama(), p1.getPassword());
@@ -50,7 +49,6 @@ public class controllerAkunBaru implements ActionListener{
             String id = view.getIdAkunPel();
             String nama = view.getNamaPel();
             String pass = String.valueOf(view.getPassPel());
-
             if(p2 == null){
                 p2 = new Perusahaan(id, nama, pass);
                 int a = model.addPerusahaan(p2.getIdAkun(), p2.getNama(), p2.getPassword());

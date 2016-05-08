@@ -41,7 +41,7 @@ public class controller implements ActionListener {
             if (source.equals(p.getBtnBack())) {
                 System.exit(0);
             } else if (source.equals(p.getBtnForgetPass())){
-                new controllerAkunBaru(model);
+                new controllerLupaPass(model);
                 view.dispose();
             } else if (source.equals(p.getBtnAkunBaruPel())) {
                 new controllerAkunBaru(model);
@@ -55,10 +55,13 @@ public class controller implements ActionListener {
                     JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
                 else {
                     int check = model.checkLogin(idAkun, pass);
-                    if( check == 1){
-                        if(model.login(idAkun, pass) instanceof Pelamar)
+                    if(check == 1){
+                        Owner w = model.login(idAkun, pass);
+                        System.out.println("idakun : " + w.getIdAkun());
+                        System.out.println("nama akun : " + w.getNama());
+                        if(w instanceof Pelamar)
                             p1 = (model.Pelamar) model.login(idAkun, pass);
-                        else if (model.login(idAkun, pass) instanceof Perusahaan)
+                        else if (w instanceof Perusahaan)
                             p2 = (model.Perusahaan) model.login(idAkun, pass);
                         
                         if (p1 == null || p2 == null)

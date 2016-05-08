@@ -38,6 +38,17 @@ public class aplikasi{
         return false;
     }
     
+    public Owner cariAkun(String idAkun, String nama){
+        for (int i = 0; i < nOwner; i++) {
+            Owner p = (Owner) daftarOwner.get(i);
+            if ((p.getIdAkun()).equals(idAkun)) {
+                if ((p.getNama()).equals(nama))
+                    return daftarOwner.get(i);
+            }
+        }
+        return null;
+    }
+    
     //untuk mendapat array dari idAkun Pelamar
     public int cariOwner2(String idAkun){
         for (int i = 0; i < nOwner; i++) {
@@ -82,7 +93,7 @@ public class aplikasi{
                     if (cekAngka(nama) == false && cekTanda(nama) == false){
                         Pelamar p = new Pelamar(idAkun, nama, pass);
                         daftarOwner.add(p);
-                        db.savePelamar(p.getIdAkun(), p.getNama(), p.getPassword());
+                        db.savePelamar(p);
                         nOwner = daftarOwner.size();
                         System.out.println("Data berhasil disimpan");
                         hasil = 1;
@@ -104,7 +115,7 @@ public class aplikasi{
                     if (cekAngka(nama) == false && cekTanda(nama) == false){
                         Perusahaan q = new Perusahaan(idAkun, nama, pass);
                         daftarOwner.add(q);
-                        int a = db.savePerusahaan(q.getIdAkun(), q.getNama(), q.getPassword());
+                        int a = db.savePerusahaan(q);
                         nOwner = daftarOwner.size();
                         System.out.println("Data berhasil disimpan");
                         hasil =  1;
@@ -193,10 +204,9 @@ public class aplikasi{
     }
     
     public Owner login(String idAkun, String pass){
-//        boolean access = false;
-        System.out.println("nOwner : "+ nOwner);
+//        System.out.println("nOwner : "+ nOwner);
         for (int i = 0; i < nOwner; i++) {
-            System.out.println("i : "+ i);
+//            System.out.println("i : "+ i);
             if ((daftarOwner.get(i).getIdAkun()).equals(idAkun)) {
                 if ((daftarOwner.get(i).getPassword()).equals(pass)) {
                     return daftarOwner.get(i);
@@ -216,8 +226,10 @@ public class aplikasi{
             if ((p.getNama()).equals(nama)){
                 p.setPassword(passBaru);
                 Pelamar m = (Pelamar) p;
+                
                 System.out.println("pass dari owner : "+ p.getPassword());
                 System.out.println("pass dari obj pelamar : "+ m.getPassword());
+                
                 int a = db.updatePassPelamar(m);
                 System.out.println("hasil proses : "+ a);
                 if (a == -1) {

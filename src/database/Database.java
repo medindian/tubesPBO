@@ -36,9 +36,10 @@ public class Database {
     public void connect() {
         try {
             con = DriverManager.getConnection(url, user, pass);
-            st = con.createStatement();
+//            st = con.createStatement();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
+//            ex.printStackTrace();
         }
     }
 
@@ -63,35 +64,43 @@ public class Database {
 
     public ArrayList<Owner> readDataOwner(){
         ArrayList<Owner> daftarOwner = new ArrayList();
-        String state = "SELECT idPerusahaan, nama, password FROM perusahaan";
-        ResultSet rs = getData(state);
+        String state = "SELECT idPelamar, namaPelamar, passPelamar FROM pelamar";
+        ResultSet ss = getData(state);
         try {
-            while (rs.next()) {
-                Perusahaan pp = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
+            while (ss.next()) {
+                Pelamar p = new Pelamar(rs.getString("idPelamar"), rs.getString("namaPelamar"), rs.getString("passPelamar"));
+                daftarOwner.add(p);
+            }
+        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+//        catch (NullPointerException e){
+//            System.out.println(e.getMessage());
+//        }
+        state = "SELECT idPerusahaan, nama, password FROM perusahaan";
+        ss = getData(state);
+        try {
+            while (ss.next()) {
+                Perusahaan pp = new Perusahaan(rs.getString(1), rs.getString(2), rs.getString(3));
                 daftarOwner.add(pp);
             }
         } catch (SQLException ex) {
 //            System.out.println(ex.getMessage());
             Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        state = "SELECT idPelamar, namaPelamar, passPelamar FROM pelamar";
-        rs = getData(state);
-        try {
-            while (rs.next()) {
-                Pelamar p = new Pelamar(rs.getString("idPelamar"), rs.getString("namaPelamar"), rs.getString("passPelamar"));
-                daftarOwner.add(p);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        } 
+//        catch (NullPointerException e){
+//            System.out.println(e.getMessage());
+//        }
         return daftarOwner;
     }
 
-    public int savePelamar(String idAkun, String nama, String pass){
-        String state = "INSERT INTO pelamar(`idPelamar`, `namaPelamar`, `passPelamar`) VALUES ("
-            + "'" + idAkun + "',"
-            + "'" + nama + "',"
-            + "'" + pass + "')";
+    public int savePelamar(Pelamar p){
+//        (`idPelamar`, `namaPelamar`, `passPelamar`)
+        String state = "INSERT INTO pelamar VALUES ("
+            + "'" + p.getIdAkun() + "',"
+            + "'" + p.getNama() + "',"
+            + "'" + p.getPassword() + "')";
         try {
             query(state);
             return 1;
@@ -101,11 +110,12 @@ public class Database {
         }
     }
     
-    public int savePerusahaan(String id, String name, String password){
-        String state = "INSERT INTO `perusahaan`(`idPerusahaan`, `nama`, 'password') VALUES ("
-            + "'" + id + "',"
-            + "'" + name + "',"
-            + "'" + password + "')";
+    public int savePerusahaan(Perusahaan p){
+//        (`idPerusahaan`, `nama`, `password`)
+        String state = "INSERT INTO perusahaan VALUES ("
+            + "'" + p.getIdAkun() + "',"
+            + "'" + p.getNama() + "',"
+            + "'" + p.getPassword() + "')";
         try {
             query(state);
             return 1;
