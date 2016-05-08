@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import view.*;
 import model.*;
 
+//testing
 public class controller implements ActionListener {
 
     private aplikasi model;
