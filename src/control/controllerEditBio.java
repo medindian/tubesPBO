@@ -42,15 +42,27 @@ class controllerEditBio implements ActionListener {
             if (po instanceof Pelamar){
                 Pelamar p1 = new Pelamar(po.getIdAkun(), po.getNama(), po.getPassword());
                 int a = model.ubahPelamar(p1, nama, passLama, passBaru);
-                if (a == 1)  JOptionPane.showMessageDialog(null, "Perubahan data berhasil disimpan");
-                else JOptionPane.showMessageDialog(null, "Perubahan data gagal disimpan", "Fail",
+                if (a == 1)  {
+                    JOptionPane.showMessageDialog(null, "Perubahan data berhasil disimpan");
+                    view.setKosongBio();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Perubahan data gagal disimpan", "Fail",
                                 JOptionPane.WARNING_MESSAGE);
+                    view.setKosongBio();
+                }
             } else if (po instanceof Perusahaan){
                 Perusahaan p2 = new Perusahaan(po.getIdAkun(), po.getNama(), po.getPassword());
                 int a = model.ubahPerusahaan(p2, nama, passLama, passBaru);
-                if (a == 1)  JOptionPane.showMessageDialog(null, "Password berhasil diganti");
-                else JOptionPane.showMessageDialog(null, "Password gagal diganti", "Fail",
+                if (a == 1) {
+                    JOptionPane.showMessageDialog(null, "Password berhasil diganti");
+                    view.setKosongBio();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Password gagal diganti", "Fail",
                                 JOptionPane.WARNING_MESSAGE);
+                    view.setKosongBio();
+                }
             }
         }
         

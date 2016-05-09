@@ -129,15 +129,18 @@ public class lupaPass extends javax.swing.JFrame implements View{
     // End of variables declaration//GEN-END:variables
 
     public String getIdAkunDicari(){
-        return txtIdAkun.getText();
-    }
+        return txtIdAkun.getText(); }
 
     public String getNamaDicari() {
-        return txtNamaDicari.getText();
-    }
+        return txtNamaDicari.getText(); }
 
     public char[] getPassBaru() {
-        return txtPassBaru.getPassword();
+        return txtPassBaru.getPassword();   }
+    
+    public void setKosongForget(){
+        txtIdAkun.setText("");
+        txtNamaDicari.setText("");
+        txtPassBaru.setText("");
     }
     
     @Override
@@ -151,4 +154,5 @@ public class lupaPass extends javax.swing.JFrame implements View{
 
     public Object getBtnCheck() {
         return btnCheck;    }
+    
 }

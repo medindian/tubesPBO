@@ -45,23 +45,23 @@ public class Lowongan {
         return berkasDiterima;
     }
     
-    public int cariBerkasMasuk(String idAkun){
-        for(int i = 0; i < nBMasuk; i++){
-            if(berkasMasuk.get(i).getIdAkun().equals(idAkun)){
-                return i;
-            }
-        }
-        return -1;
-    }
-    
-    public int cariBerkasDiterima(String idAkun){
-        for(int i = 0; i < nBTerima; i++){
-            if(berkasDiterima.get(i).getIdAkun().equals(idAkun)){
-                return i;
-            }
-        }
-        return -1;
-    }
+//    public int cariBerkasMasuk(String idAkun){
+//        for(int i = 0; i < nBMasuk; i++){
+//            if(berkasMasuk.get(i).getIdAkun().equals(idAkun)){
+//                return i;
+//            }
+//        }
+//        return -1;
+//    }
+//    
+//    public int cariBerkasDiterima(String idAkun){
+//        for(int i = 0; i < nBTerima; i++){
+//            if(berkasDiterima.get(i).getIdAkun().equals(idAkun)){
+//                return i;
+//            }
+//        }
+//        return -1;
+//    }
 
     public BerkasLamaran getBerkasMasuk(int index){
         return berkasMasuk.get(index);
@@ -72,24 +72,24 @@ public class Lowongan {
     }
     
     public void addBerkasMasuk(BerkasLamaran b){
-        int ada = cariBerkasMasuk(b.getIdAkun());
-        if (ada == -1){
-            System.out.println("Berkas tidak ada");
-        } else {
-            berkasMasuk.add(b);
-            nBMasuk = berkasMasuk.size();
+//        int ada = cariBerkasMasuk(b.getIdAkun());
+//        if (ada == -1){
+//            System.out.println("Berkas tidak ada");
+//        } else {
+//            berkasMasuk.add(b);
+//            nBMasuk = berkasMasuk.size();
 //            max1 = max1 - nBMasuk;
-        }
+//        }
     }
         
     public void addBerkasDiterima(BerkasLamaran b){
-        int ada = cariBerkasMasuk(b.getIdAkun());
-        if (ada != -1){
-            berkasDiterima.add(b);
-            nBTerima = berkasDiterima.size();
+//        int ada = cariBerkasMasuk(b.getIdAkun());
+//        if (ada != -1){
+//            berkasDiterima.add(b);
+//            nBTerima = berkasDiterima.size();
 //            max2 = max2 - nBTerima;
-        } else
-            System.out.println("Berkas tidak ditemukan");
+//        } else
+//            System.out.println("Berkas tidak ditemukan");
     }
     
     public void viewBerkasMasuk(){
@@ -107,27 +107,27 @@ public class Lowongan {
     }
 
     public void removeBerkasMasuk(String idAkun){
-        int ada = cariBerkasMasuk(idAkun);
-        if (ada == -1){
-            System.out.println("Berkas tidak ada");
-        } else {
-            BerkasLamaran bl = getBerkasMasuk(ada);
-            berkasMasuk.remove(bl);
-            nBMasuk = berkasMasuk.size();
-//            max1 = max1 - nBMasuk;
-        }
+//        int ada = cariBerkasMasuk(idAkun);
+//        if (ada == -1){
+//            System.out.println("Berkas tidak ada");
+//        } else {
+//            BerkasLamaran bl = getBerkasMasuk(ada);
+//            berkasMasuk.remove(bl);
+//            nBMasuk = berkasMasuk.size();
+////            max1 = max1 - nBMasuk;
+//        }
     }
     
     public void removeBerkasDiterima(String idAkun){
-        int ada = cariBerkasMasuk(idAkun);
-        if (ada == -1){
-            System.out.println("Berkas tidak ada");
-        } else {
-            BerkasLamaran bl = getBerkasDiterima(ada);
-            berkasDiterima.remove(bl);
-            nBTerima = berkasDiterima.size();
+//        int ada = cariBerkasMasuk(idAkun);
+//        if (ada == -1){
+//            System.out.println("Berkas tidak ada");
+//        } else {
+//            BerkasLamaran bl = getBerkasDiterima(ada);
+//            berkasDiterima.remove(bl);
+//            nBTerima = berkasDiterima.size();
 //            max2 = max2 - nBTerima;
-        }
+//        }
     }
     
 }

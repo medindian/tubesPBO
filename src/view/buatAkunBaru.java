@@ -151,5 +151,11 @@ public class buatAkunBaru extends javax.swing.JFrame implements View {
     public char[] getPassPel(){
         return txtPassPel.getPassword();   }
     
+    public void setKosongAkunBaru(){
+        txtIdAkunPel.setText("");
+        txtNamaPel.setText("");
+        txtPassPel.setText("");
+    }
+    
 }
 

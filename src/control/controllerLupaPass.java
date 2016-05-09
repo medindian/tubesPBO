@@ -38,17 +38,31 @@ class controllerLupaPass implements ActionListener{
             String passBaru = String.valueOf(view.getPassBaru());
             Owner p = model.cariAkun(idAkun, nama);
             if (p == null){
-                JOptionPane.showMessageDialog(null, "Akun tidak terdafta", "Fail",
+                JOptionPane.showMessageDialog(null, "Akun tidak terdaftar", "Fail",
                                 JOptionPane.WARNING_MESSAGE);
             } else {
-                if (p instanceof Pelamar){
-                    Pelamar r = (model.Pelamar) p;
-                    model.lupaPassPelamar(p.getIdAkun(), p.getNama(), passBaru);
-                } else if (p instanceof Perusahaan){
-                    Perusahaan h = (model.Perusahaan) p;
-                    model.lupaPassPerusahaan(p.getIdAkun(), p.getNama(), passBaru);
-                }
+//                if (p instanceof Pelamar){
+//                    Pelamar r = (model.Pelamar) p;
+                    p.setPassword(passBaru);
+                    boolean hasil = model.lupaPassPelamar(p);
+                    if (hasil == false){
+                        JOptionPane.showMessageDialog(null, "Perubahan data gagal disimpan", "Fail",
+                                JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Perubahan data berhasil disimpan");
+                    }
+//                } else if (p instanceof Perusahaan){
+//                    Perusahaan h = (model.Perusahaan) p;
+//                    boolean hasil = model.lupaPassPerusahaan(h);
+//                    if (hasil == false){
+//                        JOptionPane.showMessageDialog(null, "Perubahan data gagal disimpan", "Fail",
+//                                JOptionPane.WARNING_MESSAGE);
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "Perubahan data berhasil disimpan");
+//                    }
+//                }
             }
+            view.setKosongForget();
         }
     }
     

@@ -23,6 +23,7 @@ class controllerMenuPerusahaan implements ActionListener{
         Object source = e.getSource();
         if (source.equals(view.getBtnLogout())){
             new controller(model);
+            p2 = null;
             view.dispose();
         } else if (source.equals(view.getBtnAturBio())){
             new controllerEditBio(model, p2);

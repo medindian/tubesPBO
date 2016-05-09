@@ -61,24 +61,32 @@ public class controller implements ActionListener {
                     int check = model.checkLogin(idAkun, pass);
                     if(check == 1){
                         Owner w = model.login(idAkun, pass);
-                        System.out.println("idakun : " + w.getIdAkun());
-                        System.out.println("nama akun : " + w.getNama());
+//                        System.out.println("idakun : " + w.getIdAkun());
+//                        System.out.println("nama akun : " + w.getNama());
                         
                         if(w instanceof Pelamar){
                             p1 = (model.Pelamar) model.login(idAkun, pass);
                             if (p1 != null) {
-                                JOptionPane.showMessageDialog((Component) view, "login berhasil");
+                                JOptionPane.showMessageDialog(null, "login berhasil");
                                 new controllerMenuPelamar(model, p1);
+                                view.setKosongLogin();
                                 p.dispose();
-                            } else JOptionPane.showMessageDialog((Component) view, "login gagal");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "login gagal");
+                                view.setKosongLogin();
+                            }
                         }
                         else if (w instanceof Perusahaan){
                             p2 = (model.Perusahaan) model.login(idAkun, pass);
                             if (p2 != null) {
-                                JOptionPane.showMessageDialog((Component) view, "login berhasil");
+                                JOptionPane.showMessageDialog(null, "login berhasil");
                                 new controllerMenuPerusahaan(model, p2);
+                                view.setKosongLogin();
                                 p.dispose();
-                            } else JOptionPane.showMessageDialog((Component) view, "login gagal");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "login gagal");
+                                view.setKosongLogin();
+                            }
                         }
 //                        else if (p1 != null) {
 //                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
@@ -92,9 +100,9 @@ public class controller implements ActionListener {
 //                            JOptionPane.showMessageDialog((Component) view, "login gagal");
 
                     } else if (check == 2)
-                        JOptionPane.showMessageDialog((Component) view, "password salah");
+                        JOptionPane.showMessageDialog(null, "password salah");
                     else
-                        JOptionPane.showMessageDialog((Component) view, "akun tidak ada");
+                        JOptionPane.showMessageDialog(null, "akun tidak ada");
                 }
         }
         

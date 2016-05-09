@@ -191,16 +191,18 @@ public class createBerkas extends javax.swing.JFrame implements View{
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        String fileCVname = f.getAbsolutePath();
-        txtCV.setText(fileCVname);
+        String fileCV = f.getName();
+//        String fileCVname = f.getAbsolutePath();
+        txtCV.setText(fileCV);
     }//GEN-LAST:event_btnBrowseCVActionPerformed
 
     private void btnBrowseSLKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseSLKActionPerformed
         JFileChooser chooser1 = new JFileChooser();
         chooser1.showOpenDialog(null);
         File ff = chooser1.getSelectedFile();
-        String fileSLKname = ff.getAbsolutePath();
-        txtSLK.setText(fileSLKname);
+        String fileSLK = ff.getName();
+//        String fileSLKname = ff.getAbsolutePath();
+        txtSLK.setText(fileSLK);
     }//GEN-LAST:event_btnBrowseSLKActionPerformed
 
     
@@ -230,6 +232,11 @@ public class createBerkas extends javax.swing.JFrame implements View{
     
     public String getSLK(){
         return txtSLK.getText();
+    }
+    
+    public void setKosongBerkas(){
+        txtCV.setText("");
+        txtSLK.setText("");
     }
     
     @Override

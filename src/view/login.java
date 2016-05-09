@@ -46,13 +46,8 @@ public class login extends javax.swing.JFrame implements View{
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Silahkan Log In");
 
-        btnBack.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        btnBack.setText("Kembali");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBack.setText("Exit");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Id Akun              :");
@@ -130,10 +125,6 @@ public class login extends javax.swing.JFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnBackActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAkunBaruPel;
     private javax.swing.JButton btnBack;
@@ -154,6 +145,11 @@ public class login extends javax.swing.JFrame implements View{
         return txtPassPel.getPassword();
     }
 
+    public void setKosongLogin(){
+        txtIdAkunPel.setText("");
+        txtPassPel.setText("");
+    }
+    
     @Override
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);

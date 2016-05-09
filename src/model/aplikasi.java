@@ -42,8 +42,10 @@ public class aplikasi{
         for (int i = 0; i < nOwner; i++) {
             Owner p = (Owner) daftarOwner.get(i);
             if ((p.getIdAkun()).equals(idAkun)) {
-                if ((p.getNama()).equals(nama))
+                if ((p.getNama()).equals(nama)){
+                    System.out.println("array ke-"+i);
                     return daftarOwner.get(i);
+                }
             }
         }
         return null;
@@ -69,7 +71,7 @@ public class aplikasi{
     }
     
     public boolean cekTanda(String name){
-        String[] tanda = {"/", "[", "]", "{", "}", "+", "&", "#", "*", "!"};
+        String[] tanda = {"/", "[", "]", "{", "}", "+", "&", "#", "*", "!", "_", "-", "#"};
         for (String t : tanda){
             if (name.contains(t))
                 return true;
@@ -98,7 +100,7 @@ public class aplikasi{
                         System.out.println("Data berhasil disimpan");
                         hasil = 1;
                     }
-                    else System.out.println("Nama hanya boleh HURUF saja");       
+                    else System.out.println("Nama hanya boleh HURUF saja");     
                 }
                 else System.out.println("Nama sudah dipakai");
             }
@@ -217,62 +219,94 @@ public class aplikasi{
     }
         
     //lupaPassword
-    public boolean lupaPassPelamar(String idAkun, String nama, String passBaru){
-        int ar = cariOwner2(idAkun);
-        Owner p = daftarOwner.get(ar);
-        if(p == null)
-            System.out.println("Akun tidak ada");
-        else {
-            if ((p.getNama()).equals(nama)){
-                p.setPassword(passBaru);
-                Pelamar m = (Pelamar) p;
-                
-                System.out.println("pass dari owner : "+ p.getPassword());
-                System.out.println("pass dari obj pelamar : "+ m.getPassword());
-                
-                int a = db.updatePassPelamar(m);
-                System.out.println("hasil proses : "+ a);
-                if (a == -1) {
-                    System.out.println("Data gagal disimpan");
-                    return false;
-                } else {
-                    System.out.println("Data berhasil disimpan");
-                    return true;
-                }
-            }
+    //String idAkun, String nama, String passBaru
+    public boolean lupaPassPelamar(Owner p){
+        int a;
+        if (p instanceof Pelamar){
+            Pelamar m = (Pelamar) p;
+            a = db.updatePassPelamar(m);
+            System.out.println("a : "+a);
+        } else if (p instanceof Perusahaan){
+            Perusahaan h = (Perusahaan) p;
+            a = db.updatePassPerusahaan(h);
+            System.out.println("a : "+a);
+        } else 
+            a = 0;
+        if (a == 1) {
+            System.out.println("Data berhasil disimpan");
+            return true;
         }
+//        int ar = cariOwner2(idAkun);
+//        Owner p = daftarOwner.get(ar);
+//        if(p == null)
+//            System.out.println("Akun tidak ada");
+//        else {
+////            if ((p.getNama()).equals(nama)){
+////                p.setPassword(passBaru);
+//                Perusahaan m = (Perusahaan) p;
+//                System.out.println("pass dari owner : "+ p.getPassword());
+//                System.out.println("pass dari obj pelamar : "+ m.getPassword());
+//                int a = db.updatePassPelamar(p);
+//                System.out.println("hasil proses : "+ a);
+//                if (a == 1) {
+//                    System.out.println("Data berhasil disimpan");
+//                    return true;
+//                }
+//            }
+//        }
         return false;
     }
     
-    public boolean lupaPassPerusahaan(String idAkun, String nama, String passBaru){
-        int ar = cariOwner2(idAkun);
-        Owner p = daftarOwner.get(ar);
-        if(p == null)
-            System.out.println("Akun tidak ada");
-        else {
-            if ((p.getNama()).equals(nama)){
-                p.setPassword(passBaru);
-                Perusahaan m = (Perusahaan) p;
-                System.out.println("pass dari owner : "+ p.getPassword());
-                System.out.println("pass dari obj pelamar : "+ m.getPassword());
-                int a = db.updatePassPerusahaan(m);
-                System.out.println("hasil proses : "+ a);
-                if (a == -1) {
-                    System.out.println("Data gagal disimpan");
-                    return false;
-                } else {
-                    System.out.println("Data berhasil disimpan");
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+    //String idAkun, String nama, String passBaru
+//    public boolean lupaPassPerusahaan(Perusahaan p){
+//        int ar = cariOwner2(idAkun);
+//        Owner p = daftarOwner.get(ar);
+//        if(p == null)
+//            System.out.println("Akun tidak ada");
+//        else {
+//            if ((p.getNama()).equals(nama)){
+//                p.setPassword(passBaru);
+//                Perusahaan m = (Perusahaan) p;
+//                System.out.println("pass dari owner : "+ p.getPassword());
+//                System.out.println("pass dari obj pelamar : "+ m.getPassword());
+//                int a = db.updatePassPerusahaan(p);
+//                System.out.println("hasil proses : "+ a);
+//                if (a == 1) {
+//                    System.out.println("Data berhasil disimpan");
+//                    return true;
+////                }
+////            }
+//        }
+//        return false;
+//    }
     
     public int buatBerkas(Pelamar p, String cv, String slk) throws FileNotFoundException, SQLException{
-        p.createBerkas(cv, slk);
-        int a = db.saveBerkas(p, cv, slk);
-        if (a == -1)
+        int proses;
+        if (p.getBerkas() == null){
+            p.createBerkas(cv, slk);
+            System.out.println("p.getIdAkun() : "+p.getIdAkun());
+            System.out.println("p.getBerkas().getFileCV() : "+p.getBerkas().getFileCV());
+            System.out.println("p.getBerkas().getFileSLK() : "+p.getBerkas().getFileSLK());
+            
+            proses = db.saveBerkas(p);
+            System.out.println("proses : "+proses);
+            
+        } else {
+            System.out.println("Sebelum : ");
+            System.out.println("p.getIdAkun() : "+p.getIdAkun());
+            System.out.println("p.getBerkas().getFileCV() : "+p.getBerkas().getFileCV());
+            System.out.println("p.getBerkas().getFileSLK() : "+p.getBerkas().getFileSLK());
+            
+            p.updateBerkas(cv, slk);
+            System.out.println("Sesudah : ");
+            System.out.println("p.getIdAkun() : "+p.getIdAkun());
+            System.out.println("p.getBerkas().getFileCV() : "+p.getBerkas().getFileCV());
+            System.out.println("p.getBerkas().getFileSLK() : "+p.getBerkas().getFileSLK());
+            
+            proses = db.updateBerkas(p);
+            System.out.println("proses : "+proses);
+        }
+        if (proses != -1)
             return 1;
         return -1;
     }
