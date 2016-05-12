@@ -43,7 +43,7 @@ public class aplikasi{
             Owner p = (Owner) daftarOwner.get(i);
             if ((p.getIdAkun()).equals(idAkun)) {
                 if ((p.getNama()).equals(nama)){
-                    System.out.println("array ke-"+i);
+//                    System.out.println("array ke-"+i);
                     return daftarOwner.get(i);
                 }
             }
@@ -217,25 +217,34 @@ public class aplikasi{
         }
         return null;
     }
-        
+    
+    public void isPelamar(Owner p){
+        if (p instanceof Pelamar)
+            System.out.println("pelamar");
+        else if (p instanceof Perusahaan)
+            System.out.println("perusahaan");
+    }
+    
     //lupaPassword
     //String idAkun, String nama, String passBaru
     public boolean lupaPassPelamar(Owner p){
-        int a;
-        if (p instanceof Pelamar){
-            Pelamar m = (Pelamar) p;
-            a = db.updatePassPelamar(m);
-            System.out.println("a : "+a);
-        } else if (p instanceof Perusahaan){
-            Perusahaan h = (Perusahaan) p;
-            a = db.updatePassPerusahaan(h);
-            System.out.println("a : "+a);
-        } else 
-            a = 0;
-        if (a == 1) {
-            System.out.println("Data berhasil disimpan");
+        Pelamar m = (Pelamar) p;
+        int a = db.updatePassPelamar(m);
+//        System.out.println("a : "+a);
+        if (a == 1)
             return true;
-        }
+        return false;
+    }
+    
+    public boolean lupaPassPerusahaan(Owner p){
+        Perusahaan h = (Perusahaan) p;
+        int a = db.updatePassPerusahaan(h);
+//        System.out.println("a : "+a);
+        if (a == 1)
+            return true;
+        return false;
+    }
+
 //        int ar = cariOwner2(idAkun);
 //        Owner p = daftarOwner.get(ar);
 //        if(p == null)
@@ -254,8 +263,8 @@ public class aplikasi{
 //                }
 //            }
 //        }
-        return false;
-    }
+//        return false;
+//    }
     
     //String idAkun, String nama, String passBaru
 //    public boolean lupaPassPerusahaan(Perusahaan p){

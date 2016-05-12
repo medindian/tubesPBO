@@ -1,12 +1,6 @@
-
 package control;
 
-import java.awt.*;
 import java.awt.event.*;
-import java.io.FileNotFoundException;
-import java.sql.*;
-import java.util.*;
-import java.util.logging.*;
 import javax.swing.JOptionPane;
 import view.*;
 import model.*;
@@ -18,8 +12,8 @@ public class controllerAkunBaru implements ActionListener{
     private Pelamar p1 = null;
     private Perusahaan p2 = null;
     
-    public controllerAkunBaru(aplikasi app) {
-        this.model = app;
+    public controllerAkunBaru(aplikasi model) {
+        this.model = model;
         view = new buatAkunBaru();
         view.setVisible(true);
         view.addListener(this);
@@ -27,15 +21,18 @@ public class controllerAkunBaru implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
         Object source = e.getSource();
+        
         if(source.equals(view.getBtnBack())){
             new controller(model);
+            System.out.println("hoho1");
             view.dispose();
+            
         } else if (source.equals(view.getBtnSave1())){
             String id = view.getIdAkunPel();
             String nama = view.getNamaPel();
             String pass = String.valueOf(view.getPassPel());
+            
             if(p1 == null){
                 p1 = new Pelamar(id, nama, pass);
                 int a = model.addPelamar(p1.getIdAkun(), p1.getNama(), p1.getPassword());
@@ -50,6 +47,7 @@ public class controllerAkunBaru implements ActionListener{
                 }
                 view.setKosongAkunBaru();
             }
+            
         } else if (source.equals(view.getBtnSave2())){
             String id = view.getIdAkunPel();
             String nama = view.getNamaPel();
@@ -68,6 +66,7 @@ public class controllerAkunBaru implements ActionListener{
                 }
                 view.setKosongAkunBaru();
             }
+            
         }   
     }
 }

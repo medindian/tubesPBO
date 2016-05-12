@@ -20,7 +20,7 @@ public class lupaPass extends javax.swing.JFrame implements View{
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnCheck = new javax.swing.JButton();
-        btnBack2 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         txtIdAkun = new javax.swing.JTextField();
         txtNamaDicari = new javax.swing.JTextField();
         txtPassBaru = new javax.swing.JPasswordField();
@@ -45,8 +45,8 @@ public class lupaPass extends javax.swing.JFrame implements View{
         btnCheck.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCheck.setText("Ganti");
 
-        btnBack2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnBack2.setText("Kembali");
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBack.setText("Kembali");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +83,7 @@ public class lupaPass extends javax.swing.JFrame implements View{
                         .addComponent(jLabel1)
                         .addGap(123, 123, 123))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack2)
+                        .addComponent(btnBack)
                         .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
@@ -108,7 +108,7 @@ public class lupaPass extends javax.swing.JFrame implements View{
                 .addGap(18, 18, 18)
                 .addComponent(btnCheck)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(btnBack2)
+                .addComponent(btnBack)
                 .addGap(21, 21, 21))
         );
 
@@ -116,7 +116,7 @@ public class lupaPass extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack2;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCheck;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -128,6 +128,18 @@ public class lupaPass extends javax.swing.JFrame implements View{
     private javax.swing.JPasswordField txtPassBaru;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public void addListener(ActionListener e) {
+        btnBack.addActionListener(e);
+        btnCheck.addActionListener(e);
+    }
+
+    public Object getBtnBack() {
+        return btnBack;    }
+
+    public Object getBtnCheck() {
+        return btnCheck;    }
+    
     public String getIdAkunDicari(){
         return txtIdAkun.getText(); }
 
@@ -137,22 +149,10 @@ public class lupaPass extends javax.swing.JFrame implements View{
     public char[] getPassBaru() {
         return txtPassBaru.getPassword();   }
     
-    public void setKosongForget(){
+    public void setKosong(){
         txtIdAkun.setText("");
         txtNamaDicari.setText("");
         txtPassBaru.setText("");
     }
-    
-    @Override
-    public void addListener(ActionListener e) {
-        btnBack2.addActionListener(e);
-        btnCheck.addActionListener(e);
-    }
-
-    public Object getBtnBack2() {
-        return btnBack2;    }
-
-    public Object getBtnCheck() {
-        return btnCheck;    }
     
 }

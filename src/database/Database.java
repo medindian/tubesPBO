@@ -61,16 +61,14 @@ public class Database {
         try {
             while (ss.next()) {
                 Pelamar p = new Pelamar(rs.getString("idPelamar"), rs.getString("namaPelamar"), rs.getString("passPelamar"));
-                System.out.println("nama : "+ p.getIdAkun());
+//                System.out.println("nama : "+ p.getIdAkun());
                 daftarOwner.add(p);
             }
+            System.out.println("readed data pelamar");
         } catch (SQLException ex) {
 //            System.out.println(ex.getMessage());
             Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-//        catch (NullPointerException e){
-//            System.out.println(e.getMessage());
-//        }
+        }
         state = "SELECT idPerusahaan, nama, password FROM perusahaan";
         ss = getData(state);
         try {
@@ -78,14 +76,12 @@ public class Database {
                 Perusahaan pp = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
 //                System.out.println("nama : "+ pp.getIdAkun());
                 daftarOwner.add(pp);
+                System.out.println("readed data perusahaan");
             }
         } catch (SQLException ex) {
 //            System.out.println(ex.getMessage());
             Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-//        catch (NullPointerException e){
-//            System.out.println(e.getMessage());
-//        }
+        }
         return daftarOwner;
     }
 

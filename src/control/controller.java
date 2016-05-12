@@ -18,27 +18,20 @@ public class controller implements ActionListener {
     private Pelamar p1 = null;
     private Perusahaan p2 = null;
     
-    public controller(aplikasi app) {
-        this.model = app;
+    public controller(aplikasi model) {
+        this.model = model;
         view = new login();
         view.setVisible(true);
         view.addListener(this);
     }
-    
-    public Pelamar getPelamar(){
-        return p1;
-    }
-    
-    public Perusahaan getPerusahaan(){
-        return p2;
-    }
-    
+
     @Override
     public void actionPerformed(ActionEvent e){
         Object source = e.getSource();
         //login
         if (view instanceof login) {
             login p = (login) view;
+            
             if (source.equals(p.getBtnBack())) {
                 System.exit(0);
                 
@@ -60,34 +53,26 @@ public class controller implements ActionListener {
                 else {
                     int check = model.checkLogin(idAkun, pass);
                     if(check == 1){
-                        Owner w = model.login(idAkun, pass);
-//                        System.out.println("idakun : " + w.getIdAkun());
-//                        System.out.println("nama akun : " + w.getNama());
-                        
+                        Owner w = model.login(idAkun, pass);                        
                         if(w instanceof Pelamar){
                             p1 = (model.Pelamar) model.login(idAkun, pass);
                             if (p1 != null) {
                                 JOptionPane.showMessageDialog(null, "login berhasil");
                                 new controllerMenuPelamar(model, p1);
-                                view.setKosongLogin();
                                 p.dispose();
-                            } else {
+                            } else
                                 JOptionPane.showMessageDialog(null, "login gagal");
-                                view.setKosongLogin();
-                            }
                         }
                         else if (w instanceof Perusahaan){
                             p2 = (model.Perusahaan) model.login(idAkun, pass);
                             if (p2 != null) {
                                 JOptionPane.showMessageDialog(null, "login berhasil");
                                 new controllerMenuPerusahaan(model, p2);
-                                view.setKosongLogin();
                                 p.dispose();
-                            } else {
+                            } else
                                 JOptionPane.showMessageDialog(null, "login gagal");
-                                view.setKosongLogin();
-                            }
                         }
+                        view.setKosongLogin();
 //                        else if (p1 != null) {
 //                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
 //                            new controllerMenuPelamar(model, p1);
@@ -104,7 +89,11 @@ public class controller implements ActionListener {
                     else
                         JOptionPane.showMessageDialog(null, "akun tidak ada");
                 }
+            }
         }
+    }
+    
+}
         
 /*        
         //gui login
@@ -585,6 +574,7 @@ public class controller implements ActionListener {
                 //mengambil no urut lowongan
                 //mengambil no urut berkas
             }
-*/        }
-    }
-}
+//        }
+//    }
+//}
+*/
