@@ -25,7 +25,7 @@ public class controllerAkunBaru implements ActionListener{
         
         if(source.equals(view.getBtnBack())){
             new controller(model);
-            System.out.println("hoho1");
+//            System.out.println("hoho1");
             view.dispose();
             
         } else if (source.equals(view.getBtnSave1())){

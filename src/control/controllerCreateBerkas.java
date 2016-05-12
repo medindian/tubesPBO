@@ -29,6 +29,7 @@ class controllerCreateBerkas implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
 //        System.out.println("yay");
+
         if(source.equals(view.getBtnBack())){
             new controllerMenuPelamar(model, p1);
             view.dispose();
@@ -52,12 +53,11 @@ class controllerCreateBerkas implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
                     view.setKosongBerkas();
                 }
-            } catch (FileNotFoundException ex) {
+            } catch (FileNotFoundException ex){
                 Logger.getLogger(controllerCreateBerkas.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(controllerCreateBerkas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
         }
         
     }

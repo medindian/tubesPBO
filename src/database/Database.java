@@ -64,10 +64,10 @@ public class Database {
 //                System.out.println("nama : "+ p.getIdAkun());
                 daftarOwner.add(p);
             }
-            System.out.println("readed data pelamar");
+//            System.out.println("readed data pelamar");
         } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+//            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
         state = "SELECT idPerusahaan, nama, password FROM perusahaan";
         ss = getData(state);
@@ -76,11 +76,11 @@ public class Database {
                 Perusahaan pp = new Perusahaan(rs.getString("idPerusahaan"), rs.getString("nama"), rs.getString("password"));
 //                System.out.println("nama : "+ pp.getIdAkun());
                 daftarOwner.add(pp);
-                System.out.println("readed data perusahaan");
             }
+            System.out.println("readed data perusahaan");
         } catch (SQLException ex) {
 //            System.out.println(ex.getMessage());
-            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
         return daftarOwner;
     }
