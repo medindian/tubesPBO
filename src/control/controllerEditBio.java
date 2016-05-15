@@ -33,9 +33,8 @@ class controllerEditBio implements ActionListener {
                 p1 = (Pelamar) r;
                 new controllerMenuPelamar(model, p1);
                 view.dispose();                
-            } else
-
-            if ( r instanceof Perusahaan ){
+            } else if ( r instanceof Perusahaan ){
+                p2 = (Perusahaan) r;
                 new controllerMenuPerusahaan(model, p2);
                 view.dispose();
             }
@@ -45,15 +44,9 @@ class controllerEditBio implements ActionListener {
             String pLama = String.valueOf(view.getPassOld());
             String pBaru = String.valueOf(view.getPassNew());
             
-            System.out.println(name);
-            System.out.println(pLama);
-            System.out.println(pBaru);
-            
             if ( r instanceof Pelamar ){
-                System.out.println("p2 null");
                 p1 = (Pelamar) r;
                 int a = model.ubahPelamar(p1, name, pLama, pBaru);
-                System.out.println("hasil : "+a);
                 if (a == 1)  {
                     JOptionPane.showMessageDialog(null, "Perubahan data berhasil disimpan");
                 }

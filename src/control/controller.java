@@ -48,10 +48,9 @@ public class controller implements ActionListener {
                 int idAkun = Integer.parseInt(id);
                 String pass = String.valueOf(p.getPass());
                 
-//                if (id == "")
-//                    JOptionPane.showMessageDialog((Component) view, "idAkun tidak boleh kosong");
-//                else 
-                if(pass.equals(""))
+                if (id == "")
+                    JOptionPane.showMessageDialog((Component) view, "idAkun tidak boleh kosong");
+                else if(pass.equals(""))
                     JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
                 else {
                     int check = model.checkLogin(idAkun, pass);
@@ -65,8 +64,8 @@ public class controller implements ActionListener {
                                 p.dispose();
                             } else
                                 JOptionPane.showMessageDialog(null, "login gagal");
-                        }
-                        else if (w instanceof Perusahaan){
+                        } else 
+                        if (w instanceof Perusahaan){
                             p2 = (model.Perusahaan) model.login(idAkun, pass);
                             if (p2 != null) {
                                 JOptionPane.showMessageDialog(null, "login berhasil");
@@ -75,22 +74,12 @@ public class controller implements ActionListener {
                             } else
                                 JOptionPane.showMessageDialog(null, "login gagal");
                         }
-                        view.setKosongLogin();
-//                        else if (p1 != null) {
-//                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
-//                            new controllerMenuPelamar(model, p1);
-//                            p.dispose();    }
-//                        else if (p2 != null) {
-//                            JOptionPane.showMessageDialog((Component) view, "login berhasil");
-//                            new controllerMenuPerusahaan(model, p2);
-//                            p.dispose();    }
-//                        else 
-//                            JOptionPane.showMessageDialog((Component) view, "login gagal");
-
+                        
                     } else if (check == 2)
                         JOptionPane.showMessageDialog(null, "password salah");
                     else
                         JOptionPane.showMessageDialog(null, "akun tidak ada");
+                    view.setKosongLogin();
                 }
             }
         }

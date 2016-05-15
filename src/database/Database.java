@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.*;
@@ -50,7 +51,7 @@ public class Database {
             st = con.createStatement();
             rs = st.executeQuery(SQLString);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
         return rs;
     }
@@ -60,7 +61,7 @@ public class Database {
             st = con.createStatement();
             st.executeUpdate(SQLString);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -327,6 +328,26 @@ public class Database {
             System.out.println(ex.getMessage());
 //            return -1;
         }
+    }
+    
+    public HashMap<String, Integer> populateCombo(){
+        HashMap<String, Integer> listCompany = new HashMap<String, Integer>();
+        connect();
+        Statement st;
+        ResultSet rs;
+        String state = "SELECT `idPerusahaan`, `nama` FROM `perusahaan";
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(state);
+            while(rs.next()){
+                listCompany.put(rs.getString("nama"), rs.getInt("idPerusahaan"));
+            }
+            
+        } catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return listCompany;
     }
     
 //    public void deletePerusahaan(String idAkun){

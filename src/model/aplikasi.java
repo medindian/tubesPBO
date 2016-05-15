@@ -185,52 +185,24 @@ public class aplikasi{
     }
     
     public int ubahPerusahaan(Perusahaan p, String nama, String passLama, String passBaru){
-        System.out.println("id : "+p.getIdAkun());
-        System.out.println("nama : "+p.getNama());
-        System.out.println("pass : "+p.getPassword());
-
         if ((p.getPassword()).equals(passLama)){
-            System.out.println("true");
-            
             if (!cekAngka(nama) && !cekTanda(nama)){
-                System.out.println("false, false");
-                
                 p.setNama(nama);
                 p.setPassword(passBaru);
-                
-                System.out.println("pass Lama : "+passLama);
-                System.out.println("nama baru : "+p.getNama());
-                System.out.println("pass baru : "+p.getPassword());
-                
                 db.updatePerusahaan(p);
                 return 1;
-        } else 
-            System.out.println("Nama hanya boleh diisi HURUF saja");
+            } else 
+                System.out.println("Nama hanya boleh diisi HURUF saja");
         }
         return -1;
     }
     
     public int ubahPelamar(Pelamar p, String nama, String passLama, String passBaru){
-        System.out.println("id : "+p.getIdAkun());
-        System.out.println("nama : "+p.getNama());
-        System.out.println("pass : "+p.getPassword());
-
         if ((p.getPassword()).equals(passLama)){
-            System.out.println("true");
-            
             if (!cekAngka(nama) && !cekTanda(nama)){
-                System.out.println("false, false");
-
                 p.setNama(nama);
                 p.setPassword(passBaru);
-
-                System.out.println("pass Lama : "+passLama);
-                System.out.println("nama baru : "+p.getNama());
-                System.out.println("pass baru : "+p.getPassword());
-                
                 db.updatePelamar(p);
-                
-                System.out.println("near");
                 return 1;
             } else
                 System.out.println("Nama hanya boleh diisi HURUF saja");
