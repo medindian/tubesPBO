@@ -115,6 +115,9 @@
     <Component class="javax.swing.JPasswordField" name="txtPassPel">
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdAkunPel">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIdAkunPelKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

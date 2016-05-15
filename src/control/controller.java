@@ -44,11 +44,14 @@ public class controller implements ActionListener {
                 view.dispose();
                 
             } else if (source.equals(p.getBtnLogin())){
-                String idAkun = p.getIdAkun();
+                String id = p.getIdAkun();
+                int idAkun = Integer.parseInt(id);
                 String pass = String.valueOf(p.getPass());
-                if (idAkun.equals(""))
-                    JOptionPane.showMessageDialog((Component) view, "idAkun tidak boleh kosong");
-                else if(pass.equals(""))
+                
+//                if (id == "")
+//                    JOptionPane.showMessageDialog((Component) view, "idAkun tidak boleh kosong");
+//                else 
+                if(pass.equals(""))
                     JOptionPane.showMessageDialog((Component) view, "password tidak boleh kosong");
                 else {
                     int check = model.checkLogin(idAkun, pass);

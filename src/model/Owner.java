@@ -2,21 +2,22 @@ package model;
 
 public abstract class Owner{
 
-    private String idAkun, nama, password;
+    private int idAkun;
+    private String nama, password;
 	
-    public Owner(String idAkun, String nama, String pass){
+    public Owner(int idAkun, String nama, String pass){
         this.idAkun = idAkun;
         this.nama = nama;
         this.password = pass;
     }
 	
-    public void setIdAkun(String idAkun){
+    public void setIdAkun(int idAkun){
         this.idAkun = idAkun;   }
     
     public void setNama(String nama){
         this.nama = nama;   }
 
-    public String getIdAkun() {
+    public int getIdAkun() {
         return idAkun;    }
 
     public String getNama(){

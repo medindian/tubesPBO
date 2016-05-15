@@ -9,22 +9,27 @@ public class Perusahaan extends Owner{
     private ArrayList<Lowongan> daftarLowongan;
     private int nLowongan=0;
 	
-    public Perusahaan (String id, String nama, String pass){
+    public Perusahaan (int id, String nama, String pass){
         super(id, nama, pass);
         daftarLowongan = null;
     }
         
-    public void createLowongan(String nmLowongan, Date deadline){
-        daftarLowongan.add(new Lowongan(nmLowongan, deadline));
+    public void createLowongan(int id, String nmLowongan, Date deadline){
+        daftarLowongan.add(new Lowongan(id, nmLowongan, deadline));
         nLowongan = daftarLowongan.size();
     }
-    
+        
     public ArrayList<Lowongan> getDaftarLowongan() {
         return daftarLowongan;
     }
     
     public Lowongan getLowongan(int n) {
-        return daftarLowongan.get(n);
+        for (int i=0; i < nLowongan; i++){
+            Lowongan w = daftarLowongan.get(i);
+            if (w.getId() == n)
+                return w;
+        }
+        return null;
     }
     
     @Override
@@ -57,7 +62,7 @@ public class Perusahaan extends Owner{
         }
     }
 
-   public void terimaPelamar(String namaLowongan, String idPelamar){
+   public void terimaPelamar(String namaLowongan, int idPelamar){
         int ada = cariLowongan(namaLowongan);
         if (ada == -1){
            System.out.println("Lowongan yang anda cari tidak ada");

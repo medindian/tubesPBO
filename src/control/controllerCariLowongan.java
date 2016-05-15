@@ -24,6 +24,8 @@ class controllerCariLowongan implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+//        view.setListPerusahaan(model.getListPerusahaan());
+        
         if (source.equals(view.getBtnBack())){
             new controllerMenuPelamar(model, p1);
             view.dispose();

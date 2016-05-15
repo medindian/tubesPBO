@@ -48,6 +48,12 @@ public class lupaPass extends javax.swing.JFrame implements View{
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnBack.setText("Kembali");
 
+        txtIdAkun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdAkunKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,6 +120,15 @@ public class lupaPass extends javax.swing.JFrame implements View{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtIdAkunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || c== KeyEvent.VK_BACK_SPACE || c==KeyEvent.VK_DELETE){
+            JOptionPane.showMessageDialog(null, "ID hanya boleh dalam bentuk angka saja");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdAkunKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

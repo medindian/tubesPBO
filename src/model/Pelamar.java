@@ -2,10 +2,9 @@ package model;
 
 public class Pelamar extends Owner{
     private BerkasLamaran berkas;
-//    private boolean statBerkas = false;
     private boolean statusDiterima = false;
     
-    public Pelamar(String id, String nama, String pass){
+    public Pelamar(int id, String nama, String pass){
         super(id, nama, pass);
     }
     

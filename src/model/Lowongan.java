@@ -5,26 +5,33 @@ import java.util.Date;
 
 public class Lowongan {
     
+    private int id;
     private String namaPekerjaan;
     private Date deadline;
     private ArrayList<BerkasLamaran> berkasMasuk;
     private ArrayList<BerkasLamaran> berkasDiterima;
-//    private int max1=0, max2=0;
     private int nBMasuk = 0;
     private int nBTerima = 0;
     
-    public Lowongan(String nPk, Date dl){
+    public Lowongan(int id, String nPk, Date dl){
+        this.id = id;
         this.namaPekerjaan = nPk;
         this.deadline = dl;
-//        this.max1 = max1;
-//        this.max2 = max2;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public void setNamaPkrj(String nPk){
         this.namaPekerjaan = nPk;   }
     
     public void setDeadline(Date dl){
         this.deadline = dl;     }
+
+    public int getId() {
+        return id;
+    }
 
     public String getNamaPkrj(){
         return namaPekerjaan;   }

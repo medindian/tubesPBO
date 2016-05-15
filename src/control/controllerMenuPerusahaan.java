@@ -25,19 +25,27 @@ class controllerMenuPerusahaan implements ActionListener{
             new controller(model);
             p2 = null;
             view.dispose();
+            
         } else if (source.equals(view.getBtnAturBio())){
+//            controllerEditBio(aplikasi model, Pelamar p, Perusahaan pp)
+//            new controllerEditBio(model, null, p2);
             new controllerEditBio(model, p2);
             view.dispose();
+            
         } else if (source.equals(view.getBtnAturLowongan())){
             new controllerSettingLowongan(model, p2);
             view.dispose();
+            
         } else if (source.equals(view.getBtnAturPenerimaan())){
             new controllerViewBerkasDiterima(model, p2);
             view.dispose();
+            
         } else if (source.equals(view.getBtnViewBerkasMasuk())){
             new controllerViewBerkasMasuk(model, p2);
             view.dispose();
+            
         }
+        
     }
     
 }

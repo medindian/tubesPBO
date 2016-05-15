@@ -1,13 +1,74 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.aplikasi;
+import database.Database;
+import java.util.ArrayList;
 
 public class cariLowongan extends javax.swing.JFrame implements View{
-
+    
     public cariLowongan() {
         initComponents();
+//        db.connect();
+//        db.readDataOwner();
     }
 
+    public void setTxtOutput(String hasil){
+        outputListLowongan.setText(hasil);  }
+    
+    public int getPerusahaan() {
+        return boxListCompany.getSelectedIndex() + 1;   }
+    
+    public void setListPerusahaan(ArrayList<String> list){
+        for (int i = 0; i < list.size(); i++){
+            String name = list.get(i);
+            boxListCompany.addItem(name);
+        }
+
+//        String state = "SELECT nama FROM perusahaan";
+//        ResultSet ss = db.getData(state);
+//        try {
+//            while (ss.next()) {
+//                String name = (db.getRS()).getString("nama");
+//                boxListCompany.addItem(name);
+//            }
+//            System.out.println("data pelamar terbaca");
+//        } catch (SQLException ex) {
+//            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+    
+//    public static void main(String args[]) {
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(cariLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(cariLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(cariLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(cariLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new cariLowongan().setVisible(true);
+//            }
+//        });
+//    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -17,7 +78,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
         jScrollPane1 = new javax.swing.JScrollPane();
         outputListLowongan = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
-        listPerusahaan = new javax.swing.JComboBox<>();
+        boxListCompany = new javax.swing.JComboBox<>();
         btnCariPrsh = new javax.swing.JButton();
         btnCari = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -39,8 +100,6 @@ public class cariLowongan extends javax.swing.JFrame implements View{
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBack.setText("Kembali");
-
-        listPerusahaan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
         btnCariPrsh.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         btnCariPrsh.setText("Cari by Perusahaan");
@@ -120,7 +179,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtNamaLowongan)
-                                            .addComponent(listPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(boxListCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(0, 37, Short.MAX_VALUE))
         );
@@ -137,7 +196,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(listPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxListCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -159,6 +218,7 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxListCompany;
     private javax.swing.JComboBox<String> boxPilihLowongan;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCari;
@@ -171,22 +231,12 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> listPerusahaan;
     private javax.swing.JTextArea outputListLowongan;
     private javax.swing.JTextField txtNamaLowongan;
     // End of variables declaration//GEN-END:variables
 
-    public void setTxtOutput(String hasil){
-        outputListLowongan.setText(hasil);
-    }
-    
-    public int getPerusahaan() {
-        return listPerusahaan.getSelectedIndex() + 1;
-    }
-    
     public int getLowonganPilihan(){
-        return boxPilihLowongan.getSelectedIndex()+1;
-    }
+        return boxPilihLowongan.getSelectedIndex()+1;   }
     
     @Override
     public void addListener(ActionListener e) {
@@ -208,6 +258,5 @@ public class cariLowongan extends javax.swing.JFrame implements View{
 
     public Object getBtnDaftar() {
         return btnOK;    }
-    
     
 }

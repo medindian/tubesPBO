@@ -1,31 +1,16 @@
 package view;
 
-import database.Database;
-import model.*;
-import java.awt.*;
+//import java.awt.event.KeyEvent;
 import java.awt.event.*;
-import java.sql.*;
 import javax.swing.*;
 
 public class login extends javax.swing.JFrame implements View{
-//    login lp = new login();
-//    Database con = null;
-//    ResultSet rs = null;
-//    PreparedStatement pst = null;
-//    
+
     public login() {
         initComponents();
     }
     
     
-//    public void close(){
-//        WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
-//        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
-//    }
-
-////    private View view = login;
-//    private aplikasi model;
-//    private Pelamar p = null;
 //    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -48,6 +33,12 @@ public class login extends javax.swing.JFrame implements View{
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBack.setText("Exit");
+
+        txtIdAkunPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdAkunPelKeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Id Akun              :");
@@ -124,6 +115,16 @@ public class login extends javax.swing.JFrame implements View{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtIdAkunPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunPelKeyTyped
+        // TODO add your handling code here:
+//        c == KeyEvent.VK_BACK_SPACE ||
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) ||  c == KeyEvent.VK_DELETE){
+            JOptionPane.showMessageDialog(null, "ID hanya boleh dalam bentuk angka saja");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdAkunPelKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAkunBaruPel;

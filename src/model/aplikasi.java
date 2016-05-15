@@ -29,21 +29,20 @@ public class aplikasi{
     }
     
     //untuk memeriksa idAkun Pelamar sudah dipakai atau belum
-    public boolean cariOwner(String idAkun){
+    public boolean cariOwner(int idAkun){
         for (int i = 0; i < nOwner; i++) {
             Owner p = (Owner) daftarOwner.get(i);
-            if (p.getIdAkun().equals(idAkun)) {
+            if (p.getIdAkun() == idAkun) {
                 return true;    }
             }
         return false;
     }
     
-    public Owner cariAkun(String idAkun, String nama){
+    public Owner cariAkun(int idAkun, String nama){
         for (int i = 0; i < nOwner; i++) {
             Owner p = (Owner) daftarOwner.get(i);
-            if ((p.getIdAkun()).equals(idAkun)) {
+            if (p.getIdAkun() == idAkun) {
                 if ((p.getNama()).equals(nama)){
-//                    System.out.println("array ke-"+i);
                     return daftarOwner.get(i);
                 }
             }
@@ -51,11 +50,15 @@ public class aplikasi{
         return null;
     }
     
+    public ArrayList<String> getListPerusahaan(){
+        return db.getListPerusahaan();
+    }
+    
     //untuk mendapat array dari idAkun Pelamar
-    public int cariOwner2(String idAkun){
+    public int cariOwner2(int idAkun){
         for (int i = 0; i < nOwner; i++) {
             Owner p = (Owner) daftarOwner.get(i);
-            if (p.getIdAkun().equals(idAkun))
+            if (p.getIdAkun() == idAkun)
                 return i;
             }
         return -1;
@@ -78,7 +81,7 @@ public class aplikasi{
         }
         return false;
     }
-    
+        
     public boolean cariNama(String nama){
         for(int i = 0; i < nOwner; i++){
             if (daftarOwner.get(i).getNama().equals(nama))
@@ -87,7 +90,31 @@ public class aplikasi{
         return false;
     }
     
-    public int addPelamar(String idAkun, String nama, String pass){
+    public int checkLogin(int idAkun, String pass){
+        for (int i = 0; i < nOwner; i++) {
+            if ((daftarOwner.get(i).getIdAkun()) == idAkun) {
+                if ((daftarOwner.get(i).getPassword()).equals(pass)) {
+                    return 1;   }
+                else {
+                    System.out.println("password salah");
+                    return 2;   }
+            }
+        }
+        return -1;
+    }
+    
+    public Owner login(int idAkun, String pass){
+        for (int i = 0; i < nOwner; i++) {
+            if ((daftarOwner.get(i).getIdAkun()) == idAkun) {
+                if ((daftarOwner.get(i).getPassword()).equals(pass)) {
+                    return daftarOwner.get(i);
+                }
+            } 
+        }
+        return null;
+    }
+    
+    public int addPelamar(int idAkun, String nama, String pass){
         int hasil = -1;
         if (nOwner < 100){
             if (cariOwner(idAkun) == false){
@@ -104,12 +131,12 @@ public class aplikasi{
                 }
                 else System.out.println("Nama sudah dipakai");
             }
-            else  System.out.println("Sudah ada yang menggunakan id akun");
+            else  System.out.println("Sudah ada yang menggunakan id yang sama");
         }
         return hasil;
     }
     
-    public int addPerusahaan(String idAkun, String nama, String pass){
+    public int addPerusahaan(int idAkun, String nama, String pass){
         int hasil = -1;
         if (nOwner < 100){           
             if (cariOwner(idAkun) == false) {
@@ -126,17 +153,25 @@ public class aplikasi{
                 } else
                 System.out.println("Nama sudah dipakai");
             } else
-                System.out.println("Sudah ada yang menggunakan id akun");
+                System.out.println("Sudah ada yang menggunakan id yang sama");
         }
         return hasil;
     }
     
-    public int addLowongan(Perusahaan p, String nama, Date deadline){
-        if (p.cariLowongan(nama) == -1){
-            p.createLowongan(nama, deadline);
-            db.saveLowongan(p.getIdAkun(), nama, deadline);
-            return 1;
-        } else System.out.println("Lowongan sudah tersedia");
+    public int addLowongan(Perusahaan p, int id, String nama, Date deadline){
+        if (cekAngka(nama) == false){
+            if (p.cariLowongan(nama) == -1){
+                p.createLowongan(id, nama, deadline);
+                Lowongan l = p.getLowongan(id);
+                db.saveLowongan(p, l);
+
+                System.out.println("id lowongan : " + l.getId());
+                System.out.println("nama lowongan : " + l.getNamaPkrj());
+                System.out.println("deadline ; " + l.getDeadline());
+
+                return 1;
+            } else System.out.println("Lowongan sudah tersedia");
+        } else System.out.println("Nama hanya boleh HURUF saja");
         return -1;
     }
     
@@ -172,72 +207,45 @@ public class aplikasi{
     public int ubahPelamar(Pelamar p, String nama, String passLama, String passBaru){
         if ((p.getPassword()).equals(passLama)){
             System.out.println("true");
+            
             if (!cekAngka(nama) && !cekTanda(nama)){
                 System.out.println("false, false");
-                String id = p.getIdAkun();
-                String pass = p.getPassword();
+
                 p.setNama(nama);
                 p.setPassword(passBaru);
-                System.out.println("pass Lama : "+pass);
+
+                System.out.println("pass Lama : "+passLama);
                 System.out.println("nama baru : "+p.getNama());
                 System.out.println("pass baru : "+p.getPassword());
+                
                 db.updatePelamar(p);
-    //            if (a == 1)
+
                 return 1;
-        } else
-            System.out.println("Nama hanya boleh diisi HURUF saja");
+            } else
+                System.out.println("Nama hanya boleh diisi HURUF saja");
         }
         return -1;
     }
     
-    public int checkLogin(String idAkun, String pass){
-//        System.out.println("nOwner : "+ nOwner);
-        for (int i = 0; i < nOwner; i++) {
-//            System.out.println("i : "+ i);
-            if ((daftarOwner.get(i).getIdAkun()).equals(idAkun)) {
-                if ((daftarOwner.get(i).getPassword()).equals(pass)) {
-                    return 1;   }
-                else {
-                    System.out.println("password salah");
-                    return 2;   }
-            }
-        }
-        return -1;
-    }
     
-    public Owner login(String idAkun, String pass){
-        for (int i = 0; i < nOwner; i++) {
-            if ((daftarOwner.get(i).getIdAkun()).equals(idAkun)) {
-                if ((daftarOwner.get(i).getPassword()).equals(pass)) {
-                    return daftarOwner.get(i);
-                }
-            } 
-        }
-        return null;
-    }
-    
-    public void isPelamar(Owner p){
-        if (p instanceof Pelamar)
-            System.out.println("pelamar");
-        else if (p instanceof Perusahaan)
-            System.out.println("perusahaan");
-    }
+//    public void isPelamar(Owner p){
+//        if (p instanceof Pelamar)
+//            System.out.println("pelamar");
+//        else if (p instanceof Perusahaan)
+//            System.out.println("perusahaan");
+//    }
     
     //lupaPassword
     //String idAkun, String nama, String passBaru
-    public boolean lupaPassPelamar(Owner p){
-        Pelamar m = (Pelamar) p;
-        int a = db.updatePassPelamar(m);
-//        System.out.println("a : "+a);
+    public boolean lupaPassPelamar(Pelamar p){
+        int a = db.updatePassPelamar(p);
         if (a == 1)
             return true;
         return false;
     }
     
-    public boolean lupaPassPerusahaan(Owner p){
-        Perusahaan h = (Perusahaan) p;
-        int a = db.updatePassPerusahaan(h);
-//        System.out.println("a : "+a);
+    public boolean lupaPassPerusahaan(Perusahaan p){
+        int a = db.updatePassPerusahaan(p);
         if (a == 1)
             return true;
         return false;
@@ -323,7 +331,7 @@ public class aplikasi{
     }
     
     //lowongan
-    public String cariPekerjaan(String company){
+    public String cariPekerjaan(int company){
         boolean ada = cariOwner(company);
         int ar = cariOwner2(company);
         if (ada == true && daftarOwner.get(ar) instanceof Perusahaan){
@@ -333,7 +341,7 @@ public class aplikasi{
         return null;
     }
 
-    public String cariPekerjaan2(String company, String lowong){
+    public String cariPekerjaan2(int company, String lowong){
         boolean ada = cariOwner(company);
         int ar = cariOwner2(company);
         if (ada == true && daftarOwner.get(ar) instanceof Perusahaan){

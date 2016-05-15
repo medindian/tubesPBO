@@ -1,6 +1,8 @@
 package view;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class buatAkunBaru extends javax.swing.JFrame implements View {
     
@@ -42,6 +44,12 @@ public class buatAkunBaru extends javax.swing.JFrame implements View {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel5.setText("Id Akun          :");
+
+        txtIdAkunPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdAkunPelKeyTyped(evt);
+            }
+        });
 
         btnSave1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSave1.setText("Pelamar");
@@ -112,6 +120,15 @@ public class buatAkunBaru extends javax.swing.JFrame implements View {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtIdAkunPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdAkunPelKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || c== KeyEvent.VK_BACK_SPACE || c==KeyEvent.VK_DELETE){
+            JOptionPane.showMessageDialog(null, "ID hanya boleh dalam bentuk angka saja");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdAkunPelKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

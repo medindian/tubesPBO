@@ -1,6 +1,8 @@
 package control;
 
 import java.awt.event.*;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 
@@ -20,14 +22,30 @@ class controllerSettingLowongan implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println("perusahaan : " + p2.getNama() + " " + p2.getIdAkun());
         Object source = e.getSource();
+        
         if (source.equals(view.getBtnBack())){
+            System.out.println("button kembali ke menu perusahaan");
             new controllerMenuPerusahaan(model, p2);
             view.dispose();
+            
+        } else if (source.equals(view.getBtnSaveLowongan())) {
+            System.out.println("button simpan");
+            int id = view.getIdLowongan();
+            String nama = view.getLowonganBaru();
+            Date dd = view.getDeadline();
+            int hasil = model.addLowongan(p2, id, nama, dd);
+            if (hasil == 1){
+                JOptionPane.showMessageDialog(null, "data lowongan baru berhasil disimpan");
+            } else {
+                JOptionPane.showMessageDialog(null, "data lowongan baru gagal disimpan");
+            }
+
         } else if (source.equals(view.getBtnOK())){
-            //System.out.println("yohohoh");
-        } else if (source.equals(view.getBtnSaveLowongan())){
-            //System.out.println("yohohoh");
+            System.out.println("yohohoh");
+            int idHapus = view.getHapus();
+            
         }
     }
     
