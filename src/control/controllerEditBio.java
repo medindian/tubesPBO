@@ -32,9 +32,7 @@ class controllerEditBio implements ActionListener {
 //           if ( p1!= null && p2 == null ){
             if ( r instanceof Pelamar ){
                 p1 = (Pelamar) r;
-//                System.out.println("button kembali");
                 new controllerMenuPelamar(model, p1);
-//               System.out.println("button kembali");
                 view.dispose();                
             } else 
 //           if ( p2!= null && p1 == null ){
@@ -45,19 +43,19 @@ class controllerEditBio implements ActionListener {
             }
             
         } else if (source.equals(view.getBtnSimpan())){
-//            System.out.println("button simpan");
-            String nama = view.getNama();
-            String passLama = String.valueOf(view.getPassOld());
-            String passBaru = String.valueOf(view.getPassNew());
+            String name = view.getNama();
+            String pLama = String.valueOf(view.getPassOld());
+            String pBaru = String.valueOf(view.getPassNew());
             
-            System.out.println(nama);
-            System.out.println(passLama);
-            System.out.println(passBaru);
+            System.out.println(name);
+            System.out.println(pLama);
+            System.out.println(pBaru);
             
-            if ( p1!= null && p2 == null ){
+            if ( r instanceof Pelamar ){
                 System.out.println("p2 null");
-////                Pelamar p1 = new Pelamar(po.getIdAkun(), po.getNama(), po.getPassword());
-                int a = model.ubahPelamar(p1, nama, passLama, passBaru);
+                p1 = (Pelamar) r;
+//                Pelamar p1 = new Pelamar(po.getIdAkun(), po.getNama(), po.getPassword());
+                int a = model.ubahPelamar(p1, name, pLama, pBaru);
                 System.out.println("hasil : "+a);
                 if (a == 1)  {
                     JOptionPane.showMessageDialog(null, "Perubahan data berhasil disimpan");
@@ -66,18 +64,20 @@ class controllerEditBio implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Perubahan data gagal disimpan", "Fail",
                                 JOptionPane.WARNING_MESSAGE);
                 }
-//            } else if (p2!= null && p1 == null){
-////                Perusahaan p2 = new Perusahaan(po.getIdAkun(), po.getNama(), po.getPassword());
-//                int a = model.ubahPerusahaan(p2, nama, passLama, passBaru);
-//                if (a == 1) {
-//                    JOptionPane.showMessageDialog(null, "Password berhasil diganti");
-//                }
-//                else {
-//                    JOptionPane.showMessageDialog(null, "Password gagal diganti", "Fail",
-//                                JOptionPane.WARNING_MESSAGE);
-//                }
+                view.setKosongBio();
+            } else if (r instanceof Perusahaan ){
+//                Perusahaan p2 = new Perusahaan(po.getIdAkun(), po.getNama(), po.getPassword());
+                p2 = (Perusahaan) r;
+                int a = model.ubahPerusahaan(p2, name, pLama, pBaru);
+                if (a == 1) {
+                    JOptionPane.showMessageDialog(null, "Password berhasil diganti");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Password gagal diganti", "Fail",
+                                JOptionPane.WARNING_MESSAGE);
+                }
+                view.setKosongBio();
             }
-            view.setKosongBio();
         }
         
     }
