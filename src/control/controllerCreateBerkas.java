@@ -28,14 +28,13 @@ class controllerCreateBerkas implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-//        System.out.println("yay");
 
         if(source.equals(view.getBtnBack())){
             new controllerMenuPelamar(model, p1);
             view.dispose();
             
         } else if (source.equals(view.getBtnSaveBrk())){
-            System.out.println("lol");
+//            System.out.println("lol");
             String cv = view.getCV();
             String slk = view.getSLK();
             if (cv == "")

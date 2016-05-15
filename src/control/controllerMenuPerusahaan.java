@@ -21,16 +21,17 @@ class controllerMenuPerusahaan implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+        
         if (source.equals(view.getBtnLogout())){
             new controller(model);
             p2 = null;
             view.dispose();
             
         } else if (source.equals(view.getBtnAturBio())){
-//            controllerEditBio(aplikasi model, Pelamar p, Perusahaan pp)
+            System.out.println("test");
 //            new controllerEditBio(model, null, p2);
-            new controllerEditBio(model, p2);
-            view.dispose();
+//            new controllerEditBio(model, p2);
+//            view.dispose();
             
         } else if (source.equals(view.getBtnAturLowongan())){
             new controllerSettingLowongan(model, p2);

@@ -27,6 +27,7 @@ class controllerCariLowongan implements ActionListener{
 //        view.setListPerusahaan(model.getListPerusahaan());
         
         if (source.equals(view.getBtnBack())){
+            System.out.println("button kembali");
             new controllerMenuPelamar(model, p1);
             view.dispose();
             

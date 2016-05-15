@@ -29,7 +29,6 @@ class controllerLupaPass implements ActionListener{
             view.dispose();
             
         } else if (source.equals(view.getBtnCheck())){
-//            System.out.println("hahahahaha");
             String id = view.getIdAkunDicari();
             int idAkun = Integer.parseInt(id);
             String nama = view.getNamaDicari();
