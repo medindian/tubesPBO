@@ -30,8 +30,8 @@ class controllerMenuPerusahaan implements ActionListener{
         } else if (source.equals(view.getBtnAturBio())){
             System.out.println("test");
 //            new controllerEditBio(model, null, p2);
-//            new controllerEditBio(model, p2);
-//            view.dispose();
+            new controllerEditBio(model, p2);
+            view.dispose();
             
         } else if (source.equals(view.getBtnAturLowongan())){
             new controllerSettingLowongan(model, p2);

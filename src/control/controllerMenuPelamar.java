@@ -34,8 +34,8 @@ class controllerMenuPelamar implements ActionListener{
             view.dispose();
             
         } else if (source.equals(view.getBtnUbahBio())){
-            new controllerEditBio(model, p1, null);
-//            new controllerEditBio(model, p1);
+//            new controllerEditBio(model, p1, null);
+            new controllerEditBio(model, p1);
             view.dispose();
             
         } else if(source.equals(view.getBtnCari())){

@@ -124,6 +124,18 @@ public class editBio extends javax.swing.JFrame implements View{
     private javax.swing.JPasswordField txtPassOld;
     // End of variables declaration//GEN-END:variables
     
+    
+    public void addListener(ActionListener e) {
+        btnBack.addActionListener(e);
+        btnSimpan.addActionListener(e);
+    }
+    
+    public Object getBtnSimpan() {
+        return btnSimpan;    }
+
+    public Object getBtnBack() {
+        return btnBack;    }
+
     public String getNama(){
         return txtNama.getText();   }
     
@@ -138,17 +150,5 @@ public class editBio extends javax.swing.JFrame implements View{
         txtPassOld.setText("");
         txtPassNew.setText("");
     }
-    
-    @Override
-    public void addListener(ActionListener e) {
-        btnBack.addActionListener(e);
-        btnSimpan.addActionListener(e);
-    }
-
-    public Object getBtnSimpan() {
-        return btnSimpan;    }
-
-    public Object getBtnBack() {
-        return btnBack;    }
-    
+        
 }
