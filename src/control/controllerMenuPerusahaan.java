@@ -1,4 +1,5 @@
 package control;
+
 import java.awt.event.*;
 import model.*;
 import view.*;
@@ -28,8 +29,6 @@ class controllerMenuPerusahaan implements ActionListener{
             view.dispose();
             
         } else if (source.equals(view.getBtnAturBio())){
-            System.out.println("test");
-//            new controllerEditBio(model, null, p2);
             new controllerEditBio(model, p2);
             view.dispose();
             
