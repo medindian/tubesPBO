@@ -259,12 +259,31 @@ public class settingLowongan extends javax.swing.JFrame implements View{
     
     public Date getDeadline(){
         Date dd = new Date();
-        dd.setDate(boxDay.getSelectedIndex()+1);
-        dd.setMonth(boxMonth.getSelectedIndex()+1);
-        dd.setYear(boxYear.getSelectedIndex()+90);
+//        dd.setDate(boxDay.getSelectedIndex() + 1);
+//        dd.setMonth(boxMonth.getSelectedIndex() + 1);
+//        dd.setYear(boxYear.getSelectedIndex() + 90);
         return dd;
     }
     
+    public String getLowonganBaru(){
+        return txtLowonganBaru.getText();    }
+    
+    public int getIdLowongan(){
+        return (Integer) spinIdLowongan.getValue(); }
+
+    public int getHapus(){
+        return (Integer) spinIdHapus.getValue();    }
+    
+    public Object getBtnBack() {
+        return btnBack;    }
+                
+    public Object getBtnOK() {
+        return btnOK;    }
+
+    public Object getBtnSaveLowongan() {
+        return btnSaveLowongan;    }
+    
+}
 //        System.out.println("SelectedIndex");
 //        System.out.println(boxDay.getSelectedIndex());
 //        System.out.println(boxMonth.getSelectedIndex());
@@ -291,25 +310,3 @@ public class settingLowongan extends javax.swing.JFrame implements View{
 //        tableLowongan.setModel(tableModel);
 //        tableLowongan.getColumnModel().getColumn(0).setPreferredWidth(20);
 //    }
-    
-    public String getLowonganBaru(){
-        return txtLowonganBaru.getText();    }
-    
-    public int getIdLowongan(){
-        return (Integer) spinIdLowongan.getValue();
-    }
-
-    public int getHapus(){
-        return (Integer) spinIdHapus.getValue();    }
-    
-    public Object getBtnBack() {
-        return btnBack;    }
-                
-    public Object getBtnOK() {
-        return btnOK;    }
-
-    public Object getBtnSaveLowongan() {
-        return btnSaveLowongan;    }
-    
-    
-}

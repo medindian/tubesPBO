@@ -30,13 +30,14 @@ class controllerSettingLowongan implements ActionListener{
             
         } else if (source.equals(view.getBtnSaveLowongan())) {
             int id = view.getIdLowongan();
-            System.out.println("id : "+id);
+//            System.out.println("id : "+id);
             String nama = view.getLowonganBaru();
-            System.out.println("nama : "+nama);
+//            System.out.println("nama : "+nama);
             
             Date dd = view.getDeadline();
             System.out.println(dd.toString());
-            int hasil = model.addLowongan(p2, id, nama, dd);
+//            int hasil = model.addLowongan(p2, id, nama, dd);
+            int hasil = 0;
             if (hasil == 1){
                 JOptionPane.showMessageDialog(null, "data lowongan baru berhasil disimpan");
             } else {
