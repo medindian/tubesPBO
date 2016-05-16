@@ -22,11 +22,9 @@ class controllerSettingLowongan implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-//        System.out.println("perusahaan : " + p2.getNama() + " " + p2.getIdAkun());
         Object source = e.getSource();
         
         if (source.equals(view.getBtnBack())){
-//            System.out.println("button kembali ke menu perusahaan");
             new controllerMenuPerusahaan(model, p2);
             view.dispose();
             
@@ -36,11 +34,6 @@ class controllerSettingLowongan implements ActionListener{
             String nama = view.getLowonganBaru();
             System.out.println("nama : "+nama);
             
-//            int day = view.getDay();
-//            int month = view.getMonth();
-//            int year = view.getYear();
-//            System.out.println(day +" "+month+" "+year);
-            
             Date dd = view.getDeadline();
             System.out.println(dd.toString());
             int hasil = model.addLowongan(p2, id, nama, dd);
@@ -49,6 +42,12 @@ class controllerSettingLowongan implements ActionListener{
             } else {
                 JOptionPane.showMessageDialog(null, "data lowongan baru gagal disimpan");
             }
+
+//            int day = view.getDay();
+//            int month = view.getMonth();
+//            int year = view.getYear();
+//            System.out.println(day +" "+month+" "+year);
+            
 
         } else if (source.equals(view.getBtnOK())){
             System.out.println("yohohoh");
