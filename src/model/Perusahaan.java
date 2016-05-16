@@ -13,10 +13,6 @@ public class Perusahaan extends Owner{
         super(id, nama, pass);
         daftarLowongan = null;
     }
-    
-    public Perusahaan (int id, String nama){
-        super(id, nama, "");
-    }
         
     public void createLowongan(int id, String nmLowongan, Date deadline){
         daftarLowongan.add(new Lowongan(id, nmLowongan, deadline));

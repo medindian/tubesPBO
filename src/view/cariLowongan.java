@@ -1,13 +1,7 @@
 package view;
 
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.aplikasi;
 import database.Database;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class cariLowongan extends javax.swing.JFrame implements View{
@@ -20,8 +14,6 @@ public class cariLowongan extends javax.swing.JFrame implements View{
     public void bindCombo1(){
         Database db = new Database();
         HashMap <String, Integer> lc = db.populateCombo();
-//        for(int i= 0; i < lc.size(); i++){
-//            String s : lc.get(i)
         for (String s : lc.keySet()){
             boxListCompany.addItem(s);
         }

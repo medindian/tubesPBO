@@ -210,16 +210,6 @@ public class aplikasi{
         return -1;
     }
     
-    
-//    public void isPelamar(Owner p){
-//        if (p instanceof Pelamar)
-//            System.out.println("pelamar");
-//        else if (p instanceof Perusahaan)
-//            System.out.println("perusahaan");
-//    }
-    
-    //lupaPassword
-    //String idAkun, String nama, String passBaru
     public boolean lupaPassPelamar(Pelamar p){
         int a = db.updatePassPelamar(p);
         if (a == 1)
@@ -233,50 +223,6 @@ public class aplikasi{
             return true;
         return false;
     }
-
-//        int ar = cariOwner2(idAkun);
-//        Owner p = daftarOwner.get(ar);
-//        if(p == null)
-//            System.out.println("Akun tidak ada");
-//        else {
-////            if ((p.getNama()).equals(nama)){
-////                p.setPassword(passBaru);
-//                Perusahaan m = (Perusahaan) p;
-//                System.out.println("pass dari owner : "+ p.getPassword());
-//                System.out.println("pass dari obj pelamar : "+ m.getPassword());
-//                int a = db.updatePassPelamar(p);
-//                System.out.println("hasil proses : "+ a);
-//                if (a == 1) {
-//                    System.out.println("Data berhasil disimpan");
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-    
-    //String idAkun, String nama, String passBaru
-//    public boolean lupaPassPerusahaan(Perusahaan p){
-//        int ar = cariOwner2(idAkun);
-//        Owner p = daftarOwner.get(ar);
-//        if(p == null)
-//            System.out.println("Akun tidak ada");
-//        else {
-//            if ((p.getNama()).equals(nama)){
-//                p.setPassword(passBaru);
-//                Perusahaan m = (Perusahaan) p;
-//                System.out.println("pass dari owner : "+ p.getPassword());
-//                System.out.println("pass dari obj pelamar : "+ m.getPassword());
-//                int a = db.updatePassPerusahaan(p);
-//                System.out.println("hasil proses : "+ a);
-//                if (a == 1) {
-//                    System.out.println("Data berhasil disimpan");
-//                    return true;
-////                }
-////            }
-//        }
-//        return false;
-//    }
     
     public int buatBerkas(Pelamar p, String cv, String slk) throws FileNotFoundException, SQLException{
         int proses;

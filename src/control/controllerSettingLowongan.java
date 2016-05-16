@@ -31,10 +31,11 @@ class controllerSettingLowongan implements ActionListener{
             view.dispose();
             
         } else if (source.equals(view.getBtnSaveLowongan())) {
-            System.out.println("button simpan");
+//            System.out.println("button simpan");
             int id = view.getIdLowongan();
             String nama = view.getLowonganBaru();
             Date dd = view.getDeadline();
+            System.out.println(dd.toString());;
             int hasil = model.addLowongan(p2, id, nama, dd);
             if (hasil == 1){
                 JOptionPane.showMessageDialog(null, "data lowongan baru berhasil disimpan");

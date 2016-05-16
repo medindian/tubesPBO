@@ -135,7 +135,7 @@ public class Database {
             + "'" + p.getIdAkun() + "')";
         try {
             query(state);
-//            System.out.println("id lowonngan : ");
+            System.out.println("id lowonngan : "+data.getId());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

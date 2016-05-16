@@ -14,38 +14,6 @@ public class settingLowongan extends javax.swing.JFrame implements View{
     public settingLowongan() {
         initComponents();
     }
-
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(settingLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(settingLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(settingLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(settingLowongan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new settingLowongan().setVisible(true);
-//            }
-//        });
-//    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -225,7 +193,7 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,8 +207,8 @@ public class settingLowongan extends javax.swing.JFrame implements View{
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(21, 21, 21))
         );
@@ -279,13 +247,24 @@ public class settingLowongan extends javax.swing.JFrame implements View{
 
     public Date getDeadline(){
         Date dd = null;
-        dd.setDate(boxDay.getSelectedIndex()+1);
-        dd.setMonth(boxMonth.getSelectedIndex()+1);
-        dd.setYear(boxYear.getSelectedIndex()+1);
+        dd.setDate(boxDay.getSelectedIndex());
+        dd.setMonth(boxMonth.getSelectedIndex());
+        dd.setYear(boxYear.getSelectedIndex());        
+//        System.out.println("SelectedIndex");
+//        System.out.println(boxDay.getSelectedIndex());
+//        System.out.println(boxMonth.getSelectedIndex());
+//        System.out.println(boxYear.getSelectedIndex());
+//        
+//        System.out.println("SelectedItem");
+//        System.out.println(boxDay.getSelectedItem());
+//        System.out.println(boxMonth.getSelectedItem());
+//        System.out.println(boxYear.getSelectedItem());
 //        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
 //        Date ddline = sdf.parse(dateInString);
         return dd;
     }
+    
+    
     
     public void setListLowongan(ArrayList<Lowongan> list){
         String[] judul = {"Nomor","Nama Lowongan","Deadline"};
