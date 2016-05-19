@@ -15,7 +15,7 @@ class controllerSettingLowongan implements ActionListener{
     public controllerSettingLowongan(aplikasi model, Perusahaan p) {
         this.model = model;
         this.p2 = p;
-        view = new settingLowongan();
+        view = new settingLowongan(p);
         view.setVisible(true);
         view.addListener(this);
     }
@@ -30,31 +30,25 @@ class controllerSettingLowongan implements ActionListener{
             
         } else if (source.equals(view.getBtnSaveLowongan())) {
             int id = view.getIdLowongan();
-//            System.out.println("id : "+id);
             String nama = view.getLowonganBaru();
-//            System.out.println("nama : "+nama);
-            
             Date dd = view.getDeadline();
-            System.out.println(dd.toString());
-//            int hasil = model.addLowongan(p2, id, nama, dd);
-            int hasil = 0;
+            int hasil = model.addLowongan(p2, id, nama, dd);
             if (hasil == 1){
                 JOptionPane.showMessageDialog(null, "data lowongan baru berhasil disimpan");
+            } else if (hasil == 2){
+                JOptionPane.showMessageDialog(null, "perubahan data lowongan berhasil disimpan");
             } else {
                 JOptionPane.showMessageDialog(null, "data lowongan baru gagal disimpan");
             }
 
-//            int day = view.getDay();
-//            int month = view.getMonth();
-//            int year = view.getYear();
-//            System.out.println(day +" "+month+" "+year);
+        } else if (source.equals(view.getBtnDel())){
+            System.out.println("delete data");
+//            int idHapus = view.getHapus();
             
-
-        } else if (source.equals(view.getBtnOK())){
-            System.out.println("yohohoh");
-            int idHapus = view.getHapus();
+        } else if (source.equals(view.getBtnRefresh())){
             
         }
+        
     }
     
 }

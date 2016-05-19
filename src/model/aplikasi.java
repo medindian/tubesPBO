@@ -50,10 +50,6 @@ public class aplikasi{
         return null;
     }
     
-    public ArrayList<String> getListPerusahaan(){
-        return db.getListPerusahaan();
-    }
-    
     //untuk mendapat array dari idAkun Pelamar
     public int cariOwner2(int idAkun){
         for (int i = 0; i < nOwner; i++) {
@@ -158,29 +154,85 @@ public class aplikasi{
         return hasil;
     }
     
+    //mencari id lowongan dari setiap perusahaan
+    public boolean cariLowongan1(int id){
+        for (int i = 0; i < nLowongan ; i++) {
+            Lowongan l = (Lowongan) daftarLowongan.get(i);
+            if (l.getId() == id)
+                return true;
+        }
+        return false;
+    }
+    
+    //untuk mencari nama lowongan dari satu perusahaan
+//    public boolean cariLowongan2(Perusahaan p, String nama){
+//        System.out.println("isempty? : " + (p.getDaftarLowongan()).isEmpty() );
+//        if ( !(p.getDaftarLowongan()).isEmpty() ) {
+//            for(int i = 0; i < p.getDaftarLowongan().size(); i++){
+//                Lowongan w = p.getLowongan(i);
+//                if (w.getNamaPkrj().equals(nama))
+//                    return true;
+//            }
+//        }
+//        return false;
+//    }
+    
     public int addLowongan(Perusahaan p, int id, String nama, Date deadline){
-        if (cekAngka(nama) == false){
-            if (p.cariLowongan(nama) == -1){
-                p.createLowongan(id, nama, deadline);
-                Lowongan l = p.getLowongan(id);
-                db.saveLowongan(p, l);
-
-                System.out.println("id lowongan : " + l.getId());
-                System.out.println("nama lowongan : " + l.getNamaPkrj());
-                System.out.println("deadline ; " + l.getDeadline());
-
-                return 1;
-            } else System.out.println("Lowongan sudah tersedia");
+        if(cekAngka(nama) == false){
+            if(cariLowongan1(id) == false){
+                if (p.cariLowonganByName(nama) == true)
+                    System.out.println("lowongan dengan nama "+nama+" sudah terdaftar");
+                else {
+                    p.createLowongan(id, nama, deadline);
+                    Lowongan l = p.getLowongan(id);
+                    int date = deadline.getDate();
+                    int month = deadline.getMonth();
+                    int year = deadline.getYear();                    
+                    java.sql.Date datesql = new java.sql.Date(year, month, date);
+                    int hasil = db.saveLowongan(p, l, datesql);
+                    System.out.println("hasil : "+hasil);
+                    if (hasil == 1)
+                        return 1;
+                }
+            } else if (cariLowongan1(id) == true){
+                if (p.cariLowonganById(id) != -1){
+                    p.updateDataLowongan(id, nama, deadline);
+                    Lowongan l = p.getLowongan(id);
+                    int date = deadline.getDate();
+                    int month = deadline.getMonth();
+                    int year = deadline.getYear();                    
+                    java.sql.Date datesql = new java.sql.Date(year, month, date);
+                    int hasil = db.updateLowongan(p, l, datesql);
+                    if (hasil == 1)
+                        return 2;
+                } else System.out.println("Id sudah digunakan");
+            }
         } else System.out.println("Nama hanya boleh HURUF saja");
         return -1;
     }
     
-    public int deleteLowongan(Perusahaan p, String nama){
-        if (p.cariLowongan(nama) == 1){
-            p.removeLowongan(nama);
-            db.deleteLowongan(p, nama);
-            return 1;
-        } else System.out.println("Lowongan tidak ada");
+//kalo true, update dataLowongan
+//                if (p.getLowongan(id) != null){
+//                    p.updateDataLowongan(id, nama, deadline);
+//                System.out.println("id lowongan : " + l.getId());
+//                System.out.println("nama lowongan : " + l.getNamaPkrj());
+//                System.out.println("deadline ; " + l.getDeadline());
+//                    Lowongan l = p.getLowongan(id);
+//                    int hasil = db.updateLowongan(p, l);
+//                    if (hasil == 1)
+//                        return 1;
+//                //kalo false, muncul notif id sudah digunakan
+//                } else
+//                    System.out.println("id sudah ada yang menggunakan");
+//            }
+
+
+    public int deleteLowongan(Perusahaan p, int id, String nama){
+//        if (cariLowongan1(id) == true && cariLowongan2(p,nama) == true){
+//            p.removeLowongan(nama);
+//            db.deleteLowongan(p, nama);
+//            return 1;
+//        } else System.out.println("Lowongan tidak ada");
         return -1;
     }
     

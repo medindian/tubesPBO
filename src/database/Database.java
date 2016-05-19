@@ -3,20 +3,12 @@ package database;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import model.*;
+import java.sql.*;
+import java.util.*;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.*;
-import view.*;
 
 public class Database {
 
@@ -42,7 +34,6 @@ public class Database {
 //            st = con.createStatement();
         } catch (SQLException ex) {
             System.out.println(ex);
-//            ex.printStackTrace();
         }
     }
 
@@ -65,6 +56,33 @@ public class Database {
         }
     }
 
+//    public void bindTableLowongan(Perusahaan p){
+//        connect();
+//        String s = "SELECT `idLowongan`, `namaPkj`, `deadline` FROM `lowongan` "
+//                + "WHERE `idPerusahaan` = '" + p.getIdAkun();
+//        ResultSet rs = getData(s);
+//        try {
+//            ResultSetMetaData rsmt = rs.getMetaData();
+//            int c = rsmt.getColumnCount();
+//            Vector column = new Vector(c);
+//            for (int i=1; i <= c; i++){
+//                column.add(rsmt.getColumnName(i));
+//            }
+//            Vector data = new Vector();
+//            Vector row = new Vector();
+//            while (rs.next()){
+//                row = new Vector(c);
+//                for (int i=1; i <= c; i++){
+//                    row.add(rs.getString(i));
+//                }
+//                data.add(row);
+//            }
+//        } catch (SQLException ex){
+//            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+    
+    //untuk mengambil data dari tabel pelamar dan perusahaan yg ada pd mysql
     public ArrayList<Owner> readDataOwner(){
         ArrayList<Owner> daftarOwner = new ArrayList();
         String state = "SELECT idPelamar, namaPelamar, passPelamar FROM pelamar";
@@ -76,7 +94,6 @@ public class Database {
             }
             System.out.println("data pelamar terbaca");
         } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
             Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
         state = "SELECT idPerusahaan, nama, password FROM perusahaan";
@@ -89,14 +106,29 @@ public class Database {
             }
             System.out.println("data perusahaan terbaca");
         } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
             Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        for(int i=0; i < daftarOwner.size(); i++)
-//            System.out.println("id : " + (daftarOwner.get(i)).getIdAkun());
         return daftarOwner;
     }
-
+    
+    //untuk mengambil data dari tabel lowongan yg ada pd mysql
+    public ArrayList<Lowongan> readDataLowongan(){
+        ArrayList<Lowongan> daftarLowongan = new ArrayList();
+        String state = "SELECT `idLowongan`, `namaPkj`, `deadline` FROM `lowongan`";
+        ResultSet ss = getData(state);
+        try {
+            while (ss.next()) {
+                Lowongan l = new Lowongan(rs.getInt("idLowongan"), rs.getString("namaPkj"), rs.getDate("deadline"));
+                daftarLowongan.add(l);
+            }
+            System.out.println("data lowongan terbaca");
+        } catch (SQLException ex) {
+            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return daftarLowongan;
+    }
+    
+    //untuk menambahkan akun pelamar baru pada database
     public int savePelamar(Pelamar p){
 //        (`idPelamar`, `namaPelamar`, `passPelamar`)
         String state = "INSERT INTO pelamar VALUES ("
@@ -112,8 +144,8 @@ public class Database {
         }
     }
     
+    //untuk menambahkan akun perusahaan baru pada database
     public int savePerusahaan(Perusahaan p){
-//        (`idPerusahaan`, `nama`, `password`)
         String state = "INSERT INTO perusahaan VALUES ("
             + "'" + p.getIdAkun() + "',"
             + "'" + p.getNama() + "',"
@@ -127,20 +159,38 @@ public class Database {
         }
     }
     
-    public void saveLowongan(Perusahaan p, Lowongan data){
-        String state = "INSERT INTO `lowongan` (`idLowongan`, `namaPkj`, `deadline`, `idPerusahaan`) VALUES ("
+    //untuk menambahkan lowongan baru pada database
+    public int saveLowongan(Perusahaan p, Lowongan data, Date sqldate){
+        String state = "INSERT INTO `lowongan`(`idPerusahaan`, `idLowongan`, `namaPkj`, `deadline`) VALUES ("
+            + "'" + p.getIdAkun() + "',"
             + "'" + data.getId() + "',"
             + "'" + data.getNamaPkrj() + "',"
-            + "'" + data.getDeadline() + "',"
-            + "'" + p.getIdAkun() + "')";
+            + "'" + sqldate + "')";
         try {
             query(state);
-            System.out.println("id lowonngan : "+data.getId());
+            return 1;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return -1;
         }
     }
     
+    //untuk menyimpan perubahan data lowongan dari suatu perusahaan
+    public int updateLowongan(Perusahaan p, Lowongan data, Date sqldate){
+        String state = "UPDATE `lowongan` SET `namaPkj` = '" + data.getNamaPkrj()
+            + "', `deadline`= '" + sqldate
+            + "' where `idPerusahaan` = " + p.getIdAkun() 
+            + "' AND `idLowongan` = " + data.getId();
+        try {
+            query(state);
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return -1;
+        }
+    }
+    
+    //untuk menyimpan perubahan password suatu akun pelamar
     public int updatePassPelamar(Pelamar p){
         String state = "UPDATE pelamar SET passPelamar = '" + p.getPassword() + "' where idPelamar = " + p.getIdAkun();
         try{
@@ -152,6 +202,7 @@ public class Database {
         }
     }
     
+    //untuk menyimpan perubahan password suatu akun perusahaan
     public int updatePassPerusahaan(Perusahaan p){
         String state = "UPDATE perusahaan SET password = '" + p.getPassword() 
                 + "' where `idPerusahaan` = '" + p.getIdAkun() +"'";
@@ -164,22 +215,29 @@ public class Database {
         }
     }
     
-    public ArrayList<String> getListPerusahaan(){
-        ArrayList<String> listPerusahaan = new ArrayList<>();
-        String state = "SELECT nama FROM perusahaan";
-        ResultSet ss = getData(state);
+    //untuk menyimpan perubahan data akun perusahaan
+    public void updatePerusahaan(Perusahaan p) {
+        String state = "UPDATE perusahaan SET nama = '" + p.getNama()
+                    + "', password = '" + p.getPassword() + "' where idPerusahaan = " + p.getIdAkun();
         try {
-            while (rs.next()) {
-                String name = rs.getString("nama");
-//                boxListCompany.add(name);
-            }
-            System.out.println("data pelamar terbaca");
+            query(state);
         } catch (SQLException ex) {
-            Logger.getLogger(aplikasi.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
-        return listPerusahaan;
     }
     
+    //untuk menyimpan perubahan data akun pelamar
+    public void updatePelamar(Pelamar p) {
+        String state = "UPDATE pelamar SET namaPelamar = '" + p.getNama() + "', passPelamar = '" 
+                + p.getPassword()+ "' where idPelamar = " + p.getIdAkun();
+        try {
+            query(state);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    //untuk menyimpan data berkas yg dikonversikan dalam bentuk blob
     public int saveBerkas(Pelamar p) throws FileNotFoundException, SQLException{
         String state = "INSERT INTO berkaslamaran (idAkun, namaFileCV, namaFileSLK) VALUES ("
             + "'" + p.getIdAkun() + "',"
@@ -215,6 +273,7 @@ public class Database {
         }
     }
     
+    //untuk menyimpan perubahan data berkas yang sudah ada sebelumnya
     public int updateBerkas(Pelamar p) throws SQLException, FileNotFoundException{
         String state =  "UPDATE `berkaslamaran`set fileCV=? where idPelamar = " + p.getIdAkun();
         PreparedStatement ps = con.prepareStatement(state);
@@ -241,97 +300,9 @@ public class Database {
         }
     }
     
-//    public void readBerkas(Pelamar p) throws SQLException, FileNotFoundException{
-//        String state = "SELECT fileCV FROM `berkaslamaran` where idPelamar = " + p.getIdAkun();
-//        ResultSet rs = getData(state);
-//        File f = null; //= new File(rs.getBlob(2));
-//        FileInputStream input = null;
-//        FileOutputStream output = new FileOutputStream(f);
-//        try{
-//            if(rs.next()){
-//                input = rs.getBinaryStream("fileCV");
-//                byte[] buffer = new byte[1024];
-//                while (input.read(buffer) > 0){
-//                    output.write(buffer);
-//                }
-//                System.out.println("Saved to file : " + f.getAbsolutePatch());
-//            }
-//        } catch (SQLException ex){
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-    
-    public ArrayList<String> listLowongan(String company){
-        ArrayList<String> daftar = new ArrayList();
-        String state = "SELECT namaPkj FROM `lowongan` WHERE idPerusahaan = "+company;
-        ResultSet rs = getData(state);
-        try {
-            while (rs.next()) {
-                String w = rs.getString("namaPkj"); //+" "+ rs.getDate("deadline");
-                daftar.add(w);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return daftar;
-    }
-    
-    public ArrayList<Lowongan> readDataLowongan(){
-        ArrayList<Lowongan> daftarLowong = new ArrayList();
-        String state = "SELECT idPerusahaan, namaPkj, deadline FROM `lowongan`";
-        ResultSet rs = getData(state);
-        try {
-            while (rs.next()) {
-                Lowongan w = new Lowongan(rs.getInt("idLowongan"), rs.getString("namaPkj"), rs.getDate("deadline"));
-                daftarLowong.add(w);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return daftarLowong;
-    }
-    
-    public ArrayList<BerkasLamaran> readDataBerkasLamaran(){
-        ArrayList<BerkasLamaran> daftarBerkas = new ArrayList();
-        String state = "SELECT idPelamar, namaFileCV, namaFileSLK FROM `berkaslamaran`";
-        ResultSet rs = getData(state);
-        try {
-            while (rs.next()) {
-                BerkasLamaran b = new BerkasLamaran(rs.getString("namaFileCV"), rs.getString("namaFileSLK"));
-                daftarBerkas.add(b);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return daftarBerkas;
-    }
-      
-    public void updatePerusahaan(Perusahaan p) {
-        String state = "UPDATE perusahaan SET nama = '" + p.getNama()
-                    + "', password = '" + p.getPassword() + "' where idPerusahaan = " + p.getIdAkun();
-        try {
-            query(state);
-//            return 1;
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-//            return -1;
-        }
-    }
-    
-    public void updatePelamar(Pelamar p) {
-        String state = "UPDATE pelamar SET namaPelamar = '" + p.getNama() + "', passPelamar = '" 
-                + p.getPassword()+ "' where idPelamar = " + p.getIdAkun();
-        try {
-            query(state);
-//            return 1;
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-//            return -1;
-        }
-    }
-    
+    //untuk menampilkan data perusahaan pada jComboBox pada pencarian lowongan
     public HashMap<String, Integer> populateCombo(){
-        HashMap<String, Integer> listCompany = new HashMap<String, Integer>();
+        HashMap<String, Integer> listCompany = new HashMap<>();
         connect();
         Statement st;
         ResultSet rs;
@@ -346,31 +317,54 @@ public class Database {
         } catch(SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
         return listCompany;
     }
     
-//    public void deletePerusahaan(String idAkun){
-//        String state = "delete from Perusahaan where idPerusahaan= " + idAkun;
-//        try {
-//            query(state);
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-//    
-//    public void deletePelamar(String idAkun){
-//        String state = "delete from Pelamar where idPelamar= " + idAkun;
-//        try {
-//            query(state);
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
+    //untuk menampilkan data lowongan (dari suatu perusahaan) pada jComboBox pada pencarian lowongan
+    public HashMap<String, Integer> populateComboLowongan(Perusahaan p){
+        HashMap<String, Integer> listJobVacancy = new HashMap<>();
+        connect();
+        Statement st;
+        ResultSet rs;
+        String state = "SELECT `idLowongan`, `namaPkj`, `deadline` FROM `lowongan` "
+                + "where idPerusahaan = " + p.getIdAkun();
+        try {
+//            rs = getData(state);
+            st = con.createStatement();
+            rs = st.executeQuery(state);
+            while(rs.next()){
+                String s = rs.getString("namaPkj")+ " , Deadline : "+ rs.getDate("deadline");
+                listJobVacancy.put(s, rs.getInt("idLowongan"));
+            }
+        } catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return listJobVacancy;
+    }
     
-    public void deleteLowongan(Perusahaan p, String nama){
-        String state = "delete from berkaslamaran where idPelamar= " + p.getIdAkun() 
-                + "and namaPkj = "+nama;
+    public ArrayList<Lowongan> populateTableLowongan(Perusahaan p){
+        ArrayList<Lowongan> listJobVacancy = new ArrayList<Lowongan>();
+        connect();
+        Statement st;
+        ResultSet rs;
+        String state = "SELECT `idLowongan`, `namaPkj`, `deadline` FROM `lowongan` "
+                + "where idPerusahaan = " + p.getIdAkun();
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(state);
+            while(rs.next()){
+                Lowongan l = new Lowongan(rs.getInt("idLowongan"), rs.getString("namaPkj"), rs.getDate("deadline"));
+                listJobVacancy.add(l);
+            }
+        } catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return listJobVacancy;
+    }
+    
+    //untuk menghapus akun perusahaan
+    public void deletePerusahaan(String idAkun){
+        String state = "delete from Perusahaan where idPerusahaan= " + idAkun;
         try {
             query(state);
         } catch (SQLException ex) {
@@ -378,6 +372,65 @@ public class Database {
         }
     }
     
+    //untuk menghapus akun pelamar
+    public void deletePelamar(String idAkun){
+        String state = "delete from Pelamar where idPelamar= " + idAkun;
+        try {
+            query(state);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    //untuk menghapus data lowongan dari suatu perusahaan
+    public void deleteLowongan(Perusahaan p, Lowongan l){
+        String state = "delete from berkaslamaran where idPelamar= " + p.getIdAkun() 
+                + "and idLowongan = " + l.getId();
+        try {
+            query(state);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    // ?
+    public void readBerkas(Pelamar p) throws SQLException, FileNotFoundException{
+        String state = "SELECT fileCV FROM `berkaslamaran` where idPelamar = " + p.getIdAkun();
+        ResultSet rs = getData(state);
+        File f = null; //= new File(rs.getBlob(2));
+        FileInputStream input = null;
+//        FileOutputStream output = new FileOutputStream(f);
+        try{
+            if(rs.next()){
+//                input = rs.getBinaryStream("fileCV");
+                byte[] buffer = new byte[1024];
+//                while (input.read(buffer) > 0){
+//                    output.write(buffer);
+//                }
+//                System.out.println("Saved to file : " + f.getAbsolutePatch());
+            }
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    // ?
+    public ArrayList<BerkasLamaran> readDataBerkasLamaran(){
+        ArrayList<BerkasLamaran> daftarBerkas = new ArrayList();
+        String state = "SELECT idPelamar, namaFileCV, namaFileSLK FROM `berkaslamaran`";
+        ResultSet rs = getData(state);
+        try {
+            while (rs.next()) {
+                BerkasLamaran b = new BerkasLamaran(rs.getString("namaFileCV"), rs.getString("namaFileSLK"));
+                daftarBerkas.add(b);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return daftarBerkas;
+    }
+    
+    // ?
     public String[] getListIDPerusahaan() {
         ArrayList<String> listId = new ArrayList<>();
         try {
@@ -392,6 +445,7 @@ public class Database {
         return listId.toArray(new String[0]);
     }
     
+    // ?
     public String[] getListIDPelamar() {
         ArrayList<String> listId = new ArrayList<>();
         try {
@@ -406,6 +460,7 @@ public class Database {
         return listId.toArray(new String[0]);
     }
     
+    // ?
     public ArrayList getListLowongan(Perusahaan p) {
         ArrayList<Lowongan> listLowong = new ArrayList<>();
         try {
